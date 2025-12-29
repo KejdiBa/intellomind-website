@@ -5,10 +5,10 @@ import { Menu, X } from "lucide-react";
 import logoImage from "@assets/Logo_IntelloMind_1767046191762.jpg";
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#services", label: "Services" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "#home", label: "Startseite" },
+  { href: "#services", label: "Leistungen" },
+  { href: "#about", label: "Über uns" },
+  { href: "#contact", label: "Kontakt" },
 ];
 
 export function Navigation() {
@@ -82,7 +82,7 @@ export function Navigation() {
               className="hidden sm:flex bg-primary hover:bg-primary/90"
               data-testid="button-get-started"
             >
-              Get Started
+              Jetzt starten
             </Button>
             <Button
               variant="ghost"
@@ -122,7 +122,7 @@ export function Navigation() {
                 className="w-full bg-primary hover:bg-primary/90 mt-2"
                 data-testid="button-mobile-get-started"
               >
-                Get Started
+                Jetzt starten
               </Button>
             </div>
           </div>

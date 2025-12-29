@@ -34,7 +34,7 @@ export function HeroSection() {
         >
           <Sparkles className="w-4 h-4 text-tech-green" />
           <span className="text-sm font-medium text-white/90">
-            Transforming Businesses with AI
+            Unternehmen mit KI transformieren
           </span>
         </motion.div>
 
@@ -45,10 +45,10 @@ export function HeroSection() {
           className="font-mono text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
           data-testid="text-hero-title"
         >
-          Unlock the Power of
+          Erschließen Sie die Kraft der
           <br />
           <span className="bg-gradient-to-r from-tech-green to-primary bg-clip-text text-transparent">
-            Artificial Intelligence
+            Künstlichen Intelligenz
           </span>
         </motion.h1>
 
@@ -59,9 +59,9 @@ export function HeroSection() {
           className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed"
           data-testid="text-hero-subtitle"
         >
-          IntelloMind delivers cutting-edge AI solutions tailored to your business needs.
-          From strategy to implementation, we help you harness AI for growth, efficiency,
-          and innovation.
+          IntelloMind liefert maßgeschneiderte KI-Lösungen für Ihre Geschäftsanforderungen.
+          Von der Strategie bis zur Implementierung helfen wir Ihnen, KI für Wachstum, Effizienz
+          und Innovation zu nutzen.
         </motion.p>
 
         <motion.div
@@ -76,7 +76,7 @@ export function HeroSection() {
             className="bg-tech-green hover:bg-tech-green/90 text-white border-tech-green px-8 py-6 text-lg font-semibold"
             data-testid="button-hero-cta-primary"
           >
-            Start Your AI Journey
+            Starten Sie Ihre KI-Reise
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
           <Button
@@ -86,7 +86,7 @@ export function HeroSection() {
             className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 px-8 py-6 text-lg font-semibold"
             data-testid="button-hero-cta-secondary"
           >
-            Explore Services
+            Leistungen entdecken
           </Button>
         </motion.div>
 
@@ -97,10 +97,10 @@ export function HeroSection() {
           className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
         >
           {[
-            { value: "100+", label: "Projects Delivered" },
-            { value: "50+", label: "Enterprise Clients" },
-            { value: "98%", label: "Client Satisfaction" },
-            { value: "10+", label: "Years Experience" },
+            { value: "100+", label: "Projekte umgesetzt" },
+            { value: "50+", label: "Unternehmenskunden" },
+            { value: "98%", label: "Kundenzufriedenheit" },
+            { value: "10+", label: "Jahre Erfahrung" },
           ].map((stat, index) => (
             <div
               key={index}

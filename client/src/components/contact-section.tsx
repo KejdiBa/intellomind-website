@@ -23,26 +23,26 @@ import { Mail, Phone, MapPin, Clock, Send, Loader2 } from "lucide-react";
 const contactInfo = [
   {
     icon: Mail,
-    label: "Email",
-    value: "contact@intellomind.ai",
-    href: "mailto:contact@intellomind.ai",
+    label: "E-Mail",
+    value: "kontakt@intellomind.ai",
+    href: "mailto:kontakt@intellomind.ai",
   },
   {
     icon: Phone,
-    label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
+    label: "Telefon",
+    value: "+49 (0) 89 123 4567",
+    href: "tel:+4989123456",
   },
   {
     icon: MapPin,
-    label: "Address",
-    value: "123 AI Innovation Drive, San Francisco, CA 94105",
+    label: "Adresse",
+    value: "Maximilianstraße 35, 80539 München, Deutschland",
     href: null,
   },
   {
     icon: Clock,
-    label: "Business Hours",
-    value: "Mon - Fri: 9:00 AM - 6:00 PM PST",
+    label: "Geschäftszeiten",
+    value: "Mo - Fr: 9:00 - 18:00 Uhr",
     href: null,
   },
 ];
@@ -67,15 +67,15 @@ export function ContactSection() {
     },
     onSuccess: () => {
       toast({
-        title: "Message sent successfully!",
-        description: "We'll get back to you within 24 hours.",
+        title: "Nachricht erfolgreich gesendet!",
+        description: "Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
       });
       form.reset();
     },
     onError: () => {
       toast({
-        title: "Failed to send message",
-        description: "Please try again later.",
+        title: "Fehler beim Senden",
+        description: "Bitte versuchen Sie es später erneut.",
         variant: "destructive",
       });
     },
@@ -100,14 +100,14 @@ export function ContactSection() {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Get In Touch
+            Kontakt aufnehmen
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Ready to Transform Your Business?
+            Bereit, Ihr Unternehmen zu transformieren?
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Let's discuss how AI can help you achieve your business goals.
-            Fill out the form below and our team will get back to you within 24 hours.
+            Lassen Sie uns besprechen, wie KI Ihnen helfen kann, Ihre Geschäftsziele zu erreichen.
+            Füllen Sie das Formular aus und unser Team meldet sich innerhalb von 24 Stunden bei Ihnen.
           </p>
         </motion.div>
 
@@ -128,10 +128,10 @@ export function ContactSection() {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Full Name</FormLabel>
+                          <FormLabel>Vollständiger Name</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="John Doe"
+                              placeholder="Max Mustermann"
                               {...field}
                               data-testid="input-name"
                             />
@@ -145,11 +145,11 @@ export function ContactSection() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email Address</FormLabel>
+                          <FormLabel>E-Mail-Adresse</FormLabel>
                           <FormControl>
                             <Input
                               type="email"
-                              placeholder="john@company.com"
+                              placeholder="max@unternehmen.de"
                               {...field}
                               data-testid="input-email"
                             />
@@ -164,10 +164,10 @@ export function ContactSection() {
                     name="company"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Company Name (Optional)</FormLabel>
+                        <FormLabel>Firmenname (Optional)</FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="Your Company"
+                            placeholder="Ihr Unternehmen"
                             {...field}
                             value={field.value || ""}
                             data-testid="input-company"
@@ -182,10 +182,10 @@ export function ContactSection() {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Message</FormLabel>
+                        <FormLabel>Nachricht</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Tell us about your project and how we can help..."
+                            placeholder="Erzählen Sie uns von Ihrem Projekt und wie wir helfen können..."
                             className="min-h-[150px] resize-none"
                             {...field}
                             data-testid="input-message"
@@ -204,11 +204,11 @@ export function ContactSection() {
                     {mutation.isPending ? (
                       <>
                         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                        Sending...
+                        Wird gesendet...
                       </>
                     ) : (
                       <>
-                        Send Message
+                        Nachricht senden
                         <Send className="ml-2 h-5 w-5" />
                       </>
                     )}
@@ -226,7 +226,7 @@ export function ContactSection() {
             className="lg:col-span-2"
           >
             <Card className="p-8 bg-navy text-white h-full" data-testid="card-contact-info">
-              <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
+              <h3 className="text-xl font-semibold mb-6">Kontaktinformationen</h3>
               <div className="space-y-6">
                 {contactInfo.map((item) => (
                   <div key={item.label} className="flex items-start gap-4">
@@ -252,10 +252,10 @@ export function ContactSection() {
               </div>
 
               <div className="mt-10 pt-8 border-t border-white/10">
-                <h4 className="font-semibold mb-3">Average Response Time</h4>
+                <h4 className="font-semibold mb-3">Durchschnittliche Antwortzeit</h4>
                 <p className="text-white/80 text-sm">
-                  We typically respond within 24 business hours. For urgent inquiries,
-                  please call us directly.
+                  Wir antworten in der Regel innerhalb von 24 Geschäftsstunden. Für dringende
+                  Anfragen rufen Sie uns bitte direkt an.
                 </p>
               </div>
             </Card>

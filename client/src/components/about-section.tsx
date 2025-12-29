@@ -6,30 +6,30 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 const values = [
   {
     icon: Target,
-    title: "Results-Driven",
-    description: "We focus on delivering measurable business outcomes, not just technology implementations.",
+    title: "Ergebnisorientiert",
+    description: "Wir konzentrieren uns auf messbare Geschäftsergebnisse, nicht nur auf Technologie-Implementierungen.",
   },
   {
     icon: Users,
-    title: "Client-Centric",
-    description: "Your success is our success. We build lasting partnerships based on trust and transparency.",
+    title: "Kundenorientiert",
+    description: "Ihr Erfolg ist unser Erfolg. Wir bauen langfristige Partnerschaften auf Vertrauen und Transparenz auf.",
   },
   {
     icon: Award,
-    title: "Excellence",
-    description: "We maintain the highest standards in everything we do, from strategy to execution.",
+    title: "Exzellenz",
+    description: "Wir halten höchste Standards in allem, was wir tun - von der Strategie bis zur Umsetzung.",
   },
   {
     icon: Lightbulb,
     title: "Innovation",
-    description: "We stay at the forefront of AI technology to bring you the most effective solutions.",
+    description: "Wir bleiben an der Spitze der KI-Technologie, um Ihnen die effektivsten Lösungen zu bieten.",
   },
 ];
 
 const team = [
   {
     name: "Dr. Sarah Chen",
-    role: "CEO & Chief AI Strategist",
+    role: "CEO & KI-Strategin",
     initials: "SC",
     color: "bg-primary",
   },
@@ -41,13 +41,13 @@ const team = [
   },
   {
     name: "Emily Watson",
-    role: "Head of ML Engineering",
+    role: "Leiterin ML-Engineering",
     initials: "EW",
     color: "bg-indigo",
   },
   {
     name: "David Kim",
-    role: "Director of Client Success",
+    role: "Leiter Kundenerfolg",
     initials: "DK",
     color: "bg-primary",
   },
@@ -69,21 +69,22 @@ export function AboutSection() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block px-4 py-1.5 rounded-full bg-tech-green/10 text-tech-green text-sm font-medium mb-4">
-              About IntelloMind
+              Über IntelloMind
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Pioneering AI Solutions for Modern Enterprises
+              Wegweisende KI-Lösungen für moderne Unternehmen
             </h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              IntelloMind was founded with a clear mission: to democratize AI and make its
-              transformative power accessible to businesses of all sizes. Our team of
-              expert data scientists, engineers, and strategists brings decades of
-              combined experience in artificial intelligence and machine learning.
+              IntelloMind wurde mit einer klaren Mission gegründet: KI zu demokratisieren und
+              ihre transformative Kraft für Unternehmen jeder Größe zugänglich zu machen. Unser
+              Team aus erfahrenen Datenwissenschaftlern, Ingenieuren und Strategen bringt
+              jahrzehntelange kombinierte Erfahrung in künstlicher Intelligenz und maschinellem
+              Lernen mit.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              We believe that AI should augment human capabilities, not replace them.
-              Our approach combines cutting-edge technology with deep industry knowledge
-              to create solutions that truly make a difference.
+              Wir glauben, dass KI menschliche Fähigkeiten erweitern sollte, nicht ersetzen.
+              Unser Ansatz kombiniert modernste Technologie mit tiefem Branchenwissen, um
+              Lösungen zu schaffen, die wirklich einen Unterschied machen.
             </p>
           </motion.div>
 
@@ -118,11 +119,11 @@ export function AboutSection() {
           className="text-center mb-12"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Meet Our Leadership Team
+            Unser Führungsteam
           </h3>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Our diverse team brings together expertise from top tech companies,
-            research institutions, and industry leaders.
+            Unser vielfältiges Team vereint Expertise aus führenden Technologieunternehmen,
+            Forschungseinrichtungen und Branchenführern.
           </p>
         </motion.div>
 

@@ -8,21 +8,21 @@ import { useToast } from "@/hooks/use-toast";
 
 const footerLinks = {
   services: [
-    { label: "AI Strategy Consulting", href: "#services" },
-    { label: "Machine Learning Solutions", href: "#services" },
-    { label: "Conversational AI", href: "#services" },
-    { label: "Process Automation", href: "#services" },
+    { label: "KI-Strategieberatung", href: "#services" },
+    { label: "Machine Learning Lösungen", href: "#services" },
+    { label: "Konversations-KI", href: "#services" },
+    { label: "Prozessautomatisierung", href: "#services" },
   ],
   company: [
-    { label: "About Us", href: "#about" },
-    { label: "Our Team", href: "#about" },
-    { label: "Careers", href: "#" },
+    { label: "Über uns", href: "#about" },
+    { label: "Unser Team", href: "#about" },
+    { label: "Karriere", href: "#" },
     { label: "Blog", href: "#" },
   ],
   resources: [
-    { label: "Case Studies", href: "#" },
-    { label: "Documentation", href: "#" },
-    { label: "API Reference", href: "#" },
+    { label: "Fallstudien", href: "#" },
+    { label: "Dokumentation", href: "#" },
+    { label: "API-Referenz", href: "#" },
     { label: "Support", href: "#contact" },
   ],
 };
@@ -41,8 +41,8 @@ export function Footer() {
     e.preventDefault();
     if (email) {
       toast({
-        title: "Subscribed!",
-        description: "Thank you for subscribing to our newsletter.",
+        title: "Angemeldet!",
+        description: "Vielen Dank für Ihre Newsletter-Anmeldung.",
       });
       setEmail("");
     }
@@ -70,14 +70,14 @@ export function Footer() {
               />
             </a>
             <p className="text-white/70 mb-6 max-w-sm leading-relaxed">
-              Transforming businesses through cutting-edge AI solutions.
-              We help companies harness the power of artificial intelligence
-              to drive innovation and growth.
+              Wir transformieren Unternehmen durch modernste KI-Lösungen.
+              Wir helfen Firmen, die Kraft der künstlichen Intelligenz zu nutzen,
+              um Innovation und Wachstum voranzutreiben.
             </p>
             <form onSubmit={handleNewsletterSubmit} className="flex flex-wrap gap-3">
               <Input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Ihre E-Mail-Adresse"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/50 flex-1 min-w-[200px]"
@@ -88,13 +88,13 @@ export function Footer() {
                 className="bg-tech-green hover:bg-tech-green/90 text-white"
                 data-testid="button-newsletter-subscribe"
               >
-                Subscribe
+                Anmelden
               </Button>
             </form>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Services</h4>
+            <h4 className="font-semibold mb-4">Leistungen</h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
@@ -115,7 +115,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
+            <h4 className="font-semibold mb-4">Unternehmen</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
@@ -136,7 +136,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Resources</h4>
+            <h4 className="font-semibold mb-4">Ressourcen</h4>
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
@@ -161,7 +161,7 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-white/60 text-sm">
-            2024 IntelloMind. All rights reserved.
+            2024 IntelloMind. Alle Rechte vorbehalten.
           </p>
 
           <div className="flex items-center gap-4">
@@ -170,14 +170,14 @@ export function Footer() {
               className="text-white/60 hover:text-white text-sm transition-colors"
               data-testid="link-footer-privacy"
             >
-              Privacy Policy
+              Datenschutz
             </a>
             <a
               href="#"
               className="text-white/60 hover:text-white text-sm transition-colors"
               data-testid="link-footer-terms"
             >
-              Terms of Service
+              Nutzungsbedingungen
             </a>
           </div>
 

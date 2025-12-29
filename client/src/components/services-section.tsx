@@ -14,49 +14,49 @@ import {
 const services = [
   {
     icon: Brain,
-    title: "AI Strategy Consulting",
+    title: "KI-Strategieberatung",
     description:
-      "Develop a comprehensive AI roadmap tailored to your business goals. We assess your current capabilities and chart a clear path to AI-powered success.",
+      "Entwickeln Sie eine umfassende KI-Roadmap, die auf Ihre Geschäftsziele zugeschnitten ist. Wir analysieren Ihre aktuellen Fähigkeiten und zeigen einen klaren Weg zum KI-gestützten Erfolg auf.",
     color: "text-primary",
     bgColor: "bg-primary/10",
   },
   {
     icon: Cpu,
-    title: "Machine Learning Solutions",
+    title: "Machine Learning Lösungen",
     description:
-      "Build custom ML models that solve real business problems. From predictive analytics to computer vision, we create solutions that deliver measurable ROI.",
+      "Entwicklung maßgeschneiderter ML-Modelle, die echte Geschäftsprobleme lösen. Von prädiktiver Analytik bis Computer Vision erstellen wir Lösungen mit messbarem ROI.",
     color: "text-tech-green",
     bgColor: "bg-tech-green/10",
   },
   {
     icon: MessageSquare,
-    title: "Conversational AI",
+    title: "Konversations-KI",
     description:
-      "Deploy intelligent chatbots and virtual assistants that understand context and provide meaningful interactions with your customers 24/7.",
+      "Implementieren Sie intelligente Chatbots und virtuelle Assistenten, die Kontext verstehen und Ihren Kunden rund um die Uhr sinnvolle Interaktionen bieten.",
     color: "text-indigo",
     bgColor: "bg-indigo/10",
   },
   {
     icon: BarChart3,
-    title: "Data Analytics & BI",
+    title: "Datenanalyse & BI",
     description:
-      "Transform raw data into actionable insights. Our analytics solutions help you make data-driven decisions faster and with greater confidence.",
+      "Verwandeln Sie Rohdaten in umsetzbare Erkenntnisse. Unsere Analyselösungen helfen Ihnen, datengesteuerte Entscheidungen schneller und mit größerer Sicherheit zu treffen.",
     color: "text-primary",
     bgColor: "bg-primary/10",
   },
   {
     icon: Cog,
-    title: "Process Automation",
+    title: "Prozessautomatisierung",
     description:
-      "Automate repetitive tasks and streamline workflows with intelligent automation. Free your team to focus on high-value strategic work.",
+      "Automatisieren Sie wiederkehrende Aufgaben und optimieren Sie Arbeitsabläufe mit intelligenter Automatisierung. Befreien Sie Ihr Team für wertschöpfende strategische Arbeit.",
     color: "text-tech-green",
     bgColor: "bg-tech-green/10",
   },
   {
     icon: Shield,
-    title: "AI Governance & Ethics",
+    title: "KI-Governance & Ethik",
     description:
-      "Implement responsible AI practices with robust governance frameworks. Ensure your AI systems are fair, transparent, and compliant.",
+      "Implementieren Sie verantwortungsvolle KI-Praktiken mit robusten Governance-Frameworks. Stellen Sie sicher, dass Ihre KI-Systeme fair, transparent und konform sind.",
     color: "text-indigo",
     bgColor: "bg-indigo/10",
   },
@@ -85,14 +85,14 @@ export function ServicesSection() {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Our Services
+            Unsere Leistungen
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            AI Solutions That Drive Results
+            KI-Lösungen, die Ergebnisse liefern
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            We offer comprehensive AI consulting services designed to transform your
-            business operations and create sustainable competitive advantages.
+            Wir bieten umfassende KI-Beratungsleistungen, die Ihre Geschäftsabläufe
+            transformieren und nachhaltige Wettbewerbsvorteile schaffen.
           </p>
         </motion.div>
 
@@ -126,7 +126,7 @@ export function ServicesSection() {
                   onClick={scrollToContact}
                   data-testid={`button-learn-more-${service.title.toLowerCase().replace(/\s+/g, "-")}`}
                 >
-                  Learn More
+                  Mehr erfahren
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Card>
