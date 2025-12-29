@@ -35,12 +35,12 @@ export function Navigation() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm"
+          ? "glass-nav border-b border-border/50"
           : "bg-transparent"
       }`}
       data-testid="header-navigation"
     >
-      <nav className="max-w-7xl mx-auto px-6 py-4">
+      <nav className="max-w-6xl mx-auto px-6 py-3">
         <div className="flex items-center justify-between gap-4">
           <a
             href="#home"
@@ -54,7 +54,7 @@ export function Navigation() {
             <img
               src={logoImage}
               alt="IntelloMind"
-              className="h-10 w-auto rounded-md"
+              className="h-8 w-auto rounded-md"
             />
           </a>
 
@@ -67,7 +67,7 @@ export function Navigation() {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm font-medium text-muted-foreground hover-tint transition-colors"
                 data-testid={`link-nav-${link.label.toLowerCase()}`}
               >
                 {link.label}
@@ -75,11 +75,11 @@ export function Navigation() {
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <ThemeToggle />
             <Button
               onClick={() => scrollToSection("#contact")}
-              className="hidden sm:flex bg-primary hover:bg-primary/90"
+              className="hidden sm:flex rounded-full px-5"
               data-testid="button-get-started"
             >
               Jetzt starten
@@ -101,8 +101,8 @@ export function Navigation() {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border pt-4">
-            <div className="flex flex-col gap-4">
+          <div className="md:hidden mt-4 pb-4 border-t border-border/50 pt-4">
+            <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -111,7 +111,7 @@ export function Navigation() {
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+                  className="text-sm font-medium text-muted-foreground hover-tint transition-colors py-3 px-2 rounded-lg"
                   data-testid={`link-mobile-nav-${link.label.toLowerCase()}`}
                 >
                   {link.label}
@@ -119,7 +119,7 @@ export function Navigation() {
               ))}
               <Button
                 onClick={() => scrollToSection("#contact")}
-                className="w-full bg-primary hover:bg-primary/90 mt-2"
+                className="w-full rounded-full mt-3"
                 data-testid="button-mobile-get-started"
               >
                 Jetzt starten

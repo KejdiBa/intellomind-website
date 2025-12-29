@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import heroImage from "@assets/generated_images/abstract_blue_tech_gradient.png";
 
 export function HeroSection() {
   const scrollToSection = (href: string) => {
@@ -13,41 +14,38 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero"
       data-testid="section-hero"
     >
-      <div className="absolute inset-0 gradient-bg" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/20" />
-      
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-30">
+          <img 
+            src={heroImage} 
+            alt="" 
+            className="w-full h-full object-cover rounded-full blur-3xl"
+          />
+        </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 text-center">
-        <motion.div
+      <div className="relative z-10 max-w-4xl mx-auto px-6 py-32 text-center">
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8"
+          transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
+          className="text-primary font-medium mb-4 tracking-wide"
         >
-          <Sparkles className="w-4 h-4 text-tech-green" />
-          <span className="text-sm font-medium text-white/90">
-            Unternehmen mit KI transformieren
-          </span>
-        </motion.div>
+          Künstliche Intelligenz für Ihr Unternehmen
+        </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-mono text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 0.61, 0.36, 1] }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground mb-6 leading-[1.1] tracking-tight"
           data-testid="text-hero-title"
         >
-          Erschließen Sie die Kraft der
-          <br />
-          <span className="bg-gradient-to-r from-tech-green to-primary bg-clip-text text-transparent">
+          Erschließen Sie die Kraft der{" "}
+          <span className="gradient-text">
             Künstlichen Intelligenz
           </span>
         </motion.h1>
@@ -55,35 +53,34 @@ export function HeroSection() {
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed"
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
           data-testid="text-hero-subtitle"
         >
           IntelloMind liefert maßgeschneiderte KI-Lösungen für Ihre Geschäftsanforderungen.
-          Von der Strategie bis zur Implementierung helfen wir Ihnen, KI für Wachstum, Effizienz
-          und Innovation zu nutzen.
+          Von der Strategie bis zur Implementierung helfen wir Ihnen, KI für Wachstum und Innovation zu nutzen.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Button
             size="lg"
             onClick={() => scrollToSection("#contact")}
-            className="bg-tech-green hover:bg-tech-green/90 text-white border-tech-green px-8 py-6 text-lg font-semibold"
+            className="rounded-full px-8 py-6 text-base font-medium"
             data-testid="button-hero-cta-primary"
           >
             Starten Sie Ihre KI-Reise
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
           <Button
             size="lg"
             variant="outline"
             onClick={() => scrollToSection("#services")}
-            className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 px-8 py-6 text-lg font-semibold"
+            className="rounded-full px-8 py-6 text-base font-medium"
             data-testid="button-hero-cta-secondary"
           >
             Leistungen entdecken
@@ -93,13 +90,13 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+          transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 0.61, 0.36, 1] }}
+          className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
         >
           {[
-            { value: "100+", label: "Projekte umgesetzt" },
-            { value: "50+", label: "Unternehmenskunden" },
-            { value: "98%", label: "Kundenzufriedenheit" },
+            { value: "100+", label: "Projekte" },
+            { value: "50+", label: "Kunden" },
+            { value: "98%", label: "Zufriedenheit" },
             { value: "10+", label: "Jahre Erfahrung" },
           ].map((stat, index) => (
             <div
@@ -107,23 +104,12 @@ export function HeroSection() {
               className="text-center"
               data-testid={`stat-${stat.label.toLowerCase().replace(/\s+/g, "-")}`}
             >
-              <div className="text-3xl md:text-4xl font-bold text-white mb-1">
+              <div className="text-3xl md:text-4xl font-semibold text-foreground mb-1">
                 {stat.value}
               </div>
-              <div className="text-sm text-white/60">{stat.label}</div>
+              <div className="text-sm text-muted-foreground">{stat.label}</div>
             </div>
           ))}
-        </motion.div>
-      </div>
-
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-          className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center pt-2"
-        >
-          <div className="w-1.5 h-3 bg-white/60 rounded-full" />
         </motion.div>
       </div>
     </section>
