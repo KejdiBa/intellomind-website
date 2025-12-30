@@ -1,0 +1,146 @@
+1) Betroffener Bereich (Section)
+
+Implementiere eine neue oder ersetze die bestehende “Hero/Feature”-Sektion durch eine 2-Spalten Scroll-Sektion:
+
+Links: Text/Feature-Cards (scrollen ganz normal)
+
+Rechts: Sticky Smartphone-Mockup (bleibt sichtbar während man durch 2–4 Sub-Abschnitte scrollt)
+
+Desktop: 2 Spalten
+
+Mobile: Smartphone oben, Text darunter (oder umgekehrt), aber Effekt darf auch vereinfacht werden (z. B. nur Screen-Wechsel ohne 3D-Rotation)
+
+2) Verhalten wie makeit-ai.de (Sticky + Steps)
+
+Das Smartphone soll abhängig von Scroll-Progress in definierte “Steps” springen bzw. smooth interpolieren.
+
+Step-Definitionen (mind. 3–4 Steps)
+
+Step 1 (Start / Hero):
+
+Smartphone leicht geneigt (3D-Look)
+
+Screen zeigt IntelloMind Logo (Splash Screen)
+
+Step 2 (nach etwas Scroll):
+
+Smartphone richtet sich gerader auf (weniger Neigung)
+
+Screen wechselt zu Login Screen (IntelloMind Branding)
+
+Step 3 (weiter scrollen):
+
+Smartphone bleibt aufrecht / leicht versetzt
+
+Screen wechselt zu Inbox/Messages UI (WhatsApp/Instagram/Facebook-ähnliche Inbox Darstellung als Mock UI – keine echten Logos nötig; nur Icons/Badges)
+
+Optional Step 4 (wenn du 4 Steps machst):
+
+Screen wechselt zu Dashboard / Kalender / Termin-Ansicht (mocked UI)
+
+Wichtig: Übergänge sollen smooth wirken (fade/slide im Screen, Rotation/translate am Device).
+
+3) Technische Umsetzung (klar & robust)
+3.1 Scroll-Tracking
+
+Implementiere Scroll-Tracking für diesen Section-Container (nicht global die ganze Seite).
+
+Nutze eine robuste Lösung:
+
+IntersectionObserver + progress calculation ODER
+
+Framer Motion (useScroll/useTransform) falls React/Next genutzt wird.
+
+Ziel: progress von 0 → 1 innerhalb der Section messen.
+
+3.2 Sticky Phone
+
+Smartphone-Wrapper: position: sticky; top: <passend> auf Desktop.
+
+Sticky bleibt aktiv nur innerhalb dieser Section (Ende der Section = Smartphone scrollt wieder weg).
+
+3.3 Device Motion (Rotation/Transform)
+
+Je Step definieren:
+
+rotateZ / rotateY (leicht)
+
+translateX / translateY
+
+scale (minimal)
+
+Zwischen Steps interpolieren, oder Step-Snapping ab z. B. progress ranges:
+
+0.00–0.30 = Step 1
+
+0.30–0.55 = Step 2
+
+0.55–0.80 = Step 3
+
+0.80–1.00 = Step 4 (optional)
+
+3.4 Screen Switching
+
+Screen-Inhalte als separate Components/Divs (Splash, Login, Inbox, optional Dashboard)
+
+Beim Stepwechsel:
+
+Crossfade (opacity) + kleiner translate (z. B. y: 8 → 0)
+
+Keine harten Sprünge
+
+4) UI-Assets & Branding
+4.1 Logo Replacement
+
+Ersetze jedes MiA Logo/Wordmark durch IntelloMind Logo:
+
+Verwende vorhandenes Logo-Asset aus dem Projekt (z. B. /public/logo-intellomind.svg)
+
+Falls nicht vorhanden: erstelle ein simples Text-Logo “IntelloMind” als Fallback (nur wenn Asset fehlt).
+
+4.2 Texte/Labels
+
+Ersetze im gesamten betroffenen Bereich alle Strings:
+
+“MiA” → “IntelloMind”
+
+“Make it AI” → (wenn irgendwo im Abschnitt vorhanden) → “IntelloMind”
+
+Login-Screen Titel: “Anmelden” bleibt, Branding = IntelloMind
+
+Inbox-Screen: “Willkommen zurück” etc. kann beibehalten werden, aber ohne MiA.
+
+4.3 Farben & Gradients
+
+Alle Device-Glows, Buttons, Akzente und Background-Gradients müssen dem IntelloMind Look entsprechen (wie https://intellomind.ai/
+).
+
+Smartphone-Glow hinter dem Gerät: gradient radial/blur passend zum CI.
+
+5) Responsiveness
+
+Desktop: sticky phone rechts, Text links (wie Demo)
+
+Tablet: sticky optional, aber sauber
+
+Mobile:
+
+Option A: Phone oben, Inhalte darunter, Screen wechselt beim Scrollen trotzdem
+
+Option B (falls zu komplex): Screen wechselt per swipe/dots (aber nur wenn Sticky/Scroll technisch nicht stabil ist)
+
+6) Abnahme-Kriterien (QA)
+
+Smartphone bleibt sticky und ändert beim Scrollen:
+
+Ausrichtung/Rotation
+
+Screen-Inhalt (Splash → Login → Inbox → optional Dashboard)
+
+Übergänge smooth (keine ruckartigen Sprünge)
+
+Keine “MiA” Texte/Logos mehr sichtbar – überall IntelloMind
+
+Performance ok (keine heavy re-renders; requestAnimationFrame oder motion transforms)
+
+Funktioniert in Chrome/Edge/Safari (best effort)
