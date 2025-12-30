@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Navigation } from "@/components/navigation";
 import { HeroSection } from "@/components/hero-section";
+import { StickyPhoneSection } from "@/components/sticky-phone-section";
 import { FeaturesSection } from "@/components/features-section";
 import { IntegrationsSection } from "@/components/integrations-section";
 import { ServicesSection } from "@/components/services-section";
@@ -27,6 +28,7 @@ export default function Home() {
       <Navigation />
       <main>
         <HeroSection />
+        <StickyPhoneSection />
         <FeaturesSection />
         <IntegrationsSection />
         <ServicesSection />
