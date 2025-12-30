@@ -157,7 +157,7 @@ export function CookieBanner({ forceOpen = false, onClose }: CookieBannerProps) 
             <Card className="p-6 glass-card border border-border/50">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl icon-bubble-gradient flex items-center justify-center">
                     <Settings className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-foreground">Cookie-Einstellungen</h3>
@@ -253,7 +253,7 @@ export function CookieBanner({ forceOpen = false, onClose }: CookieBannerProps) 
                   Einstellungen speichern
                 </Button>
                 <Button
-                  className="flex-1 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
+                  className="flex-1 rounded-lg btn-primary-gradient"
                   onClick={handleAcceptAll}
                   data-testid="button-accept-all-modal"
                 >
@@ -277,7 +277,7 @@ export function CookieBanner({ forceOpen = false, onClose }: CookieBannerProps) 
             <Card className="p-4 md:p-5 glass-card border border-border/50">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
                 <div className="flex items-start gap-3 flex-1">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl icon-bubble-gradient flex items-center justify-center flex-shrink-0">
                     <Cookie className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -286,7 +286,7 @@ export function CookieBanner({ forceOpen = false, onClose }: CookieBannerProps) 
                       Wir nutzen Cookies für Funktionalität und Analyse.{" "}
                       <button
                         onClick={handleOpenSettings}
-                        className="text-purple-400 hover:text-purple-300 underline underline-offset-2"
+                        className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
                         data-testid="link-cookie-settings"
                       >
                         Einstellungen anpassen
@@ -317,7 +317,7 @@ export function CookieBanner({ forceOpen = false, onClose }: CookieBannerProps) 
                   </Button>
                   <Button
                     size="sm"
-                    className="rounded-lg flex-1 md:flex-none bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
+                    className="rounded-lg flex-1 md:flex-none btn-primary-gradient"
                     onClick={handleAcceptAll}
                     data-testid="button-accept-all"
                   >

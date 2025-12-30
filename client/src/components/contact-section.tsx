@@ -86,7 +86,8 @@ export function ContactSection() {
       data-testid="section-contact"
     >
       <div className="absolute inset-0">
-        <div className="bg-gradient-orb bg-gradient-orb-purple w-[600px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20" />
+        <div className="bg-gradient-orb bg-gradient-orb-cyan w-[400px] h-[400px] top-1/4 left-1/4 opacity-20" />
+        <div className="bg-gradient-orb bg-gradient-orb-purple w-[500px] h-[500px] bottom-1/4 right-1/4 opacity-20" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -195,7 +196,7 @@ export function ContactSection() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full rounded-lg py-6 font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
+                    className="w-full rounded-lg py-6 font-semibold btn-primary-gradient"
                     disabled={mutation.isPending}
                     data-testid="button-submit-contact"
                   >
@@ -238,12 +239,12 @@ export function ContactSection() {
                     className="flex items-center gap-4 group"
                     data-testid={`link-contact-${info.title.toLowerCase()}`}
                   >
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full icon-bubble-gradient flex items-center justify-center flex-shrink-0">
                       <info.icon className="w-5 h-5 text-white" />
                     </div>
                     <div>
                       <p className="text-foreground font-semibold text-sm">{info.title}</p>
-                      <p className="text-muted-foreground text-sm group-hover:text-purple-400 transition-colors">
+                      <p className="text-muted-foreground text-sm group-hover:text-cyan-400 transition-colors">
                         {info.value}
                       </p>
                     </div>

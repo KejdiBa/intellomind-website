@@ -42,7 +42,8 @@ export function ServicesSection() {
       data-testid="section-services"
     >
       <div className="absolute inset-0">
-        <div className="bg-gradient-orb bg-gradient-orb-purple w-[600px] h-[600px] top-1/2 -left-60 opacity-20" />
+        <div className="bg-gradient-orb bg-gradient-orb-cyan w-[500px] h-[500px] top-0 -left-40 opacity-20" />
+        <div className="bg-gradient-orb bg-gradient-orb-purple w-[400px] h-[400px] bottom-0 right-0 opacity-15" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -76,11 +77,11 @@ export function ServicesSection() {
                 className="p-6 h-full glass-card hover-float glow-border flex flex-col"
                 data-testid={`card-product-${product.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
               >
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center mb-5">
+                <div className="w-14 h-14 rounded-2xl icon-bubble-gradient flex items-center justify-center mb-5">
                   <product.icon className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-2">{product.title}</h3>
-                <p className="text-sm text-purple-400 mb-3">{product.subtitle}</p>
+                <p className="text-sm gradient-text mb-3">{product.subtitle}</p>
                 <p className="text-muted-foreground text-sm leading-relaxed flex-1">
                   {product.description}
                 </p>

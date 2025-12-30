@@ -60,7 +60,17 @@
   --tracking-normal: -0.01em;
   --spacing: 0.25rem;
 
-  /* Purple/Indigo accent colors - IntelloMind CI */
+  /* NEW: Cyan → Purple Gradient Design Tokens (Screenshot 2 style) */
+  --primary-start: 185 80% 55%;      /* Cyan / Sky */
+  --primary-mid: 200 85% 60%;        /* Light Blue */
+  --primary-end: 270 75% 60%;        /* Purple / Violet */
+  
+  /* Pre-built gradients for use in backgrounds */
+  --gradient-primary: linear-gradient(90deg, hsl(var(--primary-start)), hsl(var(--primary-mid)), hsl(var(--primary-end)));
+  --gradient-primary-hover: linear-gradient(90deg, hsl(185 80% 60%), hsl(200 85% 65%), hsl(270 75% 65%));
+  --glow-primary: 0 0 30px rgba(56, 189, 248, 0.4), 0 0 60px rgba(139, 92, 246, 0.3);
+  
+  /* Legacy colors for backwards compatibility */
   --purple-accent: 260 70% 60%;
   --indigo-accent: 240 60% 55%;
   --gradient-start: 260 70% 60%;
@@ -200,24 +210,55 @@
     box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15), 0 8px 16px rgba(0, 0, 0, 0.3);
   }
 
-  /* Hover glow effect for buttons */
+  /* Hover glow effect for buttons - Cyan/Purple */
   .hover-glow {
     transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
   }
 
   .hover-glow:hover {
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.4), 0 0 60px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.4), 0 0 60px rgba(139, 92, 246, 0.3);
   }
 
-  /* Gradient text effect - Purple to Indigo (IntelloMind CI) */
+  /* Gradient text effect - Cyan to Purple (new CI) */
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #8B5CF6 0%, #6366F1 50%, #4F46E5 100%);
+    background-image: linear-gradient(90deg, #22D3EE 0%, #38BDF8 30%, #818CF8 70%, #A855F7 100%);
   }
 
   .gradient-text-purple {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(90deg, #8B5CF6 0%, #A78BFA 100%);
+  }
+
+  /* Primary Button - Cyan → Purple gradient (Screenshot 2 style) */
+  .btn-primary-gradient {
+    background: linear-gradient(90deg, hsl(var(--primary-start)), hsl(var(--primary-mid)), hsl(var(--primary-end)));
+    color: white;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.25), 0 2px 8px rgba(139, 92, 246, 0.2);
+    transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform, box-shadow;
+  }
+
+  .btn-primary-gradient:hover:not(:disabled) {
+    background: linear-gradient(90deg, hsl(185 80% 48%), hsl(200 85% 52%), hsl(270 75% 52%));
+    box-shadow: 0 6px 25px rgba(56, 189, 248, 0.35), 0 4px 12px rgba(139, 92, 246, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary-gradient:focus-visible {
+    outline: 2px solid hsl(var(--primary-mid));
+    outline-offset: 2px;
+  }
+
+  .btn-primary-gradient:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  .btn-primary-gradient:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   /* Glass card effect */
@@ -284,7 +325,7 @@
     animation: pulse-glow 2s ease-in-out infinite;
   }
 
-  /* Background gradient orbs */
+  /* Background gradient orbs - Cyan/Purple palette */
   .bg-gradient-orb {
     position: absolute;
     border-radius: 50%;
@@ -297,7 +338,21 @@
   }
 
   .bg-gradient-orb-purple {
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.5) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, transparent 70%);
+  }
+
+  .bg-gradient-orb-cyan {
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.5) 0%, transparent 70%);
+  }
+
+  .bg-gradient-orb-blue {
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.5) 0%, transparent 70%);
+  }
+
+  /* Icon bubble with gradient */
+  .icon-bubble-gradient {
+    background: linear-gradient(135deg, #22D3EE 0%, #38BDF8 40%, #818CF8 80%, #A855F7 100%);
+    color: white;
   }
 
   /* Hover tint effect */

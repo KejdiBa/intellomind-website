@@ -284,12 +284,12 @@ export function StickyPhoneSection() {
     <section
       ref={containerRef}
       className="relative bg-background"
-      style={{ height: isMobile ? "auto" : "400vh" }}
+      style={{ height: isMobile ? "auto" : "400vh", position: "relative" }}
       data-testid="section-sticky-phone"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="bg-gradient-orb bg-gradient-orb-purple w-[800px] h-[800px] top-1/4 -left-40 opacity-20" />
-        <div className="bg-gradient-orb bg-gradient-orb-pink w-[600px] h-[600px] bottom-1/4 -right-40 opacity-15" />
+        <div className="bg-gradient-orb bg-gradient-orb-cyan w-[600px] h-[600px] top-1/4 -left-40 opacity-20" />
+        <div className="bg-gradient-orb bg-gradient-orb-purple w-[500px] h-[500px] bottom-1/4 -right-40 opacity-15" />
       </div>
 
       <div
@@ -324,11 +324,11 @@ export function StickyPhoneSection() {
                   onViewportEnter={() => setCurrentStep(index)}
                   className="space-y-3"
                 >
-                  <p className="text-purple-400 font-semibold text-sm tracking-wide">
+                  <p className="gradient-text font-semibold text-sm tracking-wide">
                     Schritt {step.id}
                   </p>
                   <h3 className="text-2xl font-bold text-foreground">{step.title}</h3>
-                  <p className="text-lg text-purple-300">{step.subtitle}</p>
+                  <p className="text-lg gradient-text">{step.subtitle}</p>
                   <p className="text-muted-foreground leading-relaxed">{step.description}</p>
                 </motion.div>
               ))
@@ -352,18 +352,18 @@ export function StickyPhoneSection() {
                     />
                   ))}
                 </div>
-                <p className="text-purple-400 font-semibold text-sm tracking-wide uppercase">
+                <p className="gradient-text font-semibold text-sm tracking-wide uppercase">
                   Schritt {steps[currentStep].id} von 4
                 </p>
                 <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
                   {steps[currentStep].title}
                 </h2>
-                <p className="text-xl text-purple-300">{steps[currentStep].subtitle}</p>
+                <p className="text-xl gradient-text">{steps[currentStep].subtitle}</p>
                 <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
                   {steps[currentStep].description}
                 </p>
                 <Button
-                  className="mt-6 rounded-full px-8 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 hover-glow"
+                  className="mt-6 rounded-full px-8 btn-primary-gradient hover-glow"
                   onClick={() => {
                     const el = document.querySelector("#contact");
                     if (el) el.scrollIntoView({ behavior: "smooth" });

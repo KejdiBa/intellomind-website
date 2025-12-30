@@ -78,7 +78,8 @@ export function IndustriesSection() {
   return (
     <section className="py-24 md:py-32 bg-background relative overflow-hidden" data-testid="section-industries">
       <div className="absolute inset-0">
-        <div className="bg-gradient-orb bg-gradient-orb-purple w-[600px] h-[600px] top-1/2 right-0 -translate-y-1/2 opacity-15" />
+        <div className="bg-gradient-orb bg-gradient-orb-cyan w-[400px] h-[400px] top-0 left-0 opacity-15" />
+        <div className="bg-gradient-orb bg-gradient-orb-purple w-[500px] h-[500px] bottom-0 right-0 opacity-15" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -113,8 +114,8 @@ export function IndustriesSection() {
                 className="p-5 h-full glass-card hover-float glow-border"
                 data-testid={`card-industry-${industry.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "")}`}
               >
-                <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4">
-                  <industry.icon className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-xl icon-bubble-gradient flex items-center justify-center mb-4">
+                  <industry.icon className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="font-bold text-foreground mb-3 text-sm">
                   {industry.title}
@@ -145,7 +146,7 @@ export function IndustriesSection() {
           <Button
             size="lg"
             onClick={scrollToContact}
-            className="rounded-full px-10 py-7 text-lg font-semibold hover-glow"
+            className="rounded-full px-10 py-7 text-lg font-semibold btn-primary-gradient hover-glow"
             data-testid="button-industries-cta"
           >
             Ich will es testen
