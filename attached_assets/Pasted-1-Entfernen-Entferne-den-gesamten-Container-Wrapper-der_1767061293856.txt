@@ -1,0 +1,105 @@
+1) Entfernen
+
+Entferne den gesamten Container/Wrapper der beiden Smartphones inkl. Schatten/Plates/Glows.
+
+2) Neuer rechter Hero-Content: “Dynamic Orb / Blob”
+
+Implementiere an exakt der Stelle einen neuen Component/Block: HeroOrbAnimation.
+
+2.1 Look & Feel (muss wie Screenshot 2 wirken)
+
+Eine weiche, halbtransparente 3D-Kugel/Blob (Orb)
+
+Farbverläufe: Cyan/Light-Blue/Soft-Green mit “milchigem” Übergang
+
+Sehr glänzend, weich, leicht “gelig”
+
+Keine harten Kanten, keine Ecken
+
+Subtiles “Volumen” durch inneren Lichtverlauf + Blur
+
+Hintergrund im Hero bleibt wie bisher (dunkel, CI-Glow darf bleiben)
+
+2.2 Animation
+
+Orb bewegt sich langsam und elegant (loop):
+
+leichte Drift (translateX/translateY)
+
+minimale Rotation/tilt
+
+“Morphing”-Effekt (Blob verändert Form ganz leicht)
+
+Dauer: ca. 8–12 Sekunden, easing: ease-in-out, loop: infinite
+
+Animation muss ruhig & premium wirken (keine hektischen Effekte).
+
+3) Technische Umsetzung (robust & performant)
+
+Bevorzugt: rein über CSS + SVG (oder CSS + div layers) — kein heavy WebGL.
+
+Option A (empfohlen): SVG + filter + animated gradients
+
+Erzeuge eine SVG mit:
+
+<radialGradient> / <linearGradient> in cyan/blue/green
+
+feGaussianBlur + feColorMatrix (für “gel look”)
+
+feTurbulence + feDisplacementMap (für sanftes Morphing)
+
+Animationssteuerung über CSS oder SVG-animate:
+
+Turbulence baseFrequency leicht verändern (sehr subtil)
+
+Gradient stop positions langsam bewegen
+
+Option B: CSS Blob (fallback)
+
+Ein runder div mit:
+
+border-radius: 50%
+
+mehrfachen background layers (radial gradients)
+
+filter: blur() + mix-blend-mode: screen/plus-lighter (sehr vorsichtig)
+
+keyframes für translate/scale + leichtes “blob morph” (border-radius keyframes)
+
+Wichtig: Performance-optimiert:
+
+nur transforms animieren, keine Layout-Thrashes
+
+will-change: transform, filter
+
+keine riesigen DOM-Strukturen
+
+4) Größe, Position, Responsiveness
+
+Orb sitzt rechts im Hero an Stelle der Phones.
+
+Größe Desktop: ca. 420–520px (je nach Layout), so dass es den rechten Bereich gut füllt.
+
+Orb darf leicht “frei schweben” (etwas außerhalb der Box möglich), aber nicht in den Text reinragen.
+
+Mobile:
+
+Orb wird kleiner (z. B. 260–340px) und unter/über dem Text platziert (wie bisheriges Responsive-Verhalten rechts).
+
+Der Hero soll weiterhin balanced aussehen (links Text, rechts visuelles Highlight).
+
+5) Abnahme-Kriterien
+
+✅ Links im Hero bleibt komplett unverändert (Text/Button/Spacing)
+
+✅ Die 2 Smartphones sind vollständig entfernt
+
+✅ Rechts erscheint eine dynamische Orb/Blob Animation im Stil von Screenshot 2:
+
+cyan/blue/green gradients
+
+weich/glossy/3D feel
+
+langsames, elegantes Morphing/Drift
+
+✅ Läuft flüssig (kein Ruckeln)

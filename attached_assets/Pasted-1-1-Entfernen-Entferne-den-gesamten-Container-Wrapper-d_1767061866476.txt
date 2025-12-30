@@ -1,0 +1,199 @@
+1) 1) Entfernen
+
+Entferne den gesamten Container/Wrapper der beiden Smartphones inkl. Schatten/Plates/Glows.
+
+2) Neuer rechter Hero-Content: “Dynamic Orb / Blob”
+
+Implementiere an exakt der Stelle einen neuen Component/Block: HeroOrbAnimation.
+
+2.1 Look & Feel (muss wie Screenshot 2 wirken)
+
+Eine weiche, halbtransparente 3D-Kugel/Blob (Orb)
+
+Farbverläufe: Cyan/Light-Blue/Soft-Green mit “milchigem” Übergang
+
+Sehr glänzend, weich, leicht “gelig”
+
+Keine harten Kanten, keine Ecken
+
+Subtiles “Volumen” durch inneren Lichtverlauf + Blur
+
+Hintergrund im Hero bleibt wie bisher (dunkel, CI-Glow darf bleiben)
+
+2.2 Animation
+
+Orb bewegt sich langsam und elegant (loop):
+
+leichte Drift (translateX/translateY)
+
+minimale Rotation/tilt
+
+“Morphing”-Effekt (Blob verändert Form ganz leicht)
+
+Dauer: ca. 8–12 Sekunden, easing: ease-in-out, loop: infinite
+
+Animation muss ruhig & premium wirken (keine hektischen Effekte).
+
+3) Technische Umsetzung (robust & performant)
+
+Bevorzugt: rein über CSS + SVG (oder CSS + div layers) — kein heavy WebGL.
+
+Option A (empfohlen): SVG + filter + animated gradients
+
+Erzeuge eine SVG mit:
+
+<radialGradient> / <linearGradient> in cyan/blue/green
+
+feGaussianBlur + feColorMatrix (für “gel look”)
+
+feTurbulence + feDisplacementMap (für sanftes Morphing)
+
+Animationssteuerung über CSS oder SVG-animate:
+
+Turbulence baseFrequency leicht verändern (sehr subtil)
+
+Gradient stop positions langsam bewegen
+
+Option B: CSS Blob (fallback)
+
+Ein runder div mit:
+
+border-radius: 50%
+
+mehrfachen background layers (radial gradients)
+
+filter: blur() + mix-blend-mode: screen/plus-lighter (sehr vorsichtig)
+
+keyframes für translate/scale + leichtes “blob morph” (border-radius keyframes)
+
+Wichtig: Performance-optimiert:
+
+nur transforms animieren, keine Layout-Thrashes
+
+will-change: transform, filter
+
+keine riesigen DOM-Strukturen
+
+4) Größe, Position, Responsiveness
+
+Orb sitzt rechts im Hero an Stelle der Phones.
+
+Größe Desktop: ca. 420–520px (je nach Layout), so dass es den rechten Bereich gut füllt.
+
+Orb darf leicht “frei schweben” (etwas außerhalb der Box möglich), aber nicht in den Text reinragen.
+
+Mobile:
+
+Orb wird kleiner (z. B. 260–340px) und unter/über dem Text platziert (wie bisheriges Responsive-Verhalten rechts).
+
+Der Hero soll weiterhin balanced aussehen (links Text, rechts visuelles Highlight).
+
+5) Abnahme-Kriterien
+
+✅ Links im Hero bleibt komplett unverändert (Text/Button/Spacing)
+
+✅ Die 2 Smartphones sind vollständig entfernt
+
+✅ Rechts erscheint eine dynamische Orb/Blob Animation im Stil von Screenshot 2:
+
+cyan/blue/green gradients
+
+weich/glossy/3D feel
+
+langsames, elegantes Morphing/Drift
+
+✅ Läuft flüssig (kein Ruckeln)
+
+6) Globale Design-Tokens (CSS Variables) einführen/ersetzen
+
+Lege in der globalen Stylesheet-Datei (z. B. globals.css, index.css, app.css) ein einheitliches System an und verwende es überall:
+
+Erstelle/ersetze folgende Variablen:
+
+--primary-start (cyan/sky)
+
+--primary-mid (light blue)
+
+--primary-end (purple/violet)
+
+--gradient-primary (linear gradient genau wie Screenshot 2)
+
+--gradient-primary-hover (leicht stärker/heller)
+
+--glow-primary (blur glow passend)
+
+Wichtig: Der Gradient muss optisch wie Screenshot 2 wirken: links hell-blau/türkis, rechts violett.
+
+Falls im Projekt bereits CI-Farben existieren, ersetze sie so, dass sich das visuelle Ergebnis wie Screenshot verhält.
+
+7) Button-Styles global korrigieren (Hauptproblem)
+
+Alle Primary-Buttons (z. B. “Jetzt Demo anfragen”, “Mehr erfahren”, “Ich will es testen”, “Alle akzeptieren” etc.) sollen einheitlich so aussehen wie Screenshot 2:
+
+Primary Button – Soll-Style
+
+Background: var(--gradient-primary) (cyan → purple)
+
+Text: weiß
+
+Border radius: pill/rounded (wie jetzt)
+
+Soft shadow + leichter “Glow”
+
+Hover:
+
+Gradient leicht “lebendiger” (oder shift)
+
+optional: minimaler lift (translateY(-1px))
+
+Konkrete Umsetzung
+
+Erstelle eine Utility-Klasse z. B. .btn-primary (oder Tailwind-Komponente), die überall genutzt wird.
+
+Ersetze alle bisherigen Button-Farben (background: #7b61ff o. ä.) durch diese Klasse.
+
+8) Verläufe sitewide durchziehen (nicht nur Buttons)
+
+Sorge dafür, dass dieser neue Verlauf überall konsistent verwendet wird:
+
+8.1 Links / Highlights / Underlines
+
+Wichtige Links / Accent-Wörter / Badge-Hintergründe sollen den gleichen Farbverlauf oder zumindest die gleiche Palette nutzen.
+
+8.2 Icon-Circles & Kontaktbox (E-Mail/Telefon/Adresse)
+
+Icon-Bubbles bekommen denselben Verlauf wie die Buttons (oder passende Ableitung).
+
+8.3 Cards / Sections / Borders / Glows
+
+Cards dürfen einen subtilen Verlauf in Border/Glow bekommen (sehr dezent).
+
+Hintergrund-Glows im Hero/Sections: an neue Palette anpassen (cyan/purple statt “random purple”).
+
+8.4 Cookie Banner + Modal
+
+Primary Buttons dort ebenfalls der neue Gradient.
+
+Toggle/Accent-Farben passend zur neuen Palette.
+
+9) Einheitliche Farb-Hierarchie festlegen
+
+Stelle sicher, dass es nur diese klaren Ebenen gibt:
+
+Primary gradient (CTA, wichtigste Elemente)
+
+Secondary (neutral/dunkel, Outline)
+
+Text (weiß/hellgrau)
+
+Background (dark/near-black + passende cyan/purple glows)
+
+Keine “zweiten Lila-Töne”, die nicht zur neuen Gradient-Logik passen.
+
+10) QA / Abnahme (muss erfüllt sein)
+
+✅ Buttons sehen aus wie Screenshot (cyan → purple Verlauf)
+✅ Dieser Verlauf und die Farbpalette werden über die ganze Seite verwendet (nicht nur im Hero)
+✅ Keine alten “flat purple” Buttons mehr
+✅ Hover/Active states sind sauber (nicht glitchy)
+✅ Cookie Banner / Kontaktbox / CTA Buttons ebenfalls korrekt
