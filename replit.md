@@ -47,14 +47,18 @@ shared/
 ## Key Features
 1. **Dark Theme Design**: Professional dark background with purple/indigo accents
 2. **Hero Section**: "Intelligenz neu gedacht – mit IntelloMind" with smartphone mockups
-3. **Features Section**: 4 benefit cards with animated icons
-4. **Integrations Marquee**: Scrolling logo row
-5. **Products Section**: KI-Telefonassistent, KI-Chatbot, KI-Mailbot
-6. **About Section**: "Dein KI-Partner fürs Wachstum" with 4 benefits
-7. **Industries Section**: 10 industry use-case cards
-8. **Contact Section**: 2-column layout (form + info box with clickable links)
-9. **Cookie Banner**: GDPR-compliant with banner + settings modal
-10. **Chatbot Placeholder**: Floating button bottom-right
+3. **Sticky Phone Section**: Scroll-driven 2-column layout with 3D phone animation
+   - 4 Steps: Splash → Login → Inbox → Dashboard
+   - Smooth device rotation and screen transitions
+   - Step indicators with progress dots
+4. **Features Section**: 4 benefit cards with animated icons
+5. **Integrations Marquee**: Scrolling logo row
+6. **Products Section**: KI-Telefonassistent, KI-Chatbot, KI-Mailbot
+7. **About Section**: "Dein KI-Partner fürs Wachstum" with 4 benefits
+8. **Industries Section**: 10 industry use-case cards
+9. **Contact Section**: 2-column layout (form + info box with clickable links)
+10. **Cookie Banner**: GDPR-compliant with banner + settings modal
+11. **Chatbot Placeholder**: Floating button bottom-right
 
 ## API Endpoints
 - `POST /api/contact` - Submit contact form inquiry
@@ -90,6 +94,14 @@ shared/
 - Address: Hüingser Ring 1, 58710 Menden
 
 ## Recent Changes
+- 2024-12-30: Sticky Phone Section hinzugefügt
+  - Scroll-driven 2-Spalten Layout (Text links, Sticky Phone rechts)
+  - 4 Steps mit Screen-Wechsel (Splash, Login, Inbox, Dashboard)
+  - 3D Device Motion mit Framer Motion (rotateY, rotateZ, translate, scale)
+  - Smooth Crossfade zwischen Screens
+  - Responsive: Mobile zeigt Phone oben, Steps wechseln beim Scrollen
+  - IntelloMind Branding in allen Screens
+
 - 2024-12-30: Complete redesign to match intellomind.ai style
   - Updated color scheme to purple/indigo gradients
   - New hero text "Intelligenz neu gedacht – mit IntelloMind"
