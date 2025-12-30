@@ -1,0 +1,108 @@
+Aufgabe: Website-Anpassung & Content-Update für IntelloMind
+
+Bitte setze die folgenden Änderungen vollständig und exakt um:
+
+1. Hero-Bereich – Visuals
+
+Auf der Website fehlt aktuell das Smartphone-Mockup.
+
+Ergänze Smartphone-Darstellungen in mehreren Ausrichtungen (z. B. hochkant, leicht geneigt), wie im bereitgestellten Screenshot ersichtlich.
+
+Die Smartphones sollen responsiv sein und sich sauber in Desktop- und Mobile-Layouts einfügen.
+
+2. Hero-Headline – Text ersetzen
+
+Ersetze den bisherigen Text „Hol dir KI-Power“ vollständig durch folgenden Inhalt:
+
+Intelligenz neu gedacht
+– mit IntelloMind
+
+Automatisieren Sie Ihre Kommunikation mit smarten KI-Lösungen.
+
+3. Farben & Farbverläufe
+
+Ersetze alle Farben und Farbverläufe der aktuellen Seite.
+
+Orientiere dich 1:1 am Farbkonzept und den Gradients von:
+👉 https://intellomind.ai/
+
+Ziel: einheitlicher Markenauftritt (keine alten oder gemischten Farbschemata).
+
+4. Content-Bereich ersetzen: „Was ist IntelloMind?“
+
+Der komplette bestehende Abschnitt:
+
+„Was ist IntelloMind?
+Mehr als nur ein Tool
+… (inkl. KI-Anrufassistent, Terminbuchung, Chat-Automatisierung)“
+
+soll vollständig entfernt und inhaltlich ersetzt werden durch folgenden neuen Bereich:
+
+Unsere KI-Produkte für Ihre digitale Zukunft
+
+Revolutionäre AI-Technologie für moderne Unternehmen
+
+KI-Telefonassistent – 24/7 intelligenter Kundenservice ohne Wartezeiten
+Rund um die Uhr erreichbar – ohne Wartezeiten.
+Unser intelligenter Telefonassistent beantwortet Kundenanfragen professionell und effizient.
+
+KI-Chatbot – Smarte Konversation für Website und App
+Smarte Konversation auf Ihrer Website oder App.
+Natürliche Dialogführung, die Ihre Kunden begeistert und Ihre Conversion-Rate steigert.
+
+KI-Mailbot – Automatisierte E-Mail-Bearbeitung und Kundenservice
+Sekundenschnelle Antworten auf E-Mails.
+Intelligente E-Mail-Bearbeitung, die Ihren Kundenservice revolutioniert und Zeit spart.
+
+5. Content-Bereich ersetzen: „Dein KI-Partner“
+
+Der bisherige Abschnitt:
+
+„Dein KI-Partner
+Mehr als nur ein Tool
+… (inkl. Lead Qualifizierung, Auto-Terminbuchungen, Kostenersparnis)“
+
+soll vollständig ersetzt werden durch diesen neuen Text:
+
+Dein KI-Partner fürs Wachstum
+
+IntelloMind ist nicht einfach Software – es ist das intelligente Herz deines Unternehmens.
+Die KI übernimmt deine Verkaufs- und Kundenprozesse automatisch und sorgt dafür, dass dein Business strukturiert und nachhaltig wächst.
+
+Keine komplizierten Systeme, keine unnötigen Klicks:
+IntelloMind begleitet deine Kunden von der ersten Anfrage bis zum gebuchten Termin – zuverlässig, effizient und rund um die Uhr. Während du dich auf dein Kerngeschäft konzentrierst (oder einfach abschaltest), arbeitet IntelloMind im Hintergrund an neuen Leads, besseren Abschlüssen und höherer Auslastung.
+
+24/7 erreichbar
+Antwortet in Echtzeit – an 365 Tagen im Jahr.
+
+Smarte Lead-Qualifizierung
+Filtert relevante Anfragen, erhöht die Abschlussquote und beschleunigt den Verkaufsprozess.
+
+Automatische Terminbuchung
+Koordiniert, synchronisiert und bestätigt Termine vollautomatisch über alle Kalender.
+
+Zeit & Kosten sparen
+Weniger manuelle Arbeit, weniger No-Shows, mehr Fokus auf das Wesentliche.
+
+6. Footer – Copyright anpassen
+
+Ersetze den Text:
+
+„2024 IntelloMind. Alle Rechte vorbehalten.“
+
+durch:
+
+„© 2025 IntelloMind UG (haftungsbeschränkt). Alle Rechte vorbehalten.“
+
+7. Social Media Icons entfernen
+
+Entferne vollständig folgende Icons aus der Website:
+
+WhatsApp
+
+Instagram
+
+LinkedIn
+
+Ziel:
+Klare Markenbotschaft, moderne SaaS-Anmutung, konsistentes Design, verständliche KI-Produktkommunikation – technisch sauber und visuell hochwertig umgesetzt.

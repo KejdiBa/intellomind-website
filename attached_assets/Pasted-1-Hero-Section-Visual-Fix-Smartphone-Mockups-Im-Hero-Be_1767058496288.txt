@@ -1,0 +1,198 @@
+1) Hero Section – Visual Fix (Smartphone-Mockups)
+
+Im Hero-Bereich fehlen Smartphone-Visuals.
+
+Ergänze Smartphone-Mockups in mehreren Ausrichtungen (z. B. hochkant + leicht geneigt), wie im Screenshot.
+
+Smartphones müssen responsiv sein und auf Desktop/Mobile sauber skalieren.
+
+Platzierung: visuell ausgewogen zum Hero-Text, kein Überdecken von Buttons/Headlines.
+
+2) Hero Headline – Text ersetzen
+
+Ersetze den bestehenden Hero-Text (z. B. „Hol dir KI-Power“) vollständig durch:
+
+Headline:
+Intelligenz neu gedacht – mit IntelloMind
+
+Subline:
+Automatisieren Sie Ihre Kommunikation mit smarten KI-Lösungen.
+
+3) Branding: Farben & Farbverläufe austauschen
+
+Ersetze alle Farben, Akzente, Button-Farben und Gradients in der gesamten Website.
+
+Nutze ausschließlich das Farb- & Gradient-Konzept von: https://intellomind.ai/
+
+Ziel: Keine gemischten Altfarben; 100% CI-konsistent.
+
+4) Abschnitt ersetzen: „Was ist IntelloMind?“ → Neue Produkt-Sektion
+
+Entferne den bisherigen Abschnitt „Was ist IntelloMind?“ vollständig (inkl. alter Inhalte zu Anrufassistent/Termin/Chat).
+Ersetze ihn durch:
+
+Unsere KI-Produkte für Ihre digitale Zukunft
+
+Revolutionäre AI-Technologie für moderne Unternehmen
+
+KI-Telefonassistent – 24/7 intelligenter Kundenservice ohne Wartezeiten
+
+Rund um die Uhr erreichbar – ohne Wartezeiten.
+Unser intelligenter Telefonassistent beantwortet Kundenanfragen professionell und effizient.
+
+KI-Chatbot – Smarte Konversation für Website und App
+
+Smarte Konversation auf Ihrer Website oder App.
+Natürliche Dialogführung, die Ihre Kunden begeistert und Ihre Conversion-Rate steigert.
+
+KI-Mailbot – Automatisierte E-Mail-Bearbeitung und Kundenservice
+
+Sekundenschnelle Antworten auf E-Mails.
+Intelligente E-Mail-Bearbeitung, die Ihren Kundenservice revolutioniert und Zeit spart.
+
+5) Abschnitt ersetzen: „Dein KI-Partner“ → Neuer Text
+
+Entferne den bisherigen Abschnitt „Dein KI-Partner“ vollständig und ersetze ihn 1:1 durch:
+
+Dein KI-Partner fürs Wachstum
+
+IntelloMind ist nicht einfach Software – es ist das intelligente Herz deines Unternehmens.
+Die KI übernimmt deine Verkaufs- und Kundenprozesse automatisch und sorgt dafür, dass dein Business strukturiert und nachhaltig wächst.
+
+Keine komplizierten Systeme, keine unnötigen Klicks:
+IntelloMind begleitet deine Kunden von der ersten Anfrage bis zum gebuchten Termin – zuverlässig, effizient und rund um die Uhr. Während du dich auf dein Kerngeschäft konzentrierst (oder abschaltest), arbeitet IntelloMind im Hintergrund an neuen Leads, besseren Abschlüssen und höherer Auslastung.
+
+24/7 erreichbar
+Antwortet in Echtzeit – an 365 Tagen im Jahr.
+
+Smarte Lead-Qualifizierung
+Filtert relevante Anfragen, erhöht die Abschlussquote und beschleunigt den Verkaufsprozess.
+
+Automatische Terminbuchung
+Koordiniert, synchronisiert und bestätigt Termine vollautomatisch über alle Kalender.
+
+Zeit & Kosten sparen
+Weniger manuelle Arbeit, weniger No-Shows, mehr Fokus auf das Wesentliche.
+
+6) Footer – Copyright aktualisieren
+
+Ersetze:
+© 2024 IntelloMind. Alle Rechte vorbehalten.
+durch:
+© 2026 IntelloMind. Alle Rechte vorbehalten.
+
+7) Social Icons entfernen
+
+Entferne WhatsApp-, Instagram- und LinkedIn-Icons (inkl. Links) vollständig aus Footer/Header/Contact.
+
+8) Cookie & Datenschutz Banner + Einstellungen (wie Screenshot, inkl. Gradients)
+
+Implementiere ein eigenes Cookie-Banner (keine externen Dienste), DSGVO-konform.
+
+8.1 Banner (First Visit)
+
+erscheint beim ersten Besuch
+
+Text & Buttons wie folgt:
+
+Titel: Cookies & Datenschutz
+Text: Wir nutzen Cookies für Funktionalität und Analyse. Einstellungen anpassen oder alle akzeptieren.
+
+Buttons:
+
+Nur notwendige
+
+Anpassen
+
+Alle akzeptieren
+
+8.2 Cookie-Einstellungen Modal (bei „Anpassen“)
+
+Titel: Cookie-Einstellungen
+Text: Hier können Sie einstellen, welche Cookies Sie akzeptieren möchten. Ihre Einstellungen werden für 12 Monate gespeichert und können jederzeit geändert werden.
+
+Kategorien (Toggle-Design wie Screenshot):
+
+Technisch notwendig (immer aktiv, nicht deaktivierbar)
+
+Funktional (default AUS)
+
+Analytik (default AUS)
+
+Marketing (default AUS)
+
+Buttons im Modal:
+
+Einstellungen speichern
+
+Alle akzeptieren
+
+8.3 Technische Logik
+
+Consent speichern für 12 Monate (LocalStorage oder Cookie)
+
+optionale Skripte/Tracking erst nach Opt-in laden
+
+„Nur notwendige“ setzt nur necessary=true, alles andere false
+
+„Alle akzeptieren“ setzt alle true
+
+Es muss einen jederzeit erreichbaren Weg geben, die Einstellungen erneut zu öffnen (z. B. Footer-Link „Cookie-Einstellungen“)
+
+8.4 Design-Vorgaben
+
+dunkler SaaS-Look, abgerundet, dezente Border/Glow
+
+Buttons & Akzente mit IntelloMind-Gradients (wie https://intellomind.ai/
+)
+
+dezent animiert (Fade/Slide)
+
+9) Kontaktbereich – Info-Box neben Kontaktformular (wie Screenshot)
+
+Neben dem Kontaktformular soll zusätzlich eine Kontakt-Info-Box erscheinen.
+
+9.1 Layout
+
+Desktop: 2 Spalten (Formular + Info-Box)
+
+Mobile: untereinander (Formular zuerst, danach Info-Box)
+
+9.2 Inhalt (3 Reihen)
+
+Jede Reihe: Icon links (Circle) + Titel + Wert
+
+E-Mail
+info@intellomind.ai (klickbar via mailto:)
+
+Telefon
++49 176 70599 319 (klickbar via tel:)
+
+Adresse
+Hüingser Ring 1, 58710 Menden (klickbar, öffnet Google Maps in neuem Tab)
+
+9.3 Design
+
+Card im dunklen SaaS-Stil, abgerundet
+
+Icon-Kreise mit CI-Gradienten (IntelloMind-Look)
+
+Typo: Titel bold/hell, Wert kleiner/leicht aufgehellt
+
+Abstand/Alignment wie im Screenshot
+
+10) Abnahme-Kriterien (Checkliste)
+
+CI-Farben/Gradients überall konsistent mit intellomind.ai
+
+Hero enthält Smartphone-Mockups (mehrere Ausrichtungen), responsive
+
+Neue Texte exakt übernommen (Hero + 2 Sections)
+
+Cookie-Banner + Modal exakt strukturiert, Opt-in korrekt, 12 Monate Speicherung, Einstellungen jederzeit erreichbar
+
+Kontakt-Info-Box neben Formular wie Screenshot, responsive
+
+Social Icons entfernt
+
+Footer Jahr 2026
