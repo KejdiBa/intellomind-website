@@ -1,51 +1,27 @@
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Target, Users, Award, Lightbulb } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Clock, Sparkles, CalendarCheck, TrendingUp } from "lucide-react";
 
-const values = [
+const benefits = [
   {
-    icon: Target,
-    title: "Ergebnisorientiert",
-    description: "Messbare Geschäftsergebnisse, nicht nur Technologie.",
+    icon: Clock,
+    title: "24/7 Verfügbarkeit",
+    description: "Reagiert in Echtzeit auf Anfragen, 365 Tage im Jahr.",
   },
   {
-    icon: Users,
-    title: "Kundenorientiert",
-    description: "Langfristige Partnerschaften auf Vertrauen aufgebaut.",
+    icon: Sparkles,
+    title: "Lead Qualifizierung",
+    description: "Steigert deine Abschlussquoten und beschleunigt dein Wachstum.",
   },
   {
-    icon: Award,
-    title: "Exzellenz",
-    description: "Höchste Standards von Strategie bis Umsetzung.",
+    icon: CalendarCheck,
+    title: "Auto Terminbuchungen",
+    description: "Synchronisiert und bestätigt Termine automatisch über alle Kalender.",
   },
   {
-    icon: Lightbulb,
-    title: "Innovation",
-    description: "Immer an der Spitze der KI-Technologie.",
-  },
-];
-
-const team = [
-  {
-    name: "Dr. Sarah Chen",
-    role: "CEO & KI-Strategin",
-    initials: "SC",
-  },
-  {
-    name: "Michael Rodriguez",
-    role: "CTO",
-    initials: "MR",
-  },
-  {
-    name: "Emily Watson",
-    role: "Leiterin ML-Engineering",
-    initials: "EW",
-  },
-  {
-    name: "David Kim",
-    role: "Leiter Kundenerfolg",
-    initials: "DK",
+    icon: TrendingUp,
+    title: "Kosten- und Zeitersparnis",
+    description: "Weniger manuelle Arbeit, geringere No-Show-Raten.",
   },
 ];
 
@@ -53,28 +29,37 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="py-24 md:py-32 bg-card"
+      className="py-24 md:py-32 bg-background relative overflow-hidden"
       data-testid="section-about"
     >
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+      <div className="absolute inset-0">
+        <div className="bg-gradient-orb bg-gradient-orb-pink w-[500px] h-[500px] top-0 left-1/4 opacity-15" />
+        <div className="bg-gradient-orb bg-gradient-orb-purple w-[400px] h-[400px] bottom-0 right-1/4 opacity-15" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
           >
-            <p className="text-primary font-medium mb-3">Über IntelloMind</p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6 tracking-tight">
-              Wegweisende KI-Lösungen für moderne Unternehmen
+            <p className="text-primary font-semibold mb-3 tracking-wide uppercase text-sm">
+              Dein KI-Partner
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+              <span className="gradient-text">Mehr als nur ein Tool</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              IntelloMind wurde mit einer klaren Mission gegründet: KI zu demokratisieren und
-              ihre transformative Kraft für Unternehmen jeder Größe zugänglich zu machen.
+              Das intelligente Herz deines Unternehmens „IntelloMind" übernimmt alle Verkaufsaufgaben
+              und lässt dein Business automatisch wachsen.
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Wir glauben, dass KI menschliche Fähigkeiten erweitern sollte, nicht ersetzen.
-              Unser Ansatz kombiniert modernste Technologie mit tiefem Branchenwissen.
+            <p className="text-muted-foreground leading-relaxed">
+              Vergiss komplizierte Tools und zeitraubende Prozesse. IntelloMind ist wie ein erfahrener
+              Geschäftsführer, der dein komplettes Kundenmanagement übernimmt – von der ersten Anfrage
+              bis zum gebuchten Termin. Während du schläfst, arbeitet IntelloMind unermüdlich daran,
+              dein Unternehmen erfolgreicher zu machen.
             </p>
           </motion.div>
 
@@ -85,60 +70,27 @@ export function AboutSection() {
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
             className="grid grid-cols-2 gap-4"
           >
-            {values.map((value, index) => (
-              <Card
-                key={value.title}
-                className="p-6 bg-background border-border"
-                data-testid={`card-value-${value.title.toLowerCase()}`}
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={benefit.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.3 + index * 0.1, ease: [0.22, 0.61, 0.36, 1] }}
               >
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <value.icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2 tracking-tight">{value.title}</h3>
-                <p className="text-sm text-muted-foreground">{value.description}</p>
-              </Card>
+                <Card
+                  className="p-6 glass-card hover-float glow-border h-full"
+                  data-testid={`card-benefit-${benefit.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "")}`}
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-4">
+                    <benefit.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="font-bold text-foreground mb-2">{benefit.title}</h3>
+                  <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                </Card>
+              </motion.div>
             ))}
           </motion.div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
-          className="text-center mb-12"
-        >
-          <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 tracking-tight">
-            Unser Führungsteam
-          </h3>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Expertise aus führenden Technologieunternehmen und Forschungseinrichtungen.
-          </p>
-        </motion.div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {team.map((member, index) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 0.61, 0.36, 1] }}
-            >
-              <Card
-                className="p-6 text-center hover-float bg-background border-border"
-                data-testid={`card-team-${member.name.toLowerCase().replace(/\s+/g, "-")}`}
-              >
-                <Avatar className="w-20 h-20 mx-auto mb-4">
-                  <AvatarFallback className="bg-secondary text-foreground text-lg font-medium">
-                    {member.initials}
-                  </AvatarFallback>
-                </Avatar>
-                <h4 className="font-semibold text-foreground mb-1 tracking-tight">{member.name}</h4>
-                <p className="text-sm text-muted-foreground">{member.role}</p>
-              </Card>
-            </motion.div>
-          ))}
         </div>
       </div>
     </section>

@@ -80,10 +80,8 @@ export default {
           busy: "rgb(239 68 68)",
           offline: "rgb(156 163 175)",
         },
-        "apple-blue": "hsl(var(--apple-blue) / <alpha-value>)",
-        "apple-gray": "hsl(var(--apple-gray) / <alpha-value>)",
-        "apple-light-gray": "hsl(var(--apple-light-gray) / <alpha-value>)",
-        "apple-dark": "hsl(var(--apple-dark) / <alpha-value>)",
+        "pink-accent": "hsl(var(--pink-accent) / <alpha-value>)",
+        "purple-accent": "hsl(var(--purple-accent) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["var(--font-sans)"],

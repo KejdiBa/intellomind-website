@@ -17,34 +17,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Mail, Phone, MapPin, Clock, Send, Loader2 } from "lucide-react";
-
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "E-Mail",
-    value: "kontakt@intellomind.ai",
-    href: "mailto:kontakt@intellomind.ai",
-  },
-  {
-    icon: Phone,
-    label: "Telefon",
-    value: "+49 (0) 89 123 4567",
-    href: "tel:+4989123456",
-  },
-  {
-    icon: MapPin,
-    label: "Adresse",
-    value: "Maximilianstraße 35, 80539 München",
-    href: null,
-  },
-  {
-    icon: Clock,
-    label: "Geschäftszeiten",
-    value: "Mo - Fr: 9:00 - 18:00 Uhr",
-    href: null,
-  },
-];
+import { Send, Loader2, Sparkles } from "lucide-react";
 
 export function ContactSection() {
   const { toast } = useToast();
@@ -67,14 +40,14 @@ export function ContactSection() {
     onSuccess: () => {
       toast({
         title: "Nachricht erfolgreich gesendet!",
-        description: "Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
+        description: "Wir melden uns innerhalb von 24 Stunden bei dir.",
       });
       form.reset();
     },
     onError: () => {
       toast({
         title: "Fehler beim Senden",
-        description: "Bitte versuchen Sie es später erneut.",
+        description: "Bitte versuche es später erneut.",
         variant: "destructive",
       });
     },
@@ -87,89 +60,55 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 md:py-32 bg-background"
+      className="py-24 md:py-32 bg-background relative overflow-hidden"
       data-testid="section-contact"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="absolute inset-0">
+        <div className="bg-gradient-orb bg-gradient-orb-pink w-[600px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20" />
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <p className="text-primary font-medium mb-3">Kontakt aufnehmen</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6 tracking-tight">
-            Bereit, Ihr Unternehmen zu transformieren?
+          <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto mb-6">
+            <Sparkles className="w-8 h-8 text-primary" />
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <span className="gradient-text">Jetzt ausprobieren!</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Lassen Sie uns besprechen, wie KI Ihnen helfen kann, Ihre Geschäftsziele zu erreichen.
+            Fülle das Formular aus und wir melden uns bei dir, um zu besprechen,
+            wie IntelloMind dein Business transformieren kann.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
-            className="lg:col-span-3"
-          >
-            <Card className="p-8 bg-card border-card-border" data-testid="card-contact-form">
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Vollständiger Name</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Max Mustermann"
-                              className="rounded-lg"
-                              {...field}
-                              data-testid="input-name"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>E-Mail-Adresse</FormLabel>
-                          <FormControl>
-                            <Input
-                              type="email"
-                              placeholder="max@unternehmen.de"
-                              className="rounded-lg"
-                              {...field}
-                              data-testid="input-email"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
+        >
+          <Card className="p-8 md:p-10 glass-card glow-border" data-testid="card-contact-form">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <div className="grid sm:grid-cols-2 gap-6">
                   <FormField
                     control={form.control}
-                    name="company"
+                    name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Firmenname (Optional)</FormLabel>
+                        <FormLabel className="text-foreground">Name</FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="Ihr Unternehmen"
-                            className="rounded-lg"
+                            placeholder="Dein Name"
+                            className="rounded-xl bg-background/50 border-border/50 focus:border-primary"
                             {...field}
-                            value={field.value || ""}
-                            data-testid="input-company"
+                            data-testid="input-name"
                           />
                         </FormControl>
                         <FormMessage />
@@ -178,87 +117,84 @@ export function ContactSection() {
                   />
                   <FormField
                     control={form.control}
-                    name="message"
+                    name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Nachricht</FormLabel>
+                        <FormLabel className="text-foreground">E-Mail</FormLabel>
                         <FormControl>
-                          <Textarea
-                            placeholder="Erzählen Sie uns von Ihrem Projekt..."
-                            className="min-h-[150px] resize-none rounded-lg"
+                          <Input
+                            type="email"
+                            placeholder="deine@email.de"
+                            className="rounded-xl bg-background/50 border-border/50 focus:border-primary"
                             {...field}
-                            data-testid="input-message"
+                            data-testid="input-email"
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <Button
-                    type="submit"
-                    className="w-full rounded-full py-6 text-base font-medium"
-                    disabled={mutation.isPending}
-                    data-testid="button-submit-contact"
-                  >
-                    {mutation.isPending ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Wird gesendet...
-                      </>
-                    ) : (
-                      <>
-                        Nachricht senden
-                        <Send className="ml-2 h-4 w-4" />
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </Form>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
-            className="lg:col-span-2"
-          >
-            <Card className="p-8 bg-foreground text-background h-full" data-testid="card-contact-info">
-              <h3 className="text-xl font-semibold mb-8">Kontaktinformationen</h3>
-              <div className="space-y-6">
-                {contactInfo.map((item) => (
-                  <div key={item.label} className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-background/10 flex items-center justify-center flex-shrink-0">
-                      <item.icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-background/60 mb-1">{item.label}</p>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          className="text-background hover:text-primary transition-colors"
-                          data-testid={`link-contact-${item.label.toLowerCase()}`}
-                        >
-                          {item.value}
-                        </a>
-                      ) : (
-                        <p className="text-background">{item.value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-10 pt-8 border-t border-background/10">
-                <h4 className="font-semibold mb-3">Durchschnittliche Antwortzeit</h4>
-                <p className="text-background/80 text-sm">
-                  Wir antworten in der Regel innerhalb von 24 Geschäftsstunden.
-                </p>
-              </div>
-            </Card>
-          </motion.div>
-        </div>
+                </div>
+                <FormField
+                  control={form.control}
+                  name="company"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground">Unternehmen (Optional)</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Dein Unternehmen"
+                          className="rounded-xl bg-background/50 border-border/50 focus:border-primary"
+                          {...field}
+                          value={field.value || ""}
+                          data-testid="input-company"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground">Nachricht</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Erzähl uns von deinem Projekt..."
+                          className="min-h-[120px] resize-none rounded-xl bg-background/50 border-border/50 focus:border-primary"
+                          {...field}
+                          data-testid="input-message"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full rounded-full py-7 text-lg font-semibold hover-glow"
+                  disabled={mutation.isPending}
+                  data-testid="button-submit-contact"
+                >
+                  {mutation.isPending ? (
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      Wird gesendet...
+                    </>
+                  ) : (
+                    <>
+                      Jetzt Kontakt aufnehmen
+                      <Send className="ml-2 h-5 w-5" />
+                    </>
+                  )}
+                </Button>
+              </form>
+            </Form>
+          </Card>
+        </motion.div>
       </div>
     </section>
   );

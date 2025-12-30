@@ -1,61 +1,48 @@
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import {
-  Brain,
-  Cpu,
-  BarChart3,
-  MessageSquare,
-  Cog,
-  Shield,
-} from "lucide-react";
+import { Phone, Calendar, MessageCircle, ArrowRight } from "lucide-react";
 
 const services = [
   {
-    icon: Brain,
-    title: "KI-Strategieberatung",
+    icon: Phone,
+    title: "KI-Anrufassistent",
     description:
-      "Entwickeln Sie eine umfassende KI-Roadmap, die auf Ihre Geschäftsziele zugeschnitten ist.",
+      "Dein KI-Assistent nimmt Anrufe entgegen, berät Kunden und bucht direkte Termine. Professionelle Gespräche rund um die Uhr – auch wenn du schläfst.",
   },
   {
-    icon: Cpu,
-    title: "Machine Learning Lösungen",
+    icon: Calendar,
+    title: "Intelligente Terminbuchung",
     description:
-      "Maßgeschneiderte ML-Modelle, die echte Geschäftsprobleme lösen – von prädiktiver Analytik bis Computer Vision.",
+      "Termine buchen sich automatisch über alle Kalender-Plattformen hinweg. Keine Doppelbuchungen, keine verpassten Anfragen – alles läuft vollautomatisch.",
   },
   {
-    icon: MessageSquare,
-    title: "Konversations-KI",
+    icon: MessageCircle,
+    title: "KI-Chat-Automatisierung",
     description:
-      "Intelligente Chatbots und virtuelle Assistenten für sinnvolle Kundeninteraktionen rund um die Uhr.",
-  },
-  {
-    icon: BarChart3,
-    title: "Datenanalyse & BI",
-    description:
-      "Verwandeln Sie Rohdaten in umsetzbare Erkenntnisse für datengesteuerte Entscheidungen.",
-  },
-  {
-    icon: Cog,
-    title: "Prozessautomatisierung",
-    description:
-      "Automatisieren Sie wiederkehrende Aufgaben und befreien Sie Ihr Team für strategische Arbeit.",
-  },
-  {
-    icon: Shield,
-    title: "KI-Governance & Ethik",
-    description:
-      "Implementieren Sie verantwortungsvolle KI-Praktiken mit robusten Governance-Frameworks.",
+      "Deine KI beantwortet automatisch alle Nachrichten auf WhatsApp, Instagram und Facebook. Kunden erhalten sofort professionelle Antworten – 24/7 ohne dein Zutun.",
   },
 ];
 
 export function ServicesSection() {
+  const scrollToContact = () => {
+    const element = document.querySelector("#contact");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       id="services"
-      className="py-24 md:py-32 bg-background"
+      className="py-24 md:py-32 bg-background relative overflow-hidden"
       data-testid="section-services"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="absolute inset-0">
+        <div className="bg-gradient-orb bg-gradient-orb-pink w-[500px] h-[500px] -bottom-40 -left-40 opacity-20" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,33 +50,35 @@ export function ServicesSection() {
           transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
           className="text-center mb-16"
         >
-          <p className="text-primary font-medium mb-3">Unsere Leistungen</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6 tracking-tight">
-            KI-Lösungen, die Ergebnisse liefern
+          <p className="text-primary font-semibold mb-3 tracking-wide uppercase text-sm">
+            Was ist IntelloMind?
+          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+            <span className="gradient-text">Mehr als nur ein Tool</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Umfassende KI-Beratungsleistungen, die Ihre Geschäftsabläufe transformieren
-            und nachhaltige Wettbewerbsvorteile schaffen.
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Das intelligente Herz deines Unternehmens „IntelloMind" übernimmt alle Verkaufsaufgaben
+            und lässt dein Business automatisch wachsen.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 0.61, 0.36, 1] }}
+              transition={{ duration: 0.5, delay: index * 0.15, ease: [0.22, 0.61, 0.36, 1] }}
             >
               <Card
-                className="p-8 h-full hover-float bg-card border-card-border"
+                className="p-8 h-full glass-card hover-float glow-border"
                 data-testid={`card-service-${service.title.toLowerCase().replace(/\s+/g, "-")}`}
               >
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                  <service.icon className="w-6 h-6 text-primary" />
+                <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center mb-6">
+                  <service.icon className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3 tracking-tight">
+                <h3 className="text-xl font-bold text-foreground mb-4">
                   {service.title}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
@@ -99,6 +88,24 @@ export function ServicesSection() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
+          className="text-center"
+        >
+          <Button
+            size="lg"
+            onClick={scrollToContact}
+            className="rounded-full px-10 py-7 text-lg font-semibold hover-glow"
+            data-testid="button-services-cta"
+          >
+            Jetzt selbst davon überzeugen
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

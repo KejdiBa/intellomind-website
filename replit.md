@@ -1,7 +1,7 @@
 # IntelloMind AI Consulting Website
 
 ## Overview
-A modern, professional website for IntelloMind, an AI consulting company. The site features a compelling homepage with services overview, detailed AI capabilities section, about/team section, and a contact form for customer inquiries.
+A modern, dark-themed website for IntelloMind, an AI consulting company. Inspired by the makeit-ai.de design with a bold dark aesthetic, pink/magenta accents, and dynamic hover effects. All content is in German.
 
 ## Tech Stack
 - **Frontend**: React with TypeScript, Vite, TailwindCSS, Framer Motion
@@ -16,57 +16,75 @@ A modern, professional website for IntelloMind, an AI consulting company. The si
 ```
 client/
 ├── src/
-│   ├── components/         # Reusable UI components
-│   │   ├── ui/            # shadcn/ui base components
-│   │   ├── navigation.tsx # Fixed header with nav links
-│   │   ├── hero-section.tsx # Hero with stats
-│   │   ├── services-section.tsx # 6 service cards
-│   │   ├── about-section.tsx # Company values & team
-│   │   ├── contact-section.tsx # Contact form
-│   │   ├── footer.tsx     # Footer with links
-│   │   ├── theme-provider.tsx # Dark/light mode
-│   │   └── theme-toggle.tsx # Theme toggle button
+│   ├── components/
+│   │   ├── ui/                    # shadcn/ui base components
+│   │   ├── navigation.tsx         # Glass-effect fixed header
+│   │   ├── hero-section.tsx       # Gradient text hero with orbs
+│   │   ├── features-section.tsx   # 4 feature cards (24/7, costs, revenue, scale)
+│   │   ├── integrations-section.tsx # Scrolling logo marquee
+│   │   ├── services-section.tsx   # "Was ist IntelloMind" - 3 service cards
+│   │   ├── about-section.tsx      # Benefits grid
+│   │   ├── industries-section.tsx # 10 industry use-case cards
+│   │   ├── contact-section.tsx    # Contact form with CTA
+│   │   ├── footer.tsx             # Dark footer
+│   │   └── chatbot-button.tsx     # Floating chat placeholder
 │   ├── pages/
-│   │   ├── home.tsx       # Main landing page
-│   │   └── not-found.tsx  # 404 page
-│   ├── hooks/             # Custom hooks
-│   ├── lib/               # Utilities
-│   ├── App.tsx            # App entry point
-│   └── index.css          # Tailwind + custom styles
+│   │   ├── home.tsx               # Main landing page
+│   │   └── not-found.tsx          # 404 page
+│   ├── hooks/                     # Custom hooks
+│   ├── lib/                       # Utilities
+│   ├── App.tsx                    # App entry point
+│   └── index.css                  # Tailwind + dark theme utilities
 server/
-├── routes.ts              # API endpoints
-├── storage.ts             # In-memory data storage
-└── index.ts               # Server entry point
+├── routes.ts                      # API endpoints
+├── storage.ts                     # In-memory data storage
+└── index.ts                       # Server entry point
 shared/
-└── schema.ts              # Zod schemas & TypeScript types
+└── schema.ts                      # Zod schemas & TypeScript types
 ```
 
 ## Key Features
-1. **Responsive Navigation**: Fixed header with blur effect on scroll, mobile hamburger menu
-2. **Hero Section**: Large gradient background with animated elements, company stats
-3. **Services Section**: 6 AI service cards with icons and descriptions
-4. **About Section**: Company values grid and leadership team
-5. **Contact Form**: Validated form with API integration
-6. **Footer**: Multi-column layout with newsletter signup
-7. **Dark/Light Mode**: Theme toggle with localStorage persistence
+1. **Dark Theme Design**: Black background with pink/magenta gradient accents
+2. **Hero Section**: Large gradient text "Hol dir KI-Power!" with floating orb effects
+3. **Features Section**: 4 cards (24/7, Kosten senken, Umsatz steigern, Skalieren)
+4. **Integrations Marquee**: Scrolling logo row (WhatsApp, OpenAI, Instagram, etc.)
+5. **Services Section**: 3 main offerings (Anrufassistent, Terminbuchung, Chat-Automatisierung)
+6. **Industries Section**: 10 industry use-case cards
+7. **Contact Form**: Functional form with API integration, dark glass design
+8. **Chatbot Placeholder**: Floating button bottom-right with pulse animation
+9. **Hover Effects**: hover-float, hover-glow, glow-border throughout
 
 ## API Endpoints
 - `POST /api/contact` - Submit contact form inquiry
 - `GET /api/contact` - Retrieve all contact submissions (admin)
 
 ## Design System
-- **Primary Color**: Indigo (#6366F1)
-- **Accent Color**: Tech Green (#10B981)
-- **Background**: Navy (#0A0E27) for hero and footer
-- **Typography**: Inter (body), Space Grotesk (mono/display)
-- **Spacing**: 24px base grid, rounded corners (12px)
+- **Primary Color**: Pink/Magenta (#FF3067)
+- **Secondary Color**: Purple (#9B30FF)
+- **Background**: Pure Black (#000000)
+- **Typography**: Urbanist (Google Fonts)
+- **Border Radius**: 1rem default
+- **Card Style**: Glass effect with subtle pink border glow
+
+## Custom CSS Utilities
+- `.gradient-text` - Pink to purple gradient text
+- `.glass-card` - Dark frosted glass effect
+- `.glass-nav` - Navigation blur effect
+- `.hover-float` - Card lift on hover with shadow
+- `.hover-glow` - Button glow effect on hover
+- `.glow-border` - Animated border glow on hover
+- `.animate-scroll-left` - Infinite scroll animation for logos
+- `.bg-gradient-orb-pink/.purple` - Decorative background orbs
 
 ## Recent Changes
-- 2024-12-29: Initial implementation of full landing page
-  - Created all main sections (Hero, Services, About, Contact, Footer)
-  - Implemented dark/light mode theme support
-  - Added contact form with validation
-  - Set up responsive navigation
+- 2024-12-30: Complete redesign to match makeit-ai.de style
+  - Switched to always-dark theme with pink/magenta accents
+  - Added Urbanist font from Google Fonts
+  - Created new sections: Features, Integrations, Industries
+  - Redesigned all existing sections with glass-card effects
+  - Added floating chatbot placeholder
+  - Implemented hover effects throughout
+  - All branding changed to IntelloMind
 
 ## Development
 The app runs on port 5000 with `npm run dev`. The Express server serves both the API and the Vite-built frontend.
