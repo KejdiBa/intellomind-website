@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Navigation } from "@/components/navigation";
 import { HeroSection } from "@/components/hero-section";
 import { FeaturesSection } from "@/components/features-section";
@@ -8,8 +9,19 @@ import { IndustriesSection } from "@/components/industries-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 import { ChatbotButton } from "@/components/chatbot-button";
+import { CookieBanner } from "@/components/cookie-banner";
 
 export default function Home() {
+  const [showCookieSettings, setShowCookieSettings] = useState(false);
+
+  const handleOpenCookieSettings = () => {
+    setShowCookieSettings(true);
+  };
+
+  const handleCloseCookieSettings = () => {
+    setShowCookieSettings(false);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -22,8 +34,9 @@ export default function Home() {
         <IndustriesSection />
         <ContactSection />
       </main>
-      <Footer />
+      <Footer onOpenCookieSettings={handleOpenCookieSettings} />
       <ChatbotButton />
+      <CookieBanner forceOpen={showCookieSettings} onClose={handleCloseCookieSettings} />
     </div>
   );
 }
