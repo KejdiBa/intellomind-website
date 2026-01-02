@@ -1,46 +1,200 @@
-import { useEffect, useState, useCallback } from "react";
-import { MessageCircle, X } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { MessageCircle, X, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { motion, AnimatePresence } from "framer-motion";
+
+interface Message {
+  id: string;
+  content: string;
+  role: "user" | "assistant";
+  timestamp: Date;
+}
+
+const N8N_WEBHOOK_URL = "https://n8n.srv1101287.hstgr.cloud/webhook/3509e0dc-16f9-4a0c-acd4-6f00fc90ea50/chat";
 
 export function ChatbotButton() {
   const [isOpen, setIsOpen] = useState(false);
-  const [widgetReady, setWidgetReady] = useState(false);
-
-  const loadWidget = useCallback(() => {
-    if (document.querySelector('script[src*="elevenlabs/convai-widget-embed"]')) {
-      setWidgetReady(true);
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = "https://unpkg.com/@elevenlabs/convai-widget-embed";
-    script.async = true;
-    script.type = "text/javascript";
-    script.onload = () => {
-      setTimeout(() => setWidgetReady(true), 100);
-    };
-    document.body.appendChild(script);
-  }, []);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: "welcome",
+      content: "Hallo! Wie kann ich Ihnen helfen?",
+      role: "assistant",
+      timestamp: new Date(),
+    },
+  ]);
+  const [inputValue, setInputValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [sessionId] = useState(() => `session-${Date.now()}`);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (isOpen && !widgetReady) {
-      loadWidget();
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  useEffect(() => {
+    if (isOpen && inputRef.current) {
+      inputRef.current.focus();
     }
-  }, [isOpen, widgetReady, loadWidget]);
+  }, [isOpen]);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
 
+  const sendMessage = async () => {
+    if (!inputValue.trim() || isLoading) return;
+
+    const userMessage: Message = {
+      id: `user-${Date.now()}`,
+      content: inputValue.trim(),
+      role: "user",
+      timestamp: new Date(),
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setInputValue("");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(N8N_WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: userMessage.content,
+          sessionId: sessionId,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Webhook response was not ok");
+      }
+
+      const data = await response.json();
+      
+      const assistantMessage: Message = {
+        id: `assistant-${Date.now()}`,
+        content: data.response || data.message || data.text || "Entschuldigung, ich konnte keine Antwort generieren.",
+        role: "assistant",
+        timestamp: new Date(),
+      };
+
+      setMessages((prev) => [...prev, assistantMessage]);
+    } catch (error) {
+      console.error("Chat error:", error);
+      const errorMessage: Message = {
+        id: `error-${Date.now()}`,
+        content: "Entschuldigung, es gab einen Fehler bei der Verbindung. Bitte versuchen Sie es später erneut.",
+        role: "assistant",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
   return (
     <div className="fixed bottom-6 right-6 z-50" data-testid="chatbot-widget">
-      {isOpen && widgetReady && (
-        <div className="mb-4">
-          <elevenlabs-convai agent-id="agent_2501k65tqvxzeabtnfrr9e5xpfd9"></elevenlabs-convai>
-        </div>
-      )}
-      <Button 
-        size="icon" 
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="absolute bottom-20 right-0 w-[360px] h-[500px] bg-background border border-border rounded-lg shadow-2xl flex flex-col overflow-hidden"
+          >
+            <div className="flex items-center justify-between p-4 border-b border-border bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-700">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-white">IntelloMind Chat</h3>
+                  <p className="text-xs text-white/70">KI-Assistent</p>
+                </div>
+              </div>
+              <Button
+                size="icon"
+                variant="ghost"
+                onClick={handleToggle}
+                className="text-white hover:bg-white/20"
+                data-testid="button-chat-close"
+              >
+                <X className="w-5 h-5" />
+              </Button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-4">
+              <div className="space-y-4">
+                {messages.map((message) => (
+                  <div
+                    key={message.id}
+                    className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+                  >
+                    <div
+                      className={`max-w-[80%] rounded-lg px-4 py-2 ${
+                        message.role === "user"
+                          ? "bg-gradient-to-r from-cyan-500 to-purple-600 text-white"
+                          : "bg-muted text-foreground"
+                      }`}
+                      data-testid={`message-${message.role}-${message.id}`}
+                    >
+                      <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                    </div>
+                  </div>
+                ))}
+                {isLoading && (
+                  <div className="flex justify-start">
+                    <div className="bg-muted rounded-lg px-4 py-2">
+                      <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+                    </div>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+            </div>
+
+            <div className="p-4 border-t border-border">
+              <div className="flex gap-2">
+                <Input
+                  ref={inputRef}
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Ihre Nachricht..."
+                  disabled={isLoading}
+                  className="flex-1"
+                  data-testid="input-chat-message"
+                />
+                <Button
+                  size="icon"
+                  onClick={sendMessage}
+                  disabled={!inputValue.trim() || isLoading}
+                  className="btn-primary-gradient"
+                  data-testid="button-chat-send"
+                >
+                  <Send className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <Button
+        size="icon"
         className="w-14 h-14 rounded-full btn-primary-gradient shadow-lg"
         onClick={handleToggle}
         data-testid="button-chatbot-toggle"
@@ -49,12 +203,4 @@ export function ChatbotButton() {
       </Button>
     </div>
   );
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "elevenlabs-convai": { "agent-id": string };
-    }
-  }
 }
