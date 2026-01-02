@@ -70,7 +70,7 @@ export function Navigation() {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="text-sm font-medium text-muted-foreground hover-tint transition-colors"
+                className="text-sm font-medium text-white hover:text-white/80 transition-colors"
                 data-testid={`link-nav-${link.label.toLowerCase()}`}
               >
                 {link.label}
@@ -82,7 +82,7 @@ export function Navigation() {
         <div className="hidden md:flex items-center gap-3">
           <Button
             onClick={() => scrollToSection("#contact")}
-            className="rounded-full px-6 hover-glow"
+            className="rounded-full px-6 btn-primary-gradient hover-glow"
             data-testid="button-nav-contact"
           >
             Jetzt starten
@@ -130,7 +130,7 @@ export function Navigation() {
               ))}
               <Button
                 onClick={() => scrollToSection("#contact")}
-                className="w-full rounded-full mt-4 hover-glow"
+                className="w-full rounded-full mt-4 btn-primary-gradient hover-glow"
                 data-testid="button-mobile-contact"
               >
                 Jetzt starten

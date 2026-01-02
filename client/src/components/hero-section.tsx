@@ -36,14 +36,14 @@ export function HeroSection() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight"
             data-testid="text-hero-title"
           >
-            <span className="gradient-text">Intelligenz neu gedacht</span>
+            <span className="text-white">Intelligenz neu gedacht</span>
             <br />
-            <span className="text-foreground">– mit </span>
+            <span className="text-white">– mit </span>
             <span className="gradient-text">IntelloMind</span>
           </h1>
 
           <p
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto mb-10 leading-relaxed"
             data-testid="text-hero-subtitle"
           >
             Automatisieren Sie Ihre Kommunikation mit smarten KI-Lösungen.

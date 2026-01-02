@@ -50,7 +50,7 @@ const steps = [
 
 function SplashScreen() {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 p-6">
+    <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-700 p-6">
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -79,7 +79,7 @@ function SplashScreen() {
 
 function LoginScreen() {
   return (
-    <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-slate-900 via-purple-950/80 to-slate-900 p-5">
+    <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-cyan-600 via-blue-700 to-purple-800 p-5">
       <div className="flex items-center justify-center pt-6 pb-8">
         <img
           src={logoImage}
@@ -125,7 +125,7 @@ function InboxScreen() {
   ];
 
   return (
-    <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-slate-900 via-purple-950/50 to-slate-900">
+    <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-cyan-600/90 via-blue-700/90 to-purple-800/90">
       <div className="flex items-center justify-between p-4 border-b border-white/5">
         <div className="flex items-center gap-2">
           <img
@@ -188,7 +188,7 @@ function DashboardScreen() {
   ];
 
   return (
-    <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-slate-900 via-purple-950/50 to-slate-900">
+    <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-cyan-600/90 via-blue-700/90 to-purple-800/90">
       <div className="flex items-center justify-between p-4 border-b border-white/5">
         <div className="flex items-center gap-2">
           <Calendar className="w-5 h-5 text-purple-400" />
@@ -262,9 +262,9 @@ export function StickyPhoneSection() {
     offset: ["start start", "end end"],
   });
 
-  const rotateY = useTransform(scrollYProgress, [0, 0.3, 0.55, 0.8, 1], [15, 8, 0, -5, 0]);
-  const rotateZ = useTransform(scrollYProgress, [0, 0.3, 0.55, 0.8, 1], [5, 2, 0, -2, 0]);
-  const translateX = useTransform(scrollYProgress, [0, 0.3, 0.55, 0.8, 1], [20, 10, 0, -10, 0]);
+  const rotateY = useTransform(scrollYProgress, [0, 0.3, 0.55, 0.8, 1], [5, 3, 0, -2, 0]);
+  const rotateZ = useTransform(scrollYProgress, [0, 0.3, 0.55, 0.8, 1], [2, 1, 0, -1, 0]);
+  const translateX = useTransform(scrollYProgress, [0, 0.3, 0.55, 0.8, 1], [-30, -15, 0, 0, 0]);
   const translateY = useTransform(scrollYProgress, [0, 0.5, 1], [0, -10, -20]);
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 1.02]);
 
@@ -450,7 +450,7 @@ function PhoneDevice({
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[500px] rounded-[60px]"
           style={{
             background:
-              "radial-gradient(ellipse at center, rgba(139, 92, 246, 0.4) 0%, rgba(99, 102, 241, 0.2) 40%, transparent 70%)",
+              "radial-gradient(ellipse at center, rgba(34, 211, 238, 0.4) 0%, rgba(56, 189, 248, 0.3) 30%, rgba(168, 85, 247, 0.2) 60%, transparent 80%)",
             filter: "blur(40px)",
           }}
         />

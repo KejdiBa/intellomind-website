@@ -131,7 +131,7 @@ export function Footer({ onOpenCookieSettings }: FooterProps) {
 
         <div className="flex flex-col md:flex-row items-center justify-center">
           <p className="text-muted-foreground text-sm">
-            © 2026 IntelloMind. Alle Rechte vorbehalten.
+            © 2026 IntelloMind UG (haftungsbeschränkt). Alle Rechte vorbehalten.
           </p>
         </div>
       </div>
