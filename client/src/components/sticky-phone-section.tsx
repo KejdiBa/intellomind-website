@@ -291,7 +291,6 @@ export function StickyPhoneSection() {
         <div className="bg-gradient-orb bg-gradient-orb-cyan w-[600px] h-[600px] top-1/4 -left-40 opacity-20" />
         <div className="bg-gradient-orb bg-gradient-orb-purple w-[500px] h-[500px] bottom-1/4 -right-40 opacity-15" />
       </div>
-
       <div
         className={`max-w-6xl mx-auto px-6 ${
           isMobile ? "py-16" : "sticky top-0 h-screen flex items-center"
@@ -378,7 +377,7 @@ export function StickyPhoneSection() {
           </div>
 
           {!isMobile && (
-            <div className="flex justify-center lg:justify-end">
+            <div className="flex justify-center lg:justify-end ml-[100px] mr-[100px] mt-[0px] mb-[0px]">
               <PhoneDevice
                 currentStep={currentStep}
                 screens={screens}
@@ -393,7 +392,6 @@ export function StickyPhoneSection() {
           )}
         </div>
       </div>
-
       {!isMobile && (
         <div className="absolute left-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-3">
           {steps.map((step, index) => (
