@@ -19,22 +19,36 @@ export async function registerRoutes(
         return res.status(400).json({ error: "Message is required" });
       }
 
+      const payload = {
+        message,
+        sessionId: sessionId || `session-${Date.now()}`,
+      };
+      
+      console.log("Sending to n8n webhook:", payload);
+
       const response = await fetch(N8N_WEBHOOK_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          message,
-          sessionId: sessionId || `session-${Date.now()}`,
-        }),
+        body: JSON.stringify(payload),
       });
 
+      const responseText = await response.text();
+      console.log("n8n webhook response status:", response.status);
+      console.log("n8n webhook response body:", responseText);
+
       if (!response.ok) {
-        throw new Error(`Webhook responded with status ${response.status}`);
+        throw new Error(`Webhook responded with status ${response.status}: ${responseText}`);
       }
 
-      const data = await response.json();
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch {
+        data = { response: responseText };
+      }
+      
       return res.json(data);
     } catch (error) {
       console.error("Chat webhook error:", error);
