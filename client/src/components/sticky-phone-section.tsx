@@ -453,7 +453,6 @@ function PhoneDevice({
           }}
         />
       </div>
-
       <MotionWrapper
         style={
           isMobile
@@ -466,7 +465,7 @@ function PhoneDevice({
                 scale,
               }
         }
-        className="relative"
+        className="relative ml-[100px] mr-[100px]"
       >
         <div className="relative w-[220px] h-[450px] bg-gradient-to-b from-slate-800 to-slate-900 rounded-[40px] p-2 shadow-2xl border border-slate-700/50">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-slate-900 rounded-b-2xl z-20" />
