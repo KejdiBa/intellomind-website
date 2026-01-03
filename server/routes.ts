@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import { insertContactSchema } from "@shared/schema";
 import { fromZodError } from "zod-validation-error";
 
-const N8N_WEBHOOK_URL = "https://n8n.srv1101287.hstgr.cloud/webhook/3509e0dc-16f9-4a0c-acd4-6f00fc90ea50/chat";
+const N8N_WEBHOOK_BASE = "https://n8n.srv1101287.hstgr.cloud/webhook/3509e0dc-16f9-4a0c-acd4-6f00fc90ea50/chat";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -20,13 +20,15 @@ export async function registerRoutes(
       }
 
       const payload = {
-        message,
         sessionId: sessionId || `session-${Date.now()}`,
+        chatInput: message,
       };
       
-      console.log("Sending to n8n webhook:", payload);
+      const webhookUrl = `${N8N_WEBHOOK_BASE}?action=sendMessage`;
+      console.log("Sending to n8n chat trigger:", webhookUrl);
+      console.log("Payload:", payload);
 
-      const response = await fetch(N8N_WEBHOOK_URL, {
+      const response = await fetch(webhookUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,8 +37,8 @@ export async function registerRoutes(
       });
 
       const responseText = await response.text();
-      console.log("n8n webhook response status:", response.status);
-      console.log("n8n webhook response body:", responseText);
+      console.log("n8n response status:", response.status);
+      console.log("n8n response body:", responseText);
 
       if (!response.ok) {
         throw new Error(`Webhook responded with status ${response.status}: ${responseText}`);
@@ -46,7 +48,7 @@ export async function registerRoutes(
       try {
         data = JSON.parse(responseText);
       } catch {
-        data = { response: responseText };
+        data = { output: responseText };
       }
       
       return res.json(data);

@@ -76,7 +76,7 @@ export function ChatbotButton() {
       
       const assistantMessage: Message = {
         id: `assistant-${Date.now()}`,
-        content: data.response || data.message || data.text || "Entschuldigung, ich konnte keine Antwort generieren.",
+        content: data.output || data.text || data.response || data.message || "Entschuldigung, ich konnte keine Antwort generieren.",
         role: "assistant",
         timestamp: new Date(),
       };
