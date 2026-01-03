@@ -11,7 +11,6 @@ interface Message {
   timestamp: Date;
 }
 
-const N8N_WEBHOOK_URL = "https://n8n.srv1101287.hstgr.cloud/webhook/3509e0dc-16f9-4a0c-acd4-6f00fc90ea50/chat";
 
 export function ChatbotButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,7 +57,7 @@ export function ChatbotButton() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(N8N_WEBHOOK_URL, {
+      const response = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
