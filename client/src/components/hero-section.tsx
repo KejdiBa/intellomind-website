@@ -24,7 +24,7 @@ export function HeroSection() {
         style={{ backgroundImage: `url(${brainBgImage})` }}
       />
       
-      <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/90" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white" />
 
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 py-32 text-center">
         <motion.div
@@ -36,14 +36,14 @@ export function HeroSection() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight"
             data-testid="text-hero-title"
           >
-            <span className="text-white">Intelligenz neu gedacht</span>
+            <span className="text-foreground">Intelligenz neu gedacht</span>
             <br />
-            <span className="text-white">– mit </span>
+            <span className="text-foreground">– mit </span>
             <span className="gradient-text">IntelloMind</span>
           </h1>
 
           <p
-            className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
             data-testid="text-hero-subtitle"
           >
             Automatisieren Sie Ihre Kommunikation mit smarten KI-Lösungen.

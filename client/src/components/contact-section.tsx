@@ -127,7 +127,7 @@ export function ContactSection() {
                           <FormControl>
                             <Input
                               placeholder="Ihr Vorname"
-                              className="rounded-lg bg-background/50 border-border/50 focus:border-purple-500"
+                              className="rounded-lg bg-white border-border focus:border-primary"
                               {...field}
                               data-testid="input-name"
                             />
@@ -145,7 +145,7 @@ export function ContactSection() {
                           <FormControl>
                             <Input
                               placeholder="Ihr Nachname"
-                              className="rounded-lg bg-background/50 border-border/50 focus:border-purple-500"
+                              className="rounded-lg bg-white border-border focus:border-primary"
                               {...field}
                               value={field.value || ""}
                               data-testid="input-lastname"
@@ -166,7 +166,7 @@ export function ContactSection() {
                           <Input
                             type="email"
                             placeholder="ihre@email.de"
-                            className="rounded-lg bg-background/50 border-border/50 focus:border-purple-500"
+                            className="rounded-lg bg-white border-border focus:border-primary"
                             {...field}
                             data-testid="input-email"
                           />
@@ -184,7 +184,7 @@ export function ContactSection() {
                         <FormControl>
                           <Textarea
                             placeholder="Ihre Nachricht..."
-                            className="min-h-[100px] resize-none rounded-lg bg-background/50 border-border/50 focus:border-purple-500"
+                            className="min-h-[100px] resize-none rounded-lg bg-white border-border focus:border-primary"
                             {...field}
                             data-testid="input-message"
                           />
@@ -244,7 +244,7 @@ export function ContactSection() {
                     </div>
                     <div>
                       <p className="text-foreground font-semibold text-sm">{info.title}</p>
-                      <p className="text-muted-foreground text-sm group-hover:text-cyan-400 transition-colors">
+                      <p className="text-muted-foreground text-sm group-hover:text-primary transition-colors">
                         {info.value}
                       </p>
                     </div>

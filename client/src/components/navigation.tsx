@@ -37,7 +37,7 @@ export function Navigation() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "glass-nav py-3" : "bg-transparent py-5"
+        isScrolled ? "glass-nav py-3" : "bg-white/70 backdrop-blur-sm py-5"
       }`}
       data-testid="navigation-header"
     >
@@ -70,7 +70,7 @@ export function Navigation() {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="text-sm font-medium text-white hover:text-white/80 transition-colors"
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
                 data-testid={`link-nav-${link.label.toLowerCase()}`}
               >
                 {link.label}
