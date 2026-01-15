@@ -36,7 +36,7 @@ export function Navigation() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 ${
         isScrolled ? "glass-nav py-3" : "bg-white/70 backdrop-blur-sm py-5"
       }`}
       data-testid="navigation-header"
@@ -80,13 +80,18 @@ export function Navigation() {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          <Button
-            onClick={() => scrollToSection("#contact")}
-            className="rounded-full px-6 btn-primary-gradient hover-glow"
-            data-testid="button-nav-contact"
+          <a
+            href="https://replit.com/@kejdibasha89/PrimeOneAI-mainzip"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Jetzt starten
-          </Button>
+            <Button
+              className="rounded-full px-6 btn-primary-gradient hover-glow"
+              data-testid="button-nav-login"
+            >
+              Login
+            </Button>
+          </a>
         </div>
 
         <Button
@@ -128,13 +133,19 @@ export function Navigation() {
                   {link.label}
                 </a>
               ))}
-              <Button
-                onClick={() => scrollToSection("#contact")}
-                className="w-full rounded-full mt-4 btn-primary-gradient hover-glow"
-                data-testid="button-mobile-contact"
+              <a
+                href="https://replit.com/@kejdibasha89/PrimeOneAI-mainzip"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block mt-4"
               >
-                Jetzt starten
-              </Button>
+                <Button
+                  className="w-full rounded-full btn-primary-gradient hover-glow"
+                  data-testid="button-mobile-login"
+                >
+                  Login
+                </Button>
+              </a>
             </div>
           </motion.div>
         )}

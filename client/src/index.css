@@ -281,21 +281,40 @@
   /* Glow border effect */
   .glow-border {
     position: relative;
+    overflow: visible;
   }
 
   .glow-border::before {
     content: "";
     position: absolute;
-    inset: -1px;
+    inset: -2px;
     border-radius: inherit;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(99, 102, 241, 0.25));
+    background: linear-gradient(90deg, 
+      hsl(185, 80%, 55%),   /* Cyan */
+      hsl(200, 85%, 60%),   /* Light Blue */
+      hsl(270, 75%, 60%),   /* Purple */
+      hsl(320, 70%, 55%),   /* Magenta */
+      hsl(185, 80%, 55%)    /* Back to Cyan for smooth loop */
+    );
+    background-size: 300% 100%;
     z-index: -1;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
+    animation: gradient-border-flow 3s linear infinite paused;
   }
 
   .glow-border:hover::before {
     opacity: 1;
+    animation-play-state: running;
+  }
+
+  @keyframes gradient-border-flow {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 300% 50%;
+    }
   }
 
   /* Scrolling animation for logos */
@@ -309,7 +328,7 @@
   }
 
   .animate-scroll-left {
-    animation: scroll-left 30s linear infinite;
+    animation: scroll-left 15s linear infinite;
   }
 
   /* Pulse glow animation */

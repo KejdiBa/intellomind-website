@@ -341,13 +341,22 @@ export function StickyPhoneSection() {
               >
                 <div className="flex items-center gap-3 mb-6">
                   {steps.map((_, index) => (
-                    <div
+                    <button
                       key={index}
-                      className={`h-1 rounded-full transition-all duration-300 ${
+                      onClick={() => {
+                        setCurrentStep(index);
+                        if (containerRef.current) {
+                          const sectionHeight = containerRef.current.offsetHeight;
+                          const targetScroll = containerRef.current.offsetTop + (sectionHeight * (index / 4));
+                          window.scrollTo({ top: targetScroll, behavior: "smooth" });
+                        }
+                      }}
+                      className={`h-1 rounded-full transition-all duration-300 cursor-pointer hover:opacity-80 ${
                         index === currentStep
                           ? "w-8 bg-gradient-to-r from-purple-600 to-indigo-600"
-                          : "w-4 bg-slate-700"
+                          : "w-4 bg-slate-400 hover:bg-slate-500"
                       }`}
+                      data-testid={`button-progress-bar-${index + 1}`}
                     />
                   ))}
                 </div>
@@ -398,16 +407,17 @@ export function StickyPhoneSection() {
             <button
               key={step.id}
               onClick={() => {
+                setCurrentStep(index);
                 if (containerRef.current) {
                   const sectionHeight = containerRef.current.offsetHeight;
                   const targetScroll = containerRef.current.offsetTop + (sectionHeight * (index / 4));
                   window.scrollTo({ top: targetScroll, behavior: "smooth" });
                 }
               }}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
                 index === currentStep
-                  ? "bg-purple-500 scale-125"
-                  : "bg-slate-600 hover:bg-slate-500"
+                  ? "bg-gradient-to-r from-cyan-500 to-purple-500 scale-125"
+                  : "bg-slate-400 hover:bg-slate-500"
               }`}
               data-testid={`button-step-${index + 1}`}
             />
