@@ -524,16 +524,19 @@ function PhoneDevice({
 }: PhoneDeviceProps) {
   const MotionWrapper = isMobile ? motion.div : motion.div;
   const [isSwipeAnimating, setIsSwipeAnimating] = useState(false);
-  const [swipeDirection, setSwipeDirection] = useState<"left" | "right">("left");
+  const lastStepRef = useRef(currentStep);
+  
+  // Calculate direction synchronously during render
+  const swipeDirection: "left" | "right" = currentStep > previousStep ? "left" : "right";
   
   useEffect(() => {
-    if (previousStep !== currentStep) {
-      setSwipeDirection(currentStep > previousStep ? "left" : "right");
+    if (lastStepRef.current !== currentStep) {
+      lastStepRef.current = currentStep;
       setIsSwipeAnimating(true);
       const timer = setTimeout(() => setIsSwipeAnimating(false), 600);
       return () => clearTimeout(timer);
     }
-  }, [currentStep, previousStep]);
+  }, [currentStep]);
 
   return (
     <div className="relative" style={{ perspective: "1000px" }}>
