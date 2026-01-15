@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useRef, useEffect, useState, useCallback } from "react";
+import { motion, useScroll, useTransform, AnimatePresence, useAnimation } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import logoImage from "@assets/Logo_IntelloMind_1767046191762.jpg";
@@ -248,7 +248,15 @@ function DashboardScreen() {
 export function StickyPhoneSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentStep, setCurrentStep] = useState(0);
+  const [previousStep, setPreviousStep] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  
+  const handleStepChange = useCallback((newStep: number) => {
+    if (newStep !== currentStep) {
+      setPreviousStep(currentStep);
+      setCurrentStep(newStep);
+    }
+  }, [currentStep]);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
@@ -270,13 +278,13 @@ export function StickyPhoneSection() {
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.on("change", (value) => {
-      if (value < 0.25) setCurrentStep(0);
-      else if (value < 0.5) setCurrentStep(1);
-      else if (value < 0.75) setCurrentStep(2);
-      else setCurrentStep(3);
+      if (value < 0.25) handleStepChange(0);
+      else if (value < 0.5) handleStepChange(1);
+      else if (value < 0.75) handleStepChange(2);
+      else handleStepChange(3);
     });
     return () => unsubscribe();
-  }, [scrollYProgress]);
+  }, [scrollYProgress, handleStepChange]);
 
   const screens = [SplashScreen, LoginScreen, InboxScreen, DashboardScreen];
 
@@ -301,6 +309,7 @@ export function StickyPhoneSection() {
             <div className="flex justify-center">
               <PhoneDevice
                 currentStep={currentStep}
+                previousStep={previousStep}
                 screens={screens}
                 rotateY={0}
                 rotateZ={0}
@@ -320,7 +329,7 @@ export function StickyPhoneSection() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
-                  onViewportEnter={() => setCurrentStep(index)}
+                  onViewportEnter={() => handleStepChange(index)}
                   className="space-y-3"
                 >
                   <p className="gradient-text font-semibold text-sm tracking-wide">
@@ -344,7 +353,7 @@ export function StickyPhoneSection() {
                     <button
                       key={index}
                       onClick={() => {
-                        setCurrentStep(index);
+                        handleStepChange(index);
                         if (containerRef.current) {
                           const sectionHeight = containerRef.current.offsetHeight;
                           const targetScroll = containerRef.current.offsetTop + (sectionHeight * (index / 4));
@@ -389,6 +398,7 @@ export function StickyPhoneSection() {
             <div className="flex justify-center lg:justify-end ml-[100px] mr-[100px] mt-[0px] mb-[0px]">
               <PhoneDevice
                 currentStep={currentStep}
+                previousStep={previousStep}
                 screens={screens}
                 rotateY={rotateY}
                 rotateZ={rotateZ}
@@ -407,7 +417,7 @@ export function StickyPhoneSection() {
             <button
               key={step.id}
               onClick={() => {
-                setCurrentStep(index);
+                handleStepChange(index);
                 if (containerRef.current) {
                   const sectionHeight = containerRef.current.offsetHeight;
                   const targetScroll = containerRef.current.offsetTop + (sectionHeight * (index / 4));
@@ -437,6 +447,68 @@ interface PhoneDeviceProps {
   translateY: any;
   scale: any;
   isMobile: boolean;
+  previousStep: number;
+}
+
+function SwipeIndicator({ direction, isAnimating }: { direction: "left" | "right"; isAnimating: boolean }) {
+  if (!isAnimating) return null;
+  
+  return (
+    <motion.div
+      className="absolute inset-0 z-30 pointer-events-none flex items-center justify-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      {/* Finger/thumb indicator */}
+      <motion.div
+        className="absolute bottom-20"
+        initial={{ 
+          x: direction === "left" ? 60 : -60,
+          opacity: 0,
+          scale: 0.8
+        }}
+        animate={{ 
+          x: direction === "left" ? -60 : 60,
+          opacity: [0, 1, 1, 0],
+          scale: [0.8, 1, 1, 0.9]
+        }}
+        transition={{ 
+          duration: 0.5,
+          ease: [0.22, 0.61, 0.36, 1],
+          times: [0, 0.2, 0.8, 1]
+        }}
+      >
+        {/* Stylized finger/swipe indicator */}
+        <div className="relative">
+          {/* Main finger shape */}
+          <div 
+            className="w-10 h-14 rounded-t-full rounded-b-[40%] bg-gradient-to-b from-amber-200 to-amber-300 shadow-lg"
+            style={{
+              transform: "rotate(-10deg)",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.3)"
+            }}
+          >
+            {/* Fingernail */}
+            <div className="absolute top-1 left-1/2 -translate-x-1/2 w-6 h-4 rounded-t-full bg-gradient-to-b from-pink-100 to-pink-50 opacity-80" />
+          </div>
+          
+          {/* Swipe trail effect */}
+          <motion.div
+            className="absolute top-1/2 -translate-y-1/2 h-1 rounded-full bg-gradient-to-r from-cyan-400/60 via-blue-400/40 to-transparent"
+            style={{
+              width: 80,
+              left: direction === "left" ? "auto" : -80,
+              right: direction === "left" ? -80 : "auto",
+            }}
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={{ opacity: [0, 0.8, 0], scaleX: [0, 1, 1] }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          />
+        </div>
+      </motion.div>
+    </motion.div>
+  );
 }
 
 function PhoneDevice({
@@ -448,8 +520,20 @@ function PhoneDevice({
   translateY,
   scale,
   isMobile,
+  previousStep,
 }: PhoneDeviceProps) {
   const MotionWrapper = isMobile ? motion.div : motion.div;
+  const [isSwipeAnimating, setIsSwipeAnimating] = useState(false);
+  const [swipeDirection, setSwipeDirection] = useState<"left" | "right">("left");
+  
+  useEffect(() => {
+    if (previousStep !== currentStep) {
+      setSwipeDirection(currentStep > previousStep ? "left" : "right");
+      setIsSwipeAnimating(true);
+      const timer = setTimeout(() => setIsSwipeAnimating(false), 600);
+      return () => clearTimeout(timer);
+    }
+  }, [currentStep, previousStep]);
 
   return (
     <div className="relative" style={{ perspective: "1000px" }}>
@@ -486,15 +570,22 @@ function PhoneDevice({
                 index === currentStep ? (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
+                    initial={{ opacity: 0, x: swipeDirection === "left" ? 20 : -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: swipeDirection === "left" ? -20 : 20 }}
                     transition={{ duration: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
                     className="absolute inset-0"
                   >
                     <Screen />
                   </motion.div>
                 ) : null
+              )}
+            </AnimatePresence>
+            
+            {/* Swipe indicator overlay */}
+            <AnimatePresence>
+              {isSwipeAnimating && (
+                <SwipeIndicator direction={swipeDirection} isAnimating={isSwipeAnimating} />
               )}
             </AnimatePresence>
           </div>
