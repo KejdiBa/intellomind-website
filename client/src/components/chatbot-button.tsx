@@ -218,8 +218,15 @@ export function ChatbotButton() {
             <div className="relative">
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 opacity-60 blur-lg" />
               
-              <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-white/40 dark:border-white/20 shadow-2xl px-5 py-3">
-                <p className="text-slate-700 dark:text-white text-sm font-medium text-center whitespace-nowrap">
+              <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-white/40 dark:border-white/20 shadow-2xl pl-5 pr-10 py-3">
+                <button
+                  onClick={() => setShowWelcome(false)}
+                  className="absolute top-1/2 -translate-y-1/2 right-2 w-5 h-5 rounded-full bg-slate-200/80 dark:bg-slate-700/80 flex items-center justify-center hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"
+                  data-testid="button-welcome-close"
+                >
+                  <X className="w-3 h-3 text-slate-500 dark:text-slate-400" />
+                </button>
+                <p className="text-slate-700 dark:text-white text-sm font-medium whitespace-nowrap">
                   Hi, willkommen bei IntelloMind!
                 </p>
               </div>
