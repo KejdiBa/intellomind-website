@@ -327,32 +327,47 @@
     }
   }
 
-  /* Animated rotating gradient border for navigation */
+  /* Animated rotating gradient border for navigation - spotlight effect */
   .animated-border-wrapper {
     position: relative;
     border-radius: 9999px;
     padding: 1.5px;
-    background: linear-gradient(90deg, 
-      hsl(185, 80%, 55%),
-      hsl(200, 85%, 60%),
-      hsl(270, 75%, 60%),
-      hsl(185, 80%, 55%)
+    background: rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+
+  .animated-border-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: -150%;
+    width: 400%;
+    height: 400%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 340deg,
+      hsl(185, 80%, 55%) 345deg,
+      hsl(200, 85%, 60%) 350deg,
+      hsl(240, 70%, 60%) 355deg,
+      hsl(270, 75%, 60%) 358deg,
+      transparent 360deg
     );
-    background-size: 300% 100%;
-    animation: gradient-slide 3s linear infinite;
+    animation: rotate-spotlight 4s linear infinite;
+    z-index: -1;
   }
 
   .animated-border-wrapper > * {
     position: relative;
     border-radius: inherit;
+    z-index: 1;
   }
 
-  @keyframes gradient-slide {
+  @keyframes rotate-spotlight {
     0% {
-      background-position: 0% 50%;
+      transform: rotate(0deg);
     }
     100% {
-      background-position: 300% 50%;
+      transform: rotate(360deg);
     }
   }
 
