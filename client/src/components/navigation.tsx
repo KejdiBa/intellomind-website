@@ -36,12 +36,14 @@ export function Navigation() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glass-nav py-3 shadow-sm" : "bg-transparent py-5"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 px-4 pt-4"
       data-testid="navigation-header"
     >
-      <nav className="max-w-6xl mx-auto px-6 flex items-center justify-between gap-4">
+      <nav className={`max-w-5xl mx-auto px-6 py-3 flex items-center justify-between gap-4 rounded-full transition-all duration-300 ${
+        isScrolled 
+          ? "bg-slate-900/95 backdrop-blur-xl shadow-lg shadow-slate-900/20" 
+          : "bg-slate-900/90 backdrop-blur-sm"
+      }`}>
         <a
           href="#home"
           onClick={(e) => {
@@ -56,7 +58,7 @@ export function Navigation() {
             alt="IntelloMind"
             className="h-10 w-auto rounded-lg"
           />
-          <span className="font-bold text-xl text-foreground tracking-tight">
+          <span className="font-bold text-xl text-white tracking-tight">
             IntelloMind
           </span>
         </a>
@@ -70,7 +72,7 @@ export function Navigation() {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                className="text-sm font-medium text-white/80 hover:text-white transition-colors"
                 data-testid={`link-nav-${link.label.toLowerCase()}`}
               >
                 {link.label}
@@ -97,7 +99,7 @@ export function Navigation() {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden"
+          className="md:hidden text-white hover:bg-white/10"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           data-testid="button-mobile-menu"
         >
@@ -112,13 +114,13 @@ export function Navigation() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
-            className="md:hidden glass-nav border-t border-border/10"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
+            className="md:hidden mt-2 mx-auto max-w-5xl"
           >
-            <div className="px-6 py-6 space-y-4">
+            <div className="bg-slate-900/95 backdrop-blur-xl rounded-2xl px-6 py-4 space-y-3">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -127,7 +129,7 @@ export function Navigation() {
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
-                  className="block text-base font-medium text-foreground hover-tint py-2"
+                  className="block text-base font-medium text-white/80 hover:text-white py-2 transition-colors"
                   data-testid={`link-mobile-nav-${link.label.toLowerCase()}`}
                 >
                   {link.label}
@@ -137,7 +139,7 @@ export function Navigation() {
                 href="https://replit.com/@kejdibasha89/PrimeOneAI-mainzip"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block mt-4"
+                className="block mt-3"
               >
                 <Button
                   className="w-full rounded-full btn-primary-gradient hover-glow"
