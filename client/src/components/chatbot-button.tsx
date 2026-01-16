@@ -241,15 +241,6 @@ export function ChatbotButton() {
                     Hi, willkommen bei IntelloMind!
                   </p>
                 </div>
-                
-                <button
-                  onClick={handleStartChat}
-                  className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-700 text-white font-medium text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-lg"
-                  data-testid="button-start-chat"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  Chat beginnen
-                </button>
               </div>
               
               <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white/80 dark:bg-slate-900/80 border-r border-b border-white/40 dark:border-white/20 transform rotate-45" />
