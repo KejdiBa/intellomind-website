@@ -14,6 +14,7 @@ interface Message {
 
 export function ChatbotButton() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
@@ -38,8 +39,26 @@ export function ChatbotButton() {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    if (isOpen) {
+      setShowWelcome(false);
+      return;
+    }
+    
+    const timer = setTimeout(() => {
+      setShowWelcome(true);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, [isOpen]);
+
   const handleToggle = () => {
     setIsOpen(!isOpen);
+    setShowWelcome(false);
+  };
+
+  const handleStartChat = () => {
+    setShowWelcome(false);
+    setIsOpen(true);
   };
 
   const sendMessage = async () => {
@@ -187,6 +206,53 @@ export function ChatbotButton() {
                   <Send className="w-4 h-4" />
                 </Button>
               </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showWelcome && !isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.9 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="absolute bottom-20 right-0 min-w-[240px]"
+            data-testid="chatbot-welcome-bubble"
+          >
+            <div className="relative">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 opacity-60 blur-lg" />
+              
+              <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-white/40 dark:border-white/20 shadow-2xl p-4">
+                <button
+                  onClick={() => setShowWelcome(false)}
+                  className="absolute top-2 right-2 w-5 h-5 rounded-full bg-slate-200/80 dark:bg-slate-700/80 flex items-center justify-center hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"
+                  data-testid="button-welcome-close"
+                >
+                  <X className="w-3 h-3 text-slate-500 dark:text-slate-400" />
+                </button>
+                
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-700 flex items-center justify-center flex-shrink-0">
+                    <MessageCircle className="w-5 h-5 text-white" />
+                  </div>
+                  <p className="text-slate-700 dark:text-white font-medium text-sm pr-4">
+                    Hi, willkommen bei IntelloMind!
+                  </p>
+                </div>
+                
+                <button
+                  onClick={handleStartChat}
+                  className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-700 text-white font-medium text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-lg"
+                  data-testid="button-start-chat"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Chat beginnen
+                </button>
+              </div>
+              
+              <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white/80 dark:bg-slate-900/80 border-r border-b border-white/40 dark:border-white/20 transform rotate-45" />
             </div>
           </motion.div>
         )}
