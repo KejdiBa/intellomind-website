@@ -239,7 +239,7 @@ export function ChatbotButton() {
                 </div>
               </div>
               
-              <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white/80 dark:bg-slate-900/80 border-r border-b border-white/40 dark:border-white/20 transform rotate-45" />
+              <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white/80 dark:bg-slate-900/80 border-r border-b border-white/40 dark:border-white/20 transform rotate-45 mt-[-11px] mb-[-11px]" />
             </div>
           </motion.div>
         )}
