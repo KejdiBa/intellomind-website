@@ -79,8 +79,8 @@ function SplashScreen() {
 
 function LoginScreen() {
   return (
-    <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-cyan-600 via-blue-700 to-purple-800 p-5">
-      <div className="flex items-center justify-center pt-6 pb-8">
+    <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-cyan-600 via-blue-700 to-purple-800 p-5 pt-12">
+      <div className="flex items-center justify-center pt-2 pb-6">
         <img
           src={logoImage}
           alt="IntelloMind"
@@ -125,8 +125,8 @@ function InboxScreen() {
   ];
 
   return (
-    <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-cyan-600/90 via-blue-700/90 to-purple-800/90">
-      <div className="flex items-center justify-between p-4 border-b border-white/5">
+    <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-cyan-600/90 via-blue-700/90 to-purple-800/90 pt-10">
+      <div className="flex items-center justify-between px-4 py-2 border-b border-white/5">
         <div className="flex items-center gap-2">
           <img
             src={logoImage}
@@ -188,8 +188,8 @@ function DashboardScreen() {
   ];
 
   return (
-    <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-cyan-600/90 via-blue-700/90 to-purple-800/90">
-      <div className="flex items-center justify-between p-4 border-b border-white/5">
+    <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-cyan-600/90 via-blue-700/90 to-purple-800/90 pt-10">
+      <div className="flex items-center justify-between px-4 py-2 border-b border-white/5">
         <div className="flex items-center gap-2">
           <Calendar className="w-5 h-5 text-purple-400" />
           <span className="text-white font-semibold text-sm">Heute</span>
