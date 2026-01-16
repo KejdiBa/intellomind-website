@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export function GradientOrb() {
   return (
-    <div className="relative w-44 h-44 md:w-56 md:h-56">
+    <div className="relative w-32 h-32 md:w-40 md:h-40">
       <motion.div
         className="absolute inset-0"
         animate={{
@@ -57,15 +57,16 @@ export function GradientOrb() {
                 background: `
                   conic-gradient(
                     from 0deg at 50% 50%,
-                    rgba(34, 211, 238, 0.9) 0deg,
-                    rgba(56, 189, 248, 0.8) 45deg,
-                    rgba(168, 85, 247, 0.7) 90deg,
-                    rgba(139, 92, 246, 0.8) 135deg,
-                    rgba(34, 197, 94, 0.7) 180deg,
-                    rgba(110, 231, 183, 0.8) 225deg,
-                    rgba(255, 255, 255, 0.6) 270deg,
-                    rgba(56, 189, 248, 0.8) 315deg,
-                    rgba(34, 211, 238, 0.9) 360deg
+                    rgba(255, 255, 255, 0.95) 0deg,
+                    rgba(34, 211, 238, 0.7) 40deg,
+                    rgba(255, 255, 255, 0.8) 80deg,
+                    rgba(168, 85, 247, 0.6) 120deg,
+                    rgba(255, 255, 255, 0.85) 160deg,
+                    rgba(110, 231, 183, 0.6) 200deg,
+                    rgba(255, 255, 255, 0.9) 240deg,
+                    rgba(56, 189, 248, 0.7) 280deg,
+                    rgba(255, 255, 255, 0.85) 320deg,
+                    rgba(255, 255, 255, 0.95) 360deg
                   )
                 `,
               }}
@@ -85,13 +86,13 @@ export function GradientOrb() {
                 background: `
                   conic-gradient(
                     from 180deg at 40% 60%,
-                    rgba(168, 85, 247, 0.6) 0deg,
-                    rgba(110, 231, 183, 0.5) 60deg,
-                    rgba(255, 255, 255, 0.4) 120deg,
-                    rgba(34, 211, 238, 0.6) 180deg,
-                    rgba(139, 92, 246, 0.5) 240deg,
-                    rgba(56, 189, 248, 0.6) 300deg,
-                    rgba(168, 85, 247, 0.6) 360deg
+                    rgba(255, 255, 255, 0.7) 0deg,
+                    rgba(110, 231, 183, 0.4) 60deg,
+                    rgba(255, 255, 255, 0.8) 120deg,
+                    rgba(34, 211, 238, 0.5) 180deg,
+                    rgba(255, 255, 255, 0.7) 240deg,
+                    rgba(168, 85, 247, 0.4) 300deg,
+                    rgba(255, 255, 255, 0.7) 360deg
                   )
                 `,
                 mixBlendMode: "overlay",
@@ -173,11 +174,11 @@ export function GradientOrb() {
             />
 
             <motion.div
-              className="absolute inset-8 rounded-full"
+              className="absolute inset-4 rounded-full"
               animate={{
                 x: [0, -8, 10, -12, 0],
                 y: [0, 12, -6, 8, 0],
-                opacity: [0.6, 0.9, 0.5, 0.8, 0.6],
+                opacity: [0.7, 1, 0.6, 0.9, 0.7],
               }}
               transition={{
                 duration: 4,
@@ -186,13 +187,14 @@ export function GradientOrb() {
               }}
               style={{
                 background: `
-                  radial-gradient(ellipse 50% 50% at 60% 40%,
-                    rgba(255, 255, 255, 0.9) 0%,
-                    rgba(255, 255, 255, 0.4) 40%,
-                    transparent 60%
+                  radial-gradient(ellipse 70% 70% at 50% 50%,
+                    rgba(255, 255, 255, 1) 0%,
+                    rgba(255, 255, 255, 0.7) 30%,
+                    rgba(255, 255, 255, 0.3) 50%,
+                    transparent 70%
                   )
                 `,
-                filter: "blur(6px)",
+                filter: "blur(5px)",
               }}
             />
 
