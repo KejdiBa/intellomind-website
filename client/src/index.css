@@ -402,4 +402,86 @@
   .hover-scale:hover {
     transform: scale(1.02);
   }
+
+  /* Holographic Blob Animation */
+  @keyframes blob-morph {
+    0%, 100% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    25% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+    50% {
+      border-radius: 50% 60% 30% 60% / 30% 40% 70% 50%;
+    }
+    75% {
+      border-radius: 40% 60% 50% 40% / 60% 50% 40% 60%;
+    }
+  }
+
+  @keyframes blob-float {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-3px) rotate(3deg);
+    }
+  }
+
+  @keyframes holo-gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes holo-shine {
+    0% {
+      opacity: 0.4;
+      transform: rotate(0deg);
+    }
+    50% {
+      opacity: 0.7;
+    }
+    100% {
+      opacity: 0.4;
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-blob-float {
+    animation: blob-float 4s ease-in-out infinite;
+  }
+
+  .animate-holo-shine {
+    animation: holo-shine 8s linear infinite;
+  }
+
+  .holo-blob {
+    background: linear-gradient(
+      135deg,
+      #22D3EE 0%,
+      #38BDF8 15%,
+      #818CF8 30%,
+      #A855F7 45%,
+      #F472B6 60%,
+      #FBBF24 75%,
+      #22D3EE 100%
+    );
+    background-size: 300% 300%;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: blob-morph 8s ease-in-out infinite, holo-gradient 6s ease infinite;
+  }
+
+  .holo-blob-inner {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: blob-morph 8s ease-in-out infinite;
+  }
 }
