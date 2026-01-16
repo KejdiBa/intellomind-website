@@ -11,6 +11,7 @@ import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 import { ChatbotButton } from "@/components/chatbot-button";
 import { CookieBanner } from "@/components/cookie-banner";
+import { AnimatedBackground } from "@/components/animated-background";
 
 export default function Home() {
   const [showCookieSettings, setShowCookieSettings] = useState(false);
@@ -24,7 +25,8 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <AnimatedBackground />
       <Navigation />
       <main>
         <HeroSection />
