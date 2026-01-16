@@ -210,7 +210,6 @@ export function ChatbotButton() {
           </motion.div>
         )}
       </AnimatePresence>
-
       <AnimatePresence>
         {showWelcome && !isOpen && (
           <motion.div
@@ -234,7 +233,7 @@ export function ChatbotButton() {
                 </button>
                 
                 <div className="flex items-center gap-3 mb-3">
-                  <p className="text-slate-700 dark:text-white font-medium text-sm pr-4">
+                  <p className="text-slate-700 dark:text-white font-medium pr-4 text-[12px]">
                     Hi, willkommen bei IntelloMind!
                   </p>
                 </div>
@@ -245,7 +244,6 @@ export function ChatbotButton() {
           </motion.div>
         )}
       </AnimatePresence>
-
       <motion.button
         onClick={handleToggle}
         data-testid="button-chatbot-toggle"
