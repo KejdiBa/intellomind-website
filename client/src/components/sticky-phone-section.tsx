@@ -477,29 +477,49 @@ function PhoneDevice({
         }
         className="relative ml-[100px] mr-[100px]"
       >
-        <div className="relative w-[220px] h-[450px] bg-gradient-to-b from-slate-800 to-slate-900 rounded-[40px] p-2 shadow-2xl border border-slate-700/50">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-slate-900 rounded-b-2xl z-20" />
+        {/* Modern iPhone Frame - thin bezels */}
+        <div className="relative w-[240px] h-[490px] bg-gradient-to-b from-slate-700 via-slate-800 to-slate-900 rounded-[50px] p-[3px] shadow-2xl"
+          style={{
+            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255,255,255,0.1)"
+          }}
+        >
+          {/* Side buttons */}
+          <div className="absolute -left-[2px] top-24 w-[3px] h-8 bg-slate-600 rounded-l-sm" />
+          <div className="absolute -left-[2px] top-36 w-[3px] h-12 bg-slate-600 rounded-l-sm" />
+          <div className="absolute -left-[2px] top-52 w-[3px] h-12 bg-slate-600 rounded-l-sm" />
+          <div className="absolute -right-[2px] top-32 w-[3px] h-16 bg-slate-600 rounded-r-sm" />
+          
+          {/* Inner bezel */}
+          <div className="relative w-full h-full bg-black rounded-[47px] p-[2px]">
+            {/* Screen */}
+            <div className="relative w-full h-full bg-slate-900 rounded-[45px] overflow-hidden">
+              {/* Dynamic Island */}
+              <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[90px] h-[28px] bg-black rounded-full z-20 flex items-center justify-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-slate-800" />
+                <div className="w-3 h-3 rounded-full bg-slate-800 ring-1 ring-slate-700" />
+              </div>
 
-          <div className="relative w-full h-full bg-slate-900 rounded-[32px] overflow-hidden">
-            <AnimatePresence mode="wait">
-              {screens.map((Screen, index) =>
-                index === currentStep ? (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
-                    className="absolute inset-0"
-                  >
-                    <Screen />
-                  </motion.div>
-                ) : null
-              )}
-            </AnimatePresence>
+              <AnimatePresence mode="wait">
+                {screens.map((Screen, index) =>
+                  index === currentStep ? (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
+                      className="absolute inset-0"
+                    >
+                      <Screen />
+                    </motion.div>
+                  ) : null
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-28 h-1 bg-slate-600 rounded-full" />
+          {/* Home indicator */}
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-500 rounded-full" />
         </div>
       </MotionWrapper>
     </div>
