@@ -194,9 +194,8 @@ function DashboardScreen() {
           <Calendar className="w-5 h-5 text-purple-400" />
           <span className="text-white font-semibold text-sm">Heute</span>
         </div>
-        <span className="text-purple-400 text-xs">30. Dez 2024</span>
+        <span className="text-xs text-[#ebf9fa]">24. Mai</span>
       </div>
-      
       <div className="flex-1 overflow-hidden p-3 space-y-2">
         {appointments.map((apt, i) => (
           <motion.div
