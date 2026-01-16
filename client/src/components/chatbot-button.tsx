@@ -192,14 +192,27 @@ export function ChatbotButton() {
         )}
       </AnimatePresence>
 
-      <Button
-        size="icon"
-        className="w-14 h-14 rounded-full btn-primary-gradient shadow-lg"
+      <motion.button
         onClick={handleToggle}
         data-testid="button-chatbot-toggle"
+        className="relative w-14 h-14 rounded-full cursor-pointer group"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
       >
-        {isOpen ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}
-      </Button>
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 opacity-80 blur-md group-hover:opacity-100 group-hover:blur-lg transition-all duration-300" />
+        
+        <div className="absolute inset-[2px] rounded-full bg-white/10 dark:bg-black/30 backdrop-blur-xl border border-white/30 dark:border-white/20 shadow-2xl" />
+        
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/20 via-blue-500/20 to-purple-600/20 group-hover:from-cyan-400/30 group-hover:via-blue-500/30 group-hover:to-purple-600/30 transition-all duration-300" />
+        
+        <div className="relative w-full h-full flex items-center justify-center">
+          {isOpen ? (
+            <X className="w-6 h-6 text-slate-700 dark:text-white drop-shadow-sm" />
+          ) : (
+            <MessageCircle className="w-6 h-6 text-slate-700 dark:text-white drop-shadow-sm" />
+          )}
+        </div>
+      </motion.button>
     </div>
   );
 }
