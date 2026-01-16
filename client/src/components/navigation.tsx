@@ -39,11 +39,12 @@ export function Navigation() {
       className="fixed top-0 left-0 right-0 z-50 px-4 pt-4"
       data-testid="navigation-header"
     >
-      <nav className={`max-w-5xl mx-auto px-6 py-3 flex items-center justify-between gap-4 rounded-full transition-all duration-300 border border-white/40 ${
-        isScrolled 
-          ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-black/5" 
-          : "bg-white/60 backdrop-blur-md"
-      }`}>
+      <div className="animated-border-wrapper max-w-5xl mx-auto shadow-lg shadow-black/5">
+        <nav className={`px-6 py-3 flex items-center justify-between gap-4 rounded-full transition-all duration-300 ${
+          isScrolled 
+            ? "bg-white backdrop-blur-xl" 
+            : "bg-white/98 backdrop-blur-md"
+        }`}>
         <a
           href="#home"
           onClick={(e) => {
@@ -109,7 +110,8 @@ export function Navigation() {
             <Menu className="h-5 w-5" />
           )}
         </Button>
-      </nav>
+        </nav>
+      </div>
 
       <AnimatePresence>
         {isMobileMenuOpen && (

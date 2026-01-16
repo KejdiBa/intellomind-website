@@ -327,6 +327,35 @@
     }
   }
 
+  /* Animated rotating gradient border for navigation */
+  .animated-border-wrapper {
+    position: relative;
+    border-radius: 9999px;
+    padding: 1.5px;
+    background: linear-gradient(90deg, 
+      hsl(185, 80%, 55%),
+      hsl(200, 85%, 60%),
+      hsl(270, 75%, 60%),
+      hsl(185, 80%, 55%)
+    );
+    background-size: 300% 100%;
+    animation: gradient-slide 3s linear infinite;
+  }
+
+  .animated-border-wrapper > * {
+    position: relative;
+    border-radius: inherit;
+  }
+
+  @keyframes gradient-slide {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 300% 50%;
+    }
+  }
+
   /* Scrolling animation for logos */
   @keyframes scroll-left {
     0% {
