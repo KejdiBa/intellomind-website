@@ -233,7 +233,7 @@ export function ChatbotButton() {
                 </button>
                 
                 <div className="flex items-center gap-3 mb-3">
-                  <p className="text-slate-700 dark:text-white text-[12px] pl-[8px] pr-[8px] font-bold ml-[0px] mr-[0px] mt-[0px] mb-[0px] pt-[5px] pb-[5px]">
+                  <p className="text-slate-700 dark:text-white text-[12px] pl-[8px] pr-[8px] ml-[0px] mr-[0px] mt-[0px] mb-[0px] pt-[5px] pb-[5px] font-medium">
                     Hi, willkommen bei IntelloMind!
                   </p>
                 </div>
