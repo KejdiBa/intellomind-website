@@ -56,11 +56,6 @@ export function ChatbotButton() {
     setShowWelcome(false);
   };
 
-  const handleStartChat = () => {
-    setShowWelcome(false);
-    setIsOpen(true);
-  };
-
   const sendMessage = async () => {
     if (!inputValue.trim() || isLoading) return;
 
@@ -223,23 +218,11 @@ export function ChatbotButton() {
             <div className="relative">
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 opacity-60 blur-lg" />
               
-              <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-white/40 dark:border-white/20 shadow-2xl p-4 text-[12px] pt-[0px] pb-[0px] pl-[16px] pr-[16px]">
-                <button
-                  onClick={() => setShowWelcome(false)}
-                  className="absolute top-2 right-2 w-5 h-5 rounded-full bg-slate-200/80 dark:bg-slate-700/80 flex items-center justify-center hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"
-                  data-testid="button-welcome-close"
-                >
-                  <X className="w-3 h-3 text-slate-500 dark:text-slate-400" />
-                </button>
-                
-                <div className="flex items-center gap-3 mb-3">
-                  <p className="text-slate-700 dark:text-white text-[12px] pl-[8px] pr-[8px] ml-[0px] mr-[0px] mt-[0px] mb-[0px] pt-[5px] pb-[5px] font-medium">
-                    Hi, willkommen bei IntelloMind!
-                  </p>
-                </div>
+              <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-white/40 dark:border-white/20 shadow-2xl px-5 py-3">
+                <p className="text-slate-700 dark:text-white text-sm font-medium text-center whitespace-nowrap">
+                  Hi, willkommen bei IntelloMind!
+                </p>
               </div>
-              
-              <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white/80 dark:bg-slate-900/80 border-r border-b border-white/40 dark:border-white/20 transform rotate-45 mt-[-11px] mb-[-11px]" />
             </div>
           </motion.div>
         )}
