@@ -124,6 +124,40 @@ function InboxScreen() {
     { icon: Phone, name: "Anrufe", count: 3, color: "from-purple-500 to-violet-600", preview: "Rückruf angefordert" },
   ];
 
+  const [visibleMessages, setVisibleMessages] = useState<number[]>([]);
+  const [cycleKey, setCycleKey] = useState(0);
+
+  useEffect(() => {
+    setVisibleMessages([]);
+    setCycleKey(prev => prev + 1);
+  }, []);
+
+  useEffect(() => {
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
+    
+    const runCycle = () => {
+      setVisibleMessages([]);
+      
+      messages.forEach((_, index) => {
+        const timeout = setTimeout(() => {
+          setVisibleMessages(prev => [...prev, index]);
+        }, (index + 1) * 600);
+        timeouts.push(timeout);
+      });
+
+      const resetTimeout = setTimeout(() => {
+        setCycleKey(prev => prev + 1);
+      }, messages.length * 600 + 2500);
+      timeouts.push(resetTimeout);
+    };
+
+    runCycle();
+
+    return () => {
+      timeouts.forEach(t => clearTimeout(t));
+    };
+  }, [cycleKey]);
+
   return (
     <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-cyan-600/90 via-blue-700/90 to-purple-800/90 pt-10">
       <div className="flex items-center justify-between px-4 py-2 border-b border-white/5">
@@ -137,43 +171,69 @@ function InboxScreen() {
         </div>
         <div className="relative">
           <Bell className="w-5 h-5 text-purple-400" />
-          <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-[10px] text-white flex items-center justify-center">
-            23
-          </span>
+          <motion.span 
+            key={cycleKey}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.3, type: "spring", stiffness: 500, damping: 15 }}
+            className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-[10px] text-white flex items-center justify-center"
+          >
+            {visibleMessages.length > 0 ? visibleMessages.reduce((sum, idx) => sum + messages[idx].count, 0) : 0}
+          </motion.span>
         </div>
       </div>
       <div className="flex-1 overflow-hidden p-3 space-y-2">
-        {messages.map((msg, i) => (
-          <motion.div
-            key={msg.name}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: i * 0.1, duration: 0.3 }}
-            className="flex items-center gap-3 p-3 bg-slate-800/40 rounded-xl"
-          >
-            <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${msg.color} flex items-center justify-center flex-shrink-0`}>
-              <msg.icon className="w-5 h-5 text-white" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center justify-between mb-0.5">
-                <span className="text-white font-medium text-sm">{msg.name}</span>
-                <span className="text-[10px] text-right font-normal text-[#f0e9f7]">vor 2 Min</span>
-              </div>
-              <p className="text-slate-400 text-xs truncate">{msg.preview}</p>
-            </div>
-            <div className="w-5 h-5 bg-purple-600 rounded-full flex items-center justify-center text-[10px] text-white font-bold">
-              {msg.count}
-            </div>
-          </motion.div>
-        ))}
+        <AnimatePresence mode="popLayout">
+          {messages.map((msg, i) => (
+            visibleMessages.includes(i) && (
+              <motion.div
+                key={`${cycleKey}-${msg.name}`}
+                initial={{ opacity: 0, x: 50, scale: 0.8 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: -20, scale: 0.9 }}
+                transition={{ duration: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
+                className="flex items-center gap-3 p-3 bg-slate-800/40 rounded-xl"
+              >
+                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${msg.color} flex items-center justify-center flex-shrink-0`}>
+                  <msg.icon className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between mb-0.5">
+                    <span className="text-white font-medium text-sm">{msg.name}</span>
+                    <span className="text-[10px] text-right font-normal text-[#f0e9f7]">vor 2 Min</span>
+                  </div>
+                  <p className="text-slate-400 text-xs truncate">{msg.preview}</p>
+                </div>
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.2, type: "spring", stiffness: 500, damping: 15 }}
+                  className="w-5 h-5 bg-purple-600 rounded-full flex items-center justify-center text-[10px] text-white font-bold"
+                >
+                  {msg.count}
+                </motion.div>
+              </motion.div>
+            )
+          ))}
+        </AnimatePresence>
         
-        <div className="pt-2">
-          <p className="text-purple-400 text-[10px] font-medium mb-2">KI-Automatisierung aktiv</p>
-          <div className="flex items-center gap-2 text-[10px] text-slate-400">
-            <Check className="w-3 h-3 text-green-400" />
-            <span>15 Anfragen automatisch beantwortet</span>
-          </div>
-        </div>
+        <AnimatePresence>
+          {visibleMessages.length === messages.length && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
+              className="pt-2"
+            >
+              <p className="text-purple-400 text-[10px] font-medium mb-2">KI-Automatisierung aktiv</p>
+              <div className="flex items-center gap-2 text-[10px] text-slate-400">
+                <Check className="w-3 h-3 text-green-400" />
+                <span>15 Anfragen automatisch beantwortet</span>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
@@ -186,6 +246,56 @@ function DashboardScreen() {
     { time: "16:00", title: "Tech GmbH", type: "Onboarding", status: "confirmed" },
   ];
 
+  const [visibleAppointments, setVisibleAppointments] = useState<number[]>([]);
+  const [showStats, setShowStats] = useState(false);
+  const [progressWidth, setProgressWidth] = useState(0);
+  const [cycleKey, setCycleKey] = useState(0);
+
+  useEffect(() => {
+    setVisibleAppointments([]);
+    setShowStats(false);
+    setProgressWidth(0);
+    setCycleKey(prev => prev + 1);
+  }, []);
+
+  useEffect(() => {
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
+    
+    const runCycle = () => {
+      setVisibleAppointments([]);
+      setShowStats(false);
+      setProgressWidth(0);
+      
+      appointments.forEach((_, index) => {
+        const timeout = setTimeout(() => {
+          setVisibleAppointments(prev => [...prev, index]);
+        }, (index + 1) * 500);
+        timeouts.push(timeout);
+      });
+
+      const statsTimeout = setTimeout(() => {
+        setShowStats(true);
+      }, appointments.length * 500 + 300);
+      timeouts.push(statsTimeout);
+
+      const progressTimeout = setTimeout(() => {
+        setProgressWidth(85);
+      }, appointments.length * 500 + 600);
+      timeouts.push(progressTimeout);
+
+      const resetTimeout = setTimeout(() => {
+        setCycleKey(prev => prev + 1);
+      }, appointments.length * 500 + 3000);
+      timeouts.push(resetTimeout);
+    };
+
+    runCycle();
+
+    return () => {
+      timeouts.forEach(t => clearTimeout(t));
+    };
+  }, [cycleKey]);
+
   return (
     <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-cyan-600/90 via-blue-700/90 to-purple-800/90 pt-10">
       <div className="flex items-center justify-between px-4 py-2 border-b border-white/5">
@@ -193,51 +303,92 @@ function DashboardScreen() {
           <Calendar className="w-5 h-5 text-purple-400" />
           <span className="text-white font-semibold text-sm">Heute</span>
         </div>
-        <span className="text-xs text-[#ebf9fa]">24. Mai</span>
+        <motion.span 
+          key={cycleKey}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-xs text-[#ebf9fa]"
+        >
+          24. Mai
+        </motion.span>
       </div>
       <div className="flex-1 overflow-hidden p-3 space-y-2">
-        {appointments.map((apt, i) => (
-          <motion.div
-            key={apt.time}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1, duration: 0.3 }}
-            className="flex items-center gap-3 p-3 bg-slate-800/40 rounded-xl"
-          >
-            <div className="text-center min-w-[40px]">
-              <span className="text-white font-bold text-sm">{apt.time}</span>
-            </div>
-            <div className="w-px h-8 bg-purple-500/50" />
-            <div className="flex-1">
-              <p className="text-white font-medium text-sm">{apt.title}</p>
-              <p className="text-slate-400 text-xs">{apt.type}</p>
-            </div>
-            {apt.status === "confirmed" ? (
-              <Check className="w-4 h-4 text-green-400" />
-            ) : (
-              <Clock className="w-4 h-4 text-yellow-400" />
-            )}
-          </motion.div>
-        ))}
+        <AnimatePresence mode="popLayout">
+          {appointments.map((apt, i) => (
+            visibleAppointments.includes(i) && (
+              <motion.div
+                key={`${cycleKey}-${apt.time}`}
+                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.9 }}
+                transition={{ duration: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
+                className="flex items-center gap-3 p-3 bg-slate-800/40 rounded-xl"
+              >
+                <div className="text-center min-w-[40px]">
+                  <span className="text-white font-bold text-sm">{apt.time}</span>
+                </div>
+                <div className="w-px h-8 bg-purple-500/50" />
+                <div className="flex-1">
+                  <p className="text-white font-medium text-sm">{apt.title}</p>
+                  <p className="text-slate-400 text-xs">{apt.type}</p>
+                </div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.2, type: "spring", stiffness: 500, damping: 15 }}
+                >
+                  {apt.status === "confirmed" ? (
+                    <Check className="w-4 h-4 text-green-400" />
+                  ) : (
+                    <Clock className="w-4 h-4 text-yellow-400" />
+                  )}
+                </motion.div>
+              </motion.div>
+            )
+          ))}
+        </AnimatePresence>
         
-        <div className="pt-3 space-y-2">
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-400">Auslastung heute</span>
-            <span className="font-medium text-[#f0ebf5]">85%</span>
-          </div>
-          <div className="w-full h-1.5 bg-slate-700 rounded-full overflow-hidden">
+        <AnimatePresence>
+          {showStats && (
             <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: "85%" }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="h-full bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full"
-            />
-          </div>
-          <div className="flex items-center gap-1 text-[10px] text-green-400">
-            <Star className="w-3 h-3" />
-            <span>3 Termine von KI gebucht</span>
-          </div>
-        </div>
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+              className="pt-3 space-y-2"
+            >
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-slate-400">Auslastung heute</span>
+                <motion.span 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="font-medium text-[#f0ebf5]"
+                >
+                  {progressWidth}%
+                </motion.span>
+              </div>
+              <div className="w-full h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${progressWidth}%` }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="h-full bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full"
+                />
+              </div>
+              <motion.div 
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex items-center gap-1 text-[10px] text-green-400"
+              >
+                <Star className="w-3 h-3" />
+                <span>3 Termine von KI gebucht</span>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
