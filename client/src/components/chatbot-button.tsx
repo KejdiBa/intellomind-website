@@ -223,7 +223,7 @@ export function ChatbotButton() {
             <div className="relative">
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 opacity-60 blur-lg" />
               
-              <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-white/40 dark:border-white/20 shadow-2xl p-4 text-[12px]">
+              <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-white/40 dark:border-white/20 shadow-2xl p-4 text-[12px] pt-[0px] pb-[0px] pl-[16px] pr-[16px]">
                 <button
                   onClick={() => setShowWelcome(false)}
                   className="absolute top-2 right-2 w-5 h-5 rounded-full bg-slate-200/80 dark:bg-slate-700/80 flex items-center justify-center hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"
