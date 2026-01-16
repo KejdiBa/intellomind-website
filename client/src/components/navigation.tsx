@@ -36,8 +36,8 @@ export function Navigation() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 ${
-        isScrolled ? "glass-nav py-3" : "bg-white/70 backdrop-blur-sm py-5"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "glass-nav py-3 shadow-sm" : "bg-transparent py-5"
       }`}
       data-testid="navigation-header"
     >
