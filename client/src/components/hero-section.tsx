@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import brainBgImage from "@assets/neues_vernetztes_gehirn_1767388838153.png";
+import { GradientOrb } from "./gradient-orb";
 
 export function HeroSection() {
   const scrollToSection = (href: string) => {
@@ -60,6 +61,15 @@ export function HeroSection() {
               Jetzt Demo anfragen
             </Button>
           </div>
+
+          <motion.div
+            className="flex justify-center mt-12"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
+          >
+            <GradientOrb />
+          </motion.div>
         </motion.div>
       </div>
     </section>
