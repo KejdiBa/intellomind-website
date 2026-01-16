@@ -63,7 +63,7 @@ function SplashScreen() {
           className="w-20 h-20 rounded-2xl mb-4 shadow-2xl"
         />
         <h3 className="text-white font-bold text-xl mb-1">IntelloMind</h3>
-        <p className="text-purple-300 text-xs">Intelligenz neu gedacht</p>
+        <p className="text-xs text-[#f0edf2]">Intelligenz neu gedacht</p>
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
