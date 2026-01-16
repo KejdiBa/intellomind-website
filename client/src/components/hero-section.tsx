@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
 import { motion } from "framer-motion";
-import brainBgImage from "@assets/neues_vernetztes_gehirn_1767388838153.png";
 import { GradientOrb } from "./gradient-orb";
 
 export function HeroSection() {
@@ -20,12 +19,7 @@ export function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       data-testid="section-hero"
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${brainBgImage})` }}
-      />
-      
-      <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white" />
+      <div className="absolute inset-0 bg-background" />
 
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 py-32 text-center">
         <motion.div

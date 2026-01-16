@@ -32,15 +32,17 @@ export function GradientOrb() {
             style={{
               background: `
                 radial-gradient(ellipse 100% 100% at 50% 50%, 
-                  rgba(255, 255, 255, 0.1) 0%,
-                  transparent 70%
+                  rgba(255, 255, 255, 0.2) 0%,
+                  rgba(255, 255, 255, 0.1) 60%,
+                  transparent 85%
                 )
               `,
               boxShadow: `
-                inset 0 0 80px rgba(255, 255, 255, 0.3),
-                0 25px 80px rgba(34, 211, 238, 0.4),
-                0 15px 40px rgba(168, 85, 247, 0.3)
+                inset 0 0 60px rgba(255, 255, 255, 0.4),
+                0 20px 60px rgba(34, 211, 238, 0.25),
+                0 10px 30px rgba(168, 85, 247, 0.2)
               `,
+              filter: "blur(1px)",
             }}
           >
             <motion.div
