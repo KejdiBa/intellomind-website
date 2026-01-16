@@ -142,7 +142,6 @@ function InboxScreen() {
           </span>
         </div>
       </div>
-      
       <div className="flex-1 overflow-hidden p-3 space-y-2">
         {messages.map((msg, i) => (
           <motion.div
@@ -158,7 +157,7 @@ function InboxScreen() {
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between mb-0.5">
                 <span className="text-white font-medium text-sm">{msg.name}</span>
-                <span className="text-[10px] text-purple-400">vor 2 Min</span>
+                <span className="text-[10px] text-right font-normal text-[#f0e9f7]">vor 2 Min</span>
               </div>
               <p className="text-slate-400 text-xs truncate">{msg.preview}</p>
             </div>
