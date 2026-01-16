@@ -223,7 +223,7 @@ function DashboardScreen() {
         <div className="pt-3 space-y-2">
           <div className="flex items-center justify-between text-xs">
             <span className="text-slate-400">Auslastung heute</span>
-            <span className="text-purple-400 font-medium">85%</span>
+            <span className="font-medium text-[#f0ebf5]">85%</span>
           </div>
           <div className="w-full h-1.5 bg-slate-700 rounded-full overflow-hidden">
             <motion.div
