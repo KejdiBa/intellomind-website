@@ -212,7 +212,7 @@ export function ChatbotButton() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="absolute bottom-[76px] right-0 min-w-[240px]"
+            className="absolute bottom-20 right-0 min-w-[240px]"
             data-testid="chatbot-welcome-bubble"
           >
             <div className="relative">
@@ -237,30 +237,21 @@ export function ChatbotButton() {
       <motion.button
         onClick={handleToggle}
         data-testid="button-chatbot-toggle"
-        className="relative w-16 h-16 cursor-pointer group animate-blob-float"
-        whileHover={{ scale: 1.08 }}
+        className="relative w-14 h-14 rounded-full cursor-pointer group"
+        whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <div className="absolute inset-0 holo-blob opacity-80 blur-md group-hover:opacity-100 group-hover:blur-lg transition-all duration-300" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 opacity-80 blur-md group-hover:opacity-100 group-hover:blur-lg transition-all duration-300" />
         
-        <div className="absolute inset-0 holo-blob shadow-2xl" 
-          style={{ animationDelay: '-0.5s' }}
-        />
+        <div className="absolute inset-[2px] rounded-full bg-white/10 dark:bg-black/30 backdrop-blur-xl border border-white/30 dark:border-white/20 shadow-2xl" />
         
-        <div className="absolute inset-[4px] holo-blob-inner"
-          style={{ animationDelay: '-1s' }}
-        />
-        
-        <div className="absolute inset-0 animate-holo-shine pointer-events-none">
-          <div className="absolute top-2 left-3 w-3 h-3 bg-white/70 rounded-full blur-[2px]" />
-          <div className="absolute bottom-4 right-2 w-2 h-2 bg-white/50 rounded-full blur-[1px]" />
-        </div>
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/20 via-blue-500/20 to-purple-600/20 group-hover:from-cyan-400/30 group-hover:via-blue-500/30 group-hover:to-purple-600/30 transition-all duration-300" />
         
         <div className="relative w-full h-full flex items-center justify-center">
           {isOpen ? (
-            <X className="w-6 h-6 text-slate-800 dark:text-white drop-shadow-lg" />
+            <X className="w-6 h-6 text-slate-700 dark:text-white drop-shadow-sm" />
           ) : (
-            <MessageCircle className="w-6 h-6 text-slate-800 dark:text-white drop-shadow-lg" />
+            <MessageCircle className="w-6 h-6 text-slate-700 dark:text-white drop-shadow-sm" />
           )}
         </div>
       </motion.button>
