@@ -29,13 +29,9 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="py-24 md:py-32 bg-background relative overflow-hidden"
+      className="py-24 md:py-32 bg-background/50 backdrop-blur-[2px] relative overflow-hidden"
       data-testid="section-about"
     >
-      <div className="absolute inset-0">
-        <div className="bg-gradient-orb bg-gradient-orb-cyan w-[400px] h-[400px] top-0 left-1/4 opacity-15" />
-        <div className="bg-gradient-orb bg-gradient-orb-purple w-[500px] h-[500px] bottom-0 right-1/4 opacity-15" />
-      </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

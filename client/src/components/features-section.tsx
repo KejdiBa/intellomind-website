@@ -31,11 +31,7 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section className="py-24 bg-background relative overflow-hidden" data-testid="section-features">
-      <div className="absolute inset-0">
-        <div className="bg-gradient-orb bg-gradient-orb-blue w-[400px] h-[400px] top-0 right-1/4 opacity-20" />
-        <div className="bg-gradient-orb bg-gradient-orb-purple w-[300px] h-[300px] bottom-0 left-1/4 opacity-15" />
-      </div>
+    <section className="py-24 bg-background/50 backdrop-blur-[2px] relative overflow-hidden" data-testid="section-features">
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div

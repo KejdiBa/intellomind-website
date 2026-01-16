@@ -16,7 +16,7 @@ const integrations = [
 
 export function IntegrationsSection() {
   return (
-    <section className="py-20 bg-background overflow-hidden" data-testid="section-integrations">
+    <section className="py-20 bg-background/50 backdrop-blur-[2px] overflow-hidden" data-testid="section-integrations">
       <div className="max-w-6xl mx-auto px-6 mb-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,8 +35,8 @@ export function IntegrationsSection() {
       </div>
 
       <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background/80 to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background/80 to-transparent z-10" />
         
         <div className="flex animate-scroll-left">
           <div className="flex gap-12 px-6">

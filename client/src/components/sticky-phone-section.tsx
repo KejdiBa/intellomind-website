@@ -432,14 +432,10 @@ export function StickyPhoneSection() {
   return (
     <section
       ref={containerRef}
-      className="relative bg-background"
+      className="relative bg-background/50 backdrop-blur-[2px]"
       style={{ height: isMobile ? "auto" : "400vh", position: "relative" }}
       data-testid="section-sticky-phone"
     >
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="bg-gradient-orb bg-gradient-orb-cyan w-[600px] h-[600px] top-1/4 -left-40 opacity-20" />
-        <div className="bg-gradient-orb bg-gradient-orb-purple w-[500px] h-[500px] bottom-1/4 -right-40 opacity-15" />
-      </div>
       <div
         className={`max-w-6xl mx-auto px-6 ${
           isMobile ? "py-16" : "sticky top-0 h-screen flex items-center"

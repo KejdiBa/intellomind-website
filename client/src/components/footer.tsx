@@ -34,7 +34,7 @@ export function Footer({ onOpenCookieSettings }: FooterProps) {
   };
 
   return (
-    <footer className="bg-card border-t border-border/30 py-16" data-testid="section-footer">
+    <footer className="bg-card/80 backdrop-blur-sm border-t border-border/30 py-16" data-testid="section-footer">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="lg:col-span-1">

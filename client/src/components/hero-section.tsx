@@ -19,7 +19,7 @@ export function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       data-testid="section-hero"
     >
-      <div className="absolute inset-0 bg-background" />
+      <div className="absolute inset-0 bg-background/70" />
 
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 py-32 text-center">
         <motion.div

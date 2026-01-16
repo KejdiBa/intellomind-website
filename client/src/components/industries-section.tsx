@@ -76,11 +76,7 @@ export function IndustriesSection() {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-background relative overflow-hidden" data-testid="section-industries">
-      <div className="absolute inset-0">
-        <div className="bg-gradient-orb bg-gradient-orb-cyan w-[400px] h-[400px] top-0 left-0 opacity-15" />
-        <div className="bg-gradient-orb bg-gradient-orb-purple w-[500px] h-[500px] bottom-0 right-0 opacity-15" />
-      </div>
+    <section className="py-24 md:py-32 bg-background/50 backdrop-blur-[2px] relative overflow-hidden" data-testid="section-industries">
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
