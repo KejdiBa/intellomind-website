@@ -35,8 +35,8 @@ export function IntegrationsSection() {
       </div>
 
       <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background/80 to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background/80 to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-background/50 to-transparent z-10 hidden md:block" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-background/50 to-transparent z-10 hidden md:block" />
         
         <div className="flex animate-scroll-left">
           <div className="flex gap-12 px-6">

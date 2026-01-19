@@ -427,91 +427,178 @@ export function StickyPhoneSection() {
 
   return (
     <section
-      className="relative bg-background/50 backdrop-blur-[2px] py-20 lg:py-32"
+      className="relative bg-background/50 backdrop-blur-[2px] py-12 lg:py-32"
       data-testid="section-sticky-phone"
     >
       <div className="max-w-6xl mx-auto px-6">
-        <div className={`grid ${isMobile ? "grid-cols-1 gap-12" : "lg:grid-cols-2 gap-16"} items-center w-full`}>
-          <div className="order-2 lg:order-1">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentStep}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
-                className="space-y-4"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  {steps.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => goToStep(index)}
-                      className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer hover:opacity-80 ${
-                        index === currentStep
-                          ? "w-10 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600"
-                          : "w-4 bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500"
-                      }`}
-                      data-testid={`button-progress-bar-${index + 1}`}
-                    />
-                  ))}
-                </div>
-                <p className="gradient-text font-semibold text-sm tracking-wide uppercase">
-                  Schritt {steps[currentStep].id} von 4
-                </p>
-                <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
-                  {steps[currentStep].title}
-                </h2>
-                <p className="text-xl gradient-text">{steps[currentStep].subtitle}</p>
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
-                  {steps[currentStep].description}
-                </p>
-                
-                <div className="flex items-center gap-3 pt-6">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={prevStep}
-                    disabled={currentStep === 0}
-                    className="rounded-full w-10 h-10 border-slate-300 dark:border-slate-600 disabled:opacity-30"
-                    data-testid="button-prev-step"
-                  >
-                    <ChevronLeft className="w-5 h-5" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={nextStep}
-                    disabled={currentStep === steps.length - 1}
-                    className="rounded-full w-10 h-10 border-slate-300 dark:border-slate-600 disabled:opacity-30"
-                    data-testid="button-next-step"
-                  >
-                    <ChevronRight className="w-5 h-5" />
-                  </Button>
-                  <Button
-                    className="ml-4 rounded-full px-8 btn-primary-gradient hover-glow"
-                    onClick={() => {
-                      const el = document.querySelector("#contact");
-                      if (el) el.scrollIntoView({ behavior: "smooth" });
-                    }}
-                    data-testid="button-sticky-cta"
-                  >
-                    Jetzt starten
-                    <ChevronRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+        {isMobile ? (
+          <div className="relative">
+            <div className="sticky top-16 z-20 pt-4 pb-6 bg-background/80 backdrop-blur-md -mx-6 px-6">
+              <div className="flex justify-center transform scale-[0.75] origin-top">
+                <PhoneDevice
+                  currentStep={currentStep}
+                  screens={screens}
+                  isMobile={isMobile}
+                />
+              </div>
+            </div>
+            
+            <div className="pt-4 space-y-3">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                {steps.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToStep(index)}
+                    className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer hover:opacity-80 ${
+                      index === currentStep
+                        ? "w-10 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600"
+                        : "w-4 bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500"
+                    }`}
+                    data-testid={`button-progress-bar-${index + 1}`}
+                  />
+                ))}
+              </div>
+              
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentStep}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-center space-y-3"
+                >
+                  <p className="gradient-text font-semibold text-sm tracking-wide uppercase">
+                    Schritt {steps[currentStep].id} von 4
+                  </p>
+                  <h2 className="text-2xl font-bold text-foreground">
+                    {steps[currentStep].title}
+                  </h2>
+                  <p className="text-lg gradient-text">{steps[currentStep].subtitle}</p>
+                  <p className="text-base text-muted-foreground leading-relaxed">
+                    {steps[currentStep].description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+              
+              <div className="flex items-center justify-center gap-3 pt-4">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={prevStep}
+                  disabled={currentStep === 0}
+                  className="rounded-full w-10 h-10 border-slate-300 dark:border-slate-600 disabled:opacity-30"
+                  data-testid="button-prev-step"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={nextStep}
+                  disabled={currentStep === steps.length - 1}
+                  className="rounded-full w-10 h-10 border-slate-300 dark:border-slate-600 disabled:opacity-30"
+                  data-testid="button-next-step"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </Button>
+                <Button
+                  className="ml-4 rounded-full px-6 btn-primary-gradient hover-glow"
+                  onClick={() => {
+                    const el = document.querySelector("#contact");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  data-testid="button-sticky-cta"
+                >
+                  Jetzt starten
+                  <ChevronRight className="ml-2 w-4 h-4" />
+                </Button>
+              </div>
+            </div>
           </div>
+        ) : (
+          <div className="grid lg:grid-cols-2 gap-16 items-center w-full">
+            <div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentStep}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
+                  className="space-y-4"
+                >
+                  <div className="flex items-center gap-3 mb-6">
+                    {steps.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => goToStep(index)}
+                        className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer hover:opacity-80 ${
+                          index === currentStep
+                            ? "w-10 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600"
+                            : "w-4 bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500"
+                        }`}
+                        data-testid={`button-progress-bar-${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                  <p className="gradient-text font-semibold text-sm tracking-wide uppercase">
+                    Schritt {steps[currentStep].id} von 4
+                  </p>
+                  <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
+                    {steps[currentStep].title}
+                  </h2>
+                  <p className="text-xl gradient-text">{steps[currentStep].subtitle}</p>
+                  <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
+                    {steps[currentStep].description}
+                  </p>
+                  
+                  <div className="flex items-center gap-3 pt-6">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={prevStep}
+                      disabled={currentStep === 0}
+                      className="rounded-full w-10 h-10 border-slate-300 dark:border-slate-600 disabled:opacity-30"
+                      data-testid="button-prev-step"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={nextStep}
+                      disabled={currentStep === steps.length - 1}
+                      className="rounded-full w-10 h-10 border-slate-300 dark:border-slate-600 disabled:opacity-30"
+                      data-testid="button-next-step"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </Button>
+                    <Button
+                      className="ml-4 rounded-full px-8 btn-primary-gradient hover-glow"
+                      onClick={() => {
+                        const el = document.querySelector("#contact");
+                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                      }}
+                      data-testid="button-sticky-cta"
+                    >
+                      Jetzt starten
+                      <ChevronRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
-          <div className="flex justify-center order-1 lg:order-2">
-            <PhoneDevice
-              currentStep={currentStep}
-              screens={screens}
-              isMobile={isMobile}
-            />
+            <div className="flex justify-center">
+              <PhoneDevice
+                currentStep={currentStep}
+                screens={screens}
+                isMobile={isMobile}
+              />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
