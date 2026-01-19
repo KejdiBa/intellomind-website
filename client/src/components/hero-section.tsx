@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { GradientOrb } from "./gradient-orb";
+import { TrustBadges } from "./trust-badges";
 
 export function HeroSection() {
   const scrollToSection = (href: string) => {
@@ -64,6 +65,10 @@ export function HeroSection() {
           >
             <GradientOrb />
           </motion.div>
+
+          <div className="mt-10">
+            <TrustBadges />
+          </div>
         </motion.div>
       </div>
     </section>
