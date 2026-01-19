@@ -1,6 +1,5 @@
-import { useRef, useEffect, useState, useCallback } from "react";
-import { motion, useScroll, useTransform, AnimatePresence, useAnimation } from "framer-motion";
-import { Card } from "@/components/ui/card";
+import { useRef, useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import logoImage from "@assets/Logo_IntelloMind_1767046191762.jpg";
 import {
@@ -11,6 +10,7 @@ import {
   Bell,
   Check,
   ChevronRight,
+  ChevronLeft,
   User,
   Lock,
   Clock,
@@ -395,7 +395,6 @@ function DashboardScreen() {
 }
 
 export function StickyPhoneSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [currentStep, setCurrentStep] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -406,81 +405,40 @@ export function StickyPhoneSection() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const rotateY = useTransform(scrollYProgress, [0, 0.3, 0.55, 0.8, 1], [5, 3, 0, -2, 0]);
-  const rotateZ = useTransform(scrollYProgress, [0, 0.3, 0.55, 0.8, 1], [2, 1, 0, -1, 0]);
-  const translateX = useTransform(scrollYProgress, [0, 0.3, 0.55, 0.8, 1], [-30, -15, 0, 0, 0]);
-  const translateY = useTransform(scrollYProgress, [0, 0.5, 1], [0, -10, -20]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 1.02]);
-
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.on("change", (value) => {
-      if (value < 0.25) setCurrentStep(0);
-      else if (value < 0.5) setCurrentStep(1);
-      else if (value < 0.75) setCurrentStep(2);
-      else setCurrentStep(3);
-    });
-    return () => unsubscribe();
-  }, [scrollYProgress, setCurrentStep]);
-
   const screens = [SplashScreen, LoginScreen, InboxScreen, DashboardScreen];
+
+  const goToStep = (index: number) => {
+    if (index >= 0 && index < steps.length) {
+      setCurrentStep(index);
+    }
+  };
+
+  const nextStep = () => {
+    if (currentStep < steps.length - 1) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  const prevStep = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
 
   return (
     <section
-      ref={containerRef}
-      className="relative bg-background/50 backdrop-blur-[2px]"
-      style={{ height: isMobile ? "auto" : "400vh", position: "relative" }}
+      className="relative bg-background/50 backdrop-blur-[2px] py-20 lg:py-32"
       data-testid="section-sticky-phone"
     >
-      <div
-        className={`max-w-6xl mx-auto px-6 ${
-          isMobile ? "py-16" : "sticky top-0 h-screen flex items-center"
-        }`}
-      >
+      <div className="max-w-6xl mx-auto px-6">
         <div className={`grid ${isMobile ? "grid-cols-1 gap-12" : "lg:grid-cols-2 gap-16"} items-center w-full`}>
-          {isMobile && (
-            <div className="flex justify-center">
-              <PhoneDevice
-                currentStep={currentStep}
-                screens={screens}
-                rotateY={0}
-                rotateZ={0}
-                translateX={0}
-                translateY={0}
-                scale={1}
-                isMobile={true}
-              />
-            </div>
-          )}
-
-          <div className={isMobile ? "space-y-8" : ""}>
-            {isMobile ? (
-              steps.map((step, index) => (
-                <motion.div
-                  key={step.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  onViewportEnter={() => setCurrentStep(index)}
-                  className="space-y-3"
-                >
-                  <p className="gradient-text font-semibold text-sm tracking-wide">
-                    Schritt {step.id}
-                  </p>
-                  <h3 className="text-2xl font-bold text-foreground">{step.title}</h3>
-                  <p className="text-lg gradient-text">{step.subtitle}</p>
-                  <p className="text-muted-foreground leading-relaxed">{step.description}</p>
-                </motion.div>
-              ))
-            ) : (
+          <div className="order-2 lg:order-1">
+            <AnimatePresence mode="wait">
               <motion.div
                 key={currentStep}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
                 className="space-y-4"
               >
@@ -488,18 +446,11 @@ export function StickyPhoneSection() {
                   {steps.map((_, index) => (
                     <button
                       key={index}
-                      onClick={() => {
-                        setCurrentStep(index);
-                        if (containerRef.current) {
-                          const sectionHeight = containerRef.current.offsetHeight;
-                          const targetScroll = containerRef.current.offsetTop + (sectionHeight * (index / 4));
-                          window.scrollTo({ top: targetScroll, behavior: "smooth" });
-                        }
-                      }}
-                      className={`h-1 rounded-full transition-all duration-300 cursor-pointer hover:opacity-80 ${
+                      onClick={() => goToStep(index)}
+                      className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer hover:opacity-80 ${
                         index === currentStep
-                          ? "w-8 bg-gradient-to-r from-purple-600 to-indigo-600"
-                          : "w-4 bg-slate-400 hover:bg-slate-500"
+                          ? "w-10 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600"
+                          : "w-4 bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500"
                       }`}
                       data-testid={`button-progress-bar-${index + 1}`}
                     />
@@ -515,60 +466,53 @@ export function StickyPhoneSection() {
                 <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
                   {steps[currentStep].description}
                 </p>
-                <Button
-                  className="mt-6 rounded-full px-8 btn-primary-gradient hover-glow"
-                  onClick={() => {
-                    const el = document.querySelector("#contact");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  data-testid="button-sticky-cta"
-                >
-                  Jetzt starten
-                  <ChevronRight className="ml-2 w-4 h-4" />
-                </Button>
+                
+                <div className="flex items-center gap-3 pt-6">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={prevStep}
+                    disabled={currentStep === 0}
+                    className="rounded-full w-10 h-10 border-slate-300 dark:border-slate-600 disabled:opacity-30"
+                    data-testid="button-prev-step"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={nextStep}
+                    disabled={currentStep === steps.length - 1}
+                    className="rounded-full w-10 h-10 border-slate-300 dark:border-slate-600 disabled:opacity-30"
+                    data-testid="button-next-step"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </Button>
+                  <Button
+                    className="ml-4 rounded-full px-8 btn-primary-gradient hover-glow"
+                    onClick={() => {
+                      const el = document.querySelector("#contact");
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    data-testid="button-sticky-cta"
+                  >
+                    Jetzt starten
+                    <ChevronRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </div>
               </motion.div>
-            )}
+            </AnimatePresence>
           </div>
 
-          {!isMobile && (
-            <div className="flex justify-center lg:justify-end ml-[100px] mr-[100px] mt-[0px] mb-[0px]">
-              <PhoneDevice
-                currentStep={currentStep}
-                screens={screens}
-                rotateY={rotateY}
-                rotateZ={rotateZ}
-                translateX={translateX}
-                translateY={translateY}
-                scale={scale}
-                isMobile={false}
-              />
-            </div>
-          )}
+          <div className="flex justify-center order-1 lg:order-2">
+            <PhoneDevice
+              currentStep={currentStep}
+              screens={screens}
+              isMobile={isMobile}
+            />
+          </div>
         </div>
       </div>
-      {!isMobile && (
-        <div className="absolute left-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-3">
-          {steps.map((step, index) => (
-            <button
-              key={step.id}
-              onClick={() => {
-                setCurrentStep(index);
-                if (containerRef.current) {
-                  const sectionHeight = containerRef.current.offsetHeight;
-                  const targetScroll = containerRef.current.offsetTop + (sectionHeight * (index / 4));
-                  window.scrollTo({ top: targetScroll, behavior: "smooth" });
-                }
-              }}
-              className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
-                index === currentStep
-                  ? "bg-gradient-to-r from-cyan-500 to-purple-500 scale-125"
-                  : "bg-slate-400 hover:bg-slate-500"
-              }`}
-              data-testid={`button-step-${index + 1}`}
-            />
-          ))}
-        </div>
-      )}
     </section>
   );
 }
@@ -576,26 +520,14 @@ export function StickyPhoneSection() {
 interface PhoneDeviceProps {
   currentStep: number;
   screens: React.ComponentType[];
-  rotateY: any;
-  rotateZ: any;
-  translateX: any;
-  translateY: any;
-  scale: any;
   isMobile: boolean;
 }
 
 function PhoneDevice({
   currentStep,
   screens,
-  rotateY,
-  rotateZ,
-  translateX,
-  translateY,
-  scale,
   isMobile,
 }: PhoneDeviceProps) {
-  const MotionWrapper = isMobile ? motion.div : motion.div;
-
   return (
     <div className="relative" style={{ perspective: "1000px" }}>
       <div className="absolute inset-0 -z-10">
@@ -608,19 +540,11 @@ function PhoneDevice({
           }}
         />
       </div>
-      <MotionWrapper
-        style={
-          isMobile
-            ? {}
-            : {
-                rotateY,
-                rotateZ,
-                translateX,
-                translateY,
-                scale,
-              }
-        }
-        className="relative ml-[100px] mr-[100px]"
+      <motion.div
+        initial={{ rotateY: 5, scale: 0.95 }}
+        animate={{ rotateY: 0, scale: 1 }}
+        transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
+        className="relative"
       >
         {/* Modern iPhone Frame - thin bezels */}
         <div className="relative w-[240px] h-[490px] bg-gradient-to-b from-slate-700 via-slate-800 to-slate-900 rounded-[50px] p-[3px] shadow-2xl"
@@ -666,7 +590,7 @@ function PhoneDevice({
           {/* Home indicator */}
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-500 rounded-full" />
         </div>
-      </MotionWrapper>
+      </motion.div>
     </div>
   );
 }
