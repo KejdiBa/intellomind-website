@@ -38,7 +38,7 @@ export function HeroSection() {
           </h1>
 
           <p
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-[18px]"
             data-testid="text-hero-subtitle"
           >
             Automatisieren Sie Ihre Kommunikation mit smarten KI-Lösungen.
