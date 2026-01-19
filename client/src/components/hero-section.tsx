@@ -21,7 +21,6 @@ export function HeroSection() {
       data-testid="section-hero"
     >
       <div className="absolute inset-0 bg-background/70" />
-
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 py-32 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -29,7 +28,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
         >
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight"
+            className="sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight text-[60px]"
             data-testid="text-hero-title"
           >
             <span className="text-foreground">Intelligenz neu gedacht</span>

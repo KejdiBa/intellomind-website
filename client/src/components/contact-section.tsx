@@ -103,22 +103,21 @@ export function ContactSection() {
         throw new Error("Webhook URL nicht konfiguriert");
       }
 
-      const jsonData = {
-        Vorname: data.vorname,
-        Nachname: data.nachname,
-        "E-Mail": data.email,
-        Firma: data.firma,
-        Telefonnummer: data.telefonnummer,
-        Produkt: data.produkt,
-        Nachricht: data.nachricht,
-      };
+      const formParams = new URLSearchParams();
+      formParams.append("Vorname", data.vorname);
+      formParams.append("Nachname", data.nachname);
+      formParams.append("E-Mail", data.email);
+      formParams.append("Firma", data.firma);
+      formParams.append("Telefonnummer", data.telefonnummer);
+      formParams.append("Produkt", data.produkt);
+      formParams.append("Nachricht", data.nachricht);
 
       const response = await fetch(webhookUrl, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify(jsonData),
+        body: formParams.toString(),
       });
 
       if (!response.ok) {
