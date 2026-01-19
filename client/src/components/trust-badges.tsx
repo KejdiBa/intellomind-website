@@ -40,7 +40,7 @@ export function TrustBadges() {
       {badges.map((badge, index) => (
         <motion.div
           key={badge.id}
-          className="flex items-center gap-3 px-5 py-3 bg-white/80 dark:bg-white/10 backdrop-blur-sm rounded-full border border-gray-200/50 dark:border-white/15 shadow-sm"
+          className="flex items-center gap-3 px-5 py-3 bg-white/80 dark:bg-white/10 backdrop-blur-sm rounded-full border border-gray-200/50 dark:border-white/15 shadow-sm pt-[2px] pb-[2px] pl-[20px] pr-[20px] mt-[25px] mb-[25px]"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
