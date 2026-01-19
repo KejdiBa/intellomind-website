@@ -435,7 +435,7 @@ export function StickyPhoneSection() {
           <div className="relative">
             <div className="sticky top-16 z-20 pt-2 pb-2">
               <div className="flex justify-center">
-                <div className="transform scale-[0.6] origin-center -my-16">
+                <div className="transform scale-[0.75] origin-center -my-12">
                   <PhoneDevice
                     currentStep={currentStep}
                     screens={screens}
