@@ -42,4 +42,4 @@ waitForPort = 5000
 
 [userenv.shared]
 N8N_CONTACT_WEBHOOK_URL = "https://n8n.srv1101287.hstgr.cloud/form/cc6066fd-df9f-4853-b6eb-3145a24d41ac"
-VITE_N8N_CONTACT_WEBHOOK_URL = "https://n8n.srv1101287.hstgr.cloud/form/cc6066fd-df9f-4853-b6eb-3145a24d41ac"
+VITE_N8N_CONTACT_WEBHOOK_URL = "https://n8n.srv1101287.hstgr.cloud/webhook/4c92f075-9f94-4865-ae26-beb0f9396ff0"
