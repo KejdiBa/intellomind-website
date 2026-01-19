@@ -392,47 +392,33 @@ export function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
+            className="flex flex-col gap-4"
           >
-            <Card className="p-8 glass-card glow-border h-full" data-testid="card-contact-info">
-              <h3 className="text-xl font-bold text-foreground mb-6">Kontaktdaten</h3>
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => (
-                  <motion.a
-                    key={info.title}
-                    href={info.href}
-                    target={info.external ? "_blank" : undefined}
-                    rel={info.external ? "noopener noreferrer" : undefined}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
-                    className="flex items-start gap-4 group p-4 rounded-xl hover:bg-muted/50 transition-colors duration-200"
-                    data-testid={`link-contact-${info.title.toLowerCase()}`}
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-200">
-                      <info.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-foreground mb-1">{info.title}</h4>
-                      <p className="text-sm text-muted-foreground mb-1 leading-relaxed">
-                        {info.description}
-                      </p>
-                      <p className="font-medium gradient-text group-hover:underline">
-                        {info.value}
-                      </p>
-                    </div>
-                  </motion.a>
-                ))}
-              </div>
-              
-              <div className="mt-8 p-4 rounded-xl bg-muted/30 border border-border/50">
-                <p className="text-sm text-muted-foreground text-center">
-                  <span className="font-semibold text-foreground">Schnelle Antwort garantiert</span>
-                  <br />
-                  Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+            {contactInfo.map((info, index) => (
+              <motion.a
+                key={info.title}
+                href={info.href}
+                target={info.external ? "_blank" : undefined}
+                rel={info.external ? "noopener noreferrer" : undefined}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
+                className="group block p-6 rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-md hover:border-border transition-all duration-200"
+                data-testid={`link-contact-${info.title.toLowerCase()}`}
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-200">
+                  <info.icon className="w-5 h-5 text-white" />
+                </div>
+                <h4 className="font-bold text-foreground text-lg mb-2">{info.title}</h4>
+                <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
+                  {info.description}
                 </p>
-              </div>
-            </Card>
+                <p className="font-semibold text-foreground group-hover:underline transition-all">
+                  {info.value}
+                </p>
+              </motion.a>
+            ))}
           </motion.div>
         </div>
       </div>
