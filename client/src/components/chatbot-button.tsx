@@ -14,7 +14,6 @@ interface Message {
 
 export function ChatbotButton() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showWelcome, setShowWelcome] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
@@ -39,21 +38,8 @@ export function ChatbotButton() {
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    if (isOpen) {
-      setShowWelcome(false);
-      return;
-    }
-    
-    const timer = setTimeout(() => {
-      setShowWelcome(true);
-    }, 2500);
-    return () => clearTimeout(timer);
-  }, [isOpen]);
-
   const handleToggle = () => {
     setIsOpen(!isOpen);
-    setShowWelcome(false);
   };
 
   const sendMessage = async () => {
@@ -200,35 +186,6 @@ export function ChatbotButton() {
                 >
                   <Send className="w-4 h-4" />
                 </Button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {showWelcome && !isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.9 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="absolute bottom-20 right-0 min-w-[240px]"
-            data-testid="chatbot-welcome-bubble"
-          >
-            <div className="relative">
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 opacity-60 blur-lg" />
-              
-              <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-white/40 dark:border-white/20 shadow-2xl pl-5 pr-10 py-3">
-                <button
-                  onClick={() => setShowWelcome(false)}
-                  className="absolute top-1/2 -translate-y-1/2 right-2 w-5 h-5 rounded-full bg-slate-200/80 dark:bg-slate-700/80 flex items-center justify-center hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"
-                  data-testid="button-welcome-close"
-                >
-                  <X className="w-3 h-3 text-slate-500 dark:text-slate-400" />
-                </button>
-                <p className="text-slate-700 dark:text-white text-sm font-medium whitespace-nowrap">
-                  Hi, willkommen bei IntelloMind!
-                </p>
               </div>
             </div>
           </motion.div>
