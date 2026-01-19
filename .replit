@@ -37,3 +37,9 @@ author = "agent"
 task = "shell.exec"
 args = "npm run dev"
 waitForPort = 5000
+
+[userenv]
+
+[userenv.shared]
+N8N_CONTACT_WEBHOOK_URL = "https://n8n.srv1101287.hstgr.cloud/form/cc6066fd-df9f-4853-b6eb-3145a24d41ac"
+VITE_N8N_CONTACT_WEBHOOK_URL = "https://n8n.srv1101287.hstgr.cloud/form/cc6066fd-df9f-4853-b6eb-3145a24d41ac"
