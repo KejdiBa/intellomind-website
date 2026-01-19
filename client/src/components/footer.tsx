@@ -1,5 +1,4 @@
 import { Separator } from "@/components/ui/separator";
-import { Shield, Flag, CheckCircle } from "lucide-react";
 import logoImage from "@assets/Logo_IntelloMind_1767046191762.jpg";
 
 const footerLinks = {
@@ -129,48 +128,6 @@ export function Footer({ onOpenCookieSettings }: FooterProps) {
         </div>
 
         <Separator className="bg-border/30 mb-8" />
-
-        {/* Trust Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 mb-8">
-          <div 
-            className="flex items-center gap-2 px-4 py-2 bg-background rounded-lg border border-border/50"
-            data-testid="badge-trust-eu-ai-act"
-          >
-            <div className="w-8 h-8 rounded-full bg-blue-50 dark:bg-blue-950 flex items-center justify-center">
-              <Shield className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-            </div>
-            <div className="text-left">
-              <p className="text-xs text-muted-foreground">EU AI ACT</p>
-              <p className="text-sm font-semibold text-foreground">KONFORM</p>
-            </div>
-          </div>
-
-          <div 
-            className="flex items-center gap-2 px-4 py-2 bg-background rounded-lg border border-border/50"
-            data-testid="badge-trust-made-in-germany"
-          >
-            <div className="w-8 h-8 rounded-full bg-amber-50 dark:bg-amber-950 flex items-center justify-center">
-              <Flag className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-            </div>
-            <div className="text-left">
-              <p className="text-xs text-muted-foreground">Software made in</p>
-              <p className="text-sm font-semibold text-foreground">Germany</p>
-            </div>
-          </div>
-
-          <div 
-            className="flex items-center gap-2 px-4 py-2 bg-background rounded-lg border border-border/50"
-            data-testid="badge-trust-dsgvo"
-          >
-            <div className="w-8 h-8 rounded-full bg-green-50 dark:bg-green-950 flex items-center justify-center">
-              <CheckCircle className="w-4 h-4 text-green-600 dark:text-green-400" />
-            </div>
-            <div className="text-left">
-              <p className="text-xs text-muted-foreground">DSGVO</p>
-              <p className="text-sm font-semibold text-foreground">KONFORM</p>
-            </div>
-          </div>
-        </div>
 
         <div className="flex flex-col md:flex-row items-center justify-center">
           <p className="text-muted-foreground text-sm">
