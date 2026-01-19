@@ -433,17 +433,19 @@ export function StickyPhoneSection() {
       <div className="max-w-6xl mx-auto px-6">
         {isMobile ? (
           <div className="relative">
-            <div className="sticky top-16 z-20 pt-4 pb-6 bg-background/80 backdrop-blur-md -mx-6 px-6">
-              <div className="flex justify-center transform scale-[0.75] origin-top">
-                <PhoneDevice
-                  currentStep={currentStep}
-                  screens={screens}
-                  isMobile={isMobile}
-                />
+            <div className="sticky top-16 z-20 pt-2 pb-2">
+              <div className="flex justify-center">
+                <div className="transform scale-[0.6] origin-center -my-16">
+                  <PhoneDevice
+                    currentStep={currentStep}
+                    screens={screens}
+                    isMobile={isMobile}
+                  />
+                </div>
               </div>
             </div>
             
-            <div className="pt-4 space-y-3">
+            <div className="space-y-3 relative z-10 bg-background/95 backdrop-blur-sm rounded-t-3xl pt-6 pb-4 -mt-4 px-4">
               <div className="flex items-center justify-center gap-3 mb-4">
                 {steps.map((_, index) => (
                   <button

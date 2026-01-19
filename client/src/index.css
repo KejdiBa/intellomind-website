@@ -385,6 +385,12 @@
     animation: scroll-left 15s linear infinite;
   }
 
+  @media (max-width: 768px) {
+    .animate-scroll-left {
+      animation: scroll-left 8s linear infinite;
+    }
+  }
+
   /* Pulse glow animation */
   @keyframes pulse-glow {
     0%, 100% {
