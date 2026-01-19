@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { z } from "zod";
-import { useToast } from "@/hooks/use-toast";
 import {
   Form,
   FormControl,
@@ -23,7 +22,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Send, Loader2, Mail, Phone, MapPin, Clock } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Send, Loader2, Mail, Phone, MapPin, CheckCircle, XCircle } from "lucide-react";
 
 const n8nContactSchema = z.object({
   vorname: z.string().min(2, "Vorname muss mindestens 2 Zeichen haben"),
@@ -51,8 +57,6 @@ const contactInfo = [
     description: "Schreiben Sie uns eine E-Mail und wir antworten innerhalb von 24 Stunden.",
     value: "info@intellomind.ai",
     href: "mailto:info@intellomind.ai",
-    color: "from-cyan-500 to-blue-500",
-    bgColor: "bg-cyan-50 dark:bg-cyan-950/50",
   },
   {
     icon: Phone,
@@ -60,8 +64,6 @@ const contactInfo = [
     description: "Rufen Sie uns an für eine persönliche Beratung.",
     value: "+49 176 70599 319",
     href: "tel:+4917670599319",
-    color: "from-blue-500 to-purple-500",
-    bgColor: "bg-blue-50 dark:bg-blue-950/50",
   },
   {
     icon: MapPin,
@@ -70,14 +72,13 @@ const contactInfo = [
     value: "Hüingser Ring 1, 58710 Menden",
     href: "https://maps.google.com/?q=Hüingser+Ring+1,+58710+Menden",
     external: true,
-    color: "from-purple-500 to-pink-500",
-    bgColor: "bg-purple-50 dark:bg-purple-950/50",
   },
 ];
 
 export function ContactSection() {
-  const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogType, setDialogType] = useState<"success" | "error">("success");
 
   const form = useForm<N8nContactForm>({
     resolver: zodResolver(n8nContactSchema),
@@ -120,17 +121,12 @@ export function ContactSection() {
         throw new Error("Fehler beim Senden");
       }
 
-      toast({
-        title: "Nachricht erfolgreich gesendet!",
-        description: "Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
-      });
+      setDialogType("success");
+      setDialogOpen(true);
       form.reset();
     } catch (error) {
-      toast({
-        title: "Fehler beim Senden",
-        description: "Bitte versuchen Sie es später erneut.",
-        variant: "destructive",
-      });
+      setDialogType("error");
+      setDialogOpen(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -142,6 +138,44 @@ export function ContactSection() {
       className="py-24 md:py-32 bg-background/50 backdrop-blur-[2px] relative overflow-hidden"
       data-testid="section-contact"
     >
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader className="text-center sm:text-center">
+            <div className="flex justify-center mb-4">
+              {dialogType === "success" ? (
+                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center">
+                  <CheckCircle className="w-8 h-8 text-white" />
+                </div>
+              ) : (
+                <div className="w-16 h-16 rounded-full bg-red-500 flex items-center justify-center">
+                  <XCircle className="w-8 h-8 text-white" />
+                </div>
+              )}
+            </div>
+            <DialogTitle className="text-xl">
+              {dialogType === "success" 
+                ? "Nachricht erfolgreich gesendet!" 
+                : "Fehler beim Senden"}
+            </DialogTitle>
+            <DialogDescription className="text-center">
+              {dialogType === "success"
+                ? "Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+                : "Bitte versuchen Sie es später erneut."}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex justify-center mt-4">
+            <Button 
+              onClick={() => setDialogOpen(false)}
+              className={dialogType === "success" ? "btn-primary-gradient px-8" : "px-8"}
+              variant={dialogType === "error" ? "destructive" : "default"}
+              data-testid="button-dialog-close"
+            >
+              OK
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -358,59 +392,47 @@ export function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
-            className="flex flex-col gap-4"
           >
-            {contactInfo.map((info, index) => (
-              <motion.a
-                key={info.title}
-                href={info.href}
-                target={info.external ? "_blank" : undefined}
-                rel={info.external ? "noopener noreferrer" : undefined}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                whileHover={{ scale: 1.02, y: -2 }}
-                className={`group relative p-6 rounded-2xl ${info.bgColor} border border-border/30 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/10`}
-                data-testid={`link-contact-${info.title.toLowerCase()}`}
-              >
-                <div className={`absolute inset-0 bg-gradient-to-r ${info.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-                
-                <div className="relative flex items-start gap-4">
-                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${info.color} flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <info.icon className="w-6 h-6 text-white" />
-                  </div>
-                  
-                  <div className="flex-1 min-w-0">
-                    <h4 className="text-lg font-bold text-foreground mb-1">{info.title}</h4>
-                    <p className="text-sm text-muted-foreground mb-2 leading-relaxed">
-                      {info.description}
-                    </p>
-                    <p className={`font-semibold bg-gradient-to-r ${info.color} bg-clip-text text-transparent group-hover:underline`}>
-                      {info.value}
-                    </p>
-                  </div>
-                </div>
-              </motion.a>
-            ))}
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.6 }}
-              className="p-6 rounded-2xl bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-border/30 backdrop-blur-sm"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center">
-                  <Clock className="w-5 h-5 text-white" />
-                </div>
-                <h4 className="font-bold text-foreground">Schnelle Antwort garantiert</h4>
+            <Card className="p-8 glass-card glow-border h-full" data-testid="card-contact-info">
+              <h3 className="text-xl font-bold text-foreground mb-6">Kontaktdaten</h3>
+              <div className="space-y-6">
+                {contactInfo.map((info, index) => (
+                  <motion.a
+                    key={info.title}
+                    href={info.href}
+                    target={info.external ? "_blank" : undefined}
+                    rel={info.external ? "noopener noreferrer" : undefined}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
+                    className="flex items-start gap-4 group p-4 rounded-xl hover:bg-muted/50 transition-colors duration-200"
+                    data-testid={`link-contact-${info.title.toLowerCase()}`}
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-200">
+                      <info.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-semibold text-foreground mb-1">{info.title}</h4>
+                      <p className="text-sm text-muted-foreground mb-1 leading-relaxed">
+                        {info.description}
+                      </p>
+                      <p className="font-medium gradient-text group-hover:underline">
+                        {info.value}
+                      </p>
+                    </div>
+                  </motion.a>
+                ))}
               </div>
-              <p className="text-sm text-muted-foreground">
-                Wir melden uns innerhalb von 24 Stunden bei Ihnen – meistens sogar schneller!
-              </p>
-            </motion.div>
+              
+              <div className="mt-8 p-4 rounded-xl bg-muted/30 border border-border/50">
+                <p className="text-sm text-muted-foreground text-center">
+                  <span className="font-semibold text-foreground">Schnelle Antwort garantiert</span>
+                  <br />
+                  Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+                </p>
+              </div>
+            </Card>
           </motion.div>
         </div>
       </div>
