@@ -89,6 +89,7 @@ export function ServicesSection() {
                   {product.description}
                 </p>
                 <Button
+                  size="sm"
                   className="mt-4 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white border-transparent"
                   onClick={scrollToContact}
                   data-testid={`button-product-${product.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
