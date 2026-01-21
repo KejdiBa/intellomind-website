@@ -396,7 +396,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
-            className="flex flex-col gap-4 max-w-sm ml-auto"
+            className="flex flex-col gap-4 max-w-sm"
           >
             {contactInfo.map((info, index) => (
               <motion.a
