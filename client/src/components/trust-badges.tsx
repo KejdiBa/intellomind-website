@@ -31,7 +31,7 @@ const badges = [
 export function TrustBadges() {
   return (
     <motion.div
-      className="flex flex-wrap justify-center gap-4 md:gap-6"
+      className="flex flex-wrap justify-center gap-4 md:gap-6 pt-[30px] pb-[30px]"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6, duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
