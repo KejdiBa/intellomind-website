@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import logoImage from "@assets/Logo_IntelloMind_1767046191762.jpg";
+import logoImage from "@assets/Logo_IntelloMind_gradient.png";
 import {
   MessageSquare,
   Mail,

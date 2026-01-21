@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import logoImage from "@assets/Logo_IntelloMind_1767046191762.jpg";
+import logoImage from "@assets/Logo_IntelloMind_gradient.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [

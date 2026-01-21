@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import logoImage from "@assets/Logo_IntelloMind_1767046191762.jpg";
+import logoImage from "@assets/Logo_IntelloMind_gradient.png";
 
 const footerLinks = {
   services: [
