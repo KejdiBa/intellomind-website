@@ -440,6 +440,8 @@ export function StickyPhoneSection() {
                     currentStep={currentStep}
                     screens={screens}
                     isMobile={isMobile}
+                    onSwipeLeft={nextStep}
+                    onSwipeRight={prevStep}
                   />
                 </div>
               </div>
@@ -597,6 +599,8 @@ export function StickyPhoneSection() {
                 currentStep={currentStep}
                 screens={screens}
                 isMobile={isMobile}
+                onSwipeLeft={nextStep}
+                onSwipeRight={prevStep}
               />
             </div>
           </div>
@@ -610,15 +614,54 @@ interface PhoneDeviceProps {
   currentStep: number;
   screens: React.ComponentType[];
   isMobile: boolean;
+  onSwipeLeft?: () => void;
+  onSwipeRight?: () => void;
 }
 
 function PhoneDevice({
   currentStep,
   screens,
   isMobile,
+  onSwipeLeft,
+  onSwipeRight,
 }: PhoneDeviceProps) {
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (touchStart === null || touchEnd === null) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe && onSwipeLeft) {
+      onSwipeLeft();
+    }
+    if (isRightSwipe && onSwipeRight) {
+      onSwipeRight();
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   return (
-    <div className="relative" style={{ perspective: "1000px" }}>
+    <div 
+      className="relative cursor-grab active:cursor-grabbing" 
+      style={{ perspective: "1000px" }}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       <div className="absolute inset-0 -z-10">
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[500px] rounded-[60px]"
