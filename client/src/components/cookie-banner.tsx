@@ -274,7 +274,7 @@ export function CookieBanner({ forceOpen = false, onClose }: CookieBannerProps) 
           data-testid="banner-cookie"
         >
           <div className="max-w-6xl mx-auto">
-            <Card className="p-4 md:p-5 glass-card border border-border/50">
+            <Card className="p-4 md:p-5 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-border/30 shadow-lg">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
                 <div className="flex items-start gap-3 flex-1">
                   <div className="w-10 h-10 rounded-xl icon-bubble-gradient flex items-center justify-center flex-shrink-0">

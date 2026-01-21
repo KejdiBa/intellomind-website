@@ -408,14 +408,14 @@ export function ContactSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
-                className="group block p-6 rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-md hover:border-border transition-all duration-200"
+                className="group block p-4 rounded-xl bg-card border border-border/50 shadow-sm hover:shadow-md hover:border-border transition-all duration-200"
                 data-testid={`link-contact-${info.title.toLowerCase()}`}
               >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-200">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform duration-200">
                   <info.icon className="w-5 h-5 text-white" />
                 </div>
-                <h4 className="font-bold text-foreground text-lg mb-2">{info.title}</h4>
-                <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
+                <h4 className="font-bold text-foreground text-base mb-1">{info.title}</h4>
+                <p className="text-xs text-muted-foreground mb-2 leading-relaxed">
                   {info.description}
                 </p>
                 <p className="font-semibold text-foreground group-hover:underline transition-all">
