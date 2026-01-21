@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Phone, MessageSquare, Mail, ArrowRight } from "lucide-react";
+import { Phone, MessageSquare, Mail, ArrowRight, Workflow } from "lucide-react";
 
 const products = [
   {
@@ -24,6 +24,13 @@ const products = [
     subtitle: "Automatisierte E-Mail-Bearbeitung und Kundenservice",
     description:
       "Sekundenschnelle Antworten auf E-Mails. Intelligente E-Mail-Bearbeitung, die Ihren Kundenservice revolutioniert und Zeit spart.",
+  },
+  {
+    icon: Workflow,
+    title: "KI-Workflow-Automation",
+    subtitle: "Integrierte KI-Workflows für Ihre Systeme",
+    description:
+      "End-to-End-Automatisierung Ihrer Geschäftsprozesse – intelligent, effizient und nahtlos integriert. Unsere KI-Workflow-Automation verbindet Telefon, Chat, E-Mail und Ihre bestehenden Systeme zu durchgängigen, automatisierten Abläufen. So reduzieren Sie manuelle Aufwände, beschleunigen Prozesse und schaffen maximale Effizienz.",
   },
 ];
 
@@ -60,7 +67,7 @@ export function ServicesSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {products.map((product, index) => (
             <motion.div
               key={product.title}
