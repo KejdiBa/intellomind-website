@@ -90,7 +90,7 @@ export function ServicesSection() {
                 </p>
                 <Button
                   variant="ghost"
-                  className="mt-4 w-fit p-0 text-purple-400 hover:text-purple-300"
+                  className="mt-4 w-fit p-0 text-[#0f0e0f] hover:text-purple-300"
                   onClick={scrollToContact}
                   data-testid={`button-product-${product.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
                 >
