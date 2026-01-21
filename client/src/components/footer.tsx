@@ -68,7 +68,7 @@ export function Footer({ onOpenCookieSettings }: FooterProps) {
                       e.preventDefault();
                       scrollToSection(link.href);
                     }}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    className="text-muted-foreground hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-purple-600 hover:bg-clip-text transition-colors text-sm"
                     data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                   >
                     {link.label}
@@ -89,7 +89,7 @@ export function Footer({ onOpenCookieSettings }: FooterProps) {
                       e.preventDefault();
                       scrollToSection(link.href);
                     }}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    className="text-muted-foreground hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-purple-600 hover:bg-clip-text transition-colors text-sm"
                     data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                   >
                     {link.label}
@@ -107,7 +107,7 @@ export function Footer({ onOpenCookieSettings }: FooterProps) {
                   {link.isCookieSettings ? (
                     <button
                       onClick={onOpenCookieSettings}
-                      className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                      className="text-muted-foreground hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-purple-600 hover:bg-clip-text transition-colors text-sm"
                       data-testid="button-cookie-settings"
                     >
                       {link.label}
@@ -115,7 +115,7 @@ export function Footer({ onOpenCookieSettings }: FooterProps) {
                   ) : (
                     <a
                       href={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                      className="text-muted-foreground hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-purple-600 hover:bg-clip-text transition-colors text-sm"
                       data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                     >
                       {link.label}

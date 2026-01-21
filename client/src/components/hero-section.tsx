@@ -28,7 +28,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
         >
           <h1
-            className="sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight text-[60px]"
+            className="font-bold mb-6 tracking-tight text-[62px]"
             data-testid="text-hero-title"
           >
             <span className="text-foreground">Intelligenz neu gedacht</span>
@@ -38,7 +38,7 @@ export function HeroSection() {
           </h1>
 
           <p
-            className="md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-[18px]"
+            className="text-muted-foreground max-w-2xl mx-auto mb-10 text-[17px]"
             data-testid="text-hero-subtitle"
           >
             Automatisieren Sie Ihre Kommunikation mit smarten KI-Lösungen.
