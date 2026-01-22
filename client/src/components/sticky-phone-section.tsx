@@ -433,21 +433,19 @@ export function StickyPhoneSection() {
       <div className="max-w-6xl mx-auto px-6">
         {isMobile ? (
           <div className="relative">
-            <div className="sticky top-16 z-20 pt-2 pb-2">
+            <div className="pt-2 pb-4">
               <div className="flex justify-center">
-                <div className="transform scale-[0.75] origin-center -my-12">
-                  <PhoneDevice
-                    currentStep={currentStep}
-                    screens={screens}
-                    isMobile={isMobile}
-                    onSwipeLeft={nextStep}
-                    onSwipeRight={prevStep}
-                  />
-                </div>
+                <PhoneDevice
+                  currentStep={currentStep}
+                  screens={screens}
+                  isMobile={isMobile}
+                  onSwipeLeft={nextStep}
+                  onSwipeRight={prevStep}
+                />
               </div>
             </div>
             
-            <div className="space-y-3 relative z-10 bg-background/95 backdrop-blur-sm rounded-t-3xl pt-6 pb-4 -mt-4 px-4">
+            <div className="space-y-3 relative z-10 pt-6 pb-4 px-4">
               <div className="flex items-center justify-center gap-3 mb-4">
                 {steps.map((_, index) => (
                   <button
@@ -491,7 +489,7 @@ export function StickyPhoneSection() {
                   size="icon"
                   onClick={prevStep}
                   disabled={currentStep === 0}
-                  className="rounded-full w-10 h-10 border-slate-300 dark:border-slate-600 disabled:opacity-30"
+                  className="rounded-full border-slate-300 dark:border-slate-600 disabled:opacity-30"
                   data-testid="button-prev-step"
                 >
                   <ChevronLeft className="w-5 h-5" />
@@ -501,7 +499,7 @@ export function StickyPhoneSection() {
                   size="icon"
                   onClick={nextStep}
                   disabled={currentStep === steps.length - 1}
-                  className="rounded-full w-10 h-10 border-slate-300 dark:border-slate-600 disabled:opacity-30"
+                  className="rounded-full border-slate-300 dark:border-slate-600 disabled:opacity-30"
                   data-testid="button-next-step"
                 >
                   <ChevronRight className="w-5 h-5" />
@@ -563,7 +561,7 @@ export function StickyPhoneSection() {
                       size="icon"
                       onClick={prevStep}
                       disabled={currentStep === 0}
-                      className="rounded-full w-10 h-10 border-slate-300 dark:border-slate-600 disabled:opacity-30"
+                      className="rounded-full border-slate-300 dark:border-slate-600 disabled:opacity-30"
                       data-testid="button-prev-step"
                     >
                       <ChevronLeft className="w-5 h-5" />
@@ -573,7 +571,7 @@ export function StickyPhoneSection() {
                       size="icon"
                       onClick={nextStep}
                       disabled={currentStep === steps.length - 1}
-                      className="rounded-full w-10 h-10 border-slate-300 dark:border-slate-600 disabled:opacity-30"
+                      className="rounded-full border-slate-300 dark:border-slate-600 disabled:opacity-30"
                       data-testid="button-next-step"
                     >
                       <ChevronRight className="w-5 h-5" />
