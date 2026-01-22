@@ -58,7 +58,7 @@ export function ChatbotButton() {
 
     try {
       // Direkt n8n Webhook aufrufen (für statisches Hosting auf IONOS)
-      const webhookUrl = "https://n8n.srv1101287.hstgr.cloud/webhook/4c92f075-9f94-4865-ae26-beb0f9396ff0";
+      const webhookUrl = "https://n8n.srv1101287.hstgr.cloud/webhook/956a5c9a-faa7-4851-877c-a6834a54701a";
       
       const response = await fetch(webhookUrl, {
         method: "POST",
