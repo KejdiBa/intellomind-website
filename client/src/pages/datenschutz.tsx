@@ -365,11 +365,7 @@ export default function Datenschutz() {
                   Rechtsansprüchen oder zum Schutz der Rechte einer anderen natürlichen oder
                   juristischen Person erforderlich ist.
                 </p>
-                <p>
-                  Im Rahmen dieser Datenschutzerklärung informieren wir ggf. zu der Löschung sowie
-                  zu der Aufbewahrung von Daten, die speziell für die jeweiligen
-                  Verarbeitungsprozesses gelten.
-                </p>
+                <p>Im Rahmen dieser Datenschutzerklärung informieren wir ggf. zu der Löschung sowie zu der Aufbewahrung von Daten, die speziell für die jeweiligen Verarbeitungsprozesse gelten.</p>
 
                 <h3 className={subheading}>2.8 Speicherung von und Zugriff auf Daten auf dem Endgerät des Nutzers</h3>
                 <p>
