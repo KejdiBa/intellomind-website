@@ -54,9 +54,7 @@ export default function DatenschutzWebapp() {
 
           <div className="mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                Datenschutzerklärung
-              </span>
+              <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">Datenschutzerklärung - Webapp</span>
             </h1>
             <p className="text-muted-foreground text-base">
               für die Inhalte und Funktionen
