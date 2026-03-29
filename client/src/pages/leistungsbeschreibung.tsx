@@ -58,21 +58,32 @@ export default function Leistungsbeschreibung() {
             <section className={card} data-testid="section-leistungsbeschreibung-toc">
               <h2 className={gradientHeading}>Inhaltsverzeichnis</h2>
               <ol className="mt-4 list-decimal list-outside ml-5 space-y-1 text-sm text-foreground/80">
-                <li>Gegenstand der Leistungen (Scope of Services)</li>
-                <li>Telefonassistenten über Drittanbieter (Fonio AI)</li>
-                <li>Individuelle Projektleistungen</li>
-                <li>Technische Bereitstellung</li>
-                <li>Verfügbarkeit und Performance</li>
-                <li>Datensicherheit und Hosting</li>
-                <li>Support und Onboarding</li>
-                <li>Leistungsgrenzen und Haftungsausschlüsse</li>
-                <li>Mitwirkungspflichten des Kunden</li>
-                <li>Weiterentwicklung der Plattform</li>
+                {[
+                  ["#lb-1", "Gegenstand der Leistungen (Scope of Services)"],
+                  ["#lb-2", "Telefonassistenten über Drittanbieter (Fonio AI)"],
+                  ["#lb-3", "Individuelle Projektleistungen"],
+                  ["#lb-4", "Technische Bereitstellung"],
+                  ["#lb-5", "Verfügbarkeit und Performance"],
+                  ["#lb-6", "Datensicherheit und Hosting"],
+                  ["#lb-7", "Support und Onboarding"],
+                  ["#lb-8", "Leistungsgrenzen und Haftungsausschlüsse"],
+                  ["#lb-9", "Mitwirkungspflichten des Kunden"],
+                  ["#lb-10", "Weiterentwicklung der Plattform"],
+                ].map(([href, label]) => (
+                  <li key={href}>
+                    <a
+                      href={href}
+                      className="hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-purple-600 hover:bg-clip-text transition-colors"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
               </ol>
             </section>
 
             {/* 1. Gegenstand der Leistungen */}
-            <section className={card} data-testid="section-leistungsbeschreibung-1">
+            <section id="lb-1" className={card} data-testid="section-leistungsbeschreibung-1">
               <h2 className={gradientHeading}>1. Gegenstand der Leistungen (Scope of Services)</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <p>
@@ -133,7 +144,7 @@ export default function Leistungsbeschreibung() {
             </section>
 
             {/* 2. Telefonassistenten über Drittanbieter */}
-            <section className={card} data-testid="section-leistungsbeschreibung-2">
+            <section id="lb-2" className={card} data-testid="section-leistungsbeschreibung-2">
               <h2 className={gradientHeading}>2. Telefonassistenten über Drittanbieter (Fonio AI)</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <p>
@@ -170,7 +181,7 @@ export default function Leistungsbeschreibung() {
             </section>
 
             {/* 3. Individuelle Projektleistungen */}
-            <section className={card} data-testid="section-leistungsbeschreibung-3">
+            <section id="lb-3" className={card} data-testid="section-leistungsbeschreibung-3">
               <h2 className={gradientHeading}>3. Individuelle Projektleistungen</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <p>
@@ -196,7 +207,7 @@ export default function Leistungsbeschreibung() {
             </section>
 
             {/* 4. Technische Bereitstellung */}
-            <section className={card} data-testid="section-leistungsbeschreibung-4">
+            <section id="lb-4" className={card} data-testid="section-leistungsbeschreibung-4">
               <h2 className={gradientHeading}>4. Technische Bereitstellung</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <p>Die Software wird als cloudbasierter Dienst bereitgestellt.</p>
@@ -225,7 +236,7 @@ export default function Leistungsbeschreibung() {
             </section>
 
             {/* 5. Verfügbarkeit und Performance */}
-            <section className={card} data-testid="section-leistungsbeschreibung-5">
+            <section id="lb-5" className={card} data-testid="section-leistungsbeschreibung-5">
               <h2 className={gradientHeading}>5. Verfügbarkeit und Performance</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <p>IntelloMind strebt eine hohe Zuverlässigkeit der Plattform an.</p>
@@ -256,7 +267,7 @@ export default function Leistungsbeschreibung() {
             </section>
 
             {/* 6. Datensicherheit und Hosting */}
-            <section className={card} data-testid="section-leistungsbeschreibung-6">
+            <section id="lb-6" className={card} data-testid="section-leistungsbeschreibung-6">
               <h2 className={gradientHeading}>6. Datensicherheit und Hosting</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <p>Der Schutz der Kundendaten hat hohe Priorität.</p>
@@ -285,7 +296,7 @@ export default function Leistungsbeschreibung() {
             </section>
 
             {/* 7. Support und Onboarding */}
-            <section className={card} data-testid="section-leistungsbeschreibung-7">
+            <section id="lb-7" className={card} data-testid="section-leistungsbeschreibung-7">
               <h2 className={gradientHeading}>7. Support und Onboarding</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <p>IntelloMind unterstützt Kunden bei der Nutzung der Plattform.</p>
@@ -316,7 +327,7 @@ export default function Leistungsbeschreibung() {
             </section>
 
             {/* 8. Leistungsgrenzen und Haftungsausschlüsse */}
-            <section className={card} data-testid="section-leistungsbeschreibung-8">
+            <section id="lb-8" className={card} data-testid="section-leistungsbeschreibung-8">
               <h2 className={gradientHeading}>8. Leistungsgrenzen und Haftungsausschlüsse</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <h3 className={subheading}>KI-generierte Inhalte</h3>
@@ -350,7 +361,7 @@ export default function Leistungsbeschreibung() {
             </section>
 
             {/* 9. Mitwirkungspflichten des Kunden */}
-            <section className={card} data-testid="section-leistungsbeschreibung-9">
+            <section id="lb-9" className={card} data-testid="section-leistungsbeschreibung-9">
               <h2 className={gradientHeading}>9. Mitwirkungspflichten des Kunden</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <p>Der Kunde ist verpflichtet,</p>
@@ -369,7 +380,7 @@ export default function Leistungsbeschreibung() {
             </section>
 
             {/* 10. Weiterentwicklung der Plattform */}
-            <section className={card} data-testid="section-leistungsbeschreibung-10">
+            <section id="lb-10" className={card} data-testid="section-leistungsbeschreibung-10">
               <h2 className={gradientHeading}>10. Weiterentwicklung der Plattform</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <p>IntelloMind entwickelt die Plattform kontinuierlich weiter.</p>
