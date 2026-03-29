@@ -41,7 +41,7 @@ export default function Datenschutz() {
     <div className="min-h-screen bg-background relative">
       <AnimatedBackground />
       <Navigation isSubPage />
-      <main className="relative z-10 pt-32 pb-24 px-6">
+      <main className="relative z-10 pt-32 pb-24 px-6 text-[12px]">
         <div className="max-w-3xl mx-auto">
           <Link
             href="/"
