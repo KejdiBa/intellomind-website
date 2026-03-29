@@ -745,9 +745,14 @@ export default function Datenschutz() {
                   Verbindungsdaten und ggf. Vertragsdaten. Wir leiten diese Daten im Einzelfall
                   weiter an mit uns verbundene Unternehmen, oder Dritte, die diese Daten zur
                   Abwicklung von Bestellungen und Buchungen vereinbarungsgemäß verarbeiten dürfen.
-                  Die Rechtsgrundlage der Verarbeitung basiert auf Art. 6 Abs. 1 lit. b DSGVO, da
-                  wir sie zur Beantwortung einer Anfrage und damit zur Erfüllung des Vertrages
-                  hierüber verarbeiten.
+                  Die Rechtsgrundlage der Verarbeitung richtet sich nach dem Zweck der
+                  Kontaktaufnahme. Mit einer Anfrage im Kontaktformular bzw. durch die
+                  Kontaktaufnahme per E-Mail erklären Nutzer, dass sie Antworten oder Informationen
+                  zu bestimmten Themen wünschst. Zu diesem Zweck hinterlassen Nutzer auch ihre
+                  Daten. Wir beantworten eine Anfrage wunschgemäß und verarbeiten hierzu Daten
+                  unserer Nutzer. Daher basiert die Berechtigung zur Verarbeitung von Daten auf
+                  Art. 6 Abs. 1 lit. b DSGVO, da wir sie zur Beantwortung einer Anfrage und damit
+                  zur Erfüllung des Vertrages hierüber verarbeiten.
                 </p>
 
                 <h3 className={subheading}>6.2 Feedbackformular</h3>
@@ -756,28 +761,43 @@ export default function Datenschutz() {
                   der Vergabe von Feedback zur Umsetzung des Feedbacks wie bspw. zur Verbesserung
                   unserer Services, zur Verfügung stellen. Verarbeitete Datenkategorien sind hierbei
                   Stammdaten, Kontaktdaten, Inhaltsdaten, ggf. Nutzungsdaten, Verbindungsdaten und
-                  ggf. Vertragsdaten. Die Rechtsgrundlage der Verarbeitung basiert auf Art. 6
-                  Abs. 1 lit. b DSGVO zur Erfüllung des Vertrages.
+                  ggf. Vertragsdaten. Wir leiten diese Daten im Einzelfall weiter an mit uns
+                  verbundene Unternehmen, oder Dritte, die wir Verbesserung unserer Services
+                  einsetzen. Die Rechtsgrundlage der Verarbeitung richtet sich nach dem Zweck einer
+                  Feedback Vergabe. Mit einer Vergabe des Feedbacks erklären Nutzer, dass sie bspw.
+                  eine Verbesserung von Funktionen unserer Services wünschen. Diese Informationen
+                  nehmen wir auf und verarbeiten hierzu Daten unserer Nutzer. Daher basiert die
+                  Berechtigung zur Verarbeitung von Daten auf Art. 6 Abs. 1 lit. b DSGVO zur
+                  Erfüllung des Vertrages.
                 </p>
 
                 <h3 className={subheading}>6.3 Terminplanung und Terminbuchung</h3>
                 <p>
                   Wir nutzen in unseren Services die unten genannten Terminplanungs-Tools, um
                   Termine mit Nutzern zu vereinbaren. Über die Terminplanungs-Tools mit ihren
-                  integrierten Online-Kalendern können Nutzer bequem einen Termin für ein Gespräch
+                  integrierten Online-Kalendern können Nutzer bequem einen Termin für ein Gespräche
                   anfragen und auswählen. Wenn Nutzer in unseren Services den entsprechenden Button
-                  klicken bzw. wenn Nutzer über einen von uns übermittelten Link einen Termin
-                  vereinbaren möchten, werden Nutzer automatisch mit unserem Terminaccount
-                  verbunden. Nach der Wahl des Termins, der Bestätigung und der Eintragung von
-                  Kontaktdaten und Anliegen erhalten Nutzer eine E-Mail mit der Bestätigung des
-                  Termins. Sollten die Terminplanungs-Tools Daten in ein Drittland transferieren,
-                  so geschieht dies nur auf Basis eines geschlossenen Auftragsverarbeitungsvertrags,
-                  gemäß vereinbarter Standardvertragsklauseln und insbesondere auf Basis des
-                  EU-US Data Privacy Framework (DPF). Angaben aus dem Terminplanungs-Tool-Formular
+                  klicken bzw. wenn Nutzer über einen von uns übermittelten Link (etwa in einer
+                  E-Mail) einen Termin vereinbaren möchten, werden Nutzer automatisch mit unserem
+                  Terminaccount den von uns integrierten Terminplanungs-Tools verbunden. Nach der
+                  Wahl des Termins, der Bestätigung und der Eintragung von Kontaktdaten und
+                  Anliegen erhalten Nutzer eine Email mit der Bestätigung des Termins. Sollten die
+                  Terminplanungs-Tools diese Daten in ein Drittland transferieren (bspw. die USA),
+                  so geschieht dies nur im Einzelfall, auf Basis eines mit ihnen geschlossenen
+                  Auftragsverarbeitungsvertrags und gemäß mit ihnen vereinbarter Standard
+                  Vertragsklauseln und sonstiger von der DSGVO zugelassenen Sicherheitsmaßnahmen,
+                  die die Sicherheit der Verarbeitung von personenbezogenen Daten mit einem
+                  Schutzniveau, der identisch zu dem in der EU ist, gewährleisten, insbesondere auf
+                  Basis des EU-US Data Privacy Framework (DPF). Angaben aus dem
+                  Terminplanungs-Tool-Formular inklusive der von Nutzern dort angegebenen Daten
                   werden zwecks Bearbeitung einer Anfrage oder zwecks Bearbeitung eines
-                  entsprechenden Vertragsverhältnisses gespeichert. Sollte eine Anfrage beantwortet
-                  sein oder der Zweck entfallen, werden wir Daten unserer Nutzer, vorbehaltlich
-                  vertraglicher oder gesetzlicher Aufbewahrungsmöglichkeiten, zeitnah löschen.
+                  entsprechenden Vertragsverhältnisses bei uns gespeichert. Sollte eine Anfrage
+                  beantwortet sein oder der Zweck entfallen (bspw. das Vertragsverhältnis enden),
+                  werden wir Daten unserer Nutzer, vorbehaltlich vertraglicher oder gesetzlicher
+                  Aufbewahrungsmöglichkeiten, zeitnah löschen. Möchten Nutzer, dass ihre Daten
+                  vorzeitig gelöscht werden, können Nutzer uns zur Löschung auffordern bzw. eine
+                  Einwilligung zur Speicherung widerrufen. Zwingende gesetzliche Bestimmungen –
+                  insbesondere Aufbewahrungsfristen – bleiben unberührt.
                 </p>
                 <p className="font-medium text-foreground">Anbieter der von uns eingesetzten Terminplanungs-Tools:</p>
                 <div className="space-y-0.5 pl-4 border-l-2 border-border/50">
@@ -802,19 +822,28 @@ export default function Datenschutz() {
                   Online-Meetings, Videokonferenzen und/oder Webinare durchzuführen (nachfolgend:
                   „Online-Meetings"). Der Umfang der Datenverarbeitung hängt hierbei davon ab, zu
                   welchem konkreten Zweck wir das Online-Meeting veranstalten und welche Angaben zu
-                  Daten Nutzer vor bzw. bei der Teilnahme machen. Inbetrachtkommende Datenkategorien
+                  Daten Nutzer vor bzw. bei der Teilnahme an einem „Online-Meeting“ machen. Inbetrachtkommende Datenkategorien
                   sind hierbei Stammdaten, Kontaktdaten, Inhaltsdaten, ggf. Nutzungsdaten,
                   Verbindungsdaten und ggf. Vertragsdaten. Empfänger der Daten sind hierbei die von
                   uns eingebundenen und unten genannten Anbieter von Online Kommunikations-Tools.
                   Sollten diese Anbieter Daten in ein Drittland transferieren (bspw. die USA), so
                   geschieht dies nur im Einzelfall, auf Basis eines mit ihnen geschlossenen
-                  Auftragsverarbeitungsvertrags und gemäß mit ihnen vereinbarter
-                  Standardvertragsklauseln, insbesondere auf Basis des EU-US Data Privacy Framework
-                  (DPF). Unsere Rechtsgrundlage zur Nutzung von Online Kommunikations-Tools
+                  Auftragsverarbeitungsvertrags und gemäß mit ihnen vereinbarter Standard
+                  Vertragsklauseln und sonstiger von der DSGVO zugelassenen Sicherheitsmaßnahmen,
+                  die die Sicherheit der Verarbeitung der personenbezogenen Daten unserer Nutzer
+                  mit einem Schutzniveau, der identisch zu dem in der EU ist, gewährleisten, und
+                  sofern ein Datentransfer in die USA erfolgt, insbesondere auf Basis des EU-US
+                  Data Privacy Framework (DPF). Unsere Rechtsgrundlage zur Nutzung von Online
+                  Kommunikations-Tools
                   resultiert aus Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung), sofern das
                   Online-Meeting aufgrund von Vertragsverhandlungen bzw. zur Durchführung unserer
-                  vertraglichen Pflichten stattfindet. Sollten wir eine Einwilligung einholen,
-                  liegt unsere Rechtsgrundlage in Art. 6 Abs. 1 lit. a DSGVO.
+                  vertraglichen Pflichten stattfindet. Sollten wir eine Einwilligung für die
+                  Nutzung der Online Kommunikations-Tools einholen, liegt unsere Rechtsgrundlage
+                  in Art. 6 Abs. 1 lit. a DSGVO. Mit den von uns eingebundenen Online
+                  Kommunikations-Tools möchten wir die Kommunikation zwischen uns vollständig
+                  digitalisieren. Online Kommunikations-Tools sollen es ermöglichen, uns im
+                  Online-Meeting einen persönlichen Eindruck voneinander zu verschaffen, der u.a.
+                  für eine vertrauensvolle Vertragsbeziehung unerlässlich ist.
                 </p>
                 <p className="font-medium text-foreground">Anbieter der von uns eingesetzten Online Kommunikations-Tools:</p>
                 <div className="space-y-0.5 pl-4 border-l-2 border-border/50">
@@ -841,14 +870,28 @@ export default function Datenschutz() {
                   auch ein KI-Mail-Assistenten passgenau auf die Bedürfnisse der Nutzer anzubieten
                   und damit mit einer state of the art Qualität und einer individuellen
                   Zielgenauigkeit zu erbringen, die für unsere Beziehung zueinander besonders
-                  wertvoll ist. Verarbeitete Datenkategorien sind hierbei Stammdaten, Kontaktdaten,
+                  wertvoll ist. Mit den KI-Diensten können wir Nutzern im Rahmen der
+                  Datenverarbeitung zur Erbringung unserer Services ein intelligentes System
+                  bereitstellen, das sämtliche Interaktionen in unseren Services, in die die
+                  KI-Dienste eingebunden sind, auf die effizienteste und für Nutzer nützlichste
+                  Art und Weise verarbeitet. Welche Services dies genau sind, in die wir
+                  KI-Dienste integriert haben, wird Nutzern aus der Nutzung der Services selbst
+                  bzw. aus der entsprechenden Kennzeichnung durch uns deutlich. Der Zweck der
+                  Datenverarbeitung durch die KI-Dienste ist damit die Bereitstellung eines solch
+                  fortschrittlichen Systems, das es uns ermöglicht, stets die bestmöglichen
+                  Leistungen für Nutzer zu erbringen. Verarbeitete Datenkategorien sind hierbei
+                  Stammdaten, Kontaktdaten,
                   Inhaltsdaten, ggf. Nutzungsdaten, Verbindungsdaten und ggf. Vertragsdaten.
                   Empfänger der Daten sind hierbei die von uns eingebundenen und unten genannten
                   Anbieter von KI-Diensten. Sollten diese KI-Dienste Daten in ein Drittland
                   transferieren (bspw. die USA), so geschieht dies auf Basis eines mit ihnen
                   geschlossenen Auftragsverarbeitungsvertrages und gemäß mit ihnen vereinbarter
-                  Standardvertragsklauseln, insbesondere auf Basis des EU-US Data Privacy Framework
-                  (DPF). Unsere Rechtsgrundlage zur Nutzung von KI-Diensten resultiert aus
+                  Standard Vertragsklauseln und sonstiger von der DSGVO zugelassenen
+                  Sicherheitsmaßnahmen, die die Sicherheit der Verarbeitung der personenbezogenen
+                  Daten unserer Nutzer mit einem Schutzniveau, der identisch zu dem in der EU ist,
+                  gewährleisten, und sofern ein Datentransfer in die USA erfolgt, insbesondere auf
+                  Basis des EU-US Data Privacy Framework (DPF). Unsere Rechtsgrundlage zur Nutzung
+                  von KI-Diensten resultiert aus
                   Art. 6 Abs. 1 lit. b und f DSGVO.
                 </p>
                 <p className="font-medium text-foreground">Anbieter der von uns eingesetzten KI-Dienste:</p>
@@ -930,15 +973,17 @@ export default function Datenschutz() {
                   Die von uns in Anspruch genommenen Leistungen der Hoster kann ebenfalls den
                   Versand, den Empfang sowie die Speicherung von E-Mails umfassen. Zu diesen
                   Zwecken werden die Adressen der Empfänger von E-Mails sowie die Absender als auch
-                  weitere Informationen betreffend den E-Mailversand sowie die Inhalte der
+                  weitere Informationen betreffend den E-Mailversand (z.B. die beteiligten
+                  Provider) sowie die Inhalte der
                   jeweiligen E-Mails verarbeitet. Die vorgenannten Daten werden u.a. zu Zwecken der
                   Erkennung von SPAM verarbeitet. E-Mails werden im Internet grundsätzlich nicht
                   verschlüsselt versendet. Im Regelfall werden E-Mails zwar auf dem Transportweg
                   verschlüsselt, aber (sofern keine Ende-zu-Ende-Verschlüsselung erfolgt) nicht auf
                   den Servern, von denen sie abgesendet und empfangen werden. Wir können daher für
                   den Übertragungsweg der E-Mails zwischen dem Absender und dem Empfang auf unserem
-                  Server keine Verantwortung übernehmen. Unsere Rechtsgrundlage resultiert aus
-                  Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).
+                  Server keine Verantwortung übernehmen. Unsere Rechtsgrundlage zur Nutzung der
+                  Hostinganbieter zum Empfang und Versand von E-Mails resultiert aus Art. 6
+                  Abs. 1 lit. f DSGVO (berechtigtes Interesse).
                 </p>
 
                 <h3 className={subheading}>7.3 Erhebung von Zugriffsdaten und Logfiles</h3>
@@ -955,6 +1000,7 @@ export default function Datenschutz() {
                   z.B., um eine Überlastung der Server zu vermeiden (insbesondere im Fall von
                   missbräuchlichen Angriffen, sogenannten DDoS-Attacken) und zum anderen, um die
                   Auslastung der Server und ihre Stabilität sicherzustellen. Unsere Rechtsgrundlage
+                  zur Nutzung eines Hostinganbieters zur Erhebung von Zugriffsdaten und Logfiles
                   resultiert aus Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).
                 </p>
 
@@ -997,14 +1043,21 @@ export default function Datenschutz() {
                   Dublin 4, Irland. Sollte Google diese Daten in ein Drittland transferieren
                   (bspw. die USA), so geschieht dies nur im Einzelfall, auf Basis eines mit Google
                   geschlossenen Auftragsverarbeitungsvertrags und gemäß mit Google vereinbarter
-                  Standardvertragsklauseln, insbesondere auf Basis des EU-US Data Privacy Framework
-                  (DPF). Die Rechtsgrundlage zur Nutzung des Google Tag Manager ist eine
-                  Einwilligung (bspw. über ein Opt-In im Consent Banner), sofern Nutzer uns diese
-                  im Rahmen des Besuches in unseren Services erteilt haben, und resultiert daher
-                  aus Art. 6 Abs. 1 lit. a DSGVO. Sollten Nutzer uns die Einwilligung zur Nutzung
-                  von Google Tag Managers nicht erteilt haben (kein Opt-In im Consent Banner bzw.
-                  Widerruf einer Einwilligung), so nutzen wir den Google Tag Manager im Rahmen von
-                  Besuchen in unseren Services nicht (mehr).
+                  Standard Vertragsklauseln und sonstiger von der DSGVO zugelassenen
+                  Sicherheitsmaßnahmen, die die Sicherheit der Verarbeitung von personenbezogenen
+                  Daten mit einem Schutzniveau, der identisch zu dem in der EU ist, gewährleisten,
+                  insbesondere auf Basis des EU-US Data Privacy Framework (DPF). Die
+                  Rechtsgrundlage zur Nutzung des Google Tag Manager ist eine Einwilligung (bspw.
+                  über ein Opt-In im Consent Banner), sofern Nutzer uns diese im Rahmen des
+                  Besuches in unseren Services erteilt haben und resultiert daher aus Art. 6
+                  Abs. 1 lit. a DSGVO. Auf Basis einer Einwilligung können, sofern über den Google
+                  Tag Manager weitere Dienste eingebunden werden, durch Aktivierung des Google Tag
+                  Managers Cookies oder ähnliche (Text-)Dateien auf dem Endgerät des Nutzers
+                  gespeichert und hierdurch personenbezogene Daten ausgelesen werden. Sollten
+                  Nutzer uns die Einwilligung zur Nutzung von Google Tag Managers nicht erteilt
+                  haben (kein Opt-In im Consent Banner bzw. Widerruf einer Einwilligung), so nutzen
+                  wir den Google Tag Manager im Rahmen von Besuchen in unseren Services nicht
+                  (mehr).
                 </p>
 
                 <h3 className={subheading}>Google Search Console</h3>
@@ -1025,20 +1078,26 @@ export default function Datenschutz() {
                   vor der dauerhaften Speicherung auf deren Servern durch Kürzung anonymisiert wird.
                   Google Analytics ermöglicht es uns, nachzuvollziehen, wie unsere Services von
                   Nutzern genutzt werden und wie wir diese dementsprechend verbessern und
-                  weiterentwickeln können. Verarbeitete Daten sind Nutzungsdaten &amp;
+                  weiterentwickeln können. So zeigt Google Analytics beispielsweise, welche
+                  Inhalte von Nutzern angeklickt oder wiederholt besucht werden. Verarbeitete
+                  Daten sind Nutzungsdaten &amp;
                   Verbindungsdaten. Empfänger der Daten ist hierbei die Google Ireland Ltd., Gordon
                   House, Barrow Street Dublin 4, Irland (als gemeinsam Verantwortlicher, Art. 26
                   DSGVO). Sollte Google diese Daten in ein Drittland transferieren (bspw. die USA),
                   so geschieht dies nur im Einzelfall, auf Basis eines mit Google geschlossenen
-                  Auftragsverarbeitungsvertrags und gemäß mit Google vereinbarter
-                  Standardvertragsklauseln, insbesondere auf Basis des EU-US Data Privacy Framework
-                  (DPF). Die Rechtsgrundlage zur Nutzung von Google Analytics ist eine Einwilligung
-                  (bspw. über ein Opt-In im Consent Banner), sofern Nutzer uns diese im Rahmen des
-                  Besuches in unseren Services erteilt haben, und resultiert daher aus Art. 6
-                  Abs. 1 lit. a DSGVO. Sollten Nutzer uns die Einwilligung zur Nutzung von Google
-                  Analytics nicht erteilt haben (kein Opt-In im Consent Banner bzw. Widerruf einer
-                  Einwilligung), so nutzen wir Google Analytics im Rahmen von Besuchen in unseren
-                  Services nicht (mehr).
+                  Auftragsverarbeitungsvertrags und gemäß mit Google vereinbarter Standard
+                  Vertragsklauseln und sonstiger von der DSGVO zugelassenen Sicherheitsmaßnahmen,
+                  die die Sicherheit der Verarbeitung von personenbezogenen Daten mit einem
+                  Schutzniveau, der identisch zu dem in der EU ist, gewährleisten, insbesondere auf
+                  Basis des EU-US Data Privacy Framework (DPF). Die Rechtsgrundlage zur Nutzung
+                  von Google Analytics ist eine Einwilligung (bspw. über ein Opt-In im Consent
+                  Banner), sofern Nutzer uns diese im Rahmen des Besuches in unseren Services
+                  erteilt haben und resultiert daher aus Art. 6 Abs. 1 lit. a DSGVO. Auf Basis
+                  einer Einwilligung werden Cookies oder ähnliche (Text-)Dateien auf dem Endgerät
+                  des Nutzers gespeichert und hierdurch personenbezogene Daten ausgelesen. Sollten
+                  Nutzer uns die Einwilligung zur Nutzung von Google Analytics nicht erteilt haben
+                  (kein Opt-In im Consent Banner bzw. Widerruf einer Einwilligung), so nutzen wir
+                  Google Analytics im Rahmen von Besuchen in unseren Services nicht (mehr).
                 </p>
               </div>
             </section>
@@ -1058,18 +1117,22 @@ export default function Datenschutz() {
                   Transaktionalen Mailings durch Nutzer können technische Informationen, wie
                   Informationen zum Browser und einem System, als auch eine IP-Adresse und der
                   Zeitpunkt des Abrufs, erhoben werden. Diese Informationen werden zum technischen
-                  Nachvollziehen der Interaktion mit unseren Transaktionalen Mailings genutzt. Die
+                  Nachvollziehen der Interaktion mit unseren Transaktionalen Mailings anhand der
+                  technischen Daten oder der Zielgruppen und ihres Leseverhaltens genutzt. Die
                   Rechtsgrundlage zur Nutzung von Transaktionalen Mailings liegt in Art. 6 Abs. 1
                   lit. b DSGVO, da wir mit den Informationen in den Transaktionalen Mailings unsere
-                  vertraglichen Pflichten Nutzern gegenüber erfüllen. Sollten wir hierbei auf die
-                  Dienste von dritten Anbietern zugreifen, liegt der Rechtsgrund hierfür in
-                  Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse daran, die
+                  vertraglichen Pflichten Nutzern gegenüber erfüllen. Sollten wir hierbei hierfür
+                  auf die Dienste von dritten Anbietern zugreifen, liegt der Rechtsgrund hierfür
+                  in Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse daran, die
                   Versendung von Transaktionalen Mailings zu vereinheitlichen und gesammelt zu
-                  steuern. Sollten Anbieter Daten in ein Drittland transferieren (bspw. die USA),
-                  so geschieht dies nur im Einzelfall, auf Basis eines mit ihnen geschlossenen
-                  Auftragsverarbeitungsvertrags und gemäß mit ihnen vereinbarter
-                  Standardvertragsklauseln, insbesondere auf Basis des EU-US Data Privacy Framework
-                  (DPF).
+                  steuern. Hierbei wird das Interesse der Nutzer an einer möglichst sparsamen
+                  Verarbeitung ihrer Daten nicht über Gebühr beeinträchtigt. Sollten Anbieter
+                  Daten in ein Drittland transferieren (bspw. die USA), so geschieht dies nur im
+                  Einzelfall, auf Basis eines mit ihnen geschlossenen Auftragsverarbeitungsvertrags
+                  und gemäß mit ihnen vereinbarter Standard Vertragsklauseln und sonstiger von der
+                  DSGVO zugelassenen Sicherheitsmaßnahmen, die die Sicherheit der Verarbeitung von
+                  personenbezogenen Daten mit einem Schutzniveau, der identisch zu dem in der EU
+                  ist, gewährleisten, insbesondere auf Basis des EU-US Data Privacy Framework (DPF).
                 </p>
                 <p className="font-medium text-foreground">Anbieter der von uns eingesetzten Transaktionalen-Mail-Dienste:</p>
                 <div className="space-y-0.5 pl-4 border-l-2 border-border/50">
@@ -1106,9 +1169,11 @@ export default function Datenschutz() {
                   Rechtsgrundlage zur Verarbeitung der Daten nach der hier genannten Maßgabe
                   resultiert aus unserem berechtigten Interesse und damit aus Art. 6 Abs. 1 lit. f
                   DSGVO. Für die Umsetzung von Betroffenenrechten ist die jeweilige Social Media
-                  Plattform verantwortlich. Nutzer können ihre Rechte auch uns gegenüber geltend
-                  machen, wir werden ihre Anfrage dann umgehend an den Betreiber der Social Media
-                  Plattform weiterleiten.
+                  Plattform verantwortlich. Über Betroffenenrechte informieren wir unten bei der
+                  Nennung der jeweiligen Social Media Plattform, auf der wir ein Profil
+                  unterhalten. Nutzer können ihre Rechte auch uns gegenüber geltend machen, wir
+                  werden ihre Anfrage dann umgehend an den Betreiber der Social Media Plattform
+                  weiterleiten.
                 </p>
 
                 <h3 className={subheading}>Facebook</h3>
