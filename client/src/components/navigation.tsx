@@ -11,7 +11,11 @@ const navLinks = [
   { label: "Kontakt", href: "#contact" },
 ];
 
-export function Navigation() {
+interface NavigationProps {
+  isSubPage?: boolean;
+}
+
+export function Navigation({ isSubPage = false }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -34,6 +38,18 @@ export function Navigation() {
     setIsMobileMenuOpen(false);
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!isSubPage) {
+      e.preventDefault();
+      scrollToSection(href);
+    } else {
+      setIsMobileMenuOpen(false);
+    }
+  };
+
+  const logoHref = isSubPage ? "/" : "#home";
+  const getNavHref = (hash: string) => isSubPage ? `/${hash}` : hash;
+
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 px-4 pt-4"
@@ -42,10 +58,12 @@ export function Navigation() {
       <div className="animated-border-wrapper max-w-5xl mx-auto shadow-lg shadow-black/5">
         <nav className="px-6 py-3 flex items-center justify-between gap-4 rounded-full transition-all duration-300 bg-white">
         <a
-          href="#home"
+          href={logoHref}
           onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("#home");
+            if (!isSubPage) {
+              e.preventDefault();
+              scrollToSection("#home");
+            }
           }}
           className="flex items-center gap-3"
           data-testid="link-logo"
@@ -64,11 +82,8 @@ export function Navigation() {
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(link.href);
-                }}
+                href={getNavHref(link.href)}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
                 data-testid={`link-nav-${link.label.toLowerCase()}`}
               >
@@ -122,11 +137,8 @@ export function Navigation() {
               {navLinks.map((link) => (
                 <a
                   key={link.href}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(link.href);
-                  }}
+                  href={getNavHref(link.href)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="block text-base font-medium text-slate-600 hover:text-slate-900 py-2 transition-colors"
                   data-testid={`link-mobile-nav-${link.label.toLowerCase()}`}
                 >

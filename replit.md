@@ -94,6 +94,15 @@ shared/
 - Address: Hüingser Ring 1, 58710 Menden
 
 ## Recent Changes
+- 2026-03-29: Impressum-Seite hinzugefügt
+  - Neue Route /impressum mit vollständigem Impressum-Text (aus Pflichtangaben gemäß § 5 DDG)
+  - Styled mit glass-cards, gradient headings (cyan→blue→purple), passend zum Website-Design
+  - Navigation-Komponente um isSubPage-Prop erweitert (Links navigieren zu /#section statt smooth-scroll)
+  - Footer-Impressum-Link auf /impressum geändert (wouter Link-Komponente)
+  - client/public/.htaccess mit SPA-Rewrite-Regel für IONOS Static Hosting hinzugefügt
+  - E-Mail und Telefon als klickbare Links (mailto: / tel:)
+  - Zurück-zur-Startseite-Link am Seitenanfang
+
 - 2024-12-30: Sticky Phone Section hinzugefügt
   - Scroll-driven 2-Spalten Layout (Text links, Sticky Phone rechts)
   - 4 Steps mit Screen-Wechsel (Splash, Login, Inbox, Dashboard)

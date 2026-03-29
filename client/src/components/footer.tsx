@@ -1,5 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import logoImage from "@assets/Logo_IntelloMind_gradient.png";
+import { Link } from "wouter";
 
 const footerLinks = {
   services: [
@@ -13,7 +14,7 @@ const footerLinks = {
   ],
   legal: [
     { label: "Datenschutz", href: "#" },
-    { label: "Impressum", href: "#" },
+    { label: "Impressum", href: "/impressum", isPage: true },
     { label: "Cookie-Einstellungen", href: "#", isCookieSettings: true },
   ],
 };
@@ -112,6 +113,14 @@ export function Footer({ onOpenCookieSettings }: FooterProps) {
                     >
                       {link.label}
                     </button>
+                  ) : link.isPage ? (
+                    <Link
+                      href={link.href}
+                      className="text-muted-foreground hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-purple-600 hover:bg-clip-text transition-colors text-sm"
+                      data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+                    >
+                      {link.label}
+                    </Link>
                   ) : (
                     <a
                       href={link.href}
