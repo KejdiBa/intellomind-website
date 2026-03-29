@@ -94,6 +94,15 @@ shared/
 - Address: Hüingser Ring 1, 58710 Menden
 
 ## Recent Changes
+- 2026-03-29: Datenschutz-Seite hinzugefügt
+  - Neue Route /datenschutz mit vollständiger Datenschutzerklärung (10 Abschnitte)
+  - Identisches Design wie Impressum: glass-cards, cyan→blue→purple Gradientenüberschriften
+  - Alle 10 Abschnitte: Allgemeines, Datenverarbeitung (2.1-2.9), Betroffenenrechte (3.1-3.11), Cookies (4.1-4.4), Services, Kommunikation (6.1-6.6), Hosting (7.1-7.3), Tracking, Mailings, Social Media
+  - Klickbare E-Mail (mailto:) und Telefon (tel:) Links
+  - AnimatedBackground, Navigation (isSubPage), Footer, CookieBanner
+  - Footer um "Datenschutz Website" Link (/datenschutz) ergänzt (vor Impressum)
+  - App.tsx mit /datenschutz Route registriert
+
 - 2026-03-29: Impressum-Seite hinzugefügt
   - Neue Route /impressum mit vollständigem Impressum-Text (aus Pflichtangaben gemäß § 5 DDG)
   - Styled mit glass-cards, gradient headings (cyan→blue→purple), passend zum Website-Design
