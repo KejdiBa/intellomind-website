@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { AnimatedBackground } from "@/components/animated-background";
+import { CookieBanner } from "@/components/cookie-banner";
 import { ChevronLeft } from "lucide-react";
 import { useState } from "react";
 
@@ -180,6 +181,10 @@ export default function Impressum() {
         </div>
       </main>
       <Footer onOpenCookieSettings={() => setShowCookieSettings(true)} />
+      <CookieBanner
+        forceOpen={showCookieSettings}
+        onClose={() => setShowCookieSettings(false)}
+      />
     </div>
   );
 }
