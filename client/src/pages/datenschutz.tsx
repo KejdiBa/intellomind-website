@@ -59,7 +59,10 @@ export default function Datenschutz() {
               </span>
             </h1>
             <p className="text-muted-foreground text-base">
-              für die Inhalte und Funktionen der{" "}
+              für die Inhalte und Funktionen
+            </p>
+            <p className="text-muted-foreground text-base">
+              der{" "}
               <span className="font-medium text-foreground">https://intellomind.ai</span>{" "}
               (nachfolgend „Services") — Stand: März 2026
             </p>
