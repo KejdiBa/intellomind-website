@@ -9,6 +9,7 @@ import Home from "@/pages/home";
 import Impressum from "@/pages/impressum";
 import Datenschutz from "@/pages/datenschutz";
 import DatenschutzWebapp from "@/pages/datenschutz-webapp";
+import Leistungsbeschreibung from "@/pages/leistungsbeschreibung";
 
 function Router() {
   return (
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/impressum" component={Impressum} />
       <Route path="/datenschutz" component={Datenschutz} />
       <Route path="/datenschutz-webapp" component={DatenschutzWebapp} />
+      <Route path="/leistungsbeschreibung" component={Leistungsbeschreibung} />
       <Route component={NotFound} />
     </Switch>
   );

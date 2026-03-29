@@ -94,6 +94,14 @@ shared/
 - Address: Hüingser Ring 1, 58710 Menden
 
 ## Recent Changes
+- 2026-03-29: Leistungsbeschreibung-Seite hinzugefügt
+  - Neue Route /leistungsbeschreibung mit vollständiger Leistungsbeschreibung (Stand: 06.03.2026, 10 Abschnitte)
+  - Identisches Design wie andere Rechtstexte: glass-cards, cyan→blue→purple Gradientenüberschriften, AnimatedBackground, Navigation (isSubPage), Footer, CookieBanner
+  - Alle 10 Abschnitte: Gegenstand der Leistungen (KI-Chatbots, KI-E-Mail-Assistenten, Konfiguration über Systemprompts), Telefonassistenten/Fonio AI, Individuelle Projektleistungen, Technische Bereitstellung, Verfügbarkeit, Datensicherheit/Hosting, Support/Onboarding, Leistungsgrenzen/Haftung, Mitwirkungspflichten, Weiterentwicklung
+  - Unterüberschriften als <h3>, Bullet-Listen als <ul><li>, E-Mail als mailto:-Link
+  - Footer um "Leistungsbeschreibung" Link (/leistungsbeschreibung) ergänzt (nach "Datenschutz Webapp")
+  - App.tsx mit /leistungsbeschreibung Route registriert
+
 - 2026-03-29: Datenschutz-Webapp-Seite hinzugefügt
   - Neue Route /datenschutz-webapp mit vollständiger Datenschutzerklärung für https://app.intellomind.ai (11 Abschnitte)
   - Identisches Design wie Impressum und Datenschutz Website: glass-cards, cyan→blue→purple Gradientenüberschriften
