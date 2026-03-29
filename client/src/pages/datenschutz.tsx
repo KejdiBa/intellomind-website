@@ -203,17 +203,23 @@ export default function Datenschutz() {
                     <span className="font-medium text-foreground">Einwilligung besondere Kategorien</span> – Art. 9
                     Abs. 2 lit. a DSGVO: Eine Verarbeitung von Daten, die in besondere Kategorien
                     personenbezogener Daten fallen, wie bspw. Gesundheitsdaten, politische
-                    Meinungen etc. (siehe auch Art. 9 Abs. 1 DSGVO), erfolgt, wenn Nutzer in diese
-                    Verarbeitung aktiv eingewilligt haben.
+                    Meinungen etc. (siehe auch Art. 9 Abs. 1 DSGVO) erfolgt, wenn Nutzer in diese
+                    Verarbeitung, nach vorheriger ausreichender Information über deren Umfang und
+                    Zwecke durch uns, aktiv, also bspw. durch ein „Opt-In“, eingewilligt haben.
+                    Sollten Nutzer ihre Einwilligung widerrufen oder nicht erteilt haben, so
+                    verarbeiten wir Daten unserer Nutzer nicht (mehr) für Zwecke, bei denen wir
+                    eine Einwilligung benötigen.
                   </li>
                   <li>
                     <span className="font-medium text-foreground">Zur Vertragserfüllung</span> – Art. 6
-                    Abs. 1 lit. b DSGVO: Eine Verarbeitung von Daten erfolgt, wenn sie für die
+                    Abs. 1 lit. b: Eine Verarbeitung von Daten erfolgt, wenn sie für die
                     Erfüllung eines Vertrags zwischen uns oder zur Durchführung vorvertraglicher
-                    Maßnahmen erforderlich ist.
+                    Maßnahmen erforderlich ist. Sofern die Verarbeitung zur Vertragserfüllung nicht
+                    mehr notwendig ist, verarbeiten wir die personenbezogenen Daten von Nutzern
+                    nicht mehr.
                   </li>
                   <li>
-                    <span className="font-medium text-foreground">Erfüllung einer rechtlichen Verpflichtung</span> – Art. 6
+                    <span className="font-medium text-foreground">Erfüllung einer rechtlichen Verpflichtung</span> . Art. 6
                     Abs. 1 lit. c DSGVO: Eine Verarbeitung von Daten erfolgt, wenn diese
                     Verarbeitung zur Erfüllung einer rechtlichen Verpflichtung erforderlich ist,
                     der wir als Verantwortliche unterliegen.
@@ -222,8 +228,8 @@ export default function Datenschutz() {
                     <span className="font-medium text-foreground">Berechtigtes Interesse</span> – Art. 6
                     Abs. 1 lit. f DSGVO: Eine Verarbeitung von Daten erfolgt, wenn dies zur
                     Wahrung eines auf unserer Seite liegenden berechtigten Interesses erforderlich
-                    ist und hierbei Interessen oder Grundrechte und Grundfreiheiten der Nutzer
-                    nicht überwiegen.
+                    ist und hierbei Interessen oder Grundrechte und Grundfreiheiten der Nutzer,
+                    den Schutz von Daten betreffend, nicht überwiegen.
                   </li>
                 </ul>
                 <p>
@@ -237,8 +243,10 @@ export default function Datenschutz() {
                   der Fälle, in denen eine weitere Speicherung für einen Vertragsabschluss oder
                   Vertragserfüllung notwendig ist. Darüber hinaus kann sich eine gesetzliche Pflicht
                   zu einer längeren Speicherung oder einer Weitergabe an Dritte (insb. an
-                  Strafverfolgungsbehörden) ergeben. Gerne geben wir Nutzern darüber auch im
-                  Einzelfall Auskunft, gemäß Art. 15 DSGVO.
+                  Strafverfolgungsbehörden) ergeben. In sonstigen Fällen hängt die
+                  Speicherdauer und Art der erhobenen Daten sowie die Art der Datenverarbeitung
+                  davon ab, welche Funktionen Nutzer im Einzelfall nutzt. Gerne geben wir Nutzern
+                  darüber auch im Einzelfall Auskunft, gemäß Art. 15 DSGVO.
                 </p>
 
                 <h3 className={subheading}>2.3 Diese Datenkategorien verarbeiten wir</h3>
@@ -269,10 +277,11 @@ export default function Datenschutz() {
                   Eingabe, der Weitergabe, der Sicherung der Verfügbarkeit und ihre Trennung von
                   Daten anderer natürlicher Personen zu den Sicherheitsmaßnahmen, die wir
                   implementieren. Des Weiteren haben wir Verfahren eingerichtet, die eine
-                  Wahrnehmung von Betroffenenrechten, die Löschung von Daten und Reaktionen bei
+                  Wahrnehmung von Betroffenenrechten (siehe unter Ziff. 3), die Löschung von
+                  Daten und Reaktionen bei
                   einer Gefahr für Daten unserer Nutzer gewährleisten. Ferner berücksichtigen wir
                   den Schutz personenbezogener Daten bereits bei der Entwicklung unserer Software
-                  sowie durch Verfahren, die dem Prinzip des Datenschutzes durch
+                  sowie durch Verfahren die dem Prinzip des Datenschutzes durch
                   Technikgestaltung und durch datenschutzfreundliche Voreinstellungen entsprechen.
                 </p>
 
@@ -301,12 +310,27 @@ export default function Datenschutz() {
                   wir Daten unserer Nutzer nur von Dienstleistern in Drittländern verarbeiten, die
                   aus unserer Sicht ein anerkanntes Datenschutzniveau aufweisen. Das bedeutet, dass
                   zwischen der EU und dem Land, in dem wir die personenbezogenen Daten von Nutzern
-                  übermitteln, z.B. ein entsprechender Angemessenheitsbeschluss besteht. Alternativ,
-                  also bspw. wenn es keinen Angemessenheitsbeschluss gibt, erfolgt eine
-                  Drittlandübermittlung nur, wenn etwa vertragliche Verpflichtungen zwischen uns und
-                  dem Dienstleister im Drittland durch sogenannte Standardvertragsklauseln der
-                  EU-Kommission vorliegen und weitergehende technische Sicherheitsvorkehrungen
-                  getroffen wurden (Art. 44 bis 49 DSGVO).
+                  übermitteln, z.B. ein entsprechender Angemessenheitsbeschluss besteht. Ein „Angemessenheitsbeschluss“ ist ein Beschluss, der von der Europäischen Kommission
+                  gemäß Art. 45 DSGVO angenommen wird und durch den festgelegt wird, dass ein
+                  Drittland (d. h. ein Land, das nicht an die DSGVO gebunden ist) oder eine
+                  internationale Organisation ein angemessenes Schutzniveau für personenbezogene
+                  Daten bietet. Alternativ, also bspw. wenn es keinen Angemessenheitsbeschluss
+                  gibt, erfolgt eine Drittlandübermittlung nur, wenn etwa vertragliche
+                  Verpflichtungen zwischen uns und dem Dienstleister im Drittland durch sogenannte
+                  Standardvertragsklauseln der EU-Kommission vorliegen und weitergehende technische
+                  Sicherheitsvorkehrungen getroffen wurden, die ein angemessen gleiches Schutzniveau
+                  zu dem in der EU gewährleisten bzw. der Dienstleister im Drittland
+                  Datenschutz-Zertifizierungen vorweisen kann und Daten unserer Nutzer nur gemäß
+                  interner Datenschutzvorschriften verarbeitet werden (Art. 44 bis 49 DSGVO.
+                  Informationsseite der EU-Kommission:{" "}
+                  <a
+                    href="https://ec.europa.eu/info/law/law-topic/data-protection/international-dimension-data-protection_de"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-500 hover:text-cyan-400 underline underline-offset-2"
+                  >
+                    ec.europa.eu/info/law/law-topic/data-protection/international-dimension-data-protection_de
+                  </a>).
                 </p>
                 <p>
                   Im Rahmen des sogenannten „Data Privacy Framework" („DPF") hat die EU-Kommission
@@ -322,8 +346,9 @@ export default function Datenschutz() {
                   >
                     www.dataprivacyframework.gov
                   </a>{" "}
-                  entnehmen. Wir informieren Nutzer im Rahmen dieser Datenschutzerklärung, welche
-                  von uns eingesetzten Services unter dem Data Privacy Framework zertifiziert sind.
+                  (in Englisch) entnehmen. Wir informieren Nutzer im Rahmen dieser
+                  Datenschutzerklärung, welche von uns eingesetzten Services unter dem Data Privacy
+                  Framework zertifiziert sind.
                 </p>
 
                 <h3 className={subheading}>2.7 Löschung von Daten</h3>
@@ -343,7 +368,7 @@ export default function Datenschutz() {
                 <p>
                   Im Rahmen dieser Datenschutzerklärung informieren wir ggf. zu der Löschung sowie
                   zu der Aufbewahrung von Daten, die speziell für die jeweiligen
-                  Verarbeitungsprozesse gelten.
+                  Verarbeitungsprozesses gelten.
                 </p>
 
                 <h3 className={subheading}>2.8 Speicherung von und Zugriff auf Daten auf dem Endgerät des Nutzers</h3>
@@ -363,11 +388,13 @@ export default function Datenschutz() {
                   Cookies, Tokens oder andere Technologien sind in der Regel Textdateien, die auf
                   dem Endgerät des Nutzers gespeichert und von uns und Dritten bei einem Aufruf
                   unserer Services ausgelesen werden können. Viele der vorgenannten Technologien
-                  enthalten eine eigene ID, durch welche Webseiten und Server dem konkreten
-                  Internetbrowser oder dem konkret genutzten Dienst oder Endgerät zugeordnet werden
-                  können, in dem Cookies, Tokens oder andere Technologien gespeichert wurden. Dies
-                  ermöglicht es den Betreibern von Webseiten und Analysediensten, Nutzer als Nutzer
-                  zu identifizieren und von anderen zu unterscheiden.
+                  enthalten eine eigene ID. Eine solche ID ist eine eindeutige Kennung der jeweils
+                  verwendeten Technologie. Nutzer besteht aus einer Zeichenfolge, durch welche
+                  Webseiten und Server dem konkreten Internetbrowser oder dem konkret genutzten
+                  Dienst oder Endgerät zugeordnet werden können, in dem Cookies, Tokens oder andere
+                  Technologien gespeichert wurden. Dies ermöglicht es den Betreibern von Webseiten
+                  und Analysediensten, Nutzer als Nutzer zu identifizieren und von anderen zu
+                  unterscheiden.
                 </p>
 
                 <h3 className={subheading}>2.9 Auftragsverarbeitung</h3>
@@ -651,9 +678,10 @@ export default function Datenschutz() {
                 <ul className={listClass}>
                   <li>
                     <span className="font-medium text-foreground">Funktionale Cookies / Technologien:</span>{" "}
-                    Diese sind für die grundlegenden technischen Funktionen der Services erforderlich.
-                    Sie ermöglichen bspw. einen sicheren Login und die Speicherung des Fortschritts
-                    bei Bestellvorgängen. Weiterhin ermöglichen sie uns bspw. das Speichern von
+                    Diese sind für die grundlegenden technischen Funktionen der Services
+                    erforderlich. Nutzer ermöglichen bspw. einen sicheren Login und die Speicherung
+                    des Fortschritts bei Bestellvorgängen. Weiterhin ermöglichen sie uns bspw. das
+                    Speichern von
                     Anmeldedaten, des Warenkorb-Inhalts und die einheitliche Darstellung von
                     Seiteninhalten.
                   </li>
@@ -666,10 +694,11 @@ export default function Datenschutz() {
                   <li>
                     <span className="font-medium text-foreground">Marketing Cookies / Technologien:</span>{" "}
                     Diese werden von uns verwendet, um Nutzern Werbung zu unterbreiten, die für
-                    Interessen relevant sein könnte. Sie ermöglichen bspw. das Teilen von Seiten
-                    über Soziale Netzwerke und das Schreiben von Kommentaren. Nutzer können
-                    persönliche Einstellungen im Marketing ändern, indem sie auf den entsprechenden
-                    Opt-Out Link klicken.
+                    Interessen relevant sein könnte. Nutzer ermöglichen bspw. das Teilen von Seiten
+                    über Soziale Netzwerke und das Schreiben von Kommentaren. Ebenso werden
+                    Angebote, die den Interessen der Nutzer entsprechen könnten, angezeigt. Nutzer
+                    können persönliche Einstellungen im Marketing ändern, indem sie auf den
+                    entsprechenden Opt-Out Link klicken.
                   </li>
                 </ul>
 
@@ -685,14 +714,17 @@ export default function Datenschutz() {
                   Controller ID), Consent Status, Timestamp), (2) Device Daten bzw. Daten der
                   verwendeten Geräte (u.a. gekürzte IP-Adressen (IP v4, IP v6),
                   Geräteinformationen, Timestamp), (3) User Daten bzw. Benutzerdaten (u.a. eMail,
-                  ID, Browserinformationen, SettingIDs, Changelog). Die ConsentID und der
-                  Consent-Status inkl. Zeitstempel werden in dem lokalen Speicher des Browsers und
-                  gleichzeitig auf den von uns eingesetzten Cloud-Servern gespeichert. Eine weitere
-                  Verarbeitung erfolgt nur, wenn Nutzer eine Anfrage auf Auskunftsersuchen stellen
-                  oder die Zustimmung widerrufen. Die Rechtsgrundlage zur Verarbeitung
-                  personenbezogener Daten mittels des Consent-Tools resultiert aus unserem
-                  berechtigten Interesse sowie zur Erfüllung rechtlicher Vorgaben und damit aus
-                  Art. 6 Abs. 1 lit. f und c DSGVO.
+                  ID, Browserinformationen, SettingIDs, Changelog). Die ConsentID (enthält die
+                  oben genannten Daten) und der Consent-Status inkl. Zeitstempel werden in dem
+                  lokalen Speicher des Browsers und gleichzeitig auf den von uns eingesetzten
+                  Cloud-Servern gespeichert. Eine weitere Verarbeitung erfolgt nur, wenn Nutzer
+                  eine Anfrage auf Auskunftsersuchen stellen oder die Zustimmung widerrufen. Die
+                  Rechtsgrundlage zur Verarbeitung personenbezogener Daten mittels des
+                  Consent-Tools nach der hier genannten Maßgabe resultiert aus unserem berechtigten
+                  Interesse sowie zur Erfüllung rechtlicher Vorgaben und damit aus Art. 6 Abs. 1
+                  lit. f und c DSGVO. Mittels des Consent-Tools möchten wir gesetzliche Vorgaben
+                  zum Datenschutz und zum Tracking erfüllen und damit die Funktionsweise unserer
+                  informationstechnischen Systeme gesetzeskonform und nutzerzentriert aufstellen.
                 </p>
                 <p className="font-medium text-foreground">Anbieter des von uns genutzten Consent-Tools:</p>
                 <div className="space-y-0.5 pl-4 border-l-2 border-border/50">
