@@ -13,8 +13,8 @@ const footerLinks = {
     { label: "Kontakt", href: "#contact" },
   ],
   legal: [
-    { label: "Datenschutz Website", href: "/datenschutz", isPage: true },
     { label: "Impressum", href: "/impressum", isPage: true },
+    { label: "Datenschutz Website", href: "/datenschutz", isPage: true },
     { label: "Cookie-Einstellungen", href: "#", isCookieSettings: true },
   ],
 };

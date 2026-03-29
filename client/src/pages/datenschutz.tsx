@@ -66,6 +66,7 @@ export default function Datenschutz() {
           </div>
 
           <div className="space-y-10">
+            {/* Einleitung */}
             <section className={card} data-testid="section-datenschutz-einleitung">
               <h2 className={gradientHeading}>Einleitung</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
@@ -73,33 +74,37 @@ export default function Datenschutz() {
                   Datenschutzerklärungen sind oft schwer zu lesen. Das verstehen wir. Und möchten es
                   anders machen. Wir möchten Nutzern mit unserer Datenschutzerklärung eine einfach
                   verständliche Erklärung über die Art und Weise der Verarbeitung von
-                  personenbezogenen Daten durch uns geben.
+                  personenbezogenen Daten durch uns geben. Hierfür gliedern wir unsere
+                  Datenschutzerklärung klar strukturiert für Nutzer auf und zeigen Nutzern zu jedem
+                  Themenbereich, ob und wie wir die personenbezogenen Daten von Nutzern verarbeiten.
                 </p>
                 <p>
                   Wir erläutern Nutzern in dieser Datenschutzerklärung, ob und wie wir
                   personenbezogene Daten verarbeiten. Hierbei stellen wir Nutzern sämtliche
                   Verarbeitungsvorgänge dar, die durch uns, durch von uns beauftragte oder
                   eingebundene Dienste Dritter oder die sonstige Dritte in unserem Auftrag im
-                  Rahmen der Nutzung unserer Website, unserer Social-Media-Profile und der hierbei
+                  Rahmen der Nutzung unserer Website, unserer Social Media Profile und der hierbei
                   jeweils verfügbarer Funktionen (nachfolgend zusammen auch „Services" genannt)
                   vorgenommen werden.
                 </p>
               </div>
               <h3 className={`${subheading} mt-6`}>Inhaltsverzeichnis</h3>
+              <p className={`mb-2 ${body}`}>Unsere Datenschutzerklärung ist wie folgt aufgebaut:</p>
               <ol className="list-decimal list-outside ml-5 space-y-1 text-sm text-foreground/80">
-                <li>Allgemeines</li>
-                <li>Allgemeine Informationen zur Datenverarbeitung</li>
-                <li>Betroffenenrechte</li>
-                <li>Angaben zu den verwendeten Cookies und weiterer Technologien</li>
+                <li>Allgemeines – Kurze Einführung zum Gegenstand der Datenschutzerklärung, zum Verantwortlichen und zum Datenschutzbeauftragen</li>
+                <li>Allgemeine Informationen zur Datenverarbeitung – Informationen dazu, was personenbezogene Daten sind, auf welcher rechtlichen Grundlage wir diese verarbeiten oder auch mit Dritten teilen</li>
+                <li>Betroffenenrechte – Informationen zu Nutzer Rechten auf u.a. Auskunft, Löschung oder Widerspruch zu unserer Datenverarbeitung</li>
+                <li>Angaben zu den verwendeten Cookies und weiterer Technologien – Informationen zur Verwendung von Cookies und weiterer Technologien</li>
                 <li>Datenverarbeitung im Zusammenhang mit der Nutzung unserer Services</li>
-                <li>Kommunikations Services</li>
-                <li>Bereitstellung unserer Services (Hosting)</li>
-                <li>Tracking &amp; Tools</li>
-                <li>Transaktionale Mailings</li>
-                <li>Profile auf Social Media Websites</li>
+                <li>Kommunikations Services – Informationen zu Diensten zur Kommunikation sowie zur entsprechenden Verarbeitung von personenbezogenen Daten</li>
+                <li>Bereitstellung unserer Services – Informationen zu Hostingdienstleistern und den von diesen in Anspruch genommenen Diensten</li>
+                <li>Tracking &amp; Tools – Informationen zu Diensten, mittels derer wir Nutzern unsere Services bereitstellen und die Nutzung analysieren</li>
+                <li>Transaktionale Mails – Informationen zur Integration von Mailing-Dienstleistern</li>
+                <li>Profile auf Social Media – Informationen zu unseren Präsenzen auf den Netzwerken der Sozialen Medien</li>
               </ol>
             </section>
 
+            {/* 1. Allgemeines */}
             <section className={card} data-testid="section-datenschutz-allgemeines">
               <h2 className={gradientHeading}>1. Allgemeines</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
@@ -107,19 +112,22 @@ export default function Datenschutz() {
                   Der Schutz von personenbezogenen Daten und der Privatsphäre ist uns überaus
                   wichtig. Deshalb möchten wir Nutzern umfassende Transparenz bezüglich der
                   Verarbeitung von personenbezogenen Daten (DSGVO) sowie bezüglich der Speicherung
-                  von Informationen auf dem Endgerät des Nutzers (TDDDG) bieten.
+                  von Informationen auf dem Endgerät des Nutzers (TDDDG) bieten. Denn nur, wenn die
+                  Verarbeitung von personenbezogenen Daten und Informationen für Nutzer als
+                  betroffene Personen nachvollziehbar sind, sind sie ausreichend über den Umfang,
+                  die Zwecke und den Nutzen der Verarbeitung informiert.
                 </p>
                 <p>
                   Diese Datenschutzerklärung gilt für alle von uns durchgeführten Verarbeitungen
                   personenbezogener Daten sowie für die Speicherung von Informationen auf
-                  Endgeräten, sowohl im Rahmen der Erbringung von Leistungen in unseren Services
-                  als auch innerhalb externer Onlinepräsenzen, wie z.B. unserer
+                  Endgeräten. Nutzer gilt also sowohl im Rahmen der Erbringung von Leistungen in
+                  unseren Services als auch innerhalb externer Onlinepräsenzen, wie z.B. unserer
                   Social-Media-Profile.
                 </p>
                 <p>
                   Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO), des
                   Bundesdatenschutzgesetzes (BDSG) sowie sonstiger datenschutzrechtlicher Vorgaben
-                  ist die:
+                  ist die
                 </p>
                 <div className="space-y-1 pl-4 border-l-2 border-border/50">
                   <p className="font-medium text-foreground">
@@ -128,17 +136,14 @@ export default function Datenschutz() {
                   <p>Geschäftsführer: Agron Basha</p>
                   <p>Hüingser Ring 1</p>
                   <p>58710 Menden</p>
-                  <p>
-                    E-Mail: {emailLink}
-                  </p>
-                  <p>
-                    Telefon: {phoneLink}
-                  </p>
+                  <p>E-Mail: {emailLink}</p>
+                  <p>Telefon: {phoneLink}</p>
                 </div>
                 <p>Im Folgenden „Verantwortlicher" oder „wir" genannt.</p>
               </div>
             </section>
 
+            {/* 2. Allgemeine Informationen zur Datenverarbeitung */}
             <section className={card} data-testid="section-datenschutz-datenverarbeitung">
               <h2 className={gradientHeading}>2. Allgemeine Informationen zur Datenverarbeitung</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
@@ -152,242 +157,416 @@ export default function Datenschutz() {
                 <p>
                   Personenbezogene Daten (nachfolgend auch „Daten") sind Einzelangaben über
                   persönliche oder sachliche Verhältnisse einer bestimmten oder bestimmbaren
-                  natürlichen Person. Einzelangaben sind beispielsweise:
+                  natürlichen Person.
+                </p>
+                <p>
+                  Einzelangaben über persönliche oder sachliche Verhältnisse sind beispielsweise
+                  die folgenden Daten, wobei klargestellt wird, dass nicht alle diese Daten auch
+                  durch unsere Services verarbeitet werden müssen:
                 </p>
                 <ul className={listClass}>
                   <li>Personaldaten – Name, Alter, Familienstand, Geburtsdatum</li>
-                  <li>Kommunikationsdaten – Anschrift, Telefonnummer, E-Mail-Adresse</li>
+                  <li>Kommunikationsdaten – Anschrift, Telefonnummer, E-Mail Adresse</li>
                   <li>Kontodaten – Konto-, Kreditkartennummer</li>
-                  <li>Geodaten – IP-Adresse &amp; Standortdaten</li>
+                  <li>Geodaten – IP Adresse &amp; Standortdaten</li>
                   <li>Gesundheitsdaten – Gesundheitlicher Zustand, Krankheiten</li>
                 </ul>
-                <p>Das „Verarbeiten" personenbezogener Daten umfasst beispielsweise:</p>
+                <p>Das „Verarbeiten" personenbezogener Daten umfasst beispielsweise die folgenden Maßnahmen:</p>
                 <ul className={listClass}>
-                  <li>Erhebung – über Kontaktformulare, per E-Mail oder durch genutzte Prozesse</li>
-                  <li>Übermittlung – an Dienstleister, eingebundene Dienste oder sonstige Dritte</li>
-                  <li>Speicherung – in Datenbanken oder auf Servern</li>
-                  <li>Veränderung – bei Änderungen von Name, Wohnort oder Service-Angaben</li>
-                  <li>Löschen – wenn keine Berechtigung zur Verarbeitung mehr besteht</li>
+                  <li>Erhebung – Die Erhebung von Daten über Kontaktformulare, per E-Mail oder durch von uns genutzte Prozesse und Dienste</li>
+                  <li>Übermittlung – Die Übermittlung von Daten an unsere Dienstleister, eingebundene Dienste oder sonstige Dritte</li>
+                  <li>Speicherung – Die Speicherung von Daten in unseren Datenbanken oder auf unseren Servern</li>
+                  <li>Veränderung – Die Änderung von Daten aufgrund von Änderungen des Namens, des Wohnortes oder von Angaben in unseren Services</li>
+                  <li>Löschen – Das Löschen von Daten, wenn wir keine Berechtigung mehr haben, diese zu verarbeiten</li>
                 </ul>
 
-                <h3 className={subheading}>2.2 Rechtliche Grundlagen</h3>
+                <h3 className={subheading}>2.2 Rechtliche Grundlagen zur Verarbeitung von personenbezogenen Daten</h3>
                 <p>
                   Wir verarbeiten personenbezogene Daten nur innerhalb der rechtlich zulässigen
-                  Grenzen. Die Rechtsgrundlagen sind in Art. 6 Abs. 1 DSGVO normiert:
+                  Grenzen. Dazu verpflichtet uns schon das Gesetz. Insbesondere die DSGVO. Daraus
+                  sind wir verpflichtet, Datenverarbeitungsvorgänge immer auf eine rechtliche
+                  Grundlage stützen zu können. Diese rechtlichen Grundlagen sind in Art. 6 Abs. 1
+                  DSGVO normiert. Im Folgenden nennen wir sämtliche rechtlichen Grundlagen, auf die
+                  wir eine Verarbeitung von personenbezogenen Daten stützen.
                 </p>
                 <ul className={listClass}>
                   <li>
                     <span className="font-medium text-foreground">Einwilligung</span> – Art. 6
-                    Abs. 1 lit. a DSGVO
+                    Abs. 1 lit. a DSGVO: Eine Verarbeitung von Daten erfolgt, wenn Nutzer in diese
+                    Verarbeitung, nach vorheriger ausreichender Information über deren Umfang und
+                    Zwecke durch uns, aktiv, also bspw. durch ein „Opt-In", eingewilligt haben.
+                    Sollten Nutzer ihre Einwilligung widerrufen oder nicht erteilt haben, so
+                    verarbeiten wir Daten unserer Nutzer nicht (mehr) für Zwecke, bei denen wir
+                    eine Einwilligung benötigen.
                   </li>
                   <li>
-                    <span className="font-medium text-foreground">
-                      Einwilligung besondere Kategorien
-                    </span>{" "}
-                    – Art. 9 Abs. 2 lit. a DSGVO
+                    <span className="font-medium text-foreground">Einwilligung besondere Kategorien</span> – Art. 9
+                    Abs. 2 lit. a DSGVO: Eine Verarbeitung von Daten, die in besondere Kategorien
+                    personenbezogener Daten fallen, wie bspw. Gesundheitsdaten, politische
+                    Meinungen etc. (siehe auch Art. 9 Abs. 1 DSGVO), erfolgt, wenn Nutzer in diese
+                    Verarbeitung aktiv eingewilligt haben.
                   </li>
                   <li>
-                    <span className="font-medium text-foreground">Vertragserfüllung</span> – Art. 6
-                    Abs. 1 lit. b DSGVO
+                    <span className="font-medium text-foreground">Zur Vertragserfüllung</span> – Art. 6
+                    Abs. 1 lit. b DSGVO: Eine Verarbeitung von Daten erfolgt, wenn sie für die
+                    Erfüllung eines Vertrags zwischen uns oder zur Durchführung vorvertraglicher
+                    Maßnahmen erforderlich ist.
                   </li>
                   <li>
-                    <span className="font-medium text-foreground">
-                      Erfüllung einer rechtlichen Verpflichtung
-                    </span>{" "}
-                    – Art. 6 Abs. 1 lit. c DSGVO
+                    <span className="font-medium text-foreground">Erfüllung einer rechtlichen Verpflichtung</span> – Art. 6
+                    Abs. 1 lit. c DSGVO: Eine Verarbeitung von Daten erfolgt, wenn diese
+                    Verarbeitung zur Erfüllung einer rechtlichen Verpflichtung erforderlich ist,
+                    der wir als Verantwortliche unterliegen.
                   </li>
                   <li>
-                    <span className="font-medium text-foreground">Berechtigtes Interesse</span> –
-                    Art. 6 Abs. 1 lit. f DSGVO
+                    <span className="font-medium text-foreground">Berechtigtes Interesse</span> – Art. 6
+                    Abs. 1 lit. f DSGVO: Eine Verarbeitung von Daten erfolgt, wenn dies zur
+                    Wahrung eines auf unserer Seite liegenden berechtigten Interesses erforderlich
+                    ist und hierbei Interessen oder Grundrechte und Grundfreiheiten der Nutzer
+                    nicht überwiegen.
                   </li>
                 </ul>
+                <p>
+                  Personenbezogene Daten werden von uns nur für eindeutige Zwecke verarbeitet
+                  (Art. 5 Abs. 1 lit. b DSGVO). Sobald der Zweck der Verarbeitung wegfällt, werden
+                  die personenbezogenen Daten von Nutzern gelöscht oder durch technische sowie
+                  organisatorische Maßnahmen geschützt (z.B. durch Pseudonymisierung).
+                </p>
+                <p>
+                  Gleiches gilt für den Ablauf einer vorgeschriebenen Speicherfrist, vorbehaltlich
+                  der Fälle, in denen eine weitere Speicherung für einen Vertragsabschluss oder
+                  Vertragserfüllung notwendig ist. Darüber hinaus kann sich eine gesetzliche Pflicht
+                  zu einer längeren Speicherung oder einer Weitergabe an Dritte (insb. an
+                  Strafverfolgungsbehörden) ergeben. Gerne geben wir Nutzern darüber auch im
+                  Einzelfall Auskunft, gemäß Art. 15 DSGVO.
+                </p>
 
                 <h3 className={subheading}>2.3 Diese Datenkategorien verarbeiten wir</h3>
+                <p>Datenkategorien sind insbesondere die folgenden Daten:</p>
                 <ul className={listClass}>
                   <li>Stammdaten (z.B. Namen, Anschriften, Geburtsdaten)</li>
-                  <li>Kontaktdaten (z.B. E-Mail-Adressen, Telefonnummern)</li>
-                  <li>Inhaltsdaten (z.B. Texteingaben, Fotografien, Videos)</li>
-                  <li>Vertragsdaten (z.B. Vertragsgegenstand, Laufzeiten)</li>
-                  <li>Zahlungsdaten (z.B. Bankverbindungen, Zahlungshistorie)</li>
-                  <li>Nutzungsdaten (z.B. Verlauf in unseren Services, Zugriffszeiten)</li>
-                  <li>Verbindungsdaten (z.B. Geräte-Informationen, IP-Adressen)</li>
+                  <li>Kontaktdaten (z.B. E-Mail-Adressen, Telefonnummern, Messengerdienste)</li>
+                  <li>Inhaltsdaten (z.B. Texteingaben, Fotografien, Videos, Inhalte von Dokumenten/Dateien)</li>
+                  <li>Vertragsdaten (z.B. Vertragsgegenstand, Laufzeiten, Kundenkategorie)</li>
+                  <li>Zahlungsdaten (z.B. Bankverbindungen, Zahlungshistorie, Verwendung sonstiger Zahlungsdienstleister)</li>
+                  <li>Nutzungsdaten (z.B. Verlauf in unseren Services, Nutzung bestimmter Inhalte, Zugriffszeiten)</li>
+                  <li>Verbindungsdaten (z.B. Geräte-Informationen, IP-Adressen, URL-Referrer)</li>
                 </ul>
 
                 <h3 className={subheading}>2.4 Diese Sicherheitsmaßnahmen treffen wir</h3>
                 <p>
-                  Nach Maßgabe der gesetzlichen Vorgaben treffen wir geeignete technische und
-                  organisatorische Maßnahmen, um ein dem Risiko angemessenes Schutzniveau zu
-                  gewährleisten. Zu den Maßnahmen gehören insbesondere die Sicherstellung der
-                  Vertraulichkeit, Integrität und Verfügbarkeit von Daten sowie Kontrollen des
-                  Zugangs zu Daten und des Zugriffs, der Eingabe, der Weitergabe und der Sicherung
-                  der Verfügbarkeit.
+                  Nach Maßgabe der gesetzlichen Vorgaben und unter Berücksichtigung des Stands der
+                  Technik, der Implementierungskosten und der Art, des Umfangs, der Umstände und
+                  der Zwecke der Verarbeitung sowie der unterschiedlichen
+                  Eintrittswahrscheinlichkeiten und des Ausmaßes der Bedrohung von Rechten und
+                  Freiheiten treffen wir geeignete technische und organisatorische Maßnahmen, um
+                  ein dem Risiko angemessenes Schutzniveau zu gewährleisten.
+                </p>
+                <p>
+                  Zu den Maßnahmen gehören insbesondere die Sicherstellung, dass Daten unserer
+                  Nutzer vertraulich, integer und jederzeit verfügbar gespeichert und verarbeitet
+                  werden. Weiterhin gehören Kontrollen des Zugangs zu Daten sowie des Zugriffs, der
+                  Eingabe, der Weitergabe, der Sicherung der Verfügbarkeit und ihre Trennung von
+                  Daten anderer natürlicher Personen zu den Sicherheitsmaßnahmen, die wir
+                  implementieren. Des Weiteren haben wir Verfahren eingerichtet, die eine
+                  Wahrnehmung von Betroffenenrechten, die Löschung von Daten und Reaktionen bei
+                  einer Gefahr für Daten unserer Nutzer gewährleisten. Ferner berücksichtigen wir
+                  den Schutz personenbezogener Daten bereits bei der Entwicklung unserer Software
+                  sowie durch Verfahren, die dem Prinzip des Datenschutzes durch
+                  Technikgestaltung und durch datenschutzfreundliche Voreinstellungen entsprechen.
                 </p>
 
-                <h3 className={subheading}>
-                  2.5 So übermitteln oder offenbaren wir personenbezogene Daten gegenüber Dritten
-                </h3>
+                <h3 className={subheading}>2.5 So übermitteln oder offenbaren wir personenbezogene Daten gegenüber Dritten</h3>
                 <p>
-                  Im Rahmen unserer Verarbeitungsmaßnahmen kommt es vor, dass Daten an andere
-                  Stellen, Unternehmen oder Personen übermittelt werden. Dies können z.B.
-                  Zahlungsinstitute, mit IT-Aufgaben beauftragte Dienstleister oder Anbieter von
-                  Diensten und Inhalten sein. Wir beachten stets die gesetzlichen Vorgaben und
-                  schließen entsprechende Verträge zum Schutz von Daten ab.
+                  Im Rahmen unserer Verarbeitungsmaßnahmen von personenbezogenen Daten kommt es
+                  vor, dass diese Daten an andere Stellen, Unternehmen, rechtlich selbstständige
+                  Organisationseinheiten oder Personen übermittelt oder offengelegt werden. Diese
+                  Dritten können z.B. Zahlungsinstitute im Rahmen von Zahlungsvorgängen, mit
+                  IT-Aufgaben beauftragte Dienstleister oder Anbieter von Diensten und Inhalten,
+                  die wir in unsere Services eingebunden haben, gehören. Sollten wir die
+                  personenbezogenen Daten von Nutzern an Dritte übermitteln oder offenbaren,
+                  beachten wir die gesetzlichen Vorgaben und schließen insbesondere entsprechende
+                  Verträge bzw. Vereinbarungen, die dem Schutz von Daten dienen, mit den
+                  Empfängern von Daten ab.
                 </p>
 
                 <h3 className={subheading}>2.6 So erfolgt eine Drittlandübermittlung</h3>
                 <p>
-                  Eine Drittlandübermittlung erfolgt nur in Übereinstimmung mit den gesetzlichen
-                  Vorgaben, insbesondere auf Basis von Angemessenheitsbeschlüssen,
-                  Standardvertragsklauseln oder dem EU-US Data Privacy Framework (DPF) gemäß
-                  Art. 44 bis 49 DSGVO.
+                  Sollte in dieser Datenschutzerklärung dargestellt sein, dass wir die
+                  personenbezogenen Daten von Nutzern in ein Drittland, also ein Land außerhalb der
+                  EU bzw. außerhalb des EWR, übermitteln, gilt Folgendes. Eine Drittlandübermittlung
+                  erfolgt nur in Übereinstimmung mit den gesetzlichen Vorgaben. Wir sichern Nutzern
+                  zu, dass wir eine vertragliche oder gesetzliche Ermächtigung zur Übermittlung und
+                  Verarbeitung von Daten in dem betreffenden Drittland haben. Darüber hinaus lassen
+                  wir Daten unserer Nutzer nur von Dienstleistern in Drittländern verarbeiten, die
+                  aus unserer Sicht ein anerkanntes Datenschutzniveau aufweisen. Das bedeutet, dass
+                  zwischen der EU und dem Land, in dem wir die personenbezogenen Daten von Nutzern
+                  übermitteln, z.B. ein entsprechender Angemessenheitsbeschluss besteht. Alternativ,
+                  also bspw. wenn es keinen Angemessenheitsbeschluss gibt, erfolgt eine
+                  Drittlandübermittlung nur, wenn etwa vertragliche Verpflichtungen zwischen uns und
+                  dem Dienstleister im Drittland durch sogenannte Standardvertragsklauseln der
+                  EU-Kommission vorliegen und weitergehende technische Sicherheitsvorkehrungen
+                  getroffen wurden (Art. 44 bis 49 DSGVO).
+                </p>
+                <p>
+                  Im Rahmen des sogenannten „Data Privacy Framework" („DPF") hat die EU-Kommission
+                  das Datenschutzniveau für bestimmte Unternehmen aus den USA im Rahmen des
+                  Angemessenheitsbeschlusses vom 10.07.2023 als sicher anerkannt. Eine Liste der
+                  zertifizierten Unternehmen als auch weitere Informationen zu dem DPF können
+                  Nutzer der Webseite des Handelsministeriums der USA unter{" "}
+                  <a
+                    href="https://www.dataprivacyframework.gov/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-500 hover:text-cyan-400 underline underline-offset-2"
+                  >
+                    www.dataprivacyframework.gov
+                  </a>{" "}
+                  entnehmen. Wir informieren Nutzer im Rahmen dieser Datenschutzerklärung, welche
+                  von uns eingesetzten Services unter dem Data Privacy Framework zertifiziert sind.
                 </p>
 
                 <h3 className={subheading}>2.7 Löschung von Daten</h3>
                 <p>
                   Die von uns verarbeiteten Daten werden nach Maßgabe der gesetzlichen Vorgaben
-                  gelöscht, sobald zur Verarbeitung erlaubte Einwilligungen widerrufen werden oder
-                  sonstige Erlaubnisse entfallen. Sofern die Daten nicht gelöscht werden, weil sie
-                  für andere und gesetzlich zulässige Zwecke erforderlich sind, wird deren
-                  Verarbeitung auf diese Zwecke beschränkt.
+                  gelöscht, sobald deren zur Verarbeitung erlaubten Einwilligungen widerrufen werden
+                  oder sonstige Erlaubnisse entfallen (z.B. wenn der Zweck der Verarbeitung dieser
+                  Daten entfallen ist oder sie für den Zweck nicht erforderlich sind). Sofern die
+                  Daten nicht gelöscht werden, weil sie für andere und gesetzlich zulässige Zwecke
+                  erforderlich sind, wird deren Verarbeitung auf diese Zwecke beschränkt. D.h., die
+                  Daten werden gesperrt und nicht für andere Zwecke verarbeitet. Das gilt z.B. für
+                  Daten, die aus handels- oder steuerrechtlichen Gründen aufbewahrt werden müssen
+                  oder deren Speicherung zur Geltendmachung, Ausübung oder Verteidigung von
+                  Rechtsansprüchen oder zum Schutz der Rechte einer anderen natürlichen oder
+                  juristischen Person erforderlich ist.
+                </p>
+                <p>
+                  Im Rahmen dieser Datenschutzerklärung informieren wir ggf. zu der Löschung sowie
+                  zu der Aufbewahrung von Daten, die speziell für die jeweiligen
+                  Verarbeitungsprozesse gelten.
                 </p>
 
-                <h3 className={subheading}>
-                  2.8 Speicherung von und Zugriff auf Daten auf dem Endgerät des Nutzers
-                </h3>
+                <h3 className={subheading}>2.8 Speicherung von und Zugriff auf Daten auf dem Endgerät des Nutzers</h3>
                 <p>
                   Sofern wir von Nutzern keine Einwilligung dazu einholen, erfolgt die Speicherung
                   von oder der Zugriff auf Informationen auf dem Endgerät des Nutzers gemäß § 25
-                  Abs. 2 Nr. 2 TDDDG, da dies unbedingt erforderlich ist, um die gewünschten
-                  Funktionen unserer Services zur Verfügung zu stellen. Sofern wir eine Einwilligung
-                  einholen, ist die Rechtsgrundlage § 25 Abs. 1 TDDDG.
+                  Abs. 2 Nr. 2 des Gesetzes über den Datenschutz und den Schutz der Privatsphäre
+                  in der Telekommunikation und bei Digitalen Diensten (TDDDG), da die Speicherung
+                  von und der Zugriff auf diese Informationen unbedingt erforderlich ist, um die
+                  gewünschten Funktionen unserer Services zur Verfügung zu stellen. Sofern wir eine
+                  Einwilligung dazu einholen, ist die Rechtsgrundlage § 25 Abs. 1 TDDDG. Unsere
+                  Services verwenden Cookies, Tokens oder andere Technologien, die ggf. auf
+                  Endgeräten gespeichert werden und ohne die die Bereitstellung unserer Services
+                  nicht möglich wäre.
+                </p>
+                <p>
+                  Cookies, Tokens oder andere Technologien sind in der Regel Textdateien, die auf
+                  dem Endgerät des Nutzers gespeichert und von uns und Dritten bei einem Aufruf
+                  unserer Services ausgelesen werden können. Viele der vorgenannten Technologien
+                  enthalten eine eigene ID, durch welche Webseiten und Server dem konkreten
+                  Internetbrowser oder dem konkret genutzten Dienst oder Endgerät zugeordnet werden
+                  können, in dem Cookies, Tokens oder andere Technologien gespeichert wurden. Dies
+                  ermöglicht es den Betreibern von Webseiten und Analysediensten, Nutzer als Nutzer
+                  zu identifizieren und von anderen zu unterscheiden.
                 </p>
 
                 <h3 className={subheading}>2.9 Auftragsverarbeitung</h3>
                 <p>
                   Sollten wir uns zur Verarbeitung von Daten externer Dienstleister bedienen,
-                  werden diese von uns sorgfältig ausgewählt und beauftragt. Unsere
-                  Auftragsverarbeitungsverträge entsprechen den strengen Voraussetzungen des
-                  Art. 28 DSGVO sowie den Vorgaben der deutschen Datenschutzbehörden.
+                  werden diese von uns sorgfältig ausgewählt und beauftragt. Sollte es sich bei den
+                  Diensten, die diese Dienstleister erbringen, um Auftragsverarbeitungen im Sinne
+                  von Art. 28 DSGVO handeln, so sind die Dienstleister an unsere Weisungen gebunden
+                  und werden regelmäßig kontrolliert. Dabei entsprechen unsere
+                  Auftragsverarbeitungsverträge den strengen Voraussetzungen des Art. 28 DSGVO
+                  sowie den Vorgaben der deutschen Datenschutzbehörden.
                 </p>
               </div>
             </section>
 
+            {/* 3. Betroffenenrechte */}
             <section className={card} data-testid="section-datenschutz-betroffenenrechte">
               <h2 className={gradientHeading}>3. Betroffenenrechte</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <p>
-                  Werden personenbezogene Daten unserer Nutzer verarbeitet, stehen ihnen als
-                  Betroffene i.S.d. DSGVO folgende Rechte gegenüber dem Verantwortlichen zu:
+                  Werden personenbezogene Daten unserer Nutzer verarbeitet, sind sie Betroffener
+                  i.S.d. DSGVO und es stehen Nutzern als Nutzer folgende Rechte gegenüber dem
+                  Verantwortlichen zu:
                 </p>
 
                 <h3 className={subheading}>3.1 Auskunftsrecht</h3>
                 <p>
                   Nutzer können von dem Verantwortlichen eine Bestätigung darüber verlangen, ob
-                  personenbezogene Daten, die sie betreffen, von uns verarbeitet werden. Liegt eine
-                  solche Verarbeitung vor, können Nutzer Auskunft über folgende Informationen
-                  verlangen:
+                  personenbezogene Daten, die Nutzer betreffen, von uns verarbeitet werden.
+                </p>
+                <p>
+                  Liegt eine solche Verarbeitung vor, können Nutzer von dem Verantwortlichen über
+                  folgende Informationen Auskunft verlangen:
                 </p>
                 <ul className={listClass}>
-                  <li>die Zwecke der Verarbeitung</li>
-                  <li>die Kategorien der verarbeiteten Daten</li>
-                  <li>die Empfänger bzw. Kategorien von Empfängern</li>
-                  <li>die geplante Speicherdauer oder Kriterien für deren Festlegung</li>
-                  <li>Bestehen eines Rechts auf Berichtigung, Löschung oder Einschränkung</li>
-                  <li>Bestehen eines Beschwerderechts bei einer Aufsichtsbehörde</li>
-                  <li>alle verfügbaren Informationen über die Herkunft der Daten</li>
-                  <li>
-                    das Bestehen einer automatisierten Entscheidungsfindung einschließlich Profiling
-                    gemäß Art. 22 DSGVO
-                  </li>
+                  <li>die Zwecke, zu denen die personenbezogenen Daten verarbeitet werden;</li>
+                  <li>die Kategorien von personenbezogenen Daten, welche verarbeitet werden;</li>
+                  <li>die Empfänger bzw. die Kategorien von Empfängern, gegenüber denen die Nutzer betreffenden personenbezogenen Daten offengelegt wurden oder noch offengelegt werden;</li>
+                  <li>die geplante Dauer der Speicherung der Nutzer betreffenden personenbezogenen Daten oder, falls konkrete Angaben hierzu nicht möglich sind, Kriterien für die Festlegung der Speicherdauer;</li>
+                  <li>das Bestehen eines Rechts auf Berichtigung oder Löschung der Nutzer betreffenden personenbezogenen Daten, eines Rechts auf Einschränkung der Verarbeitung durch den Verantwortlichen oder eines Widerspruchsrechts gegen diese Verarbeitung;</li>
+                  <li>das Bestehen eines Beschwerderechts bei einer Aufsichtsbehörde;</li>
+                  <li>alle verfügbaren Informationen über die Herkunft der Daten, wenn die personenbezogenen Daten nicht bei der betroffenen Person erhoben werden;</li>
+                  <li>das Bestehen einer automatisierten Entscheidungsfindung einschließlich Profiling gemäß Art. 22 Abs. 1 und 4 DSGVO und – zumindest in diesen Fällen – aussagekräftige Informationen über die involvierte Logik sowie die Tragweite und die angestrebten Auswirkungen einer derartigen Verarbeitung für die betroffene Person.</li>
+                  <li>Nutzern steht das Recht zu, Auskunft darüber zu verlangen, ob die Nutzer betreffenden personenbezogenen Daten in ein Drittland oder an eine internationale Organisation übermittelt werden. In diesem Zusammenhang können Nutzer verlangen, über die geeigneten Garantien gemäß Art. 46 DSGVO im Zusammenhang mit der Übermittlung unterrichtet zu werden.</li>
                 </ul>
 
                 <h3 className={subheading}>3.2 Recht auf Berichtigung</h3>
                 <p>
                   Nutzer haben ein Recht auf Berichtigung und/oder Vervollständigung gegenüber dem
-                  Verantwortlichen, sofern die verarbeiteten personenbezogenen Daten unrichtig oder
-                  unvollständig sind. Der Verantwortliche hat die Berichtigung unverzüglich
-                  vorzunehmen.
+                  Verantwortlichen, sofern die verarbeiteten personenbezogenen Daten, die Nutzer
+                  betreffen, unrichtig oder unvollständig sind. Der Verantwortliche hat die
+                  Berichtigung unverzüglich vorzunehmen.
                 </p>
 
                 <h3 className={subheading}>3.3 Recht auf Einschränkung der Verarbeitung</h3>
                 <p>
-                  Unter folgenden Voraussetzungen können Nutzer die Einschränkung der Verarbeitung
-                  verlangen:
+                  Unter den folgenden Voraussetzungen können Nutzer die Einschränkung der
+                  Verarbeitung der Nutzer betreffenden personenbezogenen Daten verlangen:
                 </p>
                 <ul className={listClass}>
-                  <li>
-                    wenn Nutzer die Richtigkeit der Daten für eine Überprüfungsdauer bestreiten
-                  </li>
-                  <li>
-                    die Verarbeitung unrechtmäßig ist und Nutzer die Löschung ablehnen und
-                    stattdessen die Einschränkung der Nutzung verlangen
-                  </li>
-                  <li>
-                    der Verantwortliche die Daten für die Zwecke der Verarbeitung nicht länger
-                    benötigt, Nutzer sie aber zur Geltendmachung von Rechtsansprüchen benötigen
-                  </li>
-                  <li>
-                    wenn Nutzer Widerspruch gegen die Verarbeitung gemäß Art. 21 Abs. 1 DSGVO
-                    eingelegt haben
-                  </li>
+                  <li>wenn Nutzer die Richtigkeit der Nutzer betreffenden personenbezogenen Daten für eine Dauer bestreiten, die es dem Verantwortlichen ermöglicht, die Richtigkeit der personenbezogenen Daten zu überprüfen;</li>
+                  <li>die Verarbeitung unrechtmäßig ist und Nutzer die Löschung der personenbezogenen Daten ablehnen und stattdessen die Einschränkung der Nutzung der personenbezogenen Daten verlangen;</li>
+                  <li>der Verantwortliche die personenbezogenen Daten für die Zwecke der Verarbeitung nicht länger benötigt, Nutzer diese jedoch zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen benötigen, oder</li>
+                  <li>wenn Nutzer Widerspruch gegen die Verarbeitung gemäß Art. 21 Abs. 1 DSGVO eingelegt haben und noch nicht feststeht, ob die berechtigten Gründe des Verantwortlichen gegenüber Gründen der Nutzer überwiegen.</li>
+                  <li>Wurde die Verarbeitung der Nutzer betreffenden personenbezogenen Daten eingeschränkt, dürfen diese Daten – von ihrer Speicherung abgesehen – nur mit einer Einwilligung oder zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen oder zum Schutz der Rechte einer anderen natürlichen oder juristischen Person oder aus Gründen eines wichtigen öffentlichen Interesses der Union oder eines Mitgliedstaats verarbeitet werden.</li>
                 </ul>
+                <p>
+                  Wurde die Einschränkung der Verarbeitung nach den o.g. Voraussetzungen
+                  eingeschränkt, werden Nutzer von dem Verantwortlichen unterrichtet, bevor die
+                  Einschränkung aufgehoben wird.
+                </p>
 
                 <h3 className={subheading}>3.4 Recht auf Löschung</h3>
+                <p className="font-medium text-foreground/90">3.4.1</p>
                 <p>
-                  Nutzer können die unverzügliche Löschung ihrer personenbezogenen Daten verlangen,
-                  sofern einer der folgenden Gründe zutrifft:
+                  Nutzer können von dem Verantwortlichen verlangen, dass die Nutzer betreffenden
+                  personenbezogenen Daten unverzüglich gelöscht werden, und der Verantwortliche ist
+                  verpflichtet diese Daten unverzüglich zu löschen, sofern einer der folgenden
+                  Gründe zutrifft:
                 </p>
                 <ul className={listClass}>
-                  <li>Die Daten sind für die Zwecke, für die sie erhoben wurden, nicht mehr notwendig.</li>
-                  <li>Nutzer widerrufen eine Einwilligung und es fehlt an einer anderweitigen Rechtsgrundlage.</li>
-                  <li>Nutzer legen Widerspruch gegen die Verarbeitung ein.</li>
-                  <li>Die Daten wurden unrechtmäßig verarbeitet.</li>
-                  <li>Die Löschung ist zur Erfüllung einer rechtlichen Verpflichtung erforderlich.</li>
+                  <li>Die Nutzer betreffenden personenbezogenen Daten sind für die Zwecke, für die sie erhoben oder auf sonstige Weise verarbeitet wurden, nicht mehr notwendig.</li>
+                  <li>Nutzer widerrufen eine Einwilligung, auf die sich die Verarbeitung gemäß Art. 6 Abs. 1 lit. a oder Art. 9 Abs. 2 lit. a DSGVO stützte, und es fehlt an einer anderweitigen Rechtsgrundlage für die Verarbeitung.</li>
+                  <li>Nutzer legen gemäß Art. 21 Abs. 1 DSGVO Widerspruch gegen die Verarbeitung ein und es liegen keine vorrangigen berechtigten Gründe für die Verarbeitung vor, oder Nutzer legen gemäß Art. 21 Abs. 2 DSGVO Widerspruch gegen die Verarbeitung ein.</li>
+                  <li>Die Nutzer betreffenden personenbezogenen Daten wurden unrechtmäßig verarbeitet.</li>
+                  <li>Die Löschung der Nutzer betreffenden personenbezogenen Daten ist zur Erfüllung einer rechtlichen Verpflichtung nach dem Unionsrecht oder dem Recht der Mitgliedstaaten erforderlich, dem der Verantwortliche unterliegt.</li>
+                  <li>Die Nutzer betreffenden personenbezogenen Daten wurden in Bezug auf angebotene Dienste der Informationsgesellschaft gemäß Art. 8 Abs. 1 DSGVO erhoben.</li>
                 </ul>
+                <p className="font-medium text-foreground/90">3.4.2</p>
                 <p>
-                  Das Recht auf Löschung besteht nicht, soweit die Verarbeitung zur Ausübung des
-                  Rechts auf freie Meinungsäußerung, zur Erfüllung einer rechtlichen Verpflichtung,
-                  aus Gründen des öffentlichen Interesses oder zur Geltendmachung von
-                  Rechtsansprüchen erforderlich ist.
+                  Hat der Verantwortliche die Nutzer betreffenden personenbezogenen Daten öffentlich
+                  gemacht und ist er gemäß Art. 17 Abs. 1 DSGVO zu deren Löschung verpflichtet, so
+                  trifft er unter Berücksichtigung der verfügbaren Technologie und der
+                  Implementierungskosten angemessene Maßnahmen, auch technischer Art, um für die
+                  Datenverarbeitung Verantwortliche, die die personenbezogenen Daten verarbeiten,
+                  darüber zu informieren, dass Nutzer als betroffene Personen von ihnen die Löschung
+                  aller Links zu diesen personenbezogenen Daten oder von Kopien oder Replikationen
+                  dieser personenbezogenen Daten verlangt haben.
                 </p>
+                <p className="font-medium text-foreground/90">3.4.3</p>
+                <p>Das Recht auf Löschung besteht nicht, soweit die Verarbeitung erforderlich ist</p>
+                <ul className={listClass}>
+                  <li>zur Ausübung des Rechts auf freie Meinungsäußerung und Information;</li>
+                  <li>zur Erfüllung einer rechtlichen Verpflichtung, die die Verarbeitung nach dem Recht der Union oder der Mitgliedstaaten, dem der Verantwortliche unterliegt, erfordert, oder zur Wahrnehmung einer Aufgabe, die im öffentlichen Interesse liegt oder in Ausübung öffentlicher Gewalt erfolgt, die dem Verantwortlichen übertragen wurde;</li>
+                  <li>aus Gründen des öffentlichen Interesses im Bereich der öffentlichen Gesundheit gemäß Art. 9 Abs. 2 lit. h und i sowie Art. 9 Abs. 3 DSGVO;</li>
+                  <li>für im öffentlichen Interesse liegende Archivzwecke, wissenschaftliche oder historische Forschungszwecke oder für statistische Zwecke gemäß Art. 89 Abs. 1 DSGVO, soweit das in Abs. 1 genannte Recht voraussichtlich die Verwirklichung der Ziele dieser Verarbeitung unmöglich macht oder ernsthaft beeinträchtigt, oder</li>
+                  <li>zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.</li>
+                </ul>
 
                 <h3 className={subheading}>3.5 Recht auf Unterrichtung</h3>
                 <p>
                   Haben Nutzer das Recht auf Berichtigung, Löschung oder Einschränkung der
-                  Verarbeitung geltend gemacht, ist der Verantwortliche verpflichtet, allen
-                  Empfängern, denen die personenbezogenen Daten offengelegt wurden, diese
-                  Maßnahmen mitzuteilen.
+                  Verarbeitung gegenüber dem Verantwortlichen geltend gemacht, ist dieser
+                  verpflichtet, allen Empfängern, denen die Nutzer betreffenden personenbezogenen
+                  Daten offengelegt wurden, diese Berichtigung oder Löschung der Daten oder
+                  Einschränkung der Verarbeitung mitzuteilen, es sei denn, dies erweist sich als
+                  unmöglich oder ist mit einem unverhältnismäßigen Aufwand verbunden.
+                </p>
+                <p>
+                  Nutzern steht gegenüber dem Verantwortlichen das Recht zu, über diese Empfänger
+                  unterrichtet zu werden.
                 </p>
 
                 <h3 className={subheading}>3.6 Recht auf Datenübertragbarkeit</h3>
                 <p>
-                  Nutzer haben das Recht, ihre personenbezogenen Daten in einem strukturierten,
-                  gängigen und maschinenlesbaren Format zu erhalten und diese Daten einem anderen
-                  Verantwortlichen zu übermitteln, sofern die Verarbeitung auf einer Einwilligung
-                  oder einem Vertrag beruht und mithilfe automatisierter Verfahren erfolgt.
+                  Nutzer haben das Recht, die Nutzer betreffenden personenbezogenen Daten, die
+                  Nutzer dem Verantwortlichen bereitgestellt haben, in einem strukturierten,
+                  gängigen und maschinenlesbaren Format zu erhalten. Außerdem haben Nutzer das
+                  Recht diese Daten einem anderen Verantwortlichen ohne Behinderung durch den
+                  Verantwortlichen, dem die personenbezogenen Daten bereitgestellt wurden, zu
+                  übermitteln, sofern die Verarbeitung auf einer Einwilligung gemäß Art. 6 Abs. 1
+                  lit. a DSGVO oder Art. 9 Abs. 2 lit. a DSGVO oder auf einem Vertrag gemäß
+                  Art. 6 Abs. 1 lit. b DSGVO beruht und die Verarbeitung mithilfe automatisierter
+                  Verfahren erfolgt.
+                </p>
+                <p>
+                  In Ausübung dieses Rechts haben Nutzer ferner das Recht zu erwirken, dass die
+                  Nutzer betreffenden personenbezogenen Daten direkt von einem Verantwortlichen
+                  einem anderen Verantwortlichen übermittelt werden, soweit dies technisch machbar
+                  ist. Freiheiten und Rechte anderer Personen dürfen hierdurch nicht beeinträchtigt
+                  werden.
+                </p>
+                <p>
+                  Das Recht auf Datenübertragbarkeit gilt nicht für eine Verarbeitung
+                  personenbezogener Daten, die für die Wahrnehmung einer Aufgabe erforderlich ist,
+                  die im öffentlichen Interesse liegt oder in Ausübung öffentlicher Gewalt erfolgt,
+                  die dem Verantwortlichen übertragen wurde.
                 </p>
 
                 <h3 className={subheading}>3.7 Widerspruchsrecht</h3>
                 <p>
-                  Nutzer haben das Recht, aus Gründen ihrer besonderen Situation jederzeit gegen
-                  die Verarbeitung ihrer personenbezogenen Daten, die aufgrund von Art. 6 Abs. 1
-                  lit. e oder f DSGVO erfolgt, Widerspruch einzulegen; dies gilt auch für ein auf
-                  diese Bestimmungen gestütztes Profiling.
+                  Nutzer haben das Recht, aus Gründen, die sich aus ihrer besonderen Situation
+                  ergeben, jederzeit gegen die Verarbeitung der Nutzer betreffenden
+                  personenbezogenen Daten, die aufgrund von Art. 6 Abs. 1 lit. e oder f DSGVO
+                  erfolgt, Widerspruch einzulegen; dies gilt auch für ein auf diese Bestimmungen
+                  gestütztes Profiling.
+                </p>
+                <p>
+                  Der Verantwortliche verarbeitet die Nutzer betreffenden personenbezogenen Daten
+                  nicht mehr, es sei denn, er kann zwingende schutzwürdige Gründe für die
+                  Verarbeitung nachweisen, die die Interessen, Rechte und Freiheiten unserer Nutzer
+                  überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder
+                  Verteidigung von Rechtsansprüchen.
+                </p>
+                <p>
+                  Werden die Nutzer betreffenden personenbezogenen Daten verarbeitet, um
+                  Direktwerbung zu betreiben, haben Nutzer das Recht, jederzeit Widerspruch gegen
+                  die Verarbeitung der Nutzer betreffenden personenbezogenen Daten zum Zwecke
+                  derartiger Werbung einzulegen; dies gilt auch für das Profiling, soweit es mit
+                  solcher Direktwerbung in Verbindung steht.
+                </p>
+                <p>
+                  Widersprechen Nutzer der Verarbeitung für Zwecke der Direktwerbung, so werden die
+                  Nutzer betreffenden personenbezogenen Daten nicht mehr für diese Zwecke
+                  verarbeitet.
+                </p>
+                <p>
+                  Nutzer haben die Möglichkeit, im Zusammenhang mit der Nutzung von Diensten der
+                  Informationsgesellschaft – ungeachtet der Richtlinie 2002/58/EG – das
+                  Widerspruchsrecht mittels automatisierter Verfahren auszuüben, bei denen
+                  technische Spezifikationen verwendet werden.
                 </p>
 
-                <h3 className={subheading}>
-                  3.8 Recht auf Widerruf der datenschutzrechtlichen Einwilligungserklärung
-                </h3>
+                <h3 className={subheading}>3.8 Recht auf Widerruf der datenschutzrechtlichen Einwilligungserklärung</h3>
                 <p>
                   Nutzer haben das Recht, eine datenschutzrechtliche Einwilligungserklärung
-                  jederzeit zu widerrufen. Durch den Widerruf wird die Rechtmäßigkeit der
-                  aufgrund der Einwilligung bis zum Widerruf erfolgten Verarbeitung nicht berührt.
-                  Der Widerruf ist zu richten an:
+                  jederzeit zu widerrufen. Durch den Widerruf der Einwilligung wird die
+                  Rechtmäßigkeit, der aufgrund der Einwilligung bis zum Widerruf erfolgten
+                  Verarbeitung nicht berührt. Die Verarbeitung ist bis zu einem Widerruf rechtmäßig
+                  – der Widerruf wirkt somit erst auf die Verarbeitung nach Zugang des Widerrufs.
+                  Nutzer können den Widerruf formlos per Post oder E-Mail erklären. Die Verarbeitung
+                  von personenbezogenen Daten erfolgt dann nicht mehr, vorbehaltlich der Gestattung
+                  durch eine anderweitige gesetzliche Grundlage. Ist dies nicht der Fall, müssen
+                  Daten unserer Nutzer nach dem Widerruf gemäß Art. 17 Abs. 2 DSGVO unverzüglich
+                  gelöscht werden.
                 </p>
-                <div className="space-y-1 pl-4 border-l-2 border-border/50 mt-2">
-                  <p className="font-medium text-foreground">
-                    Intellomind UG (haftungsbeschränkt)
-                  </p>
+                <p>Der Widerruf ist zu richten an:</p>
+                <div className="space-y-1 pl-4 border-l-2 border-border/50">
+                  <p className="font-medium text-foreground">Intellomind UG (haftungsbeschränkt)</p>
                   <p>Geschäftsführer: Agron Basha</p>
                   <p>Hüingser Ring 1</p>
                   <p>58710 Menden</p>
@@ -395,89 +574,127 @@ export default function Datenschutz() {
                   <p>Telefon: {phoneLink}</p>
                 </div>
 
-                <h3 className={subheading}>
-                  3.9 Recht auf Beschwerde bei einer Aufsichtsbehörde
-                </h3>
+                <h3 className={subheading}>3.9 Recht auf Beschwerde bei einer Aufsichtsbehörde</h3>
                 <p>
                   Unbeschadet eines anderweitigen verwaltungsrechtlichen oder gerichtlichen
-                  Rechtsbehelfs steht Nutzern das Recht auf Beschwerde bei einer Aufsichtsbehörde
-                  zu, insbesondere in dem Mitgliedstaat ihres Aufenthaltsorts, ihres Arbeitsplatzes
-                  oder des Orts des mutmaßlichen Verstoßes, wenn sie der Ansicht sind, dass die
-                  Verarbeitung ihrer personenbezogenen Daten gegen die DSGVO verstößt.
+                  Rechtsbehelfs steht Nutzern das Recht auf Beschwerde bei einer Aufsichtsbehörde,
+                  insbesondere in dem Mitgliedstaat ihres Aufenthaltsorts, ihres Arbeitsplatzes oder
+                  des Orts des mutmaßlichen Verstoßes, wenn Nutzer der Ansicht sind, dass die
+                  Verarbeitung der Nutzer betreffenden personenbezogenen Daten gegen die DSGVO
+                  verstößt.
+                </p>
+                <p>
+                  Die Aufsichtsbehörde, bei der die Beschwerde eingereicht wurde, unterrichtet den
+                  Beschwerdeführer über den Stand und die Ergebnisse der Beschwerde einschließlich
+                  der Möglichkeit eines gerichtlichen Rechtsbehelfs nach Art. 78 DSGVO.
                 </p>
 
-                <h3 className={subheading}>
-                  3.10 Automatisierte Entscheidungen im Einzelfall einschließlich Profiling
-                </h3>
+                <h3 className={subheading}>3.10 Automatisierte Entscheidungen im Einzelfall einschließlich Profiling</h3>
                 <p>Automatisierte Entscheidungen im Einzelfall einschließlich Profiling erfolgen nicht.</p>
 
                 <h3 className={subheading}>3.11 Mitteilungspflichten des Verantwortlichen</h3>
                 <p>
-                  Sollten anderen Empfängern (Dritten) die personenbezogenen Daten von Nutzern mit
+                  Sollten anderen Empfängern (Dritte) die personenbezogenen Daten von Nutzern mit
                   Rechtsgrund offengelegt worden sein, teilen wir jenen jede Berichtigung, Löschung
-                  oder Einschränkung der Verarbeitung mit (Art. 16, Art. 17 Abs. 1 und Art. 18
-                  DSGVO). Wir unterrichten Nutzer ferner auf Verlangen über die Empfänger.
+                  oder Einschränkung der Verarbeitung von personenbezogenen Daten mit (Art. 16,
+                  Art 17 Abs. 1 und Art. 18 DSGVO). Die Mitteilungspflicht entfällt, wenn sie mit
+                  einem unverhältnismäßigen Aufwand verbunden ist oder unmöglich ist. Wir
+                  unterrichten Nutzer ferner auf Verlangen über die Empfänger.
                 </p>
               </div>
             </section>
 
+            {/* 4. Cookies */}
             <section className={card} data-testid="section-datenschutz-cookies">
-              <h2 className={gradientHeading}>
-                4. Angaben zu den verwendeten Cookies und weiterer Technologien
-              </h2>
+              <h2 className={gradientHeading}>4. Angaben zu den verwendeten Cookies und weiterer Technologien</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <p>
                   Wir nutzen Cookies oder weitere Technologien, um unsere Services zu erbringen,
                   auszuwerten und mit den ausgewerteten Daten Marketing zu betreiben. Cookies sind
-                  dabei kleine Textdateien, die Daten von besuchten Websites oder Domains enthalten
-                  und auf einem Gerät gespeichert werden.
+                  dabei bspw. kleine Textdateien, die Daten von besuchten Websites oder Domains
+                  enthalten und auf einem Gerät (Computer, Tablet oder Smartphone) gespeichert
+                  werden. Greifen Nutzer auf eine Website zu, sendet der auf einem Gerät
+                  gespeicherte Cookie Informationen an denjenigen, der den Cookie platziert hat.
                 </p>
 
                 <h3 className={subheading}>4.1 So verwenden wir Cookies und weitere Technologien</h3>
                 <p>
                   Wir möchten, dass Nutzer in der Lage sind, eine informierte Entscheidung für oder
-                  gegen die Verwendung von Cookies zu treffen. Funktionale Cookies sind für den
-                  Besuch unserer Services zwingend und daher schon über unsere Voreinstellungen
-                  zugelassen. Statistik- und Marketing-Cookies sind optional und können über den
-                  Consent-Banner ein- oder abgelehnt werden.
+                  gegen die Verwendung von Cookies und weiterer Technologien zu treffen, die für die
+                  technischen Eigenschaften der Services nicht unbedingt erforderlich sind. Daher
+                  ermöglichen wir es Nutzern für den Fall, dass wir Cookies und weitere Technologien
+                  einsetzen, die einer Einwilligung bedürfen, im Rahmen einer freiwilligen
+                  Entscheidung beim erstmaligen Besuch unserer Services und danach dauerhaft in
+                  entsprechenden Einstellungen zu wählen, welche Cookies und weitere Technologien
+                  Nutzer zulassen. Hierbei gilt stets, dass für den Besuch unserer Services
+                  Funktionale Cookies und weitere Technologien zwingend sind und daher schon über
+                  unsere Voreinstellungen zugelassen sind. Statistik und Marketing Cookies und
+                  weitere Technologien sind optional. Nutzer können sie zulassen, indem Nutzer im
+                  Consent Banner in das Setzen dieser Cookies und weiterer Technologien entsprechend
+                  einwilligen. Alternativ können Nutzer Statistik und Marketing Cookies und weitere
+                  Technologien ablehnen.
                 </p>
 
-                <h3 className={subheading}>4.2 Speicherdauer von Cookies</h3>
+                <h3 className={subheading}>4.2 Speicherdauer von Cookies und weiterer Technologien</h3>
                 <p>
-                  Sofern wir Nutzern keine expliziten Angaben zur Speicherdauer mitteilen, können
+                  Sofern wir Nutzern keine expliziten Angaben zur Speicherdauer von Cookies und
+                  weiterer Technologien mitteilen (z.B. im Rahmen des Consent Banners), können
                   Nutzer davon ausgehen, dass die Speicherdauer bis zu zwei Jahre betragen kann.
-                  Wurden Cookies auf Basis einer Einwilligung gesetzt, haben Nutzer jederzeit die
-                  Möglichkeit, eine erteilte Einwilligung zu widerrufen (Opt-Out).
+                  Wurden Cookies und weitere Technologien auf Basis einer Einwilligung gesetzt,
+                  haben Nutzer jederzeit die Möglichkeit, eine erteilte Einwilligung zu widerrufen
+                  oder der Verarbeitung von Daten durch Cookie / Technologien zu widersprechen
+                  (zusammenfassend als „Opt-Out" bezeichnet).
                 </p>
 
                 <h3 className={subheading}>4.3 Arten von Cookies und weiterer Technologien</h3>
+                <p>Sachlich unterscheiden wir zwischen:</p>
                 <ul className={listClass}>
                   <li>
-                    <span className="font-medium text-foreground">Funktionale Cookies:</span> Diese
-                    sind für die grundlegenden technischen Funktionen der Services erforderlich
-                    (z.B. sicherer Login, Speicherung des Warenkorb-Inhalts).
+                    <span className="font-medium text-foreground">Funktionale Cookies / Technologien:</span>{" "}
+                    Diese sind für die grundlegenden technischen Funktionen der Services erforderlich.
+                    Sie ermöglichen bspw. einen sicheren Login und die Speicherung des Fortschritts
+                    bei Bestellvorgängen. Weiterhin ermöglichen sie uns bspw. das Speichern von
+                    Anmeldedaten, des Warenkorb-Inhalts und die einheitliche Darstellung von
+                    Seiteninhalten.
                   </li>
                   <li>
-                    <span className="font-medium text-foreground">Statistik-Cookies:</span> Diese
-                    ermöglichen die Analyse der Services, um deren Leistung zu messen und zu
-                    verbessern.
+                    <span className="font-medium text-foreground">Statistik Cookies / Technologien:</span>{" "}
+                    Diese ermöglichen uns die Analyse der Services, damit wir deren Leistung messen
+                    und verbessern können. Nutzer können persönliche Einstellungen der Statistik
+                    ändern, indem Nutzer auf den entsprechenden Opt-Out Link klicken.
                   </li>
                   <li>
-                    <span className="font-medium text-foreground">Marketing-Cookies:</span> Diese
-                    werden verwendet, um Nutzern interessenrelevante Werbung zu unterbreiten.
+                    <span className="font-medium text-foreground">Marketing Cookies / Technologien:</span>{" "}
+                    Diese werden von uns verwendet, um Nutzern Werbung zu unterbreiten, die für
+                    Interessen relevant sein könnte. Sie ermöglichen bspw. das Teilen von Seiten
+                    über Soziale Netzwerke und das Schreiben von Kommentaren. Nutzer können
+                    persönliche Einstellungen im Marketing ändern, indem sie auf den entsprechenden
+                    Opt-Out Link klicken.
                   </li>
                 </ul>
 
-                <h3 className={subheading}>4.4 Einwilligungs-Management</h3>
+                <h3 className={subheading}>4.4 Einwilligungs Management</h3>
                 <p>
-                  Wir nutzen ein Einwilligungsmanagement-Tool (Consent-Tool), das es ermöglicht,
-                  Nutzer über eine Einwilligung zu bestimmten Tags in unseren Services zu
-                  informieren und diese einzuholen, zu verwalten und zu dokumentieren. Die
-                  Rechtsgrundlage resultiert aus Art. 6 Abs. 1 lit. f und c DSGVO.
+                  Wir nutzen das Einwilligungsmanagement-Tool (nachfolgend auch „Consent-Tool") des
+                  unten genannten Anbieters im Rahmen der Tracking- und Analysetätigkeiten in
+                  unseren Services. Das Consent-Tool sammelt Logfile- und Einwilligungsdaten. Das
+                  Consent-Tool ermöglicht es, Nutzer über eine Einwilligung zu bestimmten Tags in
+                  unseren Services zu informieren und diese einzuholen, zu verwalten und zu
+                  dokumentieren. Wir verarbeiten dabei die folgenden Daten: (1) Consent Daten bzw.
+                  Daten der Einwilligung (anonymisierte Logbuchdaten (Consent ID, Processor ID,
+                  Controller ID), Consent Status, Timestamp), (2) Device Daten bzw. Daten der
+                  verwendeten Geräte (u.a. gekürzte IP-Adressen (IP v4, IP v6),
+                  Geräteinformationen, Timestamp), (3) User Daten bzw. Benutzerdaten (u.a. eMail,
+                  ID, Browserinformationen, SettingIDs, Changelog). Die ConsentID und der
+                  Consent-Status inkl. Zeitstempel werden in dem lokalen Speicher des Browsers und
+                  gleichzeitig auf den von uns eingesetzten Cloud-Servern gespeichert. Eine weitere
+                  Verarbeitung erfolgt nur, wenn Nutzer eine Anfrage auf Auskunftsersuchen stellen
+                  oder die Zustimmung widerrufen. Die Rechtsgrundlage zur Verarbeitung
+                  personenbezogener Daten mittels des Consent-Tools resultiert aus unserem
+                  berechtigten Interesse sowie zur Erfüllung rechtlicher Vorgaben und damit aus
+                  Art. 6 Abs. 1 lit. f und c DSGVO.
                 </p>
-                <p className="font-medium text-foreground">
-                  Anbieter des von uns genutzten Consent-Tools:
-                </p>
+                <p className="font-medium text-foreground">Anbieter des von uns genutzten Consent-Tools:</p>
                 <div className="space-y-0.5 pl-4 border-l-2 border-border/50">
                   <p>Usercentrics GmbH</p>
                   <p>Sendlinger Straße 7</p>
@@ -486,58 +703,83 @@ export default function Datenschutz() {
               </div>
             </section>
 
+            {/* 5. Datenverarbeitung in Services */}
             <section className={card} data-testid="section-datenschutz-services">
-              <h2 className={gradientHeading}>
-                5. Datenverarbeitung im Zusammenhang mit der Nutzung unserer Services
-              </h2>
+              <h2 className={gradientHeading}>5. Datenverarbeitung im Zusammenhang mit der Nutzung unserer Services</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <p>
                   Die Nutzung unserer Services mit all ihren Funktionen geht mit der Verarbeitung
-                  von personenbezogenen Daten einher.
+                  von personenbezogenen Daten einher. Wie genau das geschieht, erläutern wir
+                  Nutzern hier.
                 </p>
                 <h3 className={subheading}>Informatorische Nutzung unserer Services</h3>
                 <p>
                   Das rein informatorische Aufrufen unserer Services erfordert eine Verarbeitung
-                  von folgenden personenbezogenen Daten: Gerätetyp und Geräteversion, verwendetes
-                  Betriebssystem, IP-Adresse des Endgeräts sowie die Uhrzeit des Aufrufs. Diese
-                  Informationen werden automatisch von einem Gerät übermittelt. Die Verarbeitung
-                  erfolgt zum Zwecke der Funktionsfähigkeit und Optimierung unserer Services sowie
-                  zur Gewährleistung der Sicherheit unserer informationstechnischen Systeme gemäß
-                  Art. 6 Abs. 1 lit. f DSGVO.
+                  von folgenden personenbezogenen Daten und Informationen: Gerätetyp und
+                  Geräteversion, verwendetes Betriebssystem, IP-Adresse des Endgeräts, mit dem
+                  Nutzer auf unsere Services zugreifen sowie die Uhrzeit des Aufrufs unserer
+                  Services. All diese Informationen werden automatisch von einem Gerät übermittelt,
+                  sollten Nutzer dieses nicht derart konfiguriert haben, dass eine Übermittlung der
+                  Informationen unterdrückt wird.
+                </p>
+                <p>
+                  Diese personenbezogenen Daten werden zum Zwecke der Funktionsfähigkeit und
+                  Optimierung unserer Services, sowie zur Gewährleistung der Sicherheit unserer
+                  informationstechnischen Systeme verarbeitet. Diese Zwecke sind zugleich
+                  berechtigte Interessen nach Art. 6 Abs. 1 lit. f DSGVO, die Verarbeitung erfolgt
+                  somit mit Rechtsgrund.
                 </p>
               </div>
             </section>
 
+            {/* 6. Kommunikations Services */}
             <section className={card} data-testid="section-datenschutz-kommunikation">
               <h2 className={gradientHeading}>6. Kommunikations Services</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <h3 className={subheading}>6.1 Kontaktformular / Kontaktaufnahme per E-Mail</h3>
                 <p>
-                  Wir verarbeiten die personenbezogenen Daten von Nutzern, die diese uns im Rahmen
-                  der Kontaktaufnahme zur Verfügung stellen, zum Zweck der Beantwortung einer
+                  Wir verarbeiten die personenbezogenen Daten von Nutzern, die Nutzer uns im Rahmen
+                  der Kontaktaufnahme zur Verfügung stellen zum Zweck der Beantwortung einer
                   Anfrage, einer E-Mail oder einer Rückrufbitte. Verarbeitete Datenkategorien sind
                   hierbei Stammdaten, Kontaktdaten, Inhaltsdaten, ggf. Nutzungsdaten,
-                  Verbindungsdaten und ggf. Vertragsdaten. Die Rechtsgrundlage basiert auf Art. 6
-                  Abs. 1 lit. b DSGVO.
+                  Verbindungsdaten und ggf. Vertragsdaten. Wir leiten diese Daten im Einzelfall
+                  weiter an mit uns verbundene Unternehmen, oder Dritte, die diese Daten zur
+                  Abwicklung von Bestellungen und Buchungen vereinbarungsgemäß verarbeiten dürfen.
+                  Die Rechtsgrundlage der Verarbeitung basiert auf Art. 6 Abs. 1 lit. b DSGVO, da
+                  wir sie zur Beantwortung einer Anfrage und damit zur Erfüllung des Vertrages
+                  hierüber verarbeiten.
                 </p>
 
                 <h3 className={subheading}>6.2 Feedbackformular</h3>
                 <p>
-                  Wir verarbeiten die personenbezogenen Daten von Nutzern, die diese uns im Rahmen
-                  der Vergabe von Feedback zur Verfügung stellen, zur Umsetzung des Feedbacks und
-                  Verbesserung unserer Services. Die Rechtsgrundlage basiert auf Art. 6 Abs. 1
-                  lit. b DSGVO.
+                  Wir verarbeiten die personenbezogenen Daten von Nutzern, die Nutzer uns im Rahmen
+                  der Vergabe von Feedback zur Umsetzung des Feedbacks wie bspw. zur Verbesserung
+                  unserer Services, zur Verfügung stellen. Verarbeitete Datenkategorien sind hierbei
+                  Stammdaten, Kontaktdaten, Inhaltsdaten, ggf. Nutzungsdaten, Verbindungsdaten und
+                  ggf. Vertragsdaten. Die Rechtsgrundlage der Verarbeitung basiert auf Art. 6
+                  Abs. 1 lit. b DSGVO zur Erfüllung des Vertrages.
                 </p>
 
                 <h3 className={subheading}>6.3 Terminplanung und Terminbuchung</h3>
                 <p>
-                  Wir nutzen in unseren Services Terminplanungs-Tools, um Termine mit Nutzern zu
-                  vereinbaren. Angaben aus dem Terminplanungs-Tool-Formular werden zwecks
-                  Bearbeitung einer Anfrage oder eines Vertragsverhältnisses gespeichert. Sollte
-                  eine Anfrage beantwortet sein oder der Zweck entfallen, werden wir Daten der
-                  Nutzer zeitnah löschen.
+                  Wir nutzen in unseren Services die unten genannten Terminplanungs-Tools, um
+                  Termine mit Nutzern zu vereinbaren. Über die Terminplanungs-Tools mit ihren
+                  integrierten Online-Kalendern können Nutzer bequem einen Termin für ein Gespräch
+                  anfragen und auswählen. Wenn Nutzer in unseren Services den entsprechenden Button
+                  klicken bzw. wenn Nutzer über einen von uns übermittelten Link einen Termin
+                  vereinbaren möchten, werden Nutzer automatisch mit unserem Terminaccount
+                  verbunden. Nach der Wahl des Termins, der Bestätigung und der Eintragung von
+                  Kontaktdaten und Anliegen erhalten Nutzer eine E-Mail mit der Bestätigung des
+                  Termins. Sollten die Terminplanungs-Tools Daten in ein Drittland transferieren,
+                  so geschieht dies nur auf Basis eines geschlossenen Auftragsverarbeitungsvertrags,
+                  gemäß vereinbarter Standardvertragsklauseln und insbesondere auf Basis des
+                  EU-US Data Privacy Framework (DPF). Angaben aus dem Terminplanungs-Tool-Formular
+                  werden zwecks Bearbeitung einer Anfrage oder zwecks Bearbeitung eines
+                  entsprechenden Vertragsverhältnisses gespeichert. Sollte eine Anfrage beantwortet
+                  sein oder der Zweck entfallen, werden wir Daten unserer Nutzer, vorbehaltlich
+                  vertraglicher oder gesetzlicher Aufbewahrungsmöglichkeiten, zeitnah löschen.
                 </p>
-                <p className="font-medium text-foreground">Anbieter:</p>
+                <p className="font-medium text-foreground">Anbieter der von uns eingesetzten Terminplanungs-Tools:</p>
                 <div className="space-y-0.5 pl-4 border-l-2 border-border/50">
                   <p>Calendly, LLC</p>
                   <p>3423 Piedmont Road NE</p>
@@ -556,25 +798,60 @@ export default function Datenschutz() {
 
                 <h3 className={subheading}>6.4 Online Kommunikations-Tools</h3>
                 <p>
-                  Wir nutzen Online Kommunikations-Tools, um Telefonkonferenzen,
-                  Kundengespräche, Online-Meetings und Videokonferenzen durchzuführen. Die
-                  Rechtsgrundlage zur Nutzung resultiert aus Art. 6 Abs. 1 lit. b DSGVO
-                  (Vertragserfüllung) bzw. Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).
+                  Wir nutzen Online Kommunikations-Tools, um Telefonkonferenzen, Kundengespräche,
+                  Online-Meetings, Videokonferenzen und/oder Webinare durchzuführen (nachfolgend:
+                  „Online-Meetings"). Der Umfang der Datenverarbeitung hängt hierbei davon ab, zu
+                  welchem konkreten Zweck wir das Online-Meeting veranstalten und welche Angaben zu
+                  Daten Nutzer vor bzw. bei der Teilnahme machen. Inbetrachtkommende Datenkategorien
+                  sind hierbei Stammdaten, Kontaktdaten, Inhaltsdaten, ggf. Nutzungsdaten,
+                  Verbindungsdaten und ggf. Vertragsdaten. Empfänger der Daten sind hierbei die von
+                  uns eingebundenen und unten genannten Anbieter von Online Kommunikations-Tools.
+                  Sollten diese Anbieter Daten in ein Drittland transferieren (bspw. die USA), so
+                  geschieht dies nur im Einzelfall, auf Basis eines mit ihnen geschlossenen
+                  Auftragsverarbeitungsvertrags und gemäß mit ihnen vereinbarter
+                  Standardvertragsklauseln, insbesondere auf Basis des EU-US Data Privacy Framework
+                  (DPF). Unsere Rechtsgrundlage zur Nutzung von Online Kommunikations-Tools
+                  resultiert aus Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung), sofern das
+                  Online-Meeting aufgrund von Vertragsverhandlungen bzw. zur Durchführung unserer
+                  vertraglichen Pflichten stattfindet. Sollten wir eine Einwilligung einholen,
+                  liegt unsere Rechtsgrundlage in Art. 6 Abs. 1 lit. a DSGVO.
                 </p>
-                <p className="font-medium text-foreground">Anbieter:</p>
+                <p className="font-medium text-foreground">Anbieter der von uns eingesetzten Online Kommunikations-Tools:</p>
                 <div className="space-y-0.5 pl-4 border-l-2 border-border/50">
                   <p>Zoom Video Communications, Inc.</p>
                   <p>55 Almaden Blvd, Suite 600</p>
                   <p>San Jose, CA 95113, USA</p>
+                  <p>
+                    <a
+                      href="https://www.zoom.com/de/trust/privacy/privacy-statement/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-cyan-500 hover:text-cyan-400 underline underline-offset-2"
+                    >
+                      zoom.com Datenschutz
+                    </a>
+                  </p>
                 </div>
 
                 <h3 className={subheading}>6.5 Künstliche Intelligenz</h3>
                 <p>
-                  In unseren Services verwenden wir Dienste künstlicher Intelligenz (KI-Dienste),
-                  um unsere Services passgenau auf die Bedürfnisse der Nutzer anzubieten. Die
-                  Rechtsgrundlage resultiert aus Art. 6 Abs. 1 lit. b und f DSGVO.
+                  In unseren Services verwenden wir Dienste künstlicher Intelligenz
+                  („KI-Dienste"). Die KI-Dienste bieten uns hierbei die Möglichkeit, unsere
+                  Services, insbesondere unsere Kommunikationsservices, wie ein KI-Chatbot oder
+                  auch ein KI-Mail-Assistenten passgenau auf die Bedürfnisse der Nutzer anzubieten
+                  und damit mit einer state of the art Qualität und einer individuellen
+                  Zielgenauigkeit zu erbringen, die für unsere Beziehung zueinander besonders
+                  wertvoll ist. Verarbeitete Datenkategorien sind hierbei Stammdaten, Kontaktdaten,
+                  Inhaltsdaten, ggf. Nutzungsdaten, Verbindungsdaten und ggf. Vertragsdaten.
+                  Empfänger der Daten sind hierbei die von uns eingebundenen und unten genannten
+                  Anbieter von KI-Diensten. Sollten diese KI-Dienste Daten in ein Drittland
+                  transferieren (bspw. die USA), so geschieht dies auf Basis eines mit ihnen
+                  geschlossenen Auftragsverarbeitungsvertrages und gemäß mit ihnen vereinbarter
+                  Standardvertragsklauseln, insbesondere auf Basis des EU-US Data Privacy Framework
+                  (DPF). Unsere Rechtsgrundlage zur Nutzung von KI-Diensten resultiert aus
+                  Art. 6 Abs. 1 lit. b und f DSGVO.
                 </p>
-                <p className="font-medium text-foreground">Anbieter:</p>
+                <p className="font-medium text-foreground">Anbieter der von uns eingesetzten KI-Dienste:</p>
                 <div className="space-y-3 pl-4 border-l-2 border-border/50">
                   <div>
                     <p>Microsoft Ireland Operations Limited</p>
@@ -585,67 +862,103 @@ export default function Datenschutz() {
                     <p>OpenAI Ireland Limited (ChatGPT)</p>
                     <p>1st Floor, The Liffey Trust Centre</p>
                     <p>117-126 Sheriff Street Upper, Dublin 1, D01 YC43, Irland</p>
+                    <p>
+                      <a
+                        href="https://openai.com/de-DE/policies/eu-privacy-policy/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-cyan-500 hover:text-cyan-400 underline underline-offset-2"
+                      >
+                        openai.com EU-Datenschutzrichtlinie
+                      </a>
+                    </p>
                   </div>
                 </div>
 
                 <h3 className={subheading}>6.6 Fonio.ai</h3>
                 <p>
-                  Wir nutzen für die Kundenkommunikation den Dienst „Fonio.ai", einen KI-gestützten
-                  Telefonassistenten, der eingehende und/oder ausgehende Telefonanrufe automatisiert
-                  entgegennimmt, führt, dokumentiert und – je nach Konfiguration – Termine
-                  vereinbart oder Informationen erfasst. Dabei werden Stammdaten, Kontaktdaten,
-                  Inhaltsdaten sowie Verbindungsdaten wie Telefonnummern und Sprachdaten
-                  verarbeitet. Die Nutzung von Fonio.ai erfolgt auf Grundlage von Art. 6 Abs. 1
-                  lit. f DSGVO.
+                  Wir nutzen für die Kundenkommunikation den Dienst „Fonio.ai", einen KI gestützten
+                  Telefonassistenten. Fonio.ai wird eingesetzt, um eingehende und/oder ausgehende
+                  Telefonanrufe automatisiert entgegenzunehmen, zu führen, zu dokumentieren und –
+                  je nach Konfiguration – Termine zu vereinbaren oder Informationen zu erfassen.
+                  Dabei werden Datenkategorien wie Stammdaten, Kontaktdaten, Inhaltsdaten und
+                  Verbindungsdaten wie Telefonnummern, Sprachdaten, Gesprächsinhalte sowie ggf.
+                  weitere im Gespräch übermittelte personenbezogene Daten verarbeitet. Empfänger
+                  der Daten ist hierbei die fonio GmbH, Joanelligasse 5/16, 1060 Wien, Österreich.
+                  Die Verarbeitung erfolgt auf Grundlage eines Auftragsverarbeitungsvertrags gemäß
+                  Art. 28 DSGVO. Die Nutzung von Fonio.ai erfolgt auf Grundlage von Art. 6 Abs. 1
+                  lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer effizienten und
+                  zeitgemäßen Kundenkommunikation, bei der uns Fonio.ai mit seinen teils
+                  KI-gestützten Prozessen unterstützt. Weitere Informationen zur Datenverarbeitung
+                  durch fonio.ai finden Sie unter:{" "}
+                  <a
+                    href="https://docs.fonio.ai/Datenschutz/Datenschutz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-500 hover:text-cyan-400 underline underline-offset-2"
+                  >
+                    docs.fonio.ai/Datenschutz/Datenschutz
+                  </a>
+                  .
                 </p>
-                <p className="font-medium text-foreground">Anbieter:</p>
-                <div className="space-y-0.5 pl-4 border-l-2 border-border/50">
-                  <p>fonio GmbH</p>
-                  <p>Joanelligasse 5/16</p>
-                  <p>1060 Wien, Österreich</p>
-                  <p>
-                    <a
-                      href="https://docs.fonio.ai/Datenschutz/Datenschutz"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-cyan-500 hover:text-cyan-400 underline underline-offset-2"
-                    >
-                      docs.fonio.ai/Datenschutz
-                    </a>
-                  </p>
-                </div>
               </div>
             </section>
 
+            {/* 7. Hosting */}
             <section className={card} data-testid="section-datenschutz-hosting">
-              <h2 className={gradientHeading}>7. Bereitstellung unserer Services (Hosting)</h2>
+              <h2 className={gradientHeading}>7. Bereitstellung unserer Services</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <h3 className={subheading}>7.1 Bereitstellung unserer Services</h3>
                 <p>
-                  Um Nutzern unsere Services bereitstellen zu können, nehmen wir die Leistungen von
-                  Hosting-Anbietern in Anspruch. Zu den verarbeiteten Daten gehören alle Daten, die
-                  Nutzer im Rahmen der Nutzung eingeben bzw. die von ihnen hierbei erhoben werden
-                  (bspw. IP-Adresse). Die Rechtsgrundlage resultiert aus Art. 6 Abs. 1 lit. f DSGVO.
+                  Um Nutzern unsere Services bereitstellen zu können, nehmen wir die Leistungen der
+                  unten genannten Hosting Anbieter in Anspruch. Unsere Services werden von den
+                  Servern dieser Hosting Anbieter abgerufen. Zu diesen Zwecken nehmen wir die
+                  Infrastruktur- und Plattformdienstleistungen, Rechenkapazität, Speicherplatz und
+                  Datenbankdienste sowie Sicherheitsleistungen und technische Wartungsleistungen
+                  der Webshosting Anbieter in Anspruch.
+                </p>
+                <p>
+                  Zu den verarbeiteten Daten gehören alle solche Daten, die Nutzer im Rahmen der
+                  Nutzung und Kommunikation in Verbindung mit ihrem Besuch in unseren Services
+                  eingeben bzw. die von Nutzern hierbei erhoben werden (bspw. IP Adresse). Unsere
+                  Rechtsgrundlage zur Nutzung der Hostinganbieter zur Bereitstellung unserer
+                  Services resultiert aus Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).
                 </p>
 
                 <h3 className={subheading}>7.2 Empfang und Versand von E-Mails</h3>
                 <p>
-                  Die von uns in Anspruch genommenen Leistungen der Hoster können ebenfalls den
-                  Versand, den Empfang sowie die Speicherung von E-Mails umfassen. Die
-                  Rechtsgrundlage resultiert aus Art. 6 Abs. 1 lit. f DSGVO.
+                  Die von uns in Anspruch genommenen Leistungen der Hoster kann ebenfalls den
+                  Versand, den Empfang sowie die Speicherung von E-Mails umfassen. Zu diesen
+                  Zwecken werden die Adressen der Empfänger von E-Mails sowie die Absender als auch
+                  weitere Informationen betreffend den E-Mailversand sowie die Inhalte der
+                  jeweiligen E-Mails verarbeitet. Die vorgenannten Daten werden u.a. zu Zwecken der
+                  Erkennung von SPAM verarbeitet. E-Mails werden im Internet grundsätzlich nicht
+                  verschlüsselt versendet. Im Regelfall werden E-Mails zwar auf dem Transportweg
+                  verschlüsselt, aber (sofern keine Ende-zu-Ende-Verschlüsselung erfolgt) nicht auf
+                  den Servern, von denen sie abgesendet und empfangen werden. Wir können daher für
+                  den Übertragungsweg der E-Mails zwischen dem Absender und dem Empfang auf unserem
+                  Server keine Verantwortung übernehmen. Unsere Rechtsgrundlage resultiert aus
+                  Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).
                 </p>
 
                 <h3 className={subheading}>7.3 Erhebung von Zugriffsdaten und Logfiles</h3>
                 <p>
-                  Wir erheben Daten zu jedem Zugriff auf den Server (Serverlogfiles), u.a.
-                  Adresse und Name der abgerufenen Services, Datum und Uhrzeit des Abrufs,
-                  übertragene Datenmengen, Gerätetyp, Betriebssystem, Referrer URL und IP-Adressen.
-                  Die Rechtsgrundlage resultiert aus Art. 6 Abs. 1 lit. f DSGVO.
+                  Wir selbst (bzw. die Hosting Anbieter) erheben Daten zu jedem Zugriff auf den
+                  Server (Serverlogfiles). Zu den Serverlogfiles können Adresse und Name der
+                  abgerufenen Services und Dateien, Datum und Uhrzeit des Abrufs, übertragene
+                  Datenmengen, Meldung über erfolgreichen Abruf, Gerätetyp nebst Version,
+                  Betriebssystem, Referrer URL (die zuvor besuchte Seite) und im Regelfall
+                  IP-Adressen sowie der anfragende Provider gehören.
+                </p>
+                <p>
+                  Die Serverlogfiles können zum einen zu Zwecken der Sicherheit eingesetzt werden,
+                  z.B., um eine Überlastung der Server zu vermeiden (insbesondere im Fall von
+                  missbräuchlichen Angriffen, sogenannten DDoS-Attacken) und zum anderen, um die
+                  Auslastung der Server und ihre Stabilität sicherzustellen. Unsere Rechtsgrundlage
+                  resultiert aus Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).
                 </p>
 
-                <p className="font-medium text-foreground mt-4">
-                  Die von uns eingesetzten Hosting-Anbieter:
-                </p>
+                <p className="font-medium text-foreground">Die von uns eingesetzten Hosting Anbieter sind die Folgenden:</p>
                 <div className="space-y-3 pl-4 border-l-2 border-border/50">
                   <div>
                     <p>HOSTINGER operations UAB</p>
@@ -661,6 +974,7 @@ export default function Datenschutz() {
               </div>
             </section>
 
+            {/* 8. Tracking & Tools */}
             <section className={card} data-testid="section-datenschutz-tracking">
               <h2 className={gradientHeading}>8. Tracking &amp; Tools</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
@@ -671,47 +985,93 @@ export default function Datenschutz() {
 
                 <h3 className={subheading}>Google Tag Manager</h3>
                 <p>
-                  In unseren Services nutzen wir den Google Tag Manager, eine Lösung zum Verwalten
-                  von Website-Tags über eine Oberfläche. Der Google Tag Manager selbst erstellt
-                  keine Profile und setzt keine Cookies. Über seine Aktivierung werden jedoch
-                  weitere Google-Dienste wie Google Analytics eingebunden. Empfänger der Daten ist
-                  die Google Ireland Ltd., Gordon House, Barrow Street, Dublin 4, Irland. Die
-                  Rechtsgrundlage ist eine Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO.
+                  In unseren Services nutzen wir den Google Tag Manager. Google Tag Manager ist
+                  eine Lösung, mit der wir sog. Website-Tags über eine Oberfläche verwalten und so
+                  andere Dienste in unsere Services einbinden können. Der Google Tag Manager selbst
+                  (welches die Tags implementiert) erstellt noch keine Profile und setzt auch keine
+                  Cookies oder andere Technologien auf dem Endgerät des Nutzers. Über die
+                  Aktivierung des Google Tag Managers werden jedoch weitere Google Dienste
+                  eingebunden, wie bspw. Google Analytics. Verarbeitete Daten sind bei der
+                  Einbindung des Google Tag Mangers u.a. Nutzungsdaten &amp; Verbindungsdaten.
+                  Empfänger der Daten ist die Google Ireland Ltd., Gordon House, Barrow Street
+                  Dublin 4, Irland. Sollte Google diese Daten in ein Drittland transferieren
+                  (bspw. die USA), so geschieht dies nur im Einzelfall, auf Basis eines mit Google
+                  geschlossenen Auftragsverarbeitungsvertrags und gemäß mit Google vereinbarter
+                  Standardvertragsklauseln, insbesondere auf Basis des EU-US Data Privacy Framework
+                  (DPF). Die Rechtsgrundlage zur Nutzung des Google Tag Manager ist eine
+                  Einwilligung (bspw. über ein Opt-In im Consent Banner), sofern Nutzer uns diese
+                  im Rahmen des Besuches in unseren Services erteilt haben, und resultiert daher
+                  aus Art. 6 Abs. 1 lit. a DSGVO. Sollten Nutzer uns die Einwilligung zur Nutzung
+                  von Google Tag Managers nicht erteilt haben (kein Opt-In im Consent Banner bzw.
+                  Widerruf einer Einwilligung), so nutzen wir den Google Tag Manager im Rahmen von
+                  Besuchen in unseren Services nicht (mehr).
                 </p>
 
                 <h3 className={subheading}>Google Search Console</h3>
                 <p>
                   Zum Zwecke der fortlaufenden Optimierung des Google-Rankings unserer Services
-                  nutzen wir die Google Search Console, einen Webanalysedienst von Google. Im
-                  Rahmen der Nutzung der Google Search Console werden keine personenbezogenen
-                  Nutzer- bzw. Trackingdaten verarbeitet oder an Google übermittelt.
+                  nutzen wir die Google Search Console, ein Webanalysedienst von Google. Durch die
+                  Google Search Console können wir Suchanalysen durchführen, welche uns Aufschluss
+                  darüber geben, wie oft unsere Services in den Google-Suchergebnissen erscheint.
+                  So können wir unsere Services im Suchindex überwachen und verwalten. Im Rahmen
+                  der Nutzung der Google Search Console werden keine personenbezogenen Nutzer- bzw.
+                  Trackingdaten verarbeitet oder an Google übermittelt.
                 </p>
 
                 <h3 className={subheading}>Google Analytics</h3>
                 <p>
                   Wir nutzen Google Analytics zum Zweck der statistischen Auswertung der Nutzung
-                  unserer Services. Die IP-Adresse wird vor der dauerhaften Speicherung durch
-                  Kürzung anonymisiert. Empfänger der Daten ist die Google Ireland Ltd., Gordon
-                  House, Barrow Street, Dublin 4, Irland (als gemeinsam Verantwortlicher gemäß
-                  Art. 26 DSGVO). Die Rechtsgrundlage ist eine Einwilligung gemäß Art. 6 Abs. 1
-                  lit. a DSGVO. Sollten Nutzer die Einwilligung nicht erteilt haben, so nutzen wir
-                  Google Analytics im Rahmen von Besuchen in unseren Services nicht (mehr).
+                  unserer Services. Die IP-Adresse wird von uns erhoben, bevor sie von Google noch
+                  vor der dauerhaften Speicherung auf deren Servern durch Kürzung anonymisiert wird.
+                  Google Analytics ermöglicht es uns, nachzuvollziehen, wie unsere Services von
+                  Nutzern genutzt werden und wie wir diese dementsprechend verbessern und
+                  weiterentwickeln können. Verarbeitete Daten sind Nutzungsdaten &amp;
+                  Verbindungsdaten. Empfänger der Daten ist hierbei die Google Ireland Ltd., Gordon
+                  House, Barrow Street Dublin 4, Irland (als gemeinsam Verantwortlicher, Art. 26
+                  DSGVO). Sollte Google diese Daten in ein Drittland transferieren (bspw. die USA),
+                  so geschieht dies nur im Einzelfall, auf Basis eines mit Google geschlossenen
+                  Auftragsverarbeitungsvertrags und gemäß mit Google vereinbarter
+                  Standardvertragsklauseln, insbesondere auf Basis des EU-US Data Privacy Framework
+                  (DPF). Die Rechtsgrundlage zur Nutzung von Google Analytics ist eine Einwilligung
+                  (bspw. über ein Opt-In im Consent Banner), sofern Nutzer uns diese im Rahmen des
+                  Besuches in unseren Services erteilt haben, und resultiert daher aus Art. 6
+                  Abs. 1 lit. a DSGVO. Sollten Nutzer uns die Einwilligung zur Nutzung von Google
+                  Analytics nicht erteilt haben (kein Opt-In im Consent Banner bzw. Widerruf einer
+                  Einwilligung), so nutzen wir Google Analytics im Rahmen von Besuchen in unseren
+                  Services nicht (mehr).
                 </p>
               </div>
             </section>
 
+            {/* 9. Transaktionale Mailings */}
             <section className={card} data-testid="section-datenschutz-mailings">
               <h2 className={gradientHeading}>9. Transaktionale Mailings</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <p>
                   Aus administrativen Vorgängen, zur Bestätigung von Aktionen sowie im Rahmen
                   unserer nicht werblichen Kundenkommunikation versenden wir transaktionale
-                  Benachrichtigungen an Nutzer. Die Rechtsgrundlage liegt in Art. 6 Abs. 1 lit. b
-                  DSGVO, da wir mit den Informationen in den Transaktionalen Mailings unsere
-                  vertraglichen Pflichten erfüllen. Sollten wir hierfür auf die Dienste von dritten
-                  Anbietern zugreifen, liegt der Rechtsgrund in Art. 6 Abs. 1 lit. f DSGVO.
+                  Benachrichtigungen (nachfolgend „Transaktionale Mailings") an Nutzer. Unsere
+                  Transaktionalen Mailings enthalten hierbei wichtige administrative Informationen
+                  zu unseren Services. Für die Verwaltung unserer Transaktionalen Mailings sowie
+                  für die Erstellung und Versendung von Transaktionalen Mailings nutzen wir die
+                  unten stehenden Transaktionalen-Mail-Dienste. Im Rahmen des Abrufs der
+                  Transaktionalen Mailings durch Nutzer können technische Informationen, wie
+                  Informationen zum Browser und einem System, als auch eine IP-Adresse und der
+                  Zeitpunkt des Abrufs, erhoben werden. Diese Informationen werden zum technischen
+                  Nachvollziehen der Interaktion mit unseren Transaktionalen Mailings genutzt. Die
+                  Rechtsgrundlage zur Nutzung von Transaktionalen Mailings liegt in Art. 6 Abs. 1
+                  lit. b DSGVO, da wir mit den Informationen in den Transaktionalen Mailings unsere
+                  vertraglichen Pflichten Nutzern gegenüber erfüllen. Sollten wir hierbei auf die
+                  Dienste von dritten Anbietern zugreifen, liegt der Rechtsgrund hierfür in
+                  Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse daran, die
+                  Versendung von Transaktionalen Mailings zu vereinheitlichen und gesammelt zu
+                  steuern. Sollten Anbieter Daten in ein Drittland transferieren (bspw. die USA),
+                  so geschieht dies nur im Einzelfall, auf Basis eines mit ihnen geschlossenen
+                  Auftragsverarbeitungsvertrags und gemäß mit ihnen vereinbarter
+                  Standardvertragsklauseln, insbesondere auf Basis des EU-US Data Privacy Framework
+                  (DPF).
                 </p>
-                <p className="font-medium text-foreground">Anbieter:</p>
+                <p className="font-medium text-foreground">Anbieter der von uns eingesetzten Transaktionalen-Mail-Dienste:</p>
                 <div className="space-y-0.5 pl-4 border-l-2 border-border/50">
                   <p>Twilio SendGrid, Inc.</p>
                   <p>1801 California Street, Suite 500</p>
@@ -720,39 +1080,92 @@ export default function Datenschutz() {
               </div>
             </section>
 
+            {/* 10. Social Media */}
             <section className={card} data-testid="section-datenschutz-socialmedia">
               <h2 className={gradientHeading}>10. Profile auf Social Media Websites</h2>
               <div className={`mt-4 space-y-3 ${body}`}>
                 <p>
-                  Wir unterhalten Profile auf den Plattformen der sozialen Netzwerke und
-                  verarbeiten in diesem Rahmen personenbezogene Daten, um mit den dort aktiven
-                  Nutzern zu kommunizieren oder Informationen über uns anzubieten. Wir weisen
-                  darauf hin, dass Daten beim Besuch unserer Profile außerhalb des Raumes der
-                  Europäischen Union verarbeitet werden können. Die Rechtsgrundlage resultiert aus
-                  unserem berechtigten Interesse gemäß Art. 6 Abs. 1 lit. f DSGVO. Nutzer können
-                  ihre Rechte auch uns gegenüber geltend machen, wir werden Anfragen dann
-                  umgehend an den Betreiber der Social-Media-Plattform weiterleiten.
+                  Wir unterhalten Profile auf den Plattformen der sozialen Netzwerke des Internets
+                  und verarbeiten in diesem Rahmen personenbezogenen Daten, um mit den dort aktiven
+                  Nutzern zu kommunizieren oder um Informationen über uns anzubieten. Wir weisen
+                  Nutzer darauf hin, dass Daten unserer Nutzer beim Besuch unserer Profile außerhalb
+                  des Raumes der Europäischen Union verarbeitet werden können. Verantwortlich
+                  hierfür sind die Betreiber der jeweiligen sozialen Netzwerke. Eine detaillierte
+                  Darstellung der jeweiligen Verarbeitungsformen und der Widerspruchsmöglichkeiten
+                  (bspw. Opt-Out) können Nutzer in den Datenschutzerklärungen der Betreiber der
+                  jeweiligen sozialen Netzwerke finden.
                 </p>
-                <p className="font-medium text-foreground">Profile und Anbieter:</p>
-                <ul className={listClass}>
-                  <li>
-                    <span className="font-medium text-foreground">Facebook</span> – Meta Platforms
-                    Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland
-                  </li>
-                  <li>
-                    <span className="font-medium text-foreground">Instagram</span> – Meta Platforms
-                    Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland
-                  </li>
-                  <li>
-                    <span className="font-medium text-foreground">LinkedIn</span> – LinkedIn Ireland
-                    Unlimited Company, Wilton Place, Dublin 2, Irland
-                  </li>
-                  <li>
-                    <span className="font-medium text-foreground">X (ehemals Twitter)</span> –
-                    Twitter International Company, One Cumberland Place, Fenian Street, Dublin 2,
-                    Irland
-                  </li>
-                </ul>
+                <p>
+                  Bei dem Besuch unserer Social Media Profile kann das Nutzungsverhalten ausgewertet
+                  und uns hieraus gewonnene Informationen mitgeteilt werden („Insights"). Diese
+                  Auswertung erfolgt zu Zwecken der wirtschaftlichen Optimierung und
+                  bedarfsgerechten Gestaltung unserer Services. Verarbeitete Datenkategorien sind
+                  hierbei ggf. Stammdaten, ggf. Kontaktdaten, Inhaltsdaten, Nutzungsdaten,
+                  Verbindungsdaten. Empfänger der Daten ist der Anbieter der jeweiligen Social
+                  Media Plattform als gemeinsam Verantwortlicher gemäß Art. 26 DSGVO. Die
+                  Rechtsgrundlage zur Verarbeitung der Daten nach der hier genannten Maßgabe
+                  resultiert aus unserem berechtigten Interesse und damit aus Art. 6 Abs. 1 lit. f
+                  DSGVO. Für die Umsetzung von Betroffenenrechten ist die jeweilige Social Media
+                  Plattform verantwortlich. Nutzer können ihre Rechte auch uns gegenüber geltend
+                  machen, wir werden ihre Anfrage dann umgehend an den Betreiber der Social Media
+                  Plattform weiterleiten.
+                </p>
+
+                <h3 className={subheading}>Facebook</h3>
+                <p>
+                  Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour,
+                  Dublin 2, Irland. Betroffenenrechte:{" "}
+                  <a
+                    href="https://www.facebook.com/legal/terms/information_about_page_insights_data"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-500 hover:text-cyan-400 underline underline-offset-2"
+                  >
+                    facebook.com/legal/terms/information_about_page_insights_data
+                  </a>
+                </p>
+
+                <h3 className={subheading}>Instagram</h3>
+                <p>
+                  Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour,
+                  Dublin 2, Irland. Betroffenenrechte:{" "}
+                  <a
+                    href="https://privacycenter.instagram.com/policy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-500 hover:text-cyan-400 underline underline-offset-2"
+                  >
+                    privacycenter.instagram.com/policy
+                  </a>
+                </p>
+
+                <h3 className={subheading}>LinkedIn</h3>
+                <p>
+                  LinkedIn Ireland Unlimited Company, Wilton Place, Dublin 2, Irland.
+                  Betroffenenrechte:{" "}
+                  <a
+                    href="https://de.linkedin.com/legal/privacy-policy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-500 hover:text-cyan-400 underline underline-offset-2"
+                  >
+                    de.linkedin.com/legal/privacy-policy
+                  </a>
+                </p>
+
+                <h3 className={subheading}>X (ehemals Twitter)</h3>
+                <p>
+                  Twitter International Company, One Cumberland Place, Fenian Street, Dublin 2,
+                  Irland. Betroffenenrechte:{" "}
+                  <a
+                    href="https://gdpr.x.com/de.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-500 hover:text-cyan-400 underline underline-offset-2"
+                  >
+                    gdpr.x.com/de.html
+                  </a>
+                </p>
               </div>
             </section>
           </div>
