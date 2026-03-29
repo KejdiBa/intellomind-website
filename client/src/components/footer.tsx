@@ -15,6 +15,7 @@ const footerLinks = {
   legal: [
     { label: "Impressum", href: "/impressum", isPage: true },
     { label: "Datenschutz Website", href: "/datenschutz", isPage: true },
+    { label: "Datenschutz Webapp", href: "/datenschutz-webapp", isPage: true },
     { label: "Cookie-Einstellungen", href: "#", isCookieSettings: true },
   ],
 };

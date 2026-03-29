@@ -94,6 +94,14 @@ shared/
 - Address: Hüingser Ring 1, 58710 Menden
 
 ## Recent Changes
+- 2026-03-29: Datenschutz-Webapp-Seite hinzugefügt
+  - Neue Route /datenschutz-webapp mit vollständiger Datenschutzerklärung für https://app.intellomind.ai (11 Abschnitte)
+  - Identisches Design wie Impressum und Datenschutz Website: glass-cards, cyan→blue→purple Gradientenüberschriften
+  - Webapp-spezifische Inhalte: B2B-SaaS-Plattform-Absatz (2.), Registrierung/Nutzerkonto (5.2.1/5.2.2), Kommunikations-Services mit KI-Dienste (6.3), Payment Abwicklung/Stripe (11.)
+  - AnimatedBackground, Navigation (isSubPage), Footer, CookieBanner
+  - Footer um "Datenschutz Webapp" Link (/datenschutz-webapp) ergänzt (nach "Datenschutz Website")
+  - App.tsx mit /datenschutz-webapp Route registriert
+
 - 2026-03-29: Datenschutz-Seite hinzugefügt
   - Neue Route /datenschutz mit vollständiger Datenschutzerklärung (10 Abschnitte)
   - Identisches Design wie Impressum: glass-cards, cyan→blue→purple Gradientenüberschriften
