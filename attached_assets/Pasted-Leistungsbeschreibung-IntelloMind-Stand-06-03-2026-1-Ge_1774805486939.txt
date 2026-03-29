@@ -1,0 +1,109 @@
+Leistungsbeschreibung – IntelloMind
+Stand: 06.03.2026
+1. Gegenstand der Leistungen (Scope of Services)
+IntelloMindAI ist eine cloudbasierte Software-as-a-Service (SaaS) Plattform zur Erstellung und Nutzung KI-gestützter Kommunikationsassistenten.
+Die Plattform ermöglicht es Kunden, KI-basierte Assistenten für Chat- und E-Mail-Kommunikation zu konfigurieren und einzusetzen.
+Die Plattform stellt insbesondere folgende Funktionen bereit.
+KI-Chatbots
+Kunden können innerhalb der Plattform KI-gestützte Chatbots erstellen.
+Die Konfiguration erfolgt durch Eingabe eines Systemprompts, der das Verhalten und die Antworten des Chatbots definiert.
+Für jeden Chatbot kann ein Chat-Widget generiert werden, das über einen Embed-Code auf der eigenen Website des Kunden eingebunden werden kann.
+Website-Besucher können anschließend über dieses Chat-Widget mit dem KI-Chatbot kommunizieren.
+KI-E-Mail-Assistenten
+Kunden können innerhalb der Plattform KI-gestützte E-Mail-Assistenten erstellen.
+Der Kunde kann eine eigene E-Mail-Domain mit dem E-Mail-Assistenten verknüpfen.
+Eingehende E-Mails werden durch den KI-Assistenten verarbeitet und es wird eine KI-generierte Antwort erstellt, die über die E-Mail-Adresse des Kunden versendet werden kann.
+Die Konfiguration des Assistenten erfolgt ebenfalls über einen Systemprompt, der das Verhalten der KI steuert.
+Konfiguration über Systemprompts
+Die Anpassung der KI-Assistenten erfolgt ausschließlich über Systemprompts, die durch den Kunden innerhalb der Plattform definiert werden.
+Weitere Konfigurationsmöglichkeiten, wie z. B.:
+•	Integration externer Datenquellen
+•	Anbindung externer Systeme
+•	API-Integrationen
+sind nicht Bestandteil der Standardfunktionalität der Plattform.
+2. Telefonassistenten über Drittanbieter (Fonio AI)
+IntelloMind ist Vertriebspartner des Dienstes Fonio AI, der KI-gestützte Telefonassistenten bereitstellt.
+Telefonassistenten werden über die Plattform von Fonio AI erstellt und betrieben.
+Optional kann eine technische Verbindung zwischen einem Fonio-Telefonassistenten und der IntelloMind AI Plattform hergestellt werden.
+Hierbei können über eine Webhook-Verbindung ausgewählte Gesprächsdaten in die IntelloMind AI Plattform übertragen werden.
+Dies umfasst insbesondere:
+•	Gesprächsverlauf
+•	Gesprächstranskript
+•	KI-generierte Gesprächszusammenfassung
+•	Audiodatei des Gesprächs
+Die Erstellung, Bereitstellung und der Betrieb der Telefonassistenten erfolgen ausschließlich über die Infrastruktur von Fonio AI.
+IntelloMind übernimmt keine Verantwortung für die technische Verfügbarkeit oder Funktionsfähigkeit der Fonio-Dienste.
+3. Individuelle Projektleistungen
+Neben der Nutzung der SaaS-Plattform kann IntelloMind zusätzliche projektbezogene Leistungen erbringen.
+Hierzu können insbesondere gehören:
+•	Beratung zur Nutzung von KI-Assistenten
+•	Unterstützung bei der Erstellung von Systemprompts
+•	individuelle Konfiguration von KI-Assistenten
+•	Analyse und Optimierung bestehender Kommunikationsprozesse
+Der konkrete Umfang solcher Projektleistungen wird jeweils gesondert im Rahmen eines individuellen Angebots oder Projektvertrags vereinbart.
+Projektleistungen sind nicht Bestandteil der Standard-SaaS-Leistung, sofern sie nicht ausdrücklich vereinbart wurden.
+4. Technische Bereitstellung
+Die Software wird als cloudbasierter Dienst bereitgestellt.
+Der Zugriff erfolgt über eine webbasierte Benutzeroberfläche. Eine lokale Installation ist nicht erforderlich.
+Für die Nutzung der Plattform ist eine stabile Internetverbindung erforderlich.
+Die Plattform unterstützt die jeweils aktuellen Versionen der folgenden Webbrowser:
+•	Google Chrome
+•	Mozilla Firefox
+•	Apple Safari
+•	Microsoft Edge
+Für eine optimale Nutzung wird eine Bildschirmauflösung von mindestens 1280 × 720 Pixeln empfohlen.
+5. Verfügbarkeit und Performance
+IntelloMind strebt eine hohe Zuverlässigkeit der Plattform an.
+Zielverfügbarkeit
+Die Plattform weist eine angestrebte Verfügbarkeit von 99,0 % im Jahresmittel auf.
+Von dieser Zielverfügbarkeit ausgenommen sind insbesondere:
+•	geplante Wartungsarbeiten
+•	Störungen außerhalb des Einflussbereichs des Anbieters
+•	Ausfälle von Drittanbietern
+•	höhere Gewalt
+Wartungsfenster
+Planmäßige Wartungsarbeiten können regelmäßig sonntags zwischen 02:00 Uhr und 05:00 Uhr (MEZ/MESZ) erfolgen.
+Während dieser Zeit kann es zu vorübergehenden Einschränkungen der Plattform kommen.
+6. Datensicherheit und Hosting
+Der Schutz der Kundendaten hat hohe Priorität.
+Alle Datenverarbeitungen erfolgen unter Berücksichtigung der geltenden datenschutzrechtlichen Bestimmungen, insbesondere der Datenschutz-Grundverordnung (DSGVO).
+Serverstandort
+Das Hosting der Plattform erfolgt auf Serverinfrastruktur in Rechenzentren innerhalb der Europäischen Union, insbesondere in Rechenzentren in Frankfurt am Main (Deutschland).
+Verschlüsselung
+Die Datenübertragung zwischen Nutzer und Plattform erfolgt ausschließlich verschlüsselt über HTTPS (TLS).
+Backups
+Systemdaten werden regelmäßig automatisiert gesichert.
+7. Support und Onboarding
+IntelloMind unterstützt Kunden bei der Nutzung der Plattform.
+Support
+Supportanfragen können über folgende Kanäle gestellt werden:
+•	Supportsystem innerhalb der Plattform
+•	E-Mail: info@intellomind.ai 
+Dokumentation
+Innerhalb der Plattform können Dokumentationen und Nutzungshinweise zur Verfügung gestellt werden.
+Onboarding
+Kunden erhalten Zugang zu einem standardisierten Onboarding-Prozess innerhalb der Plattform.
+Individuelle Schulungen oder persönliche Implementierungsleistungen sind nicht Bestandteil der Standard-SaaS-Leistung.
+8. Leistungsgrenzen und Haftungsausschlüsse
+KI-generierte Inhalte
+Die Plattform nutzt KI-Modelle zur Generierung von Antworten.
+Aufgrund der Funktionsweise solcher Systeme kann keine Gewähr für die inhaltliche Richtigkeit, Vollständigkeit oder Angemessenheit der generierten Inhalte übernommen werden.
+Der Kunde ist verpflichtet, generierte Inhalte vor ihrer Verwendung eigenständig zu prüfen.
+Verantwortung für Inhalte
+Der Kunde ist verantwortlich für die Inhalte, die über die Plattform verarbeitet oder generiert werden.
+Drittanbieter-Dienste
+Die Plattform kann Dienste externer Anbieter nutzen, insbesondere KI-Modellanbieter oder Dienste von Fonio AI.
+Für die Verfügbarkeit oder Funktionsfähigkeit dieser Dienste übernimmt IntelloMind keine Gewähr.
+9. Mitwirkungspflichten des Kunden
+Der Kunde ist verpflichtet,
+•	die Plattform nur im Rahmen geltender Gesetze zu nutzen
+•	keine rechtswidrigen oder missbräuchlichen Inhalte über die Plattform zu verarbeiten
+•	eigene Konfigurationen der KI-Assistenten vor produktivem Einsatz zu testen
+•	Zugangsdaten vertraulich zu behandeln
+10. Weiterentwicklung der Plattform
+IntelloMind entwickelt die Plattform kontinuierlich weiter.
+Der Anbieter behält sich vor:
+•	Funktionen anzupassen
+•	neue Funktionen einzuführen
+•	bestehende Funktionen zu verändern oder einzustellen
+Der konkrete Leistungsumfang richtet sich jeweils nach dem gebuchten Abonnement.
