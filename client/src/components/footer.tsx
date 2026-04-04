@@ -4,14 +4,14 @@ import { Link } from "wouter";
 
 const footerLinks = {
   services: [
-    { label: "KI-Telefonassistent", href: "#services" },
-    { label: "KI-Chatbot", href: "#services" },
-    { label: "KI-Mailbot", href: "#services" },
+    { label: "KI-Telefonassistent", href: "/ki-telefonassistent", isPage: true },
+    { label: "KI-Chatbot", href: "/ki-chatbot", isPage: true },
+    { label: "KI-Mailbot", href: "/ki-mailbot", isPage: true },
   ],
   company: [
-    { label: "Über uns", href: "#about" },
+    { label: "Über uns", href: "/#about", isPage: true },
     { label: "Preise", href: "/preise", isPage: true },
-    { label: "Kontakt", href: "#contact" },
+    { label: "Kontakt", href: "/#contact", isPage: true },
   ],
   legal: [
     { label: "Impressum", href: "/impressum", isPage: true },
@@ -42,12 +42,8 @@ export function Footer({ onOpenCookieSettings }: FooterProps) {
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="lg:col-span-1">
-            <a
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("#home");
-              }}
+            <Link
+              href="/"
               className="inline-flex items-center gap-3 mb-6"
             >
               <img
@@ -56,7 +52,7 @@ export function Footer({ onOpenCookieSettings }: FooterProps) {
                 className="h-10 w-auto rounded-lg"
               />
               <span className="font-bold text-xl text-foreground">IntelloMind</span>
-            </a>
+            </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">Automatisieren Sie Ihre Kommunikation mit smarten 
             KI-Lösungen.</p>
           </div>
@@ -66,17 +62,13 @@ export function Footer({ onOpenCookieSettings }: FooterProps) {
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(link.href);
-                    }}
                     className="text-muted-foreground hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-purple-600 hover:bg-clip-text transition-colors text-sm"
                     data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
