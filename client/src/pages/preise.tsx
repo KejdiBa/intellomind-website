@@ -1,0 +1,602 @@
+import { useState } from "react";
+import { Link } from "wouter";
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
+import { AnimatedBackground } from "@/components/animated-background";
+import { CookieBanner } from "@/components/cookie-banner";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, Phone, MessageSquare, Mail, Check, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+type Product = "telefon" | "chat" | "mail";
+type Billing = "monthly" | "yearly";
+
+const gradientHeading =
+  "text-lg font-semibold mb-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent";
+
+const PRODUCTS = [
+  { id: "telefon" as Product, label: "KI-Telefonassistent", icon: Phone },
+  { id: "chat" as Product, label: "KI-Chatassistent", icon: MessageSquare },
+  { id: "mail" as Product, label: "KI-Mailassistent", icon: Mail },
+];
+
+const FAQ_ITEMS = [
+  {
+    q: "Was ist Pay-as-you-go?",
+    a: "Bei Chat und E-Mail zahlen Sie nur für die tatsächlich genutzten Transaktionen – ohne Abo-Bindung. Ideal für den Einstieg oder variable Nutzung.",
+  },
+  {
+    q: "Was zählt als Transaktion?",
+    a: "Beim KI-Chatassistenten: Eine Nutzereingabe + KI-Antwort = 1 Transaktion. Bei E-Mail: Eine E-Mail-Analyse + Antwort = 1 Transaktion.",
+  },
+  {
+    q: "Was passiert bei Mehrverbrauch?",
+    a: "Bei Abo-Paketen wird Mehrverbrauch automatisch zum günstigeren Stückpreis abgerechnet. Sie erhalten vorab eine Benachrichtigung.",
+  },
+  {
+    q: "Was spare ich bei jährlicher Zahlung?",
+    a: "Bei jährlicher Zahlung erhalten Sie 15% Rabatt auf alle Abo-Pakete.",
+  },
+];
+
+function Badge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-gradient-to-r from-cyan-500 to-purple-600 text-white">
+      {children}
+    </span>
+  );
+}
+
+function CheckItem({ text, sub, crossed }: { text: string; sub?: string; crossed?: boolean }) {
+  return (
+    <li className="flex items-start gap-2 text-sm">
+      {crossed ? (
+        <X className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+      ) : (
+        <Check className="w-4 h-4 text-cyan-500 mt-0.5 flex-shrink-0" />
+      )}
+      <span className={crossed ? "text-muted-foreground" : "text-foreground/80"}>
+        {text}
+        {sub && <span className="text-muted-foreground ml-1 text-xs">{sub}</span>}
+      </span>
+    </li>
+  );
+}
+
+function TableRow({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
+  return (
+    <div className="flex items-center justify-between py-2 border-b border-border/30 last:border-0">
+      <span className="text-sm text-muted-foreground">{label}</span>
+      <span className={`text-sm font-semibold ${highlight ? "text-green-400" : "text-foreground"}`}>{value}</span>
+    </div>
+  );
+}
+
+function TelefonCards({ billing }: { billing: Billing }) {
+  const yearly = billing === "yearly";
+  const cards = [
+    {
+      name: "Solo",
+      sub: "Geeignet für 1-20 Anrufe/Tag",
+      price: yearly ? "85" : "99",
+      oldPrice: yearly ? "99" : undefined,
+      popular: false,
+      cta: "Demo buchen",
+      included: [
+        { text: "1.000 Minuten", sub: "je weitere €0,15" },
+        { text: "keine Parallelanrufe", crossed: true },
+        { text: "1 Telefonnr.", sub: "je weitere €7/Monat" },
+        { text: "∞ Assistenten" },
+        { text: "1 User" },
+      ],
+      features: ["20+ Stimmen", "25+ Sprachen", "3-Wochen Intensivkurs"],
+    },
+    {
+      name: "Team",
+      sub: "Geeignet für 20-100 Anrufe/Tag",
+      price: yearly ? "255" : "299",
+      oldPrice: yearly ? "299" : undefined,
+      popular: true,
+      cta: "Demo buchen",
+      included: [
+        { text: "3.000 Minuten", sub: "je weitere €0,12" },
+        { text: "5 gleichz. Anrufe" },
+        { text: "3 Telefonnr.", sub: "je weitere €5/Monat" },
+        { text: "∞ Assistenten" },
+        { text: "∞ User" },
+      ],
+      features: ["Alles in Solo", "Eigener SIP Trunk", "Outbound Anrufe"],
+    },
+    {
+      name: "Business",
+      sub: "Geeignet ab 100 Anrufe/Tag",
+      price: null,
+      popular: false,
+      cta: "Demo buchen",
+      included: [
+        { text: "Individuell Minuten" },
+        { text: "Individuell gleichz. Anrufe" },
+        { text: "Individuell Telefonnr." },
+        { text: "∞ Assistenten" },
+        { text: "∞ User" },
+      ],
+      features: ["Alles in Team", "Eigene Stimme", "SSO", "Individueller SLA"],
+    },
+  ];
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+      {cards.map((card) => (
+        <div
+          key={card.name}
+          className={`relative rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 ${
+            card.popular
+              ? "bg-slate-900 dark:bg-slate-800 text-white shadow-2xl shadow-purple-500/10 scale-105"
+              : "bg-card/80 backdrop-blur-sm border border-border/40 shadow-sm"
+          }`}
+          data-testid={`card-pricing-telefon-${card.name.toLowerCase()}`}
+        >
+          {card.popular && (
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span className="px-4 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-cyan-400 to-purple-500 text-white shadow">
+                BELIEBT
+              </span>
+            </div>
+          )}
+          <div>
+            <p className={`text-xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.name}</p>
+            <p className={`text-sm mt-0.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{card.sub}</p>
+          </div>
+          <div className="flex items-end gap-1">
+            {card.price ? (
+              <>
+                {card.oldPrice && (
+                  <span className={`text-sm line-through mr-1 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
+                    {card.oldPrice} €
+                  </span>
+                )}
+                <span className={`text-4xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.price} €</span>
+                <span className={`text-sm mb-1.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>/Monat</span>
+              </>
+            ) : (
+              <span className={`text-3xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>Individuell</span>
+            )}
+          </div>
+          <a href="/#contact">
+            <Button
+              className={`w-full rounded-xl ${card.popular ? "bg-white text-slate-900 hover:bg-white/90" : "btn-primary-gradient"}`}
+              data-testid={`button-demo-${card.name.toLowerCase()}`}
+            >
+              {card.cta}
+            </Button>
+          </a>
+          <div>
+            <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
+              Inkludiert
+            </p>
+            <ul className="space-y-1.5">
+              {card.included.map((item) => (
+                <li key={item.text} className="flex items-start gap-2 text-sm">
+                  {item.crossed ? (
+                    <X className={`w-4 h-4 mt-0.5 flex-shrink-0 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`} />
+                  ) : (
+                    <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${card.popular ? "text-cyan-400" : "text-cyan-500"}`} />
+                  )}
+                  <span className={item.crossed ? (card.popular ? "text-slate-400" : "text-muted-foreground") : (card.popular ? "text-slate-100" : "text-foreground/80")}>
+                    {item.text}
+                    {item.sub && <span className={`ml-1 text-xs ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>{item.sub}</span>}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
+              Features
+            </p>
+            <ul className="space-y-1.5">
+              {card.features.map((f) => (
+                <li key={f} className="flex items-center gap-2 text-sm">
+                  <Check className={`w-4 h-4 flex-shrink-0 ${card.popular ? "text-cyan-400" : "text-cyan-500"}`} />
+                  <span className={card.popular ? "text-slate-100" : "text-foreground/80"}>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ChatCards({ billing }: { billing: Billing }) {
+  const yearly = billing === "yearly";
+  const cards = [
+    {
+      name: "Starter",
+      sub: "Ideal für den Einstieg",
+      price: yearly ? "33,15" : "39",
+      oldPrice: yearly ? "39" : undefined,
+      popular: false,
+      cta: "Jetzt starten",
+      rows: [
+        { label: "Transaktionen", value: "1.200" },
+        { label: "Effektiv pro Chat", value: yearly ? "0,028 €" : "0,0325 €" },
+        { label: "Mehrverbrauch", value: "0,04 €" },
+        { label: "Ersparnis vs. Pay-as-you-go", value: yearly ? "45%" : "35%", highlight: true },
+      ],
+    },
+    {
+      name: "Pro",
+      sub: "Für regelmäßige Nutzung",
+      price: yearly ? "84,15" : "99",
+      oldPrice: yearly ? "99" : undefined,
+      popular: true,
+      cta: "Jetzt starten",
+      rows: [
+        { label: "Transaktionen", value: "4.000" },
+        { label: "Effektiv pro Chat", value: yearly ? "0,021 €" : "0,0247 €" },
+        { label: "Mehrverbrauch", value: "0,04 €" },
+        { label: "Ersparnis vs. Pay-as-you-go", value: yearly ? "58%" : "51%", highlight: true },
+      ],
+    },
+    {
+      name: "Enterprise",
+      sub: "Für hohe Volumina",
+      price: null,
+      popular: false,
+      cta: "Demo buchen",
+      rows: [
+        { label: "Transaktionen", value: "Individuell" },
+        { label: "Effektiv pro Chat", value: "< 0,025 €" },
+        { label: "Mehrverbrauch", value: "individuell" },
+      ],
+    },
+  ];
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+      {cards.map((card) => (
+        <div
+          key={card.name}
+          className={`relative rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 ${
+            card.popular
+              ? "bg-slate-900 dark:bg-slate-800 text-white shadow-2xl shadow-purple-500/10 scale-105"
+              : "bg-card/80 backdrop-blur-sm border border-border/40 shadow-sm"
+          }`}
+          data-testid={`card-pricing-chat-${card.name.toLowerCase()}`}
+        >
+          {card.popular && (
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span className="px-4 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-cyan-400 to-purple-500 text-white shadow">
+                BELIEBT
+              </span>
+            </div>
+          )}
+          <div>
+            <p className={`text-xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.name}</p>
+            <p className={`text-sm mt-0.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{card.sub}</p>
+          </div>
+          <div className="flex items-end gap-1">
+            {card.price ? (
+              <>
+                {card.oldPrice && (
+                  <span className={`text-sm line-through mr-1 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
+                    {card.oldPrice} €
+                  </span>
+                )}
+                <span className={`text-4xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.price} €</span>
+                <span className={`text-sm mb-1.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>/Monat</span>
+              </>
+            ) : (
+              <span className={`text-3xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>Individuell</span>
+            )}
+          </div>
+          <a href={card.cta === "Demo buchen" ? "/#contact" : "https://app.intellomind.ai"} target={card.cta === "Demo buchen" ? undefined : "_blank"} rel="noopener noreferrer">
+            <Button
+              className={`w-full rounded-xl ${card.popular ? "bg-white text-slate-900 hover:bg-white/90" : "btn-primary-gradient"}`}
+              data-testid={`button-cta-chat-${card.name.toLowerCase()}`}
+            >
+              {card.cta}
+            </Button>
+          </a>
+          <div className="divide-y divide-border/30">
+            {card.rows.map((row) => (
+              <div key={row.label} className="flex items-center justify-between py-2">
+                <span className={`text-sm ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{row.label}</span>
+                <span className={`text-sm font-semibold ${row.highlight ? "text-green-400" : card.popular ? "text-white" : "text-foreground"}`}>
+                  {row.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MailCards({ billing }: { billing: Billing }) {
+  const yearly = billing === "yearly";
+  const cards = [
+    {
+      name: "Starter",
+      sub: "Ideal für den Einstieg",
+      price: yearly ? "24,65" : "29",
+      oldPrice: yearly ? "29" : undefined,
+      popular: false,
+      cta: "Jetzt starten",
+      rows: [
+        { label: "Transaktionen", value: "400" },
+        { label: "Effektiv pro E-Mail", value: yearly ? "0,062 €" : "0,073 €" },
+        { label: "Mehrverbrauch", value: "0,08 €" },
+        { label: "Ersparnis vs. Pay-as-you-go", value: yearly ? "38%" : "28%", highlight: true },
+      ],
+    },
+    {
+      name: "Pro",
+      sub: "Für regelmäßige Nutzung",
+      price: yearly ? "84,15" : "99",
+      oldPrice: yearly ? "99" : undefined,
+      popular: true,
+      cta: "Jetzt starten",
+      rows: [
+        { label: "Transaktionen", value: "1.500" },
+        { label: "Effektiv pro E-Mail", value: yearly ? "0,056 €" : "0,066 €" },
+        { label: "Mehrverbrauch", value: "0,08 €" },
+        { label: "Ersparnis vs. Pay-as-you-go", value: yearly ? "44%" : "34%", highlight: true },
+      ],
+    },
+    {
+      name: "Enterprise",
+      sub: "Für hohe Volumina",
+      price: null,
+      popular: false,
+      cta: "Demo buchen",
+      rows: [
+        { label: "Transaktionen", value: "Individuell" },
+        { label: "Effektiv pro E-Mail", value: "< 0,05 €" },
+        { label: "Mehrverbrauch", value: "individuell" },
+      ],
+    },
+  ];
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+      {cards.map((card) => (
+        <div
+          key={card.name}
+          className={`relative rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 ${
+            card.popular
+              ? "bg-slate-900 dark:bg-slate-800 text-white shadow-2xl shadow-purple-500/10 scale-105"
+              : "bg-card/80 backdrop-blur-sm border border-border/40 shadow-sm"
+          }`}
+          data-testid={`card-pricing-mail-${card.name.toLowerCase()}`}
+        >
+          {card.popular && (
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span className="px-4 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-cyan-400 to-purple-500 text-white shadow">
+                BELIEBT
+              </span>
+            </div>
+          )}
+          <div>
+            <p className={`text-xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.name}</p>
+            <p className={`text-sm mt-0.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{card.sub}</p>
+          </div>
+          <div className="flex items-end gap-1">
+            {card.price ? (
+              <>
+                {card.oldPrice && (
+                  <span className={`text-sm line-through mr-1 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
+                    {card.oldPrice} €
+                  </span>
+                )}
+                <span className={`text-4xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.price} €</span>
+                <span className={`text-sm mb-1.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>/Monat</span>
+              </>
+            ) : (
+              <span className={`text-3xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>Individuell</span>
+            )}
+          </div>
+          <a href={card.cta === "Demo buchen" ? "/#contact" : "https://app.intellomind.ai"} target={card.cta === "Demo buchen" ? undefined : "_blank"} rel="noopener noreferrer">
+            <Button
+              className={`w-full rounded-xl ${card.popular ? "bg-white text-slate-900 hover:bg-white/90" : "btn-primary-gradient"}`}
+              data-testid={`button-cta-mail-${card.name.toLowerCase()}`}
+            >
+              {card.cta}
+            </Button>
+          </a>
+          <div className="divide-y divide-border/30">
+            {card.rows.map((row) => (
+              <div key={row.label} className="flex items-center justify-between py-2">
+                <span className={`text-sm ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{row.label}</span>
+                <span className={`text-sm font-semibold ${row.highlight ? "text-green-400" : card.popular ? "text-white" : "text-foreground"}`}>
+                  {row.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function Preise() {
+  const [activeProduct, setActiveProduct] = useState<Product>("telefon");
+  const [billing, setBilling] = useState<Billing>("monthly");
+  const [showCookieSettings, setShowCookieSettings] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-background relative">
+      <AnimatedBackground />
+      <Navigation isSubPage />
+      <main className="relative z-10 pt-32 pb-24 px-6">
+        <div className="max-w-5xl mx-auto">
+
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-10 group"
+            data-testid="link-back-home"
+          >
+            <ChevronLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+            Zurück zur Startseite
+          </Link>
+
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+                Transparente Preise
+              </span>
+            </h1>
+            <p className="text-muted-foreground text-base max-w-md mx-auto">
+              Wählen Sie den KI-Assistenten und das Modell, das zu Ihrem Unternehmen passt.
+            </p>
+          </div>
+
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-1.5 shadow-sm flex-wrap">
+              {PRODUCTS.map((p) => {
+                const Icon = p.icon;
+                return (
+                  <button
+                    key={p.id}
+                    onClick={() => setActiveProduct(p.id)}
+                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+                      activeProduct === p.id
+                        ? "bg-slate-900 text-white shadow"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                    data-testid={`tab-product-${p.id}`}
+                  >
+                    <Icon className="w-4 h-4" />
+                    {p.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="flex justify-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border/40 rounded-xl p-1 shadow-sm">
+              <button
+                onClick={() => setBilling("monthly")}
+                className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  billing === "monthly" ? "bg-slate-900 text-white shadow" : "text-muted-foreground hover:text-foreground"
+                }`}
+                data-testid="toggle-billing-monthly"
+              >
+                Monatlich
+              </button>
+              <button
+                onClick={() => setBilling("yearly")}
+                className={`inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  billing === "yearly" ? "bg-slate-900 text-white shadow" : "text-muted-foreground hover:text-foreground"
+                }`}
+                data-testid="toggle-billing-yearly"
+              >
+                Jährlich
+                <span className="px-1.5 py-0.5 rounded-full text-xs font-bold bg-gradient-to-r from-cyan-500 to-purple-600 text-white">
+                  -15%
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`${activeProduct}-${billing}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+            >
+              {(activeProduct === "chat" || activeProduct === "mail") && (
+                <div className="flex justify-center mb-8">
+                  <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-card/80 backdrop-blur-sm border border-border/40 shadow-sm text-sm text-muted-foreground">
+                    Flexibel starten mit Pay-as-you-go:{" "}
+                    <span className="font-bold text-foreground">
+                      {activeProduct === "chat" ? "0,05 €" : "0,10 €"}
+                    </span>{" "}
+                    pro {activeProduct === "chat" ? "Chat" : "E-Mail"}
+                  </div>
+                </div>
+              )}
+
+              {activeProduct === "telefon" && <TelefonCards billing={billing} />}
+              {activeProduct === "chat" && <ChatCards billing={billing} />}
+              {activeProduct === "mail" && <MailCards billing={billing} />}
+            </motion.div>
+          </AnimatePresence>
+
+          <p className="text-center text-xs text-muted-foreground mt-6 mb-2">
+            Alle Preise verstehen sich zzgl. 19% MwSt.
+          </p>
+          {billing === "yearly" && (
+            <p className="text-center text-xs text-muted-foreground mb-16">
+              Bei jährlicher Abrechnung wird der Gesamtbetrag für 12 Monate im Voraus berechnet. Der angezeigte Monatspreis entspricht dem effektiven Preis pro Monat.
+            </p>
+          )}
+
+          <div className="mt-16 rounded-2xl overflow-hidden bg-slate-900 dark:bg-slate-800 p-8 md:p-10 shadow-xl shadow-purple-500/5">
+            <div className="flex flex-col md:flex-row md:items-start gap-8">
+              <div className="flex-1">
+                <h2 className="text-2xl font-bold text-white mb-2">Full-Service Pakete verfügbar</h2>
+                <p className="text-slate-300 text-sm leading-relaxed mb-6">
+                  Sie möchten sich voll auf Ihr Kerngeschäft konzentrieren? Wir übernehmen die komplette
+                  Einrichtung und laufende Verwaltung Ihrer KI-Assistenten.
+                </p>
+                <ul className="space-y-2.5 mb-6">
+                  {[
+                    "Komplette Einrichtung und Konfiguration",
+                    "Laufende Verwaltung und Optimierung",
+                    "Anpassungen der Assistenten jederzeit möglich",
+                    "Persönlicher Ansprechpartner für Ihre Anliegen",
+                  ].map((item) => (
+                    <li key={item} className="flex items-center gap-2.5 text-sm text-slate-200">
+                      <Check className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-xs text-slate-400">
+                  Details zu Full-Service Paketen erfahren Sie im persönlichen Beratungsgespräch.
+                </p>
+              </div>
+              <div className="flex-shrink-0 flex items-center md:items-start">
+                <a href="/#contact">
+                  <Button
+                    variant="outline"
+                    className="rounded-xl border-white/30 text-white bg-white/10 hover:bg-white/20 hover:text-white"
+                    data-testid="button-fullservice-beratung"
+                  >
+                    Beratung vereinbaren
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-16">
+            <div className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-8 shadow-sm">
+              <h2 className={`${gradientHeading} text-xl mb-6`}>Häufige Fragen</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                {FAQ_ITEMS.map((item) => (
+                  <div key={item.q} data-testid={`faq-item-${item.q.slice(0, 10).toLowerCase().replace(/\s+/g, "-")}`}>
+                    <h3 className="font-semibold text-foreground text-sm mb-1.5">{item.q}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+      <Footer onOpenCookieSettings={() => setShowCookieSettings(true)} />
+      <CookieBanner forceOpen={showCookieSettings} onClose={() => setShowCookieSettings(false)} />
+    </div>
+  );
+}

@@ -11,11 +11,13 @@ import Datenschutz from "@/pages/datenschutz";
 import DatenschutzWebapp from "@/pages/datenschutz-webapp";
 import Leistungsbeschreibung from "@/pages/leistungsbeschreibung";
 import AGB from "@/pages/agb";
+import Preise from "@/pages/preise";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/preise" component={Preise} />
       <Route path="/impressum" component={Impressum} />
       <Route path="/datenschutz" component={Datenschutz} />
       <Route path="/datenschutz-webapp" component={DatenschutzWebapp} />

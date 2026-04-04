@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { label: "Start", href: "#home" },
   { label: "Leistungen", href: "#services" },
+  { label: "Preise", href: "/preise", isPage: true },
   { label: "Über uns", href: "#about" },
   { label: "Kontakt", href: "#contact" },
 ];
@@ -38,7 +39,11 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
     setIsMobileMenuOpen(false);
   };
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isPage?: boolean) => {
+    if (isPage) {
+      setIsMobileMenuOpen(false);
+      return;
+    }
     if (!isSubPage) {
       e.preventDefault();
       scrollToSection(href);
@@ -48,7 +53,10 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
   };
 
   const logoHref = isSubPage ? "/" : "#home";
-  const getNavHref = (hash: string) => isSubPage ? `/${hash}` : hash;
+  const getNavHref = (link: { href: string; isPage?: boolean }) => {
+    if (link.isPage) return link.href;
+    return isSubPage ? `/${link.href}` : link.href;
+  };
 
   return (
     <header
@@ -82,8 +90,8 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
-                href={getNavHref(link.href)}
-                onClick={(e) => handleNavClick(e, link.href)}
+                href={getNavHref(link)}
+                onClick={(e) => handleNavClick(e, link.href, link.isPage)}
                 className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
                 data-testid={`link-nav-${link.label.toLowerCase()}`}
               >
@@ -137,8 +145,8 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
               {navLinks.map((link) => (
                 <a
                   key={link.href}
-                  href={getNavHref(link.href)}
-                  onClick={(e) => handleNavClick(e, link.href)}
+                  href={getNavHref(link)}
+                  onClick={(e) => handleNavClick(e, link.href, link.isPage)}
                   className="block text-base font-medium text-slate-600 hover:text-slate-900 py-2 transition-colors"
                   data-testid={`link-mobile-nav-${link.label.toLowerCase()}`}
                 >
