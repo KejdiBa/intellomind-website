@@ -17,29 +17,6 @@ const listClass = "list-disc list-outside ml-5 space-y-1 text-sm text-foreground
 export default function AGB() {
   const [showCookieSettings, setShowCookieSettings] = useState(false);
 
-  const tocItems: [string, string][] = [
-    ["#agb-praambel", "Präambel"],
-    ["#agb-1", "1. Vertragsgegenstand"],
-    ["#agb-2", "2. Software- / Software Leistungen"],
-    ["#agb-3", "3. Dienstleistungen & Support Leistungen"],
-    ["#agb-4", "4. Web- & Serverhosting"],
-    ["#agb-5", "5. Vergütung für unsere Leistungen"],
-    ["#agb-6", "6. Laufzeit des Hauptvertrages"],
-    ["#agb-7", "7. Online Registrierung"],
-    ["#agb-8", "8. Integrierte Dienste"],
-    ["#agb-9", "9. Grundsätze zur Erbringung unserer Leistungen"],
-    ["#agb-10", "10. Mitwirkungspflichten des Kunden"],
-    ["#agb-11", "11. Allgemeine Haftung"],
-    ["#agb-12", "12. Gewährleistung für unsere Leistungen"],
-    ["#agb-13", "13. Nutzungsrecht des Kunden"],
-    ["#agb-14", "14. Datenschutz"],
-    ["#agb-15", "15. Geheimhaltung"],
-    ["#agb-16", "16. Übertragung auf Dritte"],
-    ["#agb-17", "17. Referenznennung"],
-    ["#agb-18", "18. Schlussbestimmungen"],
-    ["#agb-anlage", "Anlage Integrierte Dienste"],
-  ];
-
   return (
     <div className="min-h-screen bg-background relative">
       <AnimatedBackground />
@@ -86,20 +63,6 @@ export default function AGB() {
                 </p>
               </div>
 
-              {/* TOC */}
-              <h2 className={`${gradientHeading} mt-6`}>Inhaltsverzeichnis</h2>
-              <ol className="mt-4 list-decimal list-outside ml-5 space-y-1 text-sm text-foreground/80">
-                {tocItems.map(([href, label]) => (
-                  <li key={href}>
-                    <a
-                      href={href}
-                      className="hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-purple-600 hover:bg-clip-text transition-colors"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ol>
             </section>
 
             {/* Präambel */}
