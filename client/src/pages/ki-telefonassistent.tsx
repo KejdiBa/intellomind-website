@@ -75,7 +75,7 @@ const faqs = [
   },
   {
     q: "Welche Sprachen spricht der KI-Telefonassistent?",
-    a: "Standardmäßig Deutsch und Englisch. Auf Anfrage können weitere Sprachen wie Französisch, Spanisch, Türkisch oder Arabisch aktiviert werden – ideal für Unternehmen mit internationaler Kundschaft.",
+    a: "Standardmäßig Deutsch und Englisch. Der Assistent kann so konfiguriert werden, dass er neben Deutsch und Englisch auch weitere Sprachen wie Spanisch, Französisch, Russisch, Portugiesisch, Italienisch und Niederländisch versteht und spricht – ideal für Unternehmen mit internationaler Kundschaft.",
   },
   {
     q: "Kann der Assistent in mein bestehendes CRM integriert werden?",
