@@ -5,6 +5,7 @@ import { AnimatedBackground } from "@/components/animated-background";
 import { CookieBanner } from "@/components/cookie-banner";
 import { ChevronLeft } from "lucide-react";
 import { useState } from "react";
+import { useMetaTags } from "@/hooks/use-meta-tags";
 
 const gradientHeading =
   "text-lg font-semibold mb-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent";
@@ -26,6 +27,10 @@ const emailLink = (
 
 export default function Leistungsbeschreibung() {
   const [showCookieSettings, setShowCookieSettings] = useState(false);
+  useMetaTags(
+    "Leistungsbeschreibung – IntelloMind",
+    "Vollständige Leistungsbeschreibung für KI-Chatbots, KI-E-Mail-Assistenten und KI-Telefonassistenten von IntelloMind."
+  );
 
   return (
     <div className="min-h-screen bg-background relative">

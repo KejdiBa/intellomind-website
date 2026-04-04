@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 import { Phone, MessageSquare, Mail, ArrowRight, Workflow } from "lucide-react";
 
 const products = [
@@ -10,6 +11,7 @@ const products = [
     subtitle: "24/7 intelligenter Kundenservice ohne Wartezeiten",
     description:
       "Rund um die Uhr erreichbar – ohne Wartezeiten. Unser intelligenter Telefonassistent beantwortet Kundenanfragen professionell und effizient.",
+    href: "/ki-telefonassistent",
   },
   {
     icon: MessageSquare,
@@ -17,6 +19,7 @@ const products = [
     subtitle: "Smarte Konversation für Website und App",
     description:
       "Smarte Konversation auf Ihrer Website oder App. Natürliche Dialogführung, die Ihre Kunden begeistert und Ihre Conversion-Rate steigert.",
+    href: "/ki-chatbot",
   },
   {
     icon: Mail,
@@ -24,6 +27,7 @@ const products = [
     subtitle: "Automatisierte E-Mail-Bearbeitung und Kundenservice",
     description:
       "Sekundenschnelle Antworten auf E-Mails. Intelligente E-Mail-Bearbeitung, die Ihren Kundenservice revolutioniert und Zeit spart.",
+    href: "/ki-mailbot",
   },
   {
     icon: Workflow,
@@ -31,6 +35,7 @@ const products = [
     subtitle: "Integrierte KI-Workflows für Ihre Systeme",
     description:
       "End-to-End-Automatisierung Ihrer Geschäftsprozesse – intelligent, effizient und nahtlos integriert. Unsere KI-Workflow-Automation verbindet Telefon, Chat, E-Mail und Ihre bestehenden Systeme zu durchgängigen, automatisierten Abläufen.",
+    href: "/#contact",
   },
 ];
 
@@ -88,15 +93,16 @@ export function ServicesSection() {
                 <p className="text-muted-foreground text-sm leading-relaxed flex-1">
                   {product.description}
                 </p>
-                <Button
-                  size="sm"
-                  className="mt-4 w-fit bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white border-transparent"
-                  onClick={scrollToContact}
-                  data-testid={`button-product-${product.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
-                >
-                  Mehr erfahren
-                  <ArrowRight className="ml-1 h-4 w-4" />
-                </Button>
+                <Link href={product.href}>
+                  <Button
+                    size="sm"
+                    className="mt-4 w-fit bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white border-transparent"
+                    data-testid={`button-product-${product.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+                  >
+                    Mehr erfahren
+                    <ArrowRight className="ml-1 h-4 w-4" />
+                  </Button>
+                </Link>
               </Card>
             </motion.div>
           ))}

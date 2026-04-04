@@ -94,6 +94,14 @@ shared/
 - Address: Hüingser Ring 1, 58710 Menden
 
 ## Recent Changes
+- 2026-04-04: SEO-Produktseiten + Meta-Tags
+  - Neue Seiten: /ki-telefonassistent, /ki-chatbot, /ki-mailbot
+  - Jede Seite: Hero, "Was ist es?", 6 Feature-Cards, Anwendungsfälle, FAQ (accordion), CTA, Querlinks zu anderen Produkten
+  - useMetaTags-Hook (client/src/hooks/use-meta-tags.ts): setzt document.title, meta description und OG-Tags dynamisch
+  - Meta-Tags für alle Seiten: /, /preise, /ki-*, /impressum, /datenschutz, /datenschutz-webapp, /agb, /leistungsbeschreibung
+  - services-section.tsx: "Mehr erfahren"-Buttons linken jetzt auf Produktseiten (wouter Link)
+  - App.tsx: 3 neue Routen registriert
+
 - 2026-04-04: Preise-Seite hinzugefügt (/preise)
   - Neue Route /preise mit vollständiger Preisübersicht für alle 3 KI-Produkte
   - 3 Produkt-Tabs: KI-Telefonassistent, KI-Chatassistent, KI-Mailassistent

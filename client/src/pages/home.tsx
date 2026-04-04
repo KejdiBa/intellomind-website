@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useMetaTags } from "@/hooks/use-meta-tags";
 import { Navigation } from "@/components/navigation";
 import { HeroSection } from "@/components/hero-section";
 import { StickyPhoneSection } from "@/components/sticky-phone-section";
@@ -15,6 +16,11 @@ import { AnimatedBackground } from "@/components/animated-background";
 
 export default function Home() {
   const [showCookieSettings, setShowCookieSettings] = useState(false);
+
+  useMetaTags(
+    "IntelloMind – KI-Lösungen für Unternehmen",
+    "Intelligente KI-Assistenten für Telefon, Chat und E-Mail. Automatisieren Sie Ihren Kundenservice mit IntelloMind – 24/7, DSGVO-konform, sofort einsatzbereit."
+  );
 
   useEffect(() => {
     const hash = window.location.hash;

@@ -5,9 +5,14 @@ import { AnimatedBackground } from "@/components/animated-background";
 import { CookieBanner } from "@/components/cookie-banner";
 import { ChevronLeft } from "lucide-react";
 import { useState } from "react";
+import { useMetaTags } from "@/hooks/use-meta-tags";
 
 export default function Impressum() {
   const [showCookieSettings, setShowCookieSettings] = useState(false);
+  useMetaTags(
+    "Impressum – IntelloMind UG",
+    "Impressum der IntelloMind UG (haftungsbeschränkt), Hüingser Ring 1, 58710 Menden. Pflichtangaben gemäß § 5 DDG."
+  );
 
   return (
     <div className="min-h-screen bg-background relative">

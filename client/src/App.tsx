@@ -12,6 +12,9 @@ import DatenschutzWebapp from "@/pages/datenschutz-webapp";
 import Leistungsbeschreibung from "@/pages/leistungsbeschreibung";
 import AGB from "@/pages/agb";
 import Preise from "@/pages/preise";
+import KiTelefonassistent from "@/pages/ki-telefonassistent";
+import KiChatbot from "@/pages/ki-chatbot";
+import KiMailbot from "@/pages/ki-mailbot";
 
 function Router() {
   return (
@@ -23,6 +26,9 @@ function Router() {
       <Route path="/datenschutz-webapp" component={DatenschutzWebapp} />
       <Route path="/agb" component={AGB} />
       <Route path="/leistungsbeschreibung" component={Leistungsbeschreibung} />
+      <Route path="/ki-telefonassistent" component={KiTelefonassistent} />
+      <Route path="/ki-chatbot" component={KiChatbot} />
+      <Route path="/ki-mailbot" component={KiMailbot} />
       <Route component={NotFound} />
     </Switch>
   );

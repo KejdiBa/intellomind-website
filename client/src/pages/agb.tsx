@@ -5,6 +5,7 @@ import { AnimatedBackground } from "@/components/animated-background";
 import { CookieBanner } from "@/components/cookie-banner";
 import { ChevronLeft } from "lucide-react";
 import { useState } from "react";
+import { useMetaTags } from "@/hooks/use-meta-tags";
 
 const gradientHeading =
   "text-lg font-semibold mb-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent";
@@ -16,6 +17,10 @@ const listClass = "list-disc list-outside ml-5 space-y-1 text-sm text-foreground
 
 export default function AGB() {
   const [showCookieSettings, setShowCookieSettings] = useState(false);
+  useMetaTags(
+    "AGB – IntelloMind UG",
+    "Allgemeine Geschäftsbedingungen der IntelloMind UG (haftungsbeschränkt) für KI-Assistenten und digitale Dienstleistungen."
+  );
 
   return (
     <div className="min-h-screen bg-background relative">

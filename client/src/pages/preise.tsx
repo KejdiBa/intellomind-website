@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
+import { useMetaTags } from "@/hooks/use-meta-tags";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { AnimatedBackground } from "@/components/animated-background";
@@ -649,6 +650,10 @@ export default function Preise() {
   const [activeProduct, setActiveProduct] = useState<Product>("telefon");
   const [billing, setBilling] = useState<Billing>("monthly");
   const [showCookieSettings, setShowCookieSettings] = useState(false);
+  useMetaTags(
+    "Preise – KI-Assistenten für Unternehmen | IntelloMind",
+    "Transparente Preise für KI-Telefonassistent, KI-Chatbot und KI-Mailbot. Monatlich oder jährlich buchen. Kein Verstecktes – ab 99 €/Monat."
+  );
 
   return (
     <div className="min-h-screen bg-background relative">
