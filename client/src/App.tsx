@@ -1,4 +1,5 @@
 import { Switch, Route } from "wouter";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -18,7 +19,9 @@ import KiMailbot from "@/pages/ki-mailbot";
 
 function Router() {
   return (
-    <Switch>
+    <>
+      <ScrollToTop />
+      <Switch>
       <Route path="/" component={Home} />
       <Route path="/preise" component={Preise} />
       <Route path="/impressum" component={Impressum} />
@@ -31,6 +34,7 @@ function Router() {
       <Route path="/ki-mailbot" component={KiMailbot} />
       <Route component={NotFound} />
     </Switch>
+    </>
   );
 }
 
