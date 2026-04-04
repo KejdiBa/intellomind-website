@@ -1201,7 +1201,7 @@ export default function AGB() {
       </main>
       <Footer onOpenCookieSettings={() => setShowCookieSettings(true)} />
       <CookieBanner
-        isOpen={showCookieSettings}
+        forceOpen={showCookieSettings}
         onClose={() => setShowCookieSettings(false)}
       />
     </div>

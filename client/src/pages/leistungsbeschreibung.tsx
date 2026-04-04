@@ -401,7 +401,7 @@ export default function Leistungsbeschreibung() {
       </main>
       <Footer onOpenCookieSettings={() => setShowCookieSettings(true)} />
       <CookieBanner
-        isOpen={showCookieSettings}
+        forceOpen={showCookieSettings}
         onClose={() => setShowCookieSettings(false)}
       />
     </div>
