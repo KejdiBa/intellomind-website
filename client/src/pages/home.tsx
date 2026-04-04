@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigation } from "@/components/navigation";
 import { HeroSection } from "@/components/hero-section";
 import { StickyPhoneSection } from "@/components/sticky-phone-section";
@@ -15,6 +15,17 @@ import { AnimatedBackground } from "@/components/animated-background";
 
 export default function Home() {
   const [showCookieSettings, setShowCookieSettings] = useState(false);
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.replace("#", "");
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, []);
 
   const handleOpenCookieSettings = () => {
     setShowCookieSettings(true);
