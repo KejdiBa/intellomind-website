@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { motion, AnimatePresence } from "framer-motion";
-import { Cookie, X, Settings, Shield, BarChart3, Target } from "lucide-react";
+import { Cookie, X, Settings, BarChart3, Target } from "lucide-react";
 
 interface CookieConsent {
   necessary: boolean;
@@ -183,20 +183,11 @@ export function CookieBanner({ forceOpen = false, onClose }: CookieBannerProps) 
                 .
               </p>
 
-              <div className="space-y-4 mb-6">
-                <div className="flex items-center justify-between p-4 rounded-lg bg-secondary/30">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-                      <Shield className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-foreground text-sm">Technisch notwendig</p>
-                      <p className="text-xs text-muted-foreground">Immer aktiv – für den Betrieb der Website erforderlich</p>
-                    </div>
-                  </div>
-                  <Switch checked={true} disabled className="opacity-50" data-testid="switch-necessary" />
-                </div>
+              <p className="text-xs text-muted-foreground mb-3">
+                Technisch notwendige Cookies sind immer aktiv und können nicht deaktiviert werden.
+              </p>
 
+              <div className="space-y-4 mb-6">
                 <div className="flex items-center justify-between p-4 rounded-lg bg-secondary/30">
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
