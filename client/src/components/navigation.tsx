@@ -89,7 +89,7 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
 
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <li key={link.href}>
+            <li key={link.label}>
               <a
                 href={getNavHref(link)}
                 onClick={(e) => handleNavClick(e, link.href, link.isPage)}
@@ -145,7 +145,7 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
             <div className="bg-white/80 backdrop-blur-xl rounded-2xl px-6 py-4 space-y-3 border border-white/40 shadow-lg shadow-black/5">
               {navLinks.map((link) => (
                 <a
-                  key={link.href}
+                  key={link.label}
                   href={getNavHref(link)}
                   onClick={(e) => handleNavClick(e, link.href, link.isPage)}
                   className="block text-base font-medium text-slate-600 hover:text-slate-900 py-2 transition-colors"
