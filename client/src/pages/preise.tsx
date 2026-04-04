@@ -11,8 +11,38 @@ import { motion, AnimatePresence } from "framer-motion";
 type Product = "telefon" | "chat" | "mail";
 type Billing = "monthly" | "yearly";
 
-const gradientHeading =
-  "text-lg font-semibold mb-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent";
+interface IncludedItem {
+  text: string;
+  sub?: string;
+  crossed?: boolean;
+}
+
+interface PricingRow {
+  label: string;
+  value: string;
+  highlight?: boolean;
+}
+
+interface TelefonCard {
+  name: string;
+  sub: string;
+  price: string | null;
+  oldPrice?: string;
+  popular: boolean;
+  cta: string;
+  included: IncludedItem[];
+  features: string[];
+}
+
+interface TransactionCard {
+  name: string;
+  sub: string;
+  price: string | null;
+  oldPrice?: string;
+  popular: boolean;
+  cta: string;
+  rows: PricingRow[];
+}
 
 const PRODUCTS = [
   { id: "telefon" as Product, label: "KI-Telefonassistent", icon: Phone },
@@ -39,42 +69,9 @@ const FAQ_ITEMS = [
   },
 ];
 
-function Badge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-gradient-to-r from-cyan-500 to-purple-600 text-white">
-      {children}
-    </span>
-  );
-}
-
-function CheckItem({ text, sub, crossed }: { text: string; sub?: string; crossed?: boolean }) {
-  return (
-    <li className="flex items-start gap-2 text-sm">
-      {crossed ? (
-        <X className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-      ) : (
-        <Check className="w-4 h-4 text-cyan-500 mt-0.5 flex-shrink-0" />
-      )}
-      <span className={crossed ? "text-muted-foreground" : "text-foreground/80"}>
-        {text}
-        {sub && <span className="text-muted-foreground ml-1 text-xs">{sub}</span>}
-      </span>
-    </li>
-  );
-}
-
-function TableRow({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
-  return (
-    <div className="flex items-center justify-between py-2 border-b border-border/30 last:border-0">
-      <span className="text-sm text-muted-foreground">{label}</span>
-      <span className={`text-sm font-semibold ${highlight ? "text-green-400" : "text-foreground"}`}>{value}</span>
-    </div>
-  );
-}
-
 function TelefonCards({ billing }: { billing: Billing }) {
   const yearly = billing === "yearly";
-  const cards = [
+  const cards: TelefonCard[] = [
     {
       name: "Solo",
       sub: "Geeignet für 1-20 Anrufe/Tag",
@@ -182,9 +179,14 @@ function TelefonCards({ billing }: { billing: Billing }) {
                   ) : (
                     <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${card.popular ? "text-cyan-400" : "text-cyan-500"}`} />
                   )}
-                  <span className={item.crossed ? (card.popular ? "text-slate-400" : "text-muted-foreground") : (card.popular ? "text-slate-100" : "text-foreground/80")}>
+                  <span className={item.crossed
+                    ? (card.popular ? "text-slate-400" : "text-muted-foreground")
+                    : (card.popular ? "text-slate-100" : "text-foreground/80")
+                  }>
                     {item.text}
-                    {item.sub && <span className={`ml-1 text-xs ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>{item.sub}</span>}
+                    {item.sub && (
+                      <span className={`ml-1 text-xs ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>{item.sub}</span>
+                    )}
                   </span>
                 </li>
               ))}
@@ -209,16 +211,81 @@ function TelefonCards({ billing }: { billing: Billing }) {
   );
 }
 
+function TransactionCards({ cards }: { cards: TransactionCard[] }) {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+      {cards.map((card) => (
+        <div
+          key={card.name}
+          className={`relative rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 ${
+            card.popular
+              ? "bg-slate-900 dark:bg-slate-800 text-white shadow-2xl shadow-purple-500/10 scale-105"
+              : "bg-card/80 backdrop-blur-sm border border-border/40 shadow-sm"
+          }`}
+          data-testid={`card-pricing-${card.name.toLowerCase()}`}
+        >
+          {card.popular && (
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span className="px-4 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-cyan-400 to-purple-500 text-white shadow">
+                BELIEBT
+              </span>
+            </div>
+          )}
+          <div>
+            <p className={`text-xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.name}</p>
+            <p className={`text-sm mt-0.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{card.sub}</p>
+          </div>
+          <div className="flex items-end gap-1">
+            {card.price ? (
+              <>
+                {card.oldPrice && (
+                  <span className={`text-sm line-through mr-1 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
+                    {card.oldPrice} €
+                  </span>
+                )}
+                <span className={`text-4xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.price} €</span>
+                <span className={`text-sm mb-1.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>/Monat</span>
+              </>
+            ) : (
+              <span className={`text-3xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>Individuell</span>
+            )}
+          </div>
+          <a href="/#contact">
+            <Button
+              className={`w-full rounded-xl ${card.popular ? "bg-white text-slate-900 hover:bg-white/90" : "btn-primary-gradient"}`}
+              data-testid={`button-cta-${card.name.toLowerCase()}`}
+            >
+              {card.cta}
+            </Button>
+          </a>
+          <div className="divide-y divide-border/30">
+            {card.rows.map((row) => (
+              <div key={row.label} className="flex items-center justify-between py-2">
+                <span className={`text-sm ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{row.label}</span>
+                <span className={`text-sm font-semibold ${
+                  row.highlight ? "text-green-400" : card.popular ? "text-white" : "text-foreground"
+                }`}>
+                  {row.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function ChatCards({ billing }: { billing: Billing }) {
   const yearly = billing === "yearly";
-  const cards = [
+  const cards: TransactionCard[] = [
     {
       name: "Starter",
       sub: "Ideal für den Einstieg",
       price: yearly ? "33,15" : "39",
       oldPrice: yearly ? "39" : undefined,
       popular: false,
-      cta: "Jetzt starten",
+      cta: "Demo buchen",
       rows: [
         { label: "Transaktionen", value: "1.200" },
         { label: "Effektiv pro Chat", value: yearly ? "0,028 €" : "0,0325 €" },
@@ -232,7 +299,7 @@ function ChatCards({ billing }: { billing: Billing }) {
       price: yearly ? "84,15" : "99",
       oldPrice: yearly ? "99" : undefined,
       popular: true,
-      cta: "Jetzt starten",
+      cta: "Demo buchen",
       rows: [
         { label: "Transaktionen", value: "4.000" },
         { label: "Effektiv pro Chat", value: yearly ? "0,021 €" : "0,0247 €" },
@@ -253,79 +320,19 @@ function ChatCards({ billing }: { billing: Billing }) {
       ],
     },
   ];
-
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-      {cards.map((card) => (
-        <div
-          key={card.name}
-          className={`relative rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 ${
-            card.popular
-              ? "bg-slate-900 dark:bg-slate-800 text-white shadow-2xl shadow-purple-500/10 scale-105"
-              : "bg-card/80 backdrop-blur-sm border border-border/40 shadow-sm"
-          }`}
-          data-testid={`card-pricing-chat-${card.name.toLowerCase()}`}
-        >
-          {card.popular && (
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-              <span className="px-4 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-cyan-400 to-purple-500 text-white shadow">
-                BELIEBT
-              </span>
-            </div>
-          )}
-          <div>
-            <p className={`text-xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.name}</p>
-            <p className={`text-sm mt-0.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{card.sub}</p>
-          </div>
-          <div className="flex items-end gap-1">
-            {card.price ? (
-              <>
-                {card.oldPrice && (
-                  <span className={`text-sm line-through mr-1 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
-                    {card.oldPrice} €
-                  </span>
-                )}
-                <span className={`text-4xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.price} €</span>
-                <span className={`text-sm mb-1.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>/Monat</span>
-              </>
-            ) : (
-              <span className={`text-3xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>Individuell</span>
-            )}
-          </div>
-          <a href={card.cta === "Demo buchen" ? "/#contact" : "https://app.intellomind.ai"} target={card.cta === "Demo buchen" ? undefined : "_blank"} rel="noopener noreferrer">
-            <Button
-              className={`w-full rounded-xl ${card.popular ? "bg-white text-slate-900 hover:bg-white/90" : "btn-primary-gradient"}`}
-              data-testid={`button-cta-chat-${card.name.toLowerCase()}`}
-            >
-              {card.cta}
-            </Button>
-          </a>
-          <div className="divide-y divide-border/30">
-            {card.rows.map((row) => (
-              <div key={row.label} className="flex items-center justify-between py-2">
-                <span className={`text-sm ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{row.label}</span>
-                <span className={`text-sm font-semibold ${row.highlight ? "text-green-400" : card.popular ? "text-white" : "text-foreground"}`}>
-                  {row.value}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+  return <TransactionCards cards={cards} />;
 }
 
 function MailCards({ billing }: { billing: Billing }) {
   const yearly = billing === "yearly";
-  const cards = [
+  const cards: TransactionCard[] = [
     {
       name: "Starter",
       sub: "Ideal für den Einstieg",
       price: yearly ? "24,65" : "29",
       oldPrice: yearly ? "29" : undefined,
       popular: false,
-      cta: "Jetzt starten",
+      cta: "Demo buchen",
       rows: [
         { label: "Transaktionen", value: "400" },
         { label: "Effektiv pro E-Mail", value: yearly ? "0,062 €" : "0,073 €" },
@@ -339,7 +346,7 @@ function MailCards({ billing }: { billing: Billing }) {
       price: yearly ? "84,15" : "99",
       oldPrice: yearly ? "99" : undefined,
       popular: true,
-      cta: "Jetzt starten",
+      cta: "Demo buchen",
       rows: [
         { label: "Transaktionen", value: "1.500" },
         { label: "Effektiv pro E-Mail", value: yearly ? "0,056 €" : "0,066 €" },
@@ -360,67 +367,7 @@ function MailCards({ billing }: { billing: Billing }) {
       ],
     },
   ];
-
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-      {cards.map((card) => (
-        <div
-          key={card.name}
-          className={`relative rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 ${
-            card.popular
-              ? "bg-slate-900 dark:bg-slate-800 text-white shadow-2xl shadow-purple-500/10 scale-105"
-              : "bg-card/80 backdrop-blur-sm border border-border/40 shadow-sm"
-          }`}
-          data-testid={`card-pricing-mail-${card.name.toLowerCase()}`}
-        >
-          {card.popular && (
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-              <span className="px-4 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-cyan-400 to-purple-500 text-white shadow">
-                BELIEBT
-              </span>
-            </div>
-          )}
-          <div>
-            <p className={`text-xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.name}</p>
-            <p className={`text-sm mt-0.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{card.sub}</p>
-          </div>
-          <div className="flex items-end gap-1">
-            {card.price ? (
-              <>
-                {card.oldPrice && (
-                  <span className={`text-sm line-through mr-1 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
-                    {card.oldPrice} €
-                  </span>
-                )}
-                <span className={`text-4xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.price} €</span>
-                <span className={`text-sm mb-1.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>/Monat</span>
-              </>
-            ) : (
-              <span className={`text-3xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>Individuell</span>
-            )}
-          </div>
-          <a href={card.cta === "Demo buchen" ? "/#contact" : "https://app.intellomind.ai"} target={card.cta === "Demo buchen" ? undefined : "_blank"} rel="noopener noreferrer">
-            <Button
-              className={`w-full rounded-xl ${card.popular ? "bg-white text-slate-900 hover:bg-white/90" : "btn-primary-gradient"}`}
-              data-testid={`button-cta-mail-${card.name.toLowerCase()}`}
-            >
-              {card.cta}
-            </Button>
-          </a>
-          <div className="divide-y divide-border/30">
-            {card.rows.map((row) => (
-              <div key={row.label} className="flex items-center justify-between py-2">
-                <span className={`text-sm ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{row.label}</span>
-                <span className={`text-sm font-semibold ${row.highlight ? "text-green-400" : card.popular ? "text-white" : "text-foreground"}`}>
-                  {row.value}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+  return <TransactionCards cards={cards} />;
 }
 
 export default function Preise() {
@@ -456,7 +403,7 @@ export default function Preise() {
           </div>
 
           <div className="flex justify-center mb-8">
-            <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-1.5 shadow-sm flex-wrap">
+            <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-1.5 shadow-sm flex-wrap justify-center">
               {PRODUCTS.map((p) => {
                 const Icon = p.icon;
                 return (
@@ -491,9 +438,9 @@ export default function Preise() {
               </button>
               <button
                 onClick={() => setBilling("yearly")}
-                className={`inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  billing === "yearly" ? "bg-slate-900 text-white shadow" : "text-muted-foreground hover:text-foreground"
-                }`}
+                className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-muted-foreground hover:text-foreground data-[active=true]:bg-slate-900 data-[active=true]:text-white data-[active=true]:shadow"
+                data-active={billing === "yearly"}
+                style={billing === "yearly" ? { background: "rgb(15 23 42)", color: "white", boxShadow: "0 1px 2px rgba(0,0,0,.1)" } : {}}
                 data-testid="toggle-billing-yearly"
               >
                 Jährlich
@@ -534,7 +481,7 @@ export default function Preise() {
             Alle Preise verstehen sich zzgl. 19% MwSt.
           </p>
           {billing === "yearly" && (
-            <p className="text-center text-xs text-muted-foreground mb-16">
+            <p className="text-center text-xs text-muted-foreground mb-4">
               Bei jährlicher Abrechnung wird der Gesamtbetrag für 12 Monate im Voraus berechnet. Der angezeigte Monatspreis entspricht dem effektiven Preis pro Monat.
             </p>
           )}
@@ -580,7 +527,9 @@ export default function Preise() {
 
           <div className="mt-16">
             <div className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-8 shadow-sm">
-              <h2 className={`${gradientHeading} text-xl mb-6`}>Häufige Fragen</h2>
+              <h2 className="text-xl font-semibold mb-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+                Häufige Fragen
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
                 {FAQ_ITEMS.map((item) => (
                   <div key={item.q} data-testid={`faq-item-${item.q.slice(0, 10).toLowerCase().replace(/\s+/g, "-")}`}>
