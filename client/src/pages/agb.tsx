@@ -64,9 +64,8 @@ export default function AGB() {
             <p className="text-muted-foreground text-base">
               der IntelloMind UG (haftungsbeschränkt)
             </p>
-            <p className="text-muted-foreground text-base">
-              Hüingser Ring 1, 58710 Menden
-            </p>
+            <p className="text-muted-foreground text-base">Hüingser Ring 1, 
+            58710 Menden</p>
             <p className="text-muted-foreground text-base mt-2">
               Stand: Februar 2026
             </p>
