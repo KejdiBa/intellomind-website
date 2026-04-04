@@ -55,9 +55,8 @@ export function Footer({ onOpenCookieSettings }: FooterProps) {
               />
               <span className="font-bold text-xl text-foreground">IntelloMind</span>
             </a>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Automatisieren Sie Ihre Kommunikation mit smarten KI-Lösungen.
-            </p>
+            <p className="text-muted-foreground text-sm leading-relaxed">Automatisieren Sie Ihre Kommunikation mit smarten 
+            KI-Lösungen.</p>
           </div>
 
           <div>
