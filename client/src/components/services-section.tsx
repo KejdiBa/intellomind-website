@@ -40,13 +40,6 @@ const products = [
 ];
 
 export function ServicesSection() {
-  const scrollToContact = () => {
-    const element = document.querySelector("#contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section
       id="services"
