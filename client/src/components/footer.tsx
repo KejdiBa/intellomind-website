@@ -28,15 +28,6 @@ interface FooterProps {
 }
 
 export function Footer({ onOpenCookieSettings }: FooterProps) {
-  const scrollToSection = (href: string) => {
-    if (href.startsWith("#") && href.length > 1) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
-
   return (
     <footer className="bg-card/80 backdrop-blur-sm border-t border-border/30 py-16" data-testid="section-footer">
       <div className="max-w-6xl mx-auto px-6">
@@ -79,27 +70,13 @@ export function Footer({ onOpenCookieSettings }: FooterProps) {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
-                  {link.isPage ? (
-                    <Link
-                      href={link.href}
-                      className="text-muted-foreground hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-purple-600 hover:bg-clip-text transition-colors text-sm"
-                      data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
-                    >
-                      {link.label}
-                    </Link>
-                  ) : (
-                    <a
-                      href={link.href}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        scrollToSection(link.href);
-                      }}
-                      className="text-muted-foreground hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-purple-600 hover:bg-clip-text transition-colors text-sm"
-                      data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
-                    >
-                      {link.label}
-                    </a>
-                  )}
+                  <Link
+                    href={link.href}
+                    className="text-muted-foreground hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-purple-600 hover:bg-clip-text transition-colors text-sm"
+                    data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
