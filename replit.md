@@ -94,6 +94,23 @@ shared/
 - Address: Hüingser Ring 1, 58710 Menden
 
 ## Recent Changes
+- 2026-04-04: Preise-Seite hinzugefügt (/preise)
+  - Neue Route /preise mit vollständiger Preisübersicht für alle 3 KI-Produkte
+  - 3 Produkt-Tabs: KI-Telefonassistent, KI-Chatassistent, KI-Mailassistent
+  - Monatlich/Jährlich Toggle mit -15% Rabatt (Preise passen sich dynamisch an)
+  - TelefonCards: Solo (99€/85€), Team (299€/255€), Business (Individuell)
+  - ChatCards + MailCards: Starter/Pro/Enterprise mit Transaktions-Tabellen
+  - Full-Service Paket Sektion (4 Checkmarks, "Beratung vereinbaren" → /#contact)
+  - FAQ 2×2 Grid (4 Fragen)
+  - Dynamischer Kostenersparnis-Rechner "Wie viel sparen Sie?" mit Slidern:
+    - KI-Telefonassistent: Anrufe/Tag, Gesprächsdauer, Nachbearbeitungszeit, Mitarbeiterkosten
+    - KI-Chatassistent: Chats/Tag, Bearbeitungszeit, Mitarbeiterkosten
+    - KI-Mailassistent: E-Mails/Tag, Bearbeitungszeit, Mitarbeiterkosten
+    - Live-Berechnung: Personalkosten, KI-Kosten, Monatliche Ersparnis, Jährliche Ersparnis
+  - Navigation: "Preise" zwischen "Leistungen" und "Über uns"
+  - Footer: "Preise" unter "Unternehmen" nach "Über uns"
+
+
 - 2026-03-29: Leistungsbeschreibung-Seite hinzugefügt
   - Neue Route /leistungsbeschreibung mit vollständiger Leistungsbeschreibung (Stand: 06.03.2026, 10 Abschnitte)
   - Identisches Design wie andere Rechtstexte: glass-cards, cyan→blue→purple Gradientenüberschriften, AnimatedBackground, Navigation (isSubPage), Footer, CookieBanner
