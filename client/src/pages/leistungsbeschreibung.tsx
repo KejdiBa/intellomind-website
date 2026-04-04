@@ -54,34 +54,6 @@ export default function Leistungsbeschreibung() {
           </div>
 
           <div className="space-y-10">
-            {/* Inhaltsverzeichnis */}
-            <section className={card} data-testid="section-leistungsbeschreibung-toc">
-              <h2 className={gradientHeading}>Inhaltsverzeichnis</h2>
-              <ol className="mt-4 list-decimal list-outside ml-5 space-y-1 text-sm text-foreground/80">
-                {[
-                  ["#lb-1", "Gegenstand der Leistungen (Scope of Services)"],
-                  ["#lb-2", "Telefonassistenten über Drittanbieter (Fonio AI)"],
-                  ["#lb-3", "Individuelle Projektleistungen"],
-                  ["#lb-4", "Technische Bereitstellung"],
-                  ["#lb-5", "Verfügbarkeit und Performance"],
-                  ["#lb-6", "Datensicherheit und Hosting"],
-                  ["#lb-7", "Support und Onboarding"],
-                  ["#lb-8", "Leistungsgrenzen und Haftungsausschlüsse"],
-                  ["#lb-9", "Mitwirkungspflichten des Kunden"],
-                  ["#lb-10", "Weiterentwicklung der Plattform"],
-                ].map(([href, label]) => (
-                  <li key={href}>
-                    <a
-                      href={href}
-                      className="hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-purple-600 hover:bg-clip-text transition-colors"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </section>
-
             {/* 1. Gegenstand der Leistungen */}
             <section id="lb-1" className={card} data-testid="section-leistungsbeschreibung-1">
               <h2 className={gradientHeading}>1. Gegenstand der Leistungen (Scope of Services)</h2>
