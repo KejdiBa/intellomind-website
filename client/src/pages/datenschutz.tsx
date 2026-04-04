@@ -706,35 +706,33 @@ export default function Datenschutz() {
                   </li>
                 </ul>
 
-                <h3 className={subheading}>4.4 Einwilligungs Management</h3>
+                <h3 className={subheading}>4.4 Einwilligungs­management</h3>
                 <p>
-                  Wir nutzen das Einwilligungsmanagement-Tool (nachfolgend auch „Consent-Tool") des
-                  unten genannten Anbieters im Rahmen der Tracking- und Analysetätigkeiten in
-                  unseren Services. Das Consent-Tool sammelt Logfile- und Einwilligungsdaten. Das
-                  Consent-Tool ermöglicht es, Nutzer über eine Einwilligung zu bestimmten Tags in
-                  unseren Services zu informieren und diese einzuholen, zu verwalten und zu
-                  dokumentieren. Wir verarbeiten dabei die folgenden Daten: (1) Consent Daten bzw.
-                  Daten der Einwilligung (anonymisierte Logbuchdaten (Consent ID, Processor ID,
-                  Controller ID), Consent Status, Timestamp), (2) Device Daten bzw. Daten der
-                  verwendeten Geräte (u.a. gekürzte IP-Adressen (IP v4, IP v6),
-                  Geräteinformationen, Timestamp), (3) User Daten bzw. Benutzerdaten (u.a. eMail,
-                  ID, Browserinformationen, SettingIDs, Changelog). Die ConsentID (enthält die
-                  oben genannten Daten) und der Consent-Status inkl. Zeitstempel werden in dem
-                  lokalen Speicher des Browsers und gleichzeitig auf den von uns eingesetzten
-                  Cloud-Servern gespeichert. Eine weitere Verarbeitung erfolgt nur, wenn Nutzer
-                  eine Anfrage auf Auskunftsersuchen stellen oder die Zustimmung widerrufen. Die
-                  Rechtsgrundlage zur Verarbeitung personenbezogener Daten mittels des
-                  Consent-Tools nach der hier genannten Maßgabe resultiert aus unserem berechtigten
-                  Interesse sowie zur Erfüllung rechtlicher Vorgaben und damit aus Art. 6 Abs. 1
-                  lit. f und c DSGVO. Mittels des Consent-Tools möchten wir gesetzliche Vorgaben
-                  zum Datenschutz und zum Tracking erfüllen und damit die Funktionsweise unserer
-                  informationstechnischen Systeme gesetzeskonform und nutzerzentriert aufstellen.
+                  Wir setzen auf unserer Website einen eigenen, selbst entwickelten Consent-Banner
+                  ein, um die Einwilligungen der Nutzer zur Verwendung von Cookies und ähnlichen
+                  Technologien einzuholen, zu verwalten und zu dokumentieren. Der Consent-Banner
+                  informiert Nutzer beim erstmaligen Besuch unserer Website über die eingesetzten
+                  Cookie-Kategorien und ermöglicht es, gezielt zuzustimmen oder abzulehnen.
                 </p>
-                <p className="font-medium text-foreground">Anbieter des von uns genutzten Consent-Tools:</p>
+                <p>
+                  Die Einwilligungsentscheidung (Consent-Status und Zeitstempel) wird ausschließlich
+                  im lokalen Speicher (LocalStorage) des verwendeten Browsers gespeichert. Es werden
+                  keine Consent-Daten an externe Server oder Dritte übermittelt. Die gespeicherten
+                  Informationen umfassen lediglich den gewählten Consent-Status je Kategorie sowie
+                  den Zeitpunkt der Entscheidung.
+                </p>
+                <p>
+                  Die Einwilligung gilt für einen Zeitraum von 12 Monaten und kann jederzeit über
+                  den Link „Cookie-Einstellungen" im Footer unserer Website widerrufen oder
+                  angepasst werden. Die Rechtsgrundlage für diese Verarbeitung ergibt sich aus
+                  unserem berechtigten Interesse zur Erfüllung rechtlicher Vorgaben nach Art. 6
+                  Abs. 1 lit. c und f DSGVO.
+                </p>
+                <p className="font-medium text-foreground">Anbieter des Consent-Banners:</p>
                 <div className="space-y-0.5 pl-4 border-l-2 border-border/50">
-                  <p>Usercentrics GmbH</p>
-                  <p>Sendlinger Straße 7</p>
-                  <p>80331 München</p>
+                  <p>IntelloMind UG (haftungsbeschränkt)</p>
+                  <p>Hüingser Ring 1</p>
+                  <p>58710 Menden</p>
                 </div>
               </div>
             </section>

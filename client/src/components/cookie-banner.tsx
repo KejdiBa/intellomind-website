@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
@@ -173,8 +174,13 @@ export function CookieBanner({ forceOpen = false, onClose }: CookieBannerProps) 
               </div>
 
               <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
-                Hier können Sie einstellen, welche Cookies Sie akzeptieren möchten. 
+                Hier können Sie einstellen, welche Cookies Sie akzeptieren möchten.
                 Ihre Einstellungen werden für 12 Monate gespeichert und können jederzeit geändert werden.
+                Weitere Informationen finden Sie in unserer{" "}
+                <Link href="/datenschutz" className="text-cyan-500 hover:text-cyan-400 underline underline-offset-2">
+                  Datenschutzerklärung
+                </Link>
+                .
               </p>
 
               <div className="space-y-4 mb-6">
@@ -185,7 +191,7 @@ export function CookieBanner({ forceOpen = false, onClose }: CookieBannerProps) 
                     </div>
                     <div>
                       <p className="font-semibold text-foreground text-sm">Technisch notwendig</p>
-                      <p className="text-xs text-muted-foreground">Immer aktiv</p>
+                      <p className="text-xs text-muted-foreground">Immer aktiv – für den Betrieb der Website erforderlich</p>
                     </div>
                   </div>
                   <Switch checked={true} disabled className="opacity-50" data-testid="switch-necessary" />
@@ -197,8 +203,8 @@ export function CookieBanner({ forceOpen = false, onClose }: CookieBannerProps) 
                       <Settings className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground text-sm">Funktional</p>
-                      <p className="text-xs text-muted-foreground">Erweiterte Funktionen</p>
+                      <p className="font-semibold text-foreground text-sm">Funktionale Cookies</p>
+                      <p className="text-xs text-muted-foreground">Login, Warenkorb, Seiteneinstellungen</p>
                     </div>
                   </div>
                   <Switch
@@ -214,8 +220,8 @@ export function CookieBanner({ forceOpen = false, onClose }: CookieBannerProps) 
                       <BarChart3 className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground text-sm">Analytik</p>
-                      <p className="text-xs text-muted-foreground">Nutzungsstatistiken</p>
+                      <p className="font-semibold text-foreground text-sm">Statistik Cookies</p>
+                      <p className="text-xs text-muted-foreground">Analyse und Leistungsmessung der Website</p>
                     </div>
                   </div>
                   <Switch
@@ -231,8 +237,8 @@ export function CookieBanner({ forceOpen = false, onClose }: CookieBannerProps) 
                       <Target className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground text-sm">Marketing</p>
-                      <p className="text-xs text-muted-foreground">Personalisierte Werbung</p>
+                      <p className="font-semibold text-foreground text-sm">Marketing Cookies</p>
+                      <p className="text-xs text-muted-foreground">Relevante Werbung, soziale Netzwerke</p>
                     </div>
                   </div>
                   <Switch
@@ -283,10 +289,14 @@ export function CookieBanner({ forceOpen = false, onClose }: CookieBannerProps) 
                   <div>
                     <h4 className="font-bold text-foreground mb-1">Cookies & Datenschutz</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Wir nutzen Cookies für Funktionalität und Analyse.{" "}
+                      Wir nutzen Cookies und ähnliche Technologien, um unsere Website zu betreiben, die Nutzung zu analysieren und relevante Inhalte bereitzustellen. Weitere Informationen finden Sie in unserer{" "}
+                      <Link href="/datenschutz" className="text-cyan-500 hover:text-cyan-400 underline underline-offset-2" data-testid="link-datenschutz-banner">
+                        Datenschutzerklärung
+                      </Link>
+                      .{" "}
                       <button
                         onClick={handleOpenSettings}
-                        className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
+                        className="text-cyan-500 hover:text-cyan-400 underline underline-offset-2"
                         data-testid="link-cookie-settings"
                       >
                         Einstellungen anpassen
