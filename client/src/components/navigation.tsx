@@ -104,7 +104,7 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
 
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="https://replit.com/@kejdibasha89/PrimeOneAI-mainzip"
+            href="https://app.intellomind.ai"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -155,7 +155,7 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
                 </a>
               ))}
               <a
-                href="https://replit.com/@kejdibasha89/PrimeOneAI-mainzip"
+                href="https://app.intellomind.ai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block mt-3"
