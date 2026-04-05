@@ -7,6 +7,7 @@ const footerLinks = {
     { label: "KI-Telefonassistent", href: "/ki-telefonassistent", isPage: true },
     { label: "KI-Chatbot", href: "/ki-chatbot", isPage: true },
     { label: "KI-Mailbot", href: "/ki-mailbot", isPage: true },
+    { label: "KI-Automatisierung", href: "/ki-workflow-automation", isPage: true },
   ],
   company: [
     { label: "Über uns", href: "/#about", isPage: true },

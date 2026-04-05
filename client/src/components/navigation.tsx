@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { label: "Start", href: "#home" },
   { label: "KI-Assistenten", href: "#services" },
+  { label: "KI-Automatisierung", href: "/ki-workflow-automation", isPage: true },
   { label: "Leistungen", href: "#services" },
   { label: "Preise", href: "/preise", isPage: true },
   { label: "Über uns", href: "#about" },
