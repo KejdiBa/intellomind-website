@@ -129,7 +129,7 @@ function TelefonCards({ billing }: { billing: Billing }) {
           key={card.name}
           className={`relative rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 ${
             card.popular
-              ? "bg-slate-900 dark:bg-slate-800 text-white shadow-2xl shadow-purple-500/10 scale-105"
+              ? "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border border-blue-200/60 shadow-2xl shadow-purple-500/10 scale-105"
               : "bg-card/80 backdrop-blur-sm border border-border/40 shadow-sm"
           }`}
           data-testid={`card-pricing-telefon-${card.name.toLowerCase()}`}
@@ -142,51 +142,48 @@ function TelefonCards({ billing }: { billing: Billing }) {
             </div>
           )}
           <div>
-            <p className={`text-xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.name}</p>
-            <p className={`text-sm mt-0.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{card.sub}</p>
+            <p className="text-xl font-bold text-foreground">{card.name}</p>
+            <p className="text-sm mt-0.5 text-muted-foreground">{card.sub}</p>
           </div>
           <div className="flex items-end gap-1">
             {card.price ? (
               <>
                 {card.oldPrice && (
-                  <span className={`text-sm line-through mr-1 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
+                  <span className="text-sm line-through mr-1 text-muted-foreground">
                     {card.oldPrice} €
                   </span>
                 )}
-                <span className={`text-4xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.price} €</span>
-                <span className={`text-sm mb-1.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>/Monat</span>
+                <span className="text-4xl font-bold text-foreground">{card.price} €</span>
+                <span className="text-sm mb-1.5 text-muted-foreground">/Monat</span>
               </>
             ) : (
-              <span className={`text-3xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>Individuell</span>
+              <span className="text-3xl font-bold text-foreground">Individuell</span>
             )}
           </div>
           <a href="/#contact">
             <Button
-              className={`w-full rounded-xl ${card.popular ? "bg-white text-slate-900 hover:bg-white/90" : "btn-primary-gradient"}`}
+              className="w-full rounded-xl btn-primary-gradient"
               data-testid={`button-demo-${card.name.toLowerCase()}`}
             >
               {card.cta}
             </Button>
           </a>
           <div>
-            <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
+            <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">
               Inkludiert
             </p>
             <ul className="space-y-1.5">
               {card.included.map((item) => (
                 <li key={item.text} className="flex items-start gap-2 text-sm">
                   {item.crossed ? (
-                    <X className={`w-4 h-4 mt-0.5 flex-shrink-0 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`} />
+                    <X className="w-4 h-4 mt-0.5 flex-shrink-0 text-muted-foreground" />
                   ) : (
-                    <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${card.popular ? "text-cyan-400" : "text-cyan-500"}`} />
+                    <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-cyan-500" />
                   )}
-                  <span className={item.crossed
-                    ? (card.popular ? "text-slate-400" : "text-muted-foreground")
-                    : (card.popular ? "text-slate-100" : "text-foreground/80")
-                  }>
+                  <span className={item.crossed ? "text-muted-foreground" : "text-foreground/80"}>
                     {item.text}
                     {item.sub && (
-                      <span className={`ml-1 text-xs ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>{item.sub}</span>
+                      <span className="ml-1 text-xs text-muted-foreground">{item.sub}</span>
                     )}
                   </span>
                 </li>
@@ -194,14 +191,14 @@ function TelefonCards({ billing }: { billing: Billing }) {
             </ul>
           </div>
           <div>
-            <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
+            <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">
               Features
             </p>
             <ul className="space-y-1.5">
               {card.features.map((f) => (
                 <li key={f} className="flex items-center gap-2 text-sm">
-                  <Check className={`w-4 h-4 flex-shrink-0 ${card.popular ? "text-cyan-400" : "text-cyan-500"}`} />
-                  <span className={card.popular ? "text-slate-100" : "text-foreground/80"}>{f}</span>
+                  <Check className="w-4 h-4 flex-shrink-0 text-cyan-500" />
+                  <span className="text-foreground/80">{f}</span>
                 </li>
               ))}
             </ul>
@@ -220,7 +217,7 @@ function TransactionCards({ cards }: { cards: TransactionCard[] }) {
           key={card.name}
           className={`relative rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 ${
             card.popular
-              ? "bg-slate-900 dark:bg-slate-800 text-white shadow-2xl shadow-purple-500/10 scale-105"
+              ? "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border border-blue-200/60 shadow-2xl shadow-purple-500/10 scale-105"
               : "bg-card/80 backdrop-blur-sm border border-border/40 shadow-sm"
           }`}
           data-testid={`card-pricing-${card.name.toLowerCase()}`}
@@ -233,27 +230,27 @@ function TransactionCards({ cards }: { cards: TransactionCard[] }) {
             </div>
           )}
           <div>
-            <p className={`text-xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.name}</p>
-            <p className={`text-sm mt-0.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{card.sub}</p>
+            <p className="text-xl font-bold text-foreground">{card.name}</p>
+            <p className="text-sm mt-0.5 text-muted-foreground">{card.sub}</p>
           </div>
           <div className="flex items-end gap-1">
             {card.price ? (
               <>
                 {card.oldPrice && (
-                  <span className={`text-sm line-through mr-1 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
+                  <span className="text-sm line-through mr-1 text-muted-foreground">
                     {card.oldPrice} €
                   </span>
                 )}
-                <span className={`text-4xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.price} €</span>
-                <span className={`text-sm mb-1.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>/Monat</span>
+                <span className="text-4xl font-bold text-foreground">{card.price} €</span>
+                <span className="text-sm mb-1.5 text-muted-foreground">/Monat</span>
               </>
             ) : (
-              <span className={`text-3xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>Individuell</span>
+              <span className="text-3xl font-bold text-foreground">Individuell</span>
             )}
           </div>
           <a href="/#contact">
             <Button
-              className={`w-full rounded-xl ${card.popular ? "bg-white text-slate-900 hover:bg-white/90" : "btn-primary-gradient"}`}
+              className="w-full rounded-xl btn-primary-gradient"
               data-testid={`button-cta-${card.name.toLowerCase()}`}
             >
               {card.cta}
@@ -262,10 +259,8 @@ function TransactionCards({ cards }: { cards: TransactionCard[] }) {
           <div className="divide-y divide-border/30">
             {card.rows.map((row) => (
               <div key={row.label} className="flex items-center justify-between py-2">
-                <span className={`text-sm ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{row.label}</span>
-                <span className={`text-sm font-semibold ${
-                  row.highlight ? "text-green-400" : card.popular ? "text-white" : "text-foreground"
-                }`}>
+                <span className="text-sm text-muted-foreground">{row.label}</span>
+                <span className={`text-sm font-semibold ${row.highlight ? "text-green-600" : "text-foreground"}`}>
                   {row.value}
                 </span>
               </div>
@@ -692,7 +687,7 @@ export default function Preise() {
                     onClick={() => setActiveProduct(p.id)}
                     className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
                       activeProduct === p.id
-                        ? "bg-slate-900 text-white shadow"
+                        ? "bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white shadow"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                     data-testid={`tab-product-${p.id}`}
@@ -710,17 +705,19 @@ export default function Preise() {
               <button
                 onClick={() => setBilling("monthly")}
                 className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  billing === "monthly" ? "bg-slate-900 text-white shadow" : "text-muted-foreground hover:text-foreground"
+                  billing === "monthly" ? "text-white shadow" : "text-muted-foreground hover:text-foreground"
                 }`}
+                style={billing === "monthly" ? { background: "linear-gradient(to right, #06b6d4, #3b82f6, #9333ea)" } : {}}
                 data-testid="toggle-billing-monthly"
               >
                 Monatlich
               </button>
               <button
                 onClick={() => setBilling("yearly")}
-                className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-muted-foreground hover:text-foreground data-[active=true]:bg-slate-900 data-[active=true]:text-white data-[active=true]:shadow"
-                data-active={billing === "yearly"}
-                style={billing === "yearly" ? { background: "rgb(15 23 42)", color: "white", boxShadow: "0 1px 2px rgba(0,0,0,.1)" } : {}}
+                className={`inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  billing === "yearly" ? "text-white shadow" : "text-muted-foreground hover:text-foreground"
+                }`}
+                style={billing === "yearly" ? { background: "linear-gradient(to right, #06b6d4, #3b82f6, #9333ea)" } : {}}
                 data-testid="toggle-billing-yearly"
               >
                 Jährlich
@@ -768,11 +765,11 @@ export default function Preise() {
 
           <SavingsCalculator />
 
-          <div className="mt-16 rounded-2xl overflow-hidden bg-slate-900 dark:bg-slate-800 p-8 md:p-10 shadow-xl shadow-purple-500/5">
+          <div className="mt-16 rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-700 p-8 md:p-10 shadow-xl shadow-purple-500/10">
             <div className="flex flex-col md:flex-row md:items-start gap-8">
               <div className="flex-1">
                 <h2 className="text-2xl font-bold text-white mb-2">Full-Service Pakete verfügbar</h2>
-                <p className="text-slate-300 text-sm leading-relaxed mb-6">
+                <p className="text-blue-100 text-sm leading-relaxed mb-6">
                   Sie möchten sich voll auf Ihr Kerngeschäft konzentrieren? Wir übernehmen die komplette
                   Einrichtung und laufende Verwaltung Ihrer KI-Assistenten.
                 </p>
@@ -783,13 +780,13 @@ export default function Preise() {
                     "Anpassungen der Assistenten jederzeit möglich",
                     "Persönlicher Ansprechpartner für Ihre Anliegen",
                   ].map((item) => (
-                    <li key={item} className="flex items-center gap-2.5 text-sm text-slate-200">
-                      <Check className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                    <li key={item} className="flex items-center gap-2.5 text-sm text-white/90">
+                      <Check className="w-4 h-4 text-white flex-shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-white/60">
                   Details zu Full-Service Paketen erfahren Sie im persönlichen Beratungsgespräch.
                 </p>
               </div>
@@ -797,7 +794,7 @@ export default function Preise() {
                 <a href="/#contact">
                   <Button
                     variant="outline"
-                    className="rounded-xl border-white/30 text-white bg-white/10 hover:bg-white/20 hover:text-white"
+                    className="rounded-xl border-white/40 text-white bg-white/20 hover:bg-white/30 hover:text-white"
                     data-testid="button-fullservice-beratung"
                   >
                     Beratung vereinbaren
