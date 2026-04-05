@@ -243,6 +243,35 @@ export default function KiTelefonassistent() {
                 </motion.div>
               ))}
             </div>
+
+            {/* Und viele mehr */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="mt-4 bg-gradient-to-r from-cyan-500/5 via-blue-500/5 to-purple-600/5 border border-cyan-500/20 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+              data-testid="card-und-viele-mehr"
+            >
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center shrink-0">
+                <span className="text-white text-lg font-bold">+</span>
+              </div>
+              <div className="flex-1">
+                <p className="font-semibold text-foreground mb-1">… und viele weitere Branchen</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Ihre Branche ist nicht dabei? Kein Problem. Unser KI-Telefonassistent lässt sich
+                  flexibel an nahezu jeden Anwendungsfall anpassen – egal ob Handwerk, Logistik,
+                  Bildung oder eine ganz andere Branche. Sprechen Sie uns einfach an.
+                </p>
+              </div>
+              <a
+                href="/#contact"
+                className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white text-sm font-semibold hover:opacity-90 transition-opacity"
+                data-testid="link-und-viele-mehr-cta"
+              >
+                Demo buchen
+              </a>
+            </motion.div>
           </motion.div>
 
           {/* FAQ */}
