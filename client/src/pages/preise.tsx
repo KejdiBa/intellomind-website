@@ -770,11 +770,11 @@ export default function Preise() {
 
           <SavingsCalculator />
 
-          <div className="mt-16 rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-700 p-8 md:p-10 shadow-xl shadow-purple-500/10">
+          <div className="mt-16 rounded-2xl overflow-hidden bg-slate-900 p-8 md:p-10 shadow-xl shadow-purple-500/5">
             <div className="flex flex-col md:flex-row md:items-start gap-8">
               <div className="flex-1">
                 <h2 className="text-2xl font-bold text-white mb-2">Full-Service Pakete verfügbar</h2>
-                <p className="text-blue-100 text-sm leading-relaxed mb-6">
+                <p className="text-slate-300 text-sm leading-relaxed mb-6">
                   Sie möchten sich voll auf Ihr Kerngeschäft konzentrieren? Wir übernehmen die komplette
                   Einrichtung und laufende Verwaltung Ihrer KI-Assistenten.
                 </p>
@@ -785,13 +785,13 @@ export default function Preise() {
                     "Anpassungen der Assistenten jederzeit möglich",
                     "Persönlicher Ansprechpartner für Ihre Anliegen",
                   ].map((item) => (
-                    <li key={item} className="flex items-center gap-2.5 text-sm text-white/90">
-                      <Check className="w-4 h-4 text-white flex-shrink-0" />
+                    <li key={item} className="flex items-center gap-2.5 text-sm text-slate-200">
+                      <Check className="w-4 h-4 text-cyan-400 flex-shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <p className="text-xs text-white/60">
+                <p className="text-xs text-slate-400">
                   Details zu Full-Service Paketen erfahren Sie im persönlichen Beratungsgespräch.
                 </p>
               </div>
