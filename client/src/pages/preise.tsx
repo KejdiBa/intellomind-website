@@ -798,8 +798,7 @@ export default function Preise() {
               <div className="flex-shrink-0 flex items-center md:items-start">
                 <a href="/#contact">
                   <Button
-                    variant="outline"
-                    className="rounded-xl border-white/40 text-white bg-white/20 hover:bg-white/30 hover:text-white"
+                    className="rounded-xl btn-primary-gradient"
                     data-testid="button-fullservice-beratung"
                   >
                     Beratung vereinbaren
