@@ -76,7 +76,7 @@ const inputNodes = [
 const outputNodes = [
   { id: "crm", icon: Database, label: "CRM", color: "from-violet-500 to-purple-500", x: 540, y: 80 },
   { id: "calendar", icon: CalendarCheck, label: "Kalender", color: "from-purple-500 to-indigo-500", x: 540, y: 200 },
-  { id: "analytics", icon: BarChart3, label: "Analytics", color: "from-indigo-500 to-blue-500", x: 540, y: 320 },
+  { id: "erp", icon: Settings2, label: "ERP / Tools", color: "from-indigo-500 to-blue-500", x: 540, y: 320 },
 ];
 
 function WorkflowDiagram() {
@@ -488,6 +488,54 @@ export default function KiWorkflowAutomation() {
                 </motion.li>
               ))}
             </ul>
+          </motion.div>
+
+          {/* Anwendungsbeispiele */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-16"
+            data-testid="section-anwendungsbeispiele"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
+              <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 bg-clip-text text-transparent">
+                Typische Anwendungsfälle
+              </span>
+            </h2>
+            <div className="space-y-4">
+              {[
+                {
+                  title: "Kundenanfrage per Telefon → CRM & Kalender",
+                  description: "Ein Anruf landet beim KI-Telefonassistenten, der Kontaktdaten werden automatisch ins CRM übertragen und ein Folgetermin im Kalender gebucht – ohne manuelle Eingabe.",
+                },
+                {
+                  title: "Chat-Anfrage → Ticket & E-Mail-Bestätigung",
+                  description: "Eine Website-Anfrage öffnet automatisch ein Support-Ticket, versendet eine Bestätigungs-E-Mail und informiert das zuständige Team – in Sekunden.",
+                },
+                {
+                  title: "E-Mail-Eingang → Kategorisierung & Weiterleitung",
+                  description: "Eingehende E-Mails werden von der KI klassifiziert, priorisiert und direkt an die richtige Abteilung oder ins ERP-System weitergeleitet.",
+                },
+              ].map((uc, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: i * 0.08 }}
+                  className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-6 flex gap-4 shadow-sm"
+                  data-testid={`card-usecase-${i}`}
+                >
+                  <CheckCircle2 className="h-5 w-5 text-violet-500 shrink-0 mt-0.5" />
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">{uc.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{uc.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
           {/* How it works */}
