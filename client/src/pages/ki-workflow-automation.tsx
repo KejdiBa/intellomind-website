@@ -447,16 +447,14 @@ export default function KiWorkflowAutomation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="p-[1px] rounded-2xl bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-sm"
+                className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-6 shadow-sm"
                 data-testid={`card-feature-${i}`}
               >
-                <div className="bg-card rounded-2xl p-6 h-full">
-                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center mb-4">
-                    <f.icon className="h-5 w-5 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-foreground mb-2">{f.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{f.description}</p>
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center mb-4">
+                  <f.icon className="h-5 w-5 text-white" />
                 </div>
+                <h3 className="font-semibold text-foreground mb-2">{f.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{f.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -467,10 +465,9 @@ export default function KiWorkflowAutomation() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="p-[1px] rounded-2xl bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 mb-16 shadow-sm"
+            className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-8 mb-16 shadow-sm"
             data-testid="section-benefits"
           >
-            <div className="bg-card rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
               Was Sie konkret gewinnen
             </h2>
@@ -490,7 +487,6 @@ export default function KiWorkflowAutomation() {
                 </motion.li>
               ))}
             </ul>
-            </div>
           </motion.div>
 
           {/* Anwendungsbeispiele */}
@@ -528,15 +524,13 @@ export default function KiWorkflowAutomation() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: i * 0.08 }}
-                  className="p-[1px] rounded-2xl bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-sm"
+                  className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-6 flex gap-4 shadow-sm"
                   data-testid={`card-usecase-${i}`}
                 >
-                  <div className="bg-card rounded-2xl p-6 flex gap-4">
-                    <CheckCircle2 className="h-5 w-5 text-cyan-500 shrink-0 mt-0.5" />
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">{uc.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{uc.description}</p>
-                    </div>
+                  <CheckCircle2 className="h-5 w-5 text-cyan-500 shrink-0 mt-0.5" />
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">{uc.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{uc.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -569,19 +563,17 @@ export default function KiWorkflowAutomation() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="p-[1px] rounded-2xl bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-sm"
+                  className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-6 relative overflow-hidden shadow-sm"
                   data-testid={`card-step-${i}`}
                 >
-                  <div className="bg-card rounded-2xl p-6 relative overflow-hidden h-full">
-                    <span className="absolute top-4 right-4 text-4xl font-black text-muted-foreground/10 select-none">
-                      {item.step}
-                    </span>
-                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center mb-4">
-                      <item.icon className="h-5 w-5 text-white" />
-                    </div>
-                    <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
+                  <span className="absolute top-4 right-4 text-4xl font-black text-muted-foreground/10 select-none">
+                    {item.step}
+                  </span>
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center mb-4">
+                    <item.icon className="h-5 w-5 text-white" />
                   </div>
+                  <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
                 </motion.div>
               ))}
             </div>
@@ -605,10 +597,9 @@ export default function KiWorkflowAutomation() {
               {faqs.map((faq, i) => (
                 <div
                   key={i}
-                  className="p-[1px] rounded-2xl bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-sm"
+                  className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl shadow-sm overflow-hidden"
                   data-testid={`faq-${i}`}
                 >
-                <div className="bg-card rounded-2xl overflow-hidden">
                   <button
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     className="w-full flex items-center justify-between gap-4 p-6 text-left hover:bg-muted/20 transition-colors"
@@ -626,7 +617,6 @@ export default function KiWorkflowAutomation() {
                       {faq.a}
                     </div>
                   )}
-                </div>
                 </div>
               ))}
             </div>
