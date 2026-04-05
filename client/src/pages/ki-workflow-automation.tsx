@@ -68,14 +68,14 @@ const faqs = [
 
 const inputNodes = [
   { id: "phone", icon: Phone, label: "Telefon", color: "from-cyan-500 to-blue-500", x: 60, y: 80 },
-  { id: "chat", icon: MessageSquare, label: "Chat", color: "from-blue-500 to-indigo-500", x: 60, y: 200 },
-  { id: "mail", icon: Mail, label: "E-Mail", color: "from-indigo-500 to-violet-500", x: 60, y: 320 },
+  { id: "chat", icon: MessageSquare, label: "Chat", color: "from-blue-500 to-purple-500", x: 60, y: 200 },
+  { id: "mail", icon: Mail, label: "E-Mail", color: "from-cyan-500 to-blue-500", x: 60, y: 320 },
 ];
 
 const outputNodes = [
-  { id: "crm", icon: Database, label: "CRM", color: "from-violet-500 to-purple-500", x: 540, y: 80 },
-  { id: "calendar", icon: CalendarCheck, label: "Kalender", color: "from-purple-500 to-indigo-500", x: 540, y: 200 },
-  { id: "erp", icon: Settings2, label: "ERP / Tools", color: "from-indigo-500 to-blue-500", x: 540, y: 320 },
+  { id: "crm", icon: Database, label: "CRM", color: "from-blue-500 to-purple-500", x: 540, y: 80 },
+  { id: "calendar", icon: CalendarCheck, label: "Kalender", color: "from-cyan-500 to-blue-500", x: 540, y: 200 },
+  { id: "erp", icon: Settings2, label: "ERP / Tools", color: "from-cyan-500 to-purple-600", x: 540, y: 320 },
 ];
 
 function WorkflowDiagram() {
@@ -94,13 +94,13 @@ function WorkflowDiagram() {
         <defs>
           <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.8" />
-            <stop offset="50%" stopColor="#6366f1" stopOpacity="1" />
-            <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.8" />
+            <stop offset="50%" stopColor="#3b82f6" stopOpacity="1" />
+            <stop offset="100%" stopColor="#9333ea" stopOpacity="0.8" />
           </linearGradient>
           <linearGradient id="hubGrad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#06b6d4" />
-            <stop offset="50%" stopColor="#6366f1" />
-            <stop offset="100%" stopColor="#8b5cf6" />
+            <stop offset="50%" stopColor="#3b82f6" />
+            <stop offset="100%" stopColor="#9333ea" />
           </linearGradient>
           <filter id="glow">
             <feGaussianBlur stdDeviation="3" result="coloredBlur" />
@@ -162,7 +162,7 @@ function WorkflowDiagram() {
               cx={node.x + nodeR}
               cy={node.y + nodeR}
               r={nodeR + 8}
-              fill="#6366f1"
+              fill="#3b82f6"
               fillOpacity="0.08"
               animate={{ r: [nodeR + 8, nodeR + 14, nodeR + 8] }}
               transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.4 }}
@@ -173,7 +173,7 @@ function WorkflowDiagram() {
               r={nodeR}
               fill="white"
               fillOpacity="0.06"
-              stroke="#6366f1"
+              stroke="#3b82f6"
               strokeOpacity="0.3"
               strokeWidth="1.5"
             />
@@ -207,7 +207,7 @@ function WorkflowDiagram() {
           cx={hubX}
           cy={hubY}
           r={hubR + 18}
-          fill="#6366f1"
+          fill="#3b82f6"
           fillOpacity="0.06"
           animate={{ r: [hubR + 18, hubR + 28, hubR + 18] }}
           transition={{ duration: 3, repeat: Infinity }}
@@ -216,7 +216,7 @@ function WorkflowDiagram() {
           cx={hubX}
           cy={hubY}
           r={hubR + 8}
-          fill="#6366f1"
+          fill="#3b82f6"
           fillOpacity="0.1"
           animate={{ r: [hubR + 8, hubR + 14, hubR + 8] }}
           transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
@@ -268,7 +268,7 @@ function WorkflowDiagram() {
               cx={node.x + nodeR}
               cy={node.y + nodeR}
               r={nodeR + 8}
-              fill="#8b5cf6"
+              fill="#9333ea"
               fillOpacity="0.08"
               animate={{ r: [nodeR + 8, nodeR + 14, nodeR + 8] }}
               transition={{ duration: 2.5, repeat: Infinity, delay: 1 + i * 0.4 }}
@@ -279,7 +279,7 @@ function WorkflowDiagram() {
               r={nodeR}
               fill="white"
               fillOpacity="0.06"
-              stroke="#8b5cf6"
+              stroke="#9333ea"
               strokeOpacity="0.3"
               strokeWidth="1.5"
             />
@@ -331,7 +331,7 @@ function WorkflowDiagram() {
             cx={hubX + hubR + 10}
             cy={hubY}
             r={3}
-            fill="#8b5cf6"
+            fill="#9333ea"
             fillOpacity="0.6"
           />
         </motion.g>
@@ -372,12 +372,12 @@ export default function KiWorkflowAutomation() {
             transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
             className="mb-16 text-center"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-600 text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 text-sm font-medium mb-6">
               <Workflow className="h-4 w-4" />
               KI-Workflow-Automation
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
                 Ihre Prozesse.
               </span>
               <br />
@@ -390,7 +390,7 @@ export default function KiWorkflowAutomation() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/#contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 text-white font-semibold hover:opacity-90 transition-opacity"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white font-semibold hover:opacity-90 transition-opacity"
                 data-testid="button-hero-cta"
               >
                 Demo buchen
@@ -423,10 +423,10 @@ export default function KiWorkflowAutomation() {
                 <span className="w-2 h-2 rounded-full bg-cyan-500 inline-block" /> Eingehende Kanäle
               </span>
               <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 inline-block" /> IntelloMind KI
+                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 inline-block" /> IntelloMind KI
               </span>
               <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                <span className="w-2 h-2 rounded-full bg-violet-500 inline-block" /> Ausgabe-Systeme
+                <span className="w-2 h-2 rounded-full bg-purple-500 inline-block" /> Ausgabe-Systeme
               </span>
             </div>
           </motion.div>
@@ -447,10 +447,10 @@ export default function KiWorkflowAutomation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-6 shadow-sm hover:border-violet-500/30 transition-colors"
+                className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-6 shadow-sm hover:border-cyan-500/30 transition-colors"
                 data-testid={`card-feature-${i}`}
               >
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-indigo-500 via-violet-500 to-purple-600 flex items-center justify-center mb-4">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center mb-4">
                   <f.icon className="h-5 w-5 text-white" />
                 </div>
                 <h3 className="font-semibold text-foreground mb-2">{f.title}</h3>
@@ -468,7 +468,7 @@ export default function KiWorkflowAutomation() {
             className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-8 mb-16 shadow-sm"
             data-testid="section-benefits"
           >
-            <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
               Was Sie konkret gewinnen
             </h2>
             <ul className="space-y-3">
@@ -482,7 +482,7 @@ export default function KiWorkflowAutomation() {
                   className="flex items-start gap-3"
                   data-testid={`benefit-${i}`}
                 >
-                  <CheckCircle2 className="h-5 w-5 text-violet-500 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-5 w-5 text-cyan-500 shrink-0 mt-0.5" />
                   <span className="text-foreground/80 text-sm leading-relaxed">{b}</span>
                 </motion.li>
               ))}
@@ -499,7 +499,7 @@ export default function KiWorkflowAutomation() {
             data-testid="section-anwendungsbeispiele"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-              <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
                 Typische Anwendungsfälle
               </span>
             </h2>
@@ -527,7 +527,7 @@ export default function KiWorkflowAutomation() {
                   className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-6 flex gap-4 shadow-sm"
                   data-testid={`card-usecase-${i}`}
                 >
-                  <CheckCircle2 className="h-5 w-5 text-violet-500 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-5 w-5 text-cyan-500 shrink-0 mt-0.5" />
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">{uc.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{uc.description}</p>
@@ -547,7 +547,7 @@ export default function KiWorkflowAutomation() {
             data-testid="section-how-it-works"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-              <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
                 So einfach funktioniert es
               </span>
             </h2>
@@ -569,7 +569,7 @@ export default function KiWorkflowAutomation() {
                   <span className="absolute top-4 right-4 text-4xl font-black text-muted-foreground/10 select-none">
                     {item.step}
                   </span>
-                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-indigo-500 via-violet-500 to-purple-600 flex items-center justify-center mb-4">
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center mb-4">
                     <item.icon className="h-5 w-5 text-white" />
                   </div>
                   <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
@@ -589,7 +589,7 @@ export default function KiWorkflowAutomation() {
             data-testid="section-faq"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-              <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
                 Häufige Fragen
               </span>
             </h2>
@@ -628,7 +628,7 @@ export default function KiWorkflowAutomation() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-gradient-to-br from-indigo-500/10 via-violet-500/10 to-purple-600/10 border border-violet-500/20 rounded-2xl p-10 text-center"
+            className="bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-purple-600/10 border border-cyan-500/20 rounded-2xl p-10 text-center"
             data-testid="section-cta"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">
@@ -640,7 +640,7 @@ export default function KiWorkflowAutomation() {
             </p>
             <a
               href="/#contact"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 text-white font-semibold hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white font-semibold hover:opacity-90 transition-opacity"
               data-testid="button-cta-demo"
             >
               Kostenlose Demo buchen
