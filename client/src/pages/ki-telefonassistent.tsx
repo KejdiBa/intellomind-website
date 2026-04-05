@@ -258,11 +258,7 @@ export default function KiTelefonassistent() {
               </div>
               <div className="flex-1">
                 <p className="font-semibold text-foreground mb-1">… und viele weitere Branchen</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Ihre Branche ist nicht dabei? Kein Problem. Unser KI-Telefonassistent lässt sich
-                  flexibel an nahezu jeden Anwendungsfall anpassen – egal ob Handwerk, Logistik,
-                  Bildung oder eine ganz andere Branche. Sprechen Sie uns einfach an.
-                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">Ihre Branche ist nicht dabei? Kein Problem. Unser KI-Telefonassistent lässt sich flexibel an nahezu jeden Anwendungsfall anpassen – egal ob Logistik, Bildung oder eine ganz andere Branche. Sprechen Sie uns einfach an.</p>
               </div>
               <a
                 href="/#contact"
