@@ -66,7 +66,7 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
       data-testid="navigation-header"
     >
       <div className="animated-border-wrapper max-w-5xl mx-auto shadow-lg shadow-black/5">
-        <nav className="px-6 py-3 flex items-center justify-between gap-4 rounded-full transition-all duration-300 bg-white pl-[24px] pr-[24px] ml-[-7px] mr-[-7px]">
+        <nav className="px-6 py-3 flex items-center justify-between gap-4 rounded-full transition-all duration-300 bg-white text-[16px] ml-[0px] mr-[0px] pl-[22px] pr-[22px]">
         <a
           href={logoHref}
           onClick={(e) => {
