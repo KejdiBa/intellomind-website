@@ -6,3 +6,9 @@ id = "BNGtkK0Y21kYdRFT3q9iS"
 uri = "file://intellomind-website.zip"
 type = "unspecified"
 title = "IntelloMind Website – Upload-Paket für IONOS"
+
+[[outputs]]
+id = "v8vJ0EyVt1uA7v76HDKyk"
+uri = "file://assets-only.zip"
+type = "unspecified"
+title = "assets-only.zip – Inhalt in den assets/ Ordner bei IONOS hochladen"
