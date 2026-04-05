@@ -94,6 +94,15 @@ shared/
 - Address: Hüingser Ring 1, 58710 Menden
 
 ## Recent Changes
+- 2026-04-05: KI-Workflow-Automation Seite hinzugefügt (/ki-workflow-automation)
+  - Neue Seite mit animierter SVG-Workflow-Grafik (Framer Motion)
+  - Nodes: Telefon/Chat/E-Mail → IntelloMind KI Hub → CRM/Kalender/Analytics
+  - Animierte Verbindungslinien (stroke-dasharray, pathLength), Puls-Effekte, orbitierende Punkte
+  - Indigo/Violet Farbakzent (abweichend von anderen Produktseiten)
+  - 3 Feature-Cards, Benefits-Liste, "So einfach"-Steps (01/02/03), FAQ, CTA
+  - services-section.tsx: href für KI-Workflow-Automation auf /ki-workflow-automation geändert
+  - App.tsx: Route /ki-workflow-automation registriert
+
 - 2026-04-04: SEO-Produktseiten + Meta-Tags
   - Neue Seiten: /ki-telefonassistent, /ki-chatbot, /ki-mailbot
   - Jede Seite: Hero, "Was ist es?", 6 Feature-Cards, Anwendungsfälle, FAQ (accordion), CTA, Querlinks zu anderen Produkten

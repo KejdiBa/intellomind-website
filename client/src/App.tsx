@@ -16,6 +16,7 @@ import Preise from "@/pages/preise";
 import KiTelefonassistent from "@/pages/ki-telefonassistent";
 import KiChatbot from "@/pages/ki-chatbot";
 import KiMailbot from "@/pages/ki-mailbot";
+import KiWorkflowAutomation from "@/pages/ki-workflow-automation";
 
 function Router() {
   return (
@@ -32,6 +33,7 @@ function Router() {
       <Route path="/ki-telefonassistent" component={KiTelefonassistent} />
       <Route path="/ki-chatbot" component={KiChatbot} />
       <Route path="/ki-mailbot" component={KiMailbot} />
+      <Route path="/ki-workflow-automation" component={KiWorkflowAutomation} />
       <Route component={NotFound} />
     </Switch>
     </>

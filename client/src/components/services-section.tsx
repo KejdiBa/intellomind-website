@@ -35,7 +35,7 @@ const products = [
     subtitle: "Integrierte KI-Workflows für Ihre Systeme",
     description:
       "End-to-End-Automatisierung Ihrer Geschäftsprozesse – intelligent, effizient und nahtlos integriert. Unsere KI-Workflow-Automation verbindet Telefon, Chat, E-Mail und Ihre bestehenden Systeme zu durchgängigen, automatisierten Abläufen.",
-    href: "/#contact",
+    href: "/ki-workflow-automation",
   },
 ];
 
