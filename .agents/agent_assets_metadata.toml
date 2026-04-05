@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "BNGtkK0Y21kYdRFT3q9iS"
+uri = "file://intellomind-website.zip"
+type = "unspecified"
+title = "IntelloMind Website – Upload-Paket für IONOS"
