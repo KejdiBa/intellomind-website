@@ -129,7 +129,7 @@ function TelefonCards({ billing }: { billing: Billing }) {
           key={card.name}
           className={`relative rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 ${
             card.popular
-              ? "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border border-blue-200/60 shadow-2xl shadow-purple-500/10 scale-105"
+              ? "bg-slate-900 text-white shadow-2xl shadow-purple-500/10 scale-105"
               : "bg-card/80 backdrop-blur-sm border border-border/40 shadow-sm"
           }`}
           data-testid={`card-pricing-telefon-${card.name.toLowerCase()}`}
@@ -142,22 +142,22 @@ function TelefonCards({ billing }: { billing: Billing }) {
             </div>
           )}
           <div>
-            <p className="text-xl font-bold text-foreground">{card.name}</p>
-            <p className="text-sm mt-0.5 text-muted-foreground">{card.sub}</p>
+            <p className={`text-xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.name}</p>
+            <p className={`text-sm mt-0.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{card.sub}</p>
           </div>
           <div className="flex items-end gap-1">
             {card.price ? (
               <>
                 {card.oldPrice && (
-                  <span className="text-sm line-through mr-1 text-muted-foreground">
+                  <span className={`text-sm line-through mr-1 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
                     {card.oldPrice} €
                   </span>
                 )}
-                <span className="text-4xl font-bold text-foreground">{card.price} €</span>
-                <span className="text-sm mb-1.5 text-muted-foreground">/Monat</span>
+                <span className={`text-4xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.price} €</span>
+                <span className={`text-sm mb-1.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>/Monat</span>
               </>
             ) : (
-              <span className="text-3xl font-bold text-foreground">Individuell</span>
+              <span className={`text-3xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>Individuell</span>
             )}
           </div>
           <a href="/#contact">
@@ -169,21 +169,24 @@ function TelefonCards({ billing }: { billing: Billing }) {
             </Button>
           </a>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">
+            <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
               Inkludiert
             </p>
             <ul className="space-y-1.5">
               {card.included.map((item) => (
                 <li key={item.text} className="flex items-start gap-2 text-sm">
                   {item.crossed ? (
-                    <X className="w-4 h-4 mt-0.5 flex-shrink-0 text-muted-foreground" />
+                    <X className={`w-4 h-4 mt-0.5 flex-shrink-0 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`} />
                   ) : (
-                    <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-cyan-500" />
+                    <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${card.popular ? "text-cyan-400" : "text-cyan-500"}`} />
                   )}
-                  <span className={item.crossed ? "text-muted-foreground" : "text-foreground/80"}>
+                  <span className={item.crossed
+                    ? (card.popular ? "text-slate-400" : "text-muted-foreground")
+                    : (card.popular ? "text-slate-100" : "text-foreground/80")
+                  }>
                     {item.text}
                     {item.sub && (
-                      <span className="ml-1 text-xs text-muted-foreground">{item.sub}</span>
+                      <span className={`ml-1 text-xs ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>{item.sub}</span>
                     )}
                   </span>
                 </li>
@@ -191,14 +194,14 @@ function TelefonCards({ billing }: { billing: Billing }) {
             </ul>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">
+            <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
               Features
             </p>
             <ul className="space-y-1.5">
               {card.features.map((f) => (
                 <li key={f} className="flex items-center gap-2 text-sm">
-                  <Check className="w-4 h-4 flex-shrink-0 text-cyan-500" />
-                  <span className="text-foreground/80">{f}</span>
+                  <Check className={`w-4 h-4 flex-shrink-0 ${card.popular ? "text-cyan-400" : "text-cyan-500"}`} />
+                  <span className={card.popular ? "text-slate-100" : "text-foreground/80"}>{f}</span>
                 </li>
               ))}
             </ul>
@@ -217,7 +220,7 @@ function TransactionCards({ cards }: { cards: TransactionCard[] }) {
           key={card.name}
           className={`relative rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 ${
             card.popular
-              ? "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border border-blue-200/60 shadow-2xl shadow-purple-500/10 scale-105"
+              ? "bg-slate-900 text-white shadow-2xl shadow-purple-500/10 scale-105"
               : "bg-card/80 backdrop-blur-sm border border-border/40 shadow-sm"
           }`}
           data-testid={`card-pricing-${card.name.toLowerCase()}`}
@@ -230,22 +233,22 @@ function TransactionCards({ cards }: { cards: TransactionCard[] }) {
             </div>
           )}
           <div>
-            <p className="text-xl font-bold text-foreground">{card.name}</p>
-            <p className="text-sm mt-0.5 text-muted-foreground">{card.sub}</p>
+            <p className={`text-xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.name}</p>
+            <p className={`text-sm mt-0.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{card.sub}</p>
           </div>
           <div className="flex items-end gap-1">
             {card.price ? (
               <>
                 {card.oldPrice && (
-                  <span className="text-sm line-through mr-1 text-muted-foreground">
+                  <span className={`text-sm line-through mr-1 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
                     {card.oldPrice} €
                   </span>
                 )}
-                <span className="text-4xl font-bold text-foreground">{card.price} €</span>
-                <span className="text-sm mb-1.5 text-muted-foreground">/Monat</span>
+                <span className={`text-4xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.price} €</span>
+                <span className={`text-sm mb-1.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>/Monat</span>
               </>
             ) : (
-              <span className="text-3xl font-bold text-foreground">Individuell</span>
+              <span className={`text-3xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>Individuell</span>
             )}
           </div>
           <a href="/#contact">
@@ -259,8 +262,10 @@ function TransactionCards({ cards }: { cards: TransactionCard[] }) {
           <div className="divide-y divide-border/30">
             {card.rows.map((row) => (
               <div key={row.label} className="flex items-center justify-between py-2">
-                <span className="text-sm text-muted-foreground">{row.label}</span>
-                <span className={`text-sm font-semibold ${row.highlight ? "text-green-600" : "text-foreground"}`}>
+                <span className={`text-sm ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{row.label}</span>
+                <span className={`text-sm font-semibold ${
+                  row.highlight ? "text-green-400" : card.popular ? "text-white" : "text-foreground"
+                }`}>
                   {row.value}
                 </span>
               </div>
