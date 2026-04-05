@@ -14,7 +14,6 @@ import {
   CalendarCheck,
   Zap,
   Link2,
-  BarChart3,
   ArrowRight,
   CheckCircle2,
   ChevronDown,
