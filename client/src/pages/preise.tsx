@@ -673,9 +673,7 @@ export default function Preise() {
 
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                Transparente Preise
-              </span>
+              <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">Transparente Preise. Einfach und Fair.</span>
             </h1>
             <p className="text-muted-foreground text-base max-w-md mx-auto">
               Wählen Sie den KI-Assistenten und das Modell, das zu Ihrem Unternehmen passt.
@@ -826,7 +824,6 @@ export default function Preise() {
 
         </div>
       </main>
-
       <Footer onOpenCookieSettings={() => setShowCookieSettings(true)} />
       <CookieBanner forceOpen={showCookieSettings} onClose={() => setShowCookieSettings(false)} />
     </div>
