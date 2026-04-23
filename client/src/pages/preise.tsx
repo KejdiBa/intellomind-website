@@ -349,7 +349,7 @@ function MailCards() {
             <span className="text-5xl font-bold text-foreground">0,10 €</span>
             <span className="text-sm text-muted-foreground mb-1.5">pro E-Mail</span>
           </div>
-          <p className="text-xs text-muted-foreground mt-1">
+          <p className="text-xs text-muted-foreground mt-[8px]">
             Für wenige Cent pro Antwort – schneller und günstiger als manuelle Bearbeitung.
           </p>
         </div>
