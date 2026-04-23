@@ -61,10 +61,6 @@ const FAQ_ITEMS = [
     q: "Was zählt als Transaktion?",
     a: "Beim KI-Chatassistenten: Eine Nutzereingabe + KI-Antwort = 1 Transaktion. Bei E-Mail: Eine E-Mail-Analyse + Antwort = 1 Transaktion.",
   },
-  {
-    q: "Was spare ich bei jährlicher Zahlung?",
-    a: "Bei jährlicher Zahlung erhalten Sie 15% Rabatt auf alle Abo-Pakete.",
-  },
 ];
 
 function TelefonCards({ billing }: { billing: Billing }) {
