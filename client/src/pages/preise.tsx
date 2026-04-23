@@ -333,9 +333,7 @@ function MailCards() {
   return (
     <div className="max-w-lg mx-auto">
       <div className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-8 shadow-sm text-center">
-        <h2 className="text-2xl font-bold text-foreground mb-2">
-          Jede unbeantwortete E-Mail kostet Zeit und Umsatz – automatisieren Sie jetzt Ihre Kommunikation.
-        </h2>
+        <h2 className="text-2xl font-bold text-foreground mb-2">Beantworten Sie jede E-Mail automatisch – ohne Zeitverlust</h2>
         <p className="text-muted-foreground text-sm leading-relaxed mb-6">
           Sparen Sie täglich Stunden: Ihre E-Mails werden sofort, präzise und in Ihrem Ton beantwortet – rund um die Uhr.
         </p>
