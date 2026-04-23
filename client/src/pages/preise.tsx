@@ -742,7 +742,7 @@ export default function Preise() {
               {(activeProduct === "chat" || activeProduct === "mail") && (
                 <div className="flex justify-center mb-8">
                   <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-card/80 backdrop-blur-sm border border-border/40 shadow-sm text-sm text-muted-foreground">
-                    Flexibel starten mit Pay-as-you-go:{" "}
+                    Nur zahlen, was Sie nutzen – mit unserem transparenten Pay-as-you-go-Modell:{" "}
                     <span className="font-bold text-foreground">
                       {activeProduct === "chat" ? "0,05 €" : "0,10 €"}
                     </span>{" "}
