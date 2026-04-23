@@ -304,7 +304,7 @@ function ChatCards({ billing: _ }: { billing: Billing }) {
             <span className="text-5xl font-bold text-foreground">0,05 €</span>
             <span className="text-sm text-muted-foreground mb-1.5">pro Chat</span>
           </div>
-          <p className="text-xs text-muted-foreground mt-1">
+          <p className="text-xs text-muted-foreground mt-[8px]">
             Für wenige Cent pro Anfrage – effizienter als jeder Mitarbeiter.
           </p>
         </div>
