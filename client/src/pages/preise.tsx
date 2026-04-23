@@ -326,51 +326,49 @@ function ChatCards({ billing: _ }: { billing: Billing }) {
   );
 }
 
-function MailCards({ billing }: { billing: Billing }) {
-  const yearly = billing === "yearly";
-  const cards: TransactionCard[] = [
-    {
-      name: "Starter",
-      sub: "Ideal für den Einstieg",
-      price: yearly ? "24,65" : "29",
-      oldPrice: yearly ? "29" : undefined,
-      popular: false,
-      cta: "Demo buchen",
-      rows: [
-        { label: "Transaktionen", value: "400" },
-        { label: "Effektiv pro E-Mail", value: yearly ? "0,062 €" : "0,073 €" },
-        { label: "Mehrverbrauch", value: "0,08 €" },
-        { label: "Ersparnis vs. Pay-as-you-go", value: yearly ? "38%" : "28%", highlight: true },
-      ],
-    },
-    {
-      name: "Pro",
-      sub: "Für regelmäßige Nutzung",
-      price: yearly ? "84,15" : "99",
-      oldPrice: yearly ? "99" : undefined,
-      popular: true,
-      cta: "Demo buchen",
-      rows: [
-        { label: "Transaktionen", value: "1.500" },
-        { label: "Effektiv pro E-Mail", value: yearly ? "0,056 €" : "0,066 €" },
-        { label: "Mehrverbrauch", value: "0,08 €" },
-        { label: "Ersparnis vs. Pay-as-you-go", value: yearly ? "44%" : "34%", highlight: true },
-      ],
-    },
-    {
-      name: "Enterprise",
-      sub: "Für hohe Volumina",
-      price: null,
-      popular: false,
-      cta: "Demo buchen",
-      rows: [
-        { label: "Transaktionen", value: "Individuell" },
-        { label: "Effektiv pro E-Mail", value: "< 0,05 €" },
-        { label: "Mehrverbrauch", value: "individuell" },
-      ],
-    },
+function MailCards() {
+  const bullets = [
+    "Automatische Antworten in Sekunden",
+    "Individueller Tonfall wie von Ihnen geschrieben",
+    "Eigene Wissensbasis integriert",
+    "Mehrsprachige Kommunikation",
+    "DSGVO-konform",
   ];
-  return <TransactionCards cards={cards} />;
+  return (
+    <div className="max-w-lg mx-auto">
+      <div className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-8 shadow-sm text-center">
+        <h2 className="text-2xl font-bold text-foreground mb-2">
+          Jede unbeantwortete E-Mail kostet Zeit und Umsatz – automatisieren Sie jetzt Ihre Kommunikation.
+        </h2>
+        <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+          Sparen Sie täglich Stunden: Ihre E-Mails werden sofort, präzise und in Ihrem Ton beantwortet – rund um die Uhr.
+        </p>
+        <div className="mb-1">
+          <div className="flex items-end gap-2 justify-center">
+            <span className="text-sm text-muted-foreground">ab</span>
+            <span className="text-5xl font-bold text-foreground">0,10 €</span>
+            <span className="text-sm text-muted-foreground mb-1.5">pro E-Mail</span>
+          </div>
+          <p className="text-xs text-muted-foreground mt-1">
+            Für wenige Cent pro Antwort – schneller und günstiger als manuelle Bearbeitung.
+          </p>
+        </div>
+        <a href="/#contact" className="block mt-6 mb-6">
+          <Button className="w-full rounded-xl btn-primary-gradient" data-testid="button-mail-demo">
+            Demo buchen
+          </Button>
+        </a>
+        <ul className="space-y-2.5 text-left">
+          {bullets.map((b) => (
+            <li key={b} className="flex items-center gap-2.5 text-sm text-foreground/80">
+              <Check className="w-4 h-4 text-cyan-500 flex-shrink-0" />
+              {b}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
 }
 
 function SliderInput({
@@ -757,7 +755,7 @@ export default function Preise() {
 
               {activeProduct === "telefon" && <TelefonCards billing={billing} />}
               {activeProduct === "chat" && <ChatCards billing={billing} />}
-              {activeProduct === "mail" && <MailCards billing={billing} />}
+              {activeProduct === "mail" && <MailCards />}
             </motion.div>
           </AnimatePresence>
 
