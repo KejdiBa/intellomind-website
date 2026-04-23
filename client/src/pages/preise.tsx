@@ -291,7 +291,7 @@ function ChatCards({ billing: _ }: { billing: Billing }) {
   ];
   return (
     <div className="max-w-lg mx-auto">
-      <div className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-8 shadow-sm">
+      <div className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-8 shadow-sm text-center">
         <h2 className="text-2xl font-bold text-foreground mb-2">
           Verpassen Sie keine Kundenanfrage mehr – dank KI
         </h2>
@@ -299,7 +299,7 @@ function ChatCards({ billing: _ }: { billing: Billing }) {
           Beantworten Sie jede Anfrage sofort – auch nachts, am Wochenende und ohne zusätzliches Personal.
         </p>
         <div className="mb-1">
-          <div className="flex items-end gap-2">
+          <div className="flex items-end gap-2 justify-center">
             <span className="text-sm text-muted-foreground">ab</span>
             <span className="text-5xl font-bold text-foreground">0,05 €</span>
             <span className="text-sm text-muted-foreground mb-1.5">pro Chat</span>
@@ -313,7 +313,7 @@ function ChatCards({ billing: _ }: { billing: Billing }) {
             Demo buchen
           </Button>
         </a>
-        <ul className="space-y-2.5">
+        <ul className="space-y-2.5 text-left">
           {bullets.map((b) => (
             <li key={b} className="flex items-center gap-2.5 text-sm text-foreground/80">
               <Check className="w-4 h-4 text-cyan-500 flex-shrink-0" />
@@ -705,33 +705,35 @@ export default function Preise() {
             </div>
           </div>
 
-          <div className="flex justify-center mb-10">
-            <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border/40 rounded-xl p-1 shadow-sm">
-              <button
-                onClick={() => setBilling("monthly")}
-                className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  billing === "monthly" ? "text-white shadow" : "text-muted-foreground hover:text-foreground"
-                }`}
-                style={billing === "monthly" ? { background: "linear-gradient(to right, #06b6d4, #3b82f6, #9333ea)" } : {}}
-                data-testid="toggle-billing-monthly"
-              >
-                Monatlich
-              </button>
-              <button
-                onClick={() => setBilling("yearly")}
-                className={`inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  billing === "yearly" ? "text-white shadow" : "text-muted-foreground hover:text-foreground"
-                }`}
-                style={billing === "yearly" ? { background: "linear-gradient(to right, #06b6d4, #3b82f6, #9333ea)" } : {}}
-                data-testid="toggle-billing-yearly"
-              >
-                Jährlich
-                <span className="px-1.5 py-0.5 rounded-full text-xs font-bold bg-gradient-to-r from-cyan-500 to-purple-600 text-white">
-                  -15%
-                </span>
-              </button>
+          {activeProduct === "telefon" && (
+            <div className="flex justify-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border/40 rounded-xl p-1 shadow-sm">
+                <button
+                  onClick={() => setBilling("monthly")}
+                  className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    billing === "monthly" ? "text-white shadow" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  style={billing === "monthly" ? { background: "linear-gradient(to right, #06b6d4, #3b82f6, #9333ea)" } : {}}
+                  data-testid="toggle-billing-monthly"
+                >
+                  Monatlich
+                </button>
+                <button
+                  onClick={() => setBilling("yearly")}
+                  className={`inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    billing === "yearly" ? "text-white shadow" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  style={billing === "yearly" ? { background: "linear-gradient(to right, #06b6d4, #3b82f6, #9333ea)" } : {}}
+                  data-testid="toggle-billing-yearly"
+                >
+                  Jährlich
+                  <span className="px-1.5 py-0.5 rounded-full text-xs font-bold bg-gradient-to-r from-cyan-500 to-purple-600 text-white">
+                    -15%
+                  </span>
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
           <AnimatePresence mode="wait">
             <motion.div
