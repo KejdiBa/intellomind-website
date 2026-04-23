@@ -21,6 +21,18 @@
 #
 # Das war's! Ab sofort deployt jeder Push auf "main"
 # automatisch auf intellomind.ai.
+#
+# FEHLER-BENACHRICHTIGUNGEN:
+# --------------------------
+# Bei einem fehlgeschlagenen Deployment passiert automatisch
+# Folgendes:
+#   - Ein GitHub Issue wird im Repository erstellt
+#   - GitHub benachrichtigt dich per E-Mail über das neue Issue
+#   - Der Issue enthält einen direkten Link zu den Fehler-Logs
+#
+# Zusätzlich sendet GitHub standardmäßig eine E-Mail-Benachrichtigung
+# bei fehlgeschlagenen Workflow-Runs (einstellbar unter
+# github.com → Settings → Notifications).
 # ============================================================
 
 name: Deploy zu IONOS
@@ -34,6 +46,9 @@ jobs:
   build-and-deploy:
     name: Build & Deploy
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
 
     steps:
       - name: Code auschecken
@@ -66,3 +81,45 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
+
+      - name: Fehler-Benachrichtigung bei fehlgeschlagenem Deployment
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const runUrl = `https://github.com/${owner}/${repo}/actions/runs/${context.runId}`;
+            const commitShort = context.sha.slice(0, 7);
+            const branch = context.ref.replace('refs/heads/', '');
+            const now = new Date().toISOString().slice(0, 16).replace('T', ' ');
+
+            await github.rest.issues.create({
+              owner,
+              repo,
+              title: `🚨 Deployment fehlgeschlagen (${commitShort}) – ${now} UTC`,
+              body: [
+                '## Deployment-Fehler',
+                '',
+                'Der automatische Deploy zu IONOS ist **fehlgeschlagen**.',
+                '',
+                `| | |`,
+                `|---|---|`,
+                `| **Branch** | \`${branch}\` |`,
+                `| **Commit** | \`${commitShort}\` |`,
+                `| **Zeitpunkt** | ${now} UTC |`,
+                `| **Logs** | [Workflow-Logs ansehen](${runUrl}) |`,
+                '',
+                '### Mögliche Ursachen',
+                '- Falsches FTP-Passwort oder abgelaufene Zugangsdaten',
+                '- FTP-Server nicht erreichbar (Timeout)',
+                '- Build-Fehler vor dem Upload',
+                '',
+                '### Nächste Schritte',
+                `1. [Logs prüfen](${runUrl})`,
+                '2. FTP-Zugangsdaten in den Repository-Secrets kontrollieren',
+                '3. Fehler beheben und erneut auf `main` pushen',
+                '',
+                '---',
+                '*Dieser Issue wurde automatisch vom GitHub Actions Workflow erstellt.*',
+              ].join('\n'),
+            });
