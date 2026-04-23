@@ -282,51 +282,48 @@ function TransactionCards({ cards }: { cards: TransactionCard[] }) {
   );
 }
 
-function ChatCards({ billing }: { billing: Billing }) {
-  const yearly = billing === "yearly";
-  const cards: TransactionCard[] = [
-    {
-      name: "Starter",
-      sub: "Ideal für den Einstieg",
-      price: yearly ? "33,15" : "39",
-      oldPrice: yearly ? "39" : undefined,
-      popular: false,
-      cta: "Demo buchen",
-      rows: [
-        { label: "Transaktionen", value: "1.200" },
-        { label: "Effektiv pro Chat", value: yearly ? "0,028 €" : "0,0325 €" },
-        { label: "Mehrverbrauch", value: "0,04 €" },
-        { label: "Ersparnis vs. Pay-as-you-go", value: yearly ? "45%" : "35%", highlight: true },
-      ],
-    },
-    {
-      name: "Pro",
-      sub: "Für regelmäßige Nutzung",
-      price: yearly ? "84,15" : "99",
-      oldPrice: yearly ? "99" : undefined,
-      popular: true,
-      cta: "Demo buchen",
-      rows: [
-        { label: "Transaktionen", value: "4.000" },
-        { label: "Effektiv pro Chat", value: yearly ? "0,021 €" : "0,0247 €" },
-        { label: "Mehrverbrauch", value: "0,04 €" },
-        { label: "Ersparnis vs. Pay-as-you-go", value: yearly ? "58%" : "51%", highlight: true },
-      ],
-    },
-    {
-      name: "Enterprise",
-      sub: "Für hohe Volumina",
-      price: null,
-      popular: false,
-      cta: "Demo buchen",
-      rows: [
-        { label: "Transaktionen", value: "Individuell" },
-        { label: "Effektiv pro Chat", value: "< 0,025 €" },
-        { label: "Mehrverbrauch", value: "individuell" },
-      ],
-    },
+function ChatCards({ billing: _ }: { billing: Billing }) {
+  const bullets = [
+    "Integration in Sekunden – ohne IT-Aufwand",
+    "Mehrsprachige Kommunikation",
+    "Individuelle Wissensbasis",
+    "DSGVO-konform & sicher gehostet",
   ];
-  return <TransactionCards cards={cards} />;
+  return (
+    <div className="max-w-lg mx-auto">
+      <div className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-8 shadow-sm">
+        <h2 className="text-2xl font-bold text-foreground mb-2">
+          Verpassen Sie keine Kundenanfrage mehr – dank KI
+        </h2>
+        <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+          Beantworten Sie jede Anfrage sofort – auch nachts, am Wochenende und ohne zusätzliches Personal.
+        </p>
+        <div className="mb-1">
+          <div className="flex items-end gap-2">
+            <span className="text-sm text-muted-foreground">ab</span>
+            <span className="text-5xl font-bold text-foreground">0,05 €</span>
+            <span className="text-sm text-muted-foreground mb-1.5">pro Chat</span>
+          </div>
+          <p className="text-xs text-muted-foreground mt-1">
+            Für wenige Cent pro Anfrage – effizienter als jeder Mitarbeiter.
+          </p>
+        </div>
+        <a href="/#contact" className="block mt-6 mb-6">
+          <Button className="w-full rounded-xl btn-primary-gradient" data-testid="button-chat-demo">
+            Demo buchen
+          </Button>
+        </a>
+        <ul className="space-y-2.5">
+          {bullets.map((b) => (
+            <li key={b} className="flex items-center gap-2.5 text-sm text-foreground/80">
+              <Check className="w-4 h-4 text-cyan-500 flex-shrink-0" />
+              {b}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
 }
 
 function MailCards({ billing }: { billing: Billing }) {
