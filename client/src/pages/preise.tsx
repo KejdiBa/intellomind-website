@@ -764,11 +764,6 @@ export default function Preise() {
           <p className="text-center text-xs text-muted-foreground mt-6 mb-2">
             Alle Preise verstehen sich zzgl. 19% MwSt.
           </p>
-          {billing === "yearly" && (
-            <p className="text-center text-xs text-muted-foreground mb-4">
-              Bei jährlicher Abrechnung wird der Gesamtbetrag für 12 Monate im Voraus berechnet. Der angezeigte Monatspreis entspricht dem effektiven Preis pro Monat.
-            </p>
-          )}
 
           <SavingsCalculator />
 
