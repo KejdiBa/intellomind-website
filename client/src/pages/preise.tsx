@@ -763,8 +763,6 @@ export default function Preise() {
             Alle Preise verstehen sich zzgl. 19% MwSt.
           </p>
 
-          <SavingsCalculator />
-
           <div className="mt-16 rounded-2xl overflow-hidden bg-slate-900 p-8 md:p-10 shadow-xl shadow-purple-500/5">
             <div className="flex flex-col md:flex-row md:items-start gap-8">
               <div className="flex-1">
