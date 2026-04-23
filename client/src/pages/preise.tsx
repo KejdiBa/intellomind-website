@@ -62,10 +62,6 @@ const FAQ_ITEMS = [
     a: "Beim KI-Chatassistenten: Eine Nutzereingabe + KI-Antwort = 1 Transaktion. Bei E-Mail: Eine E-Mail-Analyse + Antwort = 1 Transaktion.",
   },
   {
-    q: "Was passiert bei Mehrverbrauch?",
-    a: "Bei Abo-Paketen wird Mehrverbrauch automatisch zum günstigeren Stückpreis abgerechnet. Sie erhalten vorab eine Benachrichtigung.",
-  },
-  {
     q: "Was spare ich bei jährlicher Zahlung?",
     a: "Bei jährlicher Zahlung erhalten Sie 15% Rabatt auf alle Abo-Pakete.",
   },
