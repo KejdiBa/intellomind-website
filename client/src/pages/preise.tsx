@@ -28,6 +28,7 @@ interface TelefonCard {
   name: string;
   sub: string;
   price: string | null;
+  pricePrefix?: string;
   oldPrice?: string;
   popular: boolean;
   cta: string;
@@ -106,19 +107,20 @@ function TelefonCards({ billing }: { billing: Billing }) {
       features: ["Alles in Solo", "Eigener SIP Trunk", "Outbound Anrufe"],
     },
     {
-      name: "Business",
+      name: "Scale",
       sub: "Geeignet ab 100 Anrufe/Tag",
-      price: null,
+      price: "499",
+      pricePrefix: "Ab",
       popular: false,
-      cta: "Demo buchen",
+      cta: "Plan erstellen",
       included: [
-        { text: "Individuell Minuten" },
+        { text: "Ab 5000 Minuten" },
         { text: "Individuell gleichz. Anrufe" },
         { text: "Individuell Telefonnr." },
         { text: "∞ Assistenten" },
         { text: "∞ User" },
       ],
-      features: ["Alles in Team", "Eigene Stimme", "SSO", "Individueller SLA"],
+      features: ["Alles in Team", "Eigene Stimme", "Zero Data Retention", "Individueller SLA"],
     },
   ];
 
@@ -152,6 +154,9 @@ function TelefonCards({ billing }: { billing: Billing }) {
                   <span className={`text-sm line-through mr-1 ${card.popular ? "text-slate-400" : "text-muted-foreground"}`}>
                     {card.oldPrice} €
                   </span>
+                )}
+                {card.pricePrefix && (
+                  <span className={`text-sm mb-1.5 mr-0.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>{card.pricePrefix}</span>
                 )}
                 <span className={`text-4xl font-bold ${card.popular ? "text-white" : "text-foreground"}`}>{card.price} €</span>
                 <span className={`text-sm mb-1.5 ${card.popular ? "text-slate-300" : "text-muted-foreground"}`}>/Monat</span>
