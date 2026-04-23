@@ -1,0 +1,68 @@
+# ============================================================
+# IntelloMind – Auto-Deploy zu IONOS via FTP
+# ============================================================
+#
+# EINRICHTUNG (einmalig in GitHub nötig):
+# ----------------------------------------
+# 1. Öffne dein GitHub-Repository im Browser
+# 2. Gehe zu: Settings → Secrets and variables → Actions
+# 3. Klicke auf "New repository secret" und lege folgende
+#    drei Secrets an:
+#
+#    Name: FTP_SERVER
+#    Wert: Dein IONOS FTP-Hostname
+#          (z.B. access965989054.webspace-data.io oder ähnlich)
+#
+#    Name: FTP_USERNAME
+#    Wert: Dein IONOS FTP-Benutzername
+#
+#    Name: FTP_PASSWORD
+#    Wert: Dein IONOS FTP-Passwort
+#
+# Das war's! Ab sofort deployt jeder Push auf "main"
+# automatisch auf intellomind.ai.
+# ============================================================
+
+name: Deploy zu IONOS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
+      - name: Website bauen
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Zu IONOS deployen (FTP)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/public/
+          server-dir: /intellomind-ai/
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
