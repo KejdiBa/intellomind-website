@@ -1,40 +1,3 @@
-# ============================================================
-# IntelloMind – Auto-Deploy zu IONOS via FTP
-# ============================================================
-#
-# EINRICHTUNG (einmalig in GitHub nötig):
-# ----------------------------------------
-# 1. Öffne dein GitHub-Repository im Browser
-# 2. Gehe zu: Settings → Secrets and variables → Actions
-# 3. Klicke auf "New repository secret" und lege folgende
-#    drei Secrets an:
-#
-#    Name: FTP_SERVER
-#    Wert: Dein IONOS FTP-Hostname
-#          (z.B. access965989054.webspace-data.io oder ähnlich)
-#
-#    Name: FTP_USERNAME
-#    Wert: Dein IONOS FTP-Benutzername
-#
-#    Name: FTP_PASSWORD
-#    Wert: Dein IONOS FTP-Passwort
-#
-# Das war's! Ab sofort deployt jeder Push auf "main"
-# automatisch auf intellomind.ai.
-#
-# FEHLER-BENACHRICHTIGUNGEN:
-# --------------------------
-# Bei einem fehlgeschlagenen Deployment passiert automatisch
-# Folgendes:
-#   - Ein GitHub Issue wird im Repository erstellt
-#   - GitHub benachrichtigt dich per E-Mail über das neue Issue
-#   - Der Issue enthält einen direkten Link zu den Fehler-Logs
-#
-# Zusätzlich sendet GitHub standardmäßig eine E-Mail-Benachrichtigung
-# bei fehlgeschlagenen Workflow-Runs (einstellbar unter
-# github.com → Settings → Notifications).
-# ============================================================
-
 name: Deploy zu IONOS
 
 on:
@@ -58,10 +21,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
 
-      - name: Abhängigkeiten installieren
-        run: npm ci
+      - name: Abhaengigkeiten installieren
+        run: npm install
 
       - name: Website bauen
         run: npm run build
@@ -76,13 +38,15 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/public/
           server-dir: /intellomind-ai/
+          protocol: ftp
+          port: 21
           dangerous-clean-slate: false
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/**
 
-      - name: Fehler-Benachrichtigung bei fehlgeschlagenem Deployment
+      - name: Fehler-Benachrichtigung
         if: failure()
         uses: actions/github-script@v7
         with:
@@ -90,36 +54,9 @@ jobs:
             const { owner, repo } = context.repo;
             const runUrl = `https://github.com/${owner}/${repo}/actions/runs/${context.runId}`;
             const commitShort = context.sha.slice(0, 7);
-            const branch = context.ref.replace('refs/heads/', '');
-            const now = new Date().toISOString().slice(0, 16).replace('T', ' ');
-
             await github.rest.issues.create({
               owner,
               repo,
-              title: `🚨 Deployment fehlgeschlagen (${commitShort}) – ${now} UTC`,
-              body: [
-                '## Deployment-Fehler',
-                '',
-                'Der automatische Deploy zu IONOS ist **fehlgeschlagen**.',
-                '',
-                `| | |`,
-                `|---|---|`,
-                `| **Branch** | \`${branch}\` |`,
-                `| **Commit** | \`${commitShort}\` |`,
-                `| **Zeitpunkt** | ${now} UTC |`,
-                `| **Logs** | [Workflow-Logs ansehen](${runUrl}) |`,
-                '',
-                '### Mögliche Ursachen',
-                '- Falsches FTP-Passwort oder abgelaufene Zugangsdaten',
-                '- FTP-Server nicht erreichbar (Timeout)',
-                '- Build-Fehler vor dem Upload',
-                '',
-                '### Nächste Schritte',
-                `1. [Logs prüfen](${runUrl})`,
-                '2. FTP-Zugangsdaten in den Repository-Secrets kontrollieren',
-                '3. Fehler beheben und erneut auf `main` pushen',
-                '',
-                '---',
-                '*Dieser Issue wurde automatisch vom GitHub Actions Workflow erstellt.*',
-              ].join('\n'),
+              title: `Deployment fehlgeschlagen (${commitShort})`,
+              body: `Der automatische Deploy zu IONOS ist fehlgeschlagen.\n\n[Logs ansehen](${runUrl})`,
             });
