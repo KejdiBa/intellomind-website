@@ -38,8 +38,8 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/public/
           server-dir: /intellomind-ai/
-          protocol: sftp
-          port: 22
+          protocol: ftps
+          port: 21
           dangerous-clean-slate: false
           exclude: |
             **/.git*
