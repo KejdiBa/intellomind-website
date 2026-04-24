@@ -8,6 +8,9 @@ export function GradientOrb() {
             style={{
               borderRadius: "50%",
               clipPath: "circle(50%)",
+              WebkitMaskImage: "-webkit-radial-gradient(white, black)",
+              willChange: "transform",
+              isolation: "isolate",
               background: `radial-gradient(ellipse 100% 100% at 50% 50%,
                 rgba(255, 255, 255, 0.15) 0%,
                 rgba(255, 255, 255, 0.05) 60%,
