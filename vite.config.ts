@@ -34,8 +34,65 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes("node_modules/react/") || id.includes("node_modules/react-dom/")) {
+          if (
+            id.includes("node_modules/react/") ||
+            id.includes("node_modules/react-dom/") ||
+            id.includes("node_modules/scheduler/")
+          ) {
             return "vendor-react";
+          }
+
+          if (
+            id.includes("node_modules/wouter/") ||
+            id.includes("node_modules/@tanstack/") ||
+            id.includes("node_modules/zod/") ||
+            id.includes("node_modules/react-hook-form/") ||
+            id.includes("node_modules/@hookform/")
+          ) {
+            return "vendor-libs";
+          }
+
+          if (id.includes("node_modules/lucide-react/")) {
+            return "icons";
+          }
+
+          if (
+            id.includes("node_modules/@radix-ui/") ||
+            id.includes("/components/ui/")
+          ) {
+            return "ui";
+          }
+
+          if (
+            id.includes("/components/navigation") ||
+            id.includes("/components/hero-section") ||
+            id.includes("/components/animated-background") ||
+            id.includes("/components/gradient-orb") ||
+            id.includes("/components/sticky-phone-section") ||
+            id.includes("/components/scroll-to-top") ||
+            id.includes("/components/theme-provider")
+          ) {
+            return "hero";
+          }
+
+          if (
+            id.includes("/components/features-section") ||
+            id.includes("/components/services-section") ||
+            id.includes("/components/about-section") ||
+            id.includes("/components/industries-section") ||
+            id.includes("/components/integrations-section") ||
+            id.includes("/components/footer") ||
+            id.includes("/components/chatbot-button")
+          ) {
+            return "sections";
+          }
+
+          if (
+            id.includes("/components/cookie-banner") ||
+            id.includes("/components/ui/toaster") ||
+            id.includes("/hooks/use-toast")
+          ) {
+            return "async-ui";
           }
         },
       },
