@@ -12,112 +12,108 @@ export function GradientOrb() {
               willChange: "transform",
               isolation: "isolate",
               background: `radial-gradient(ellipse 100% 100% at 50% 50%,
-                rgba(255, 255, 255, 0.15) 0%,
-                rgba(255, 255, 255, 0.05) 60%,
+                rgba(255, 255, 255, 0.95) 0%,
+                rgba(255, 255, 255, 0.6) 35%,
+                rgba(200, 220, 255, 0.3) 65%,
                 transparent 85%
               )`,
               boxShadow: `
-                inset 0 0 60px rgba(255, 255, 255, 0.4),
-                0 20px 60px rgba(34, 211, 238, 0.25),
-                0 10px 30px rgba(168, 85, 247, 0.2)
+                inset 0 0 40px rgba(255, 255, 255, 0.8),
+                0 20px 60px rgba(34, 211, 238, 0.2),
+                0 10px 30px rgba(168, 85, 247, 0.15)
               `,
             }}
           >
+            {/* Cyan blob – upper left */}
             <div
-              className="absolute inset-0"
+              className="absolute inset-2 rounded-full animate-orb-blob-cyan"
               style={{
-                background: `radial-gradient(ellipse 120% 120% at 40% 40%,
-                  rgba(34, 211, 238, 0.6) 0%,
-                  rgba(168, 85, 247, 0.5) 45%,
-                  rgba(110, 231, 183, 0.4) 75%,
-                  transparent 100%
-                )`,
-              }}
-            />
-
-            <div
-              className="absolute inset-4 rounded-full animate-orb-blob-cyan"
-              style={{
-                background: `radial-gradient(ellipse 80% 80% at 30% 30%,
-                  rgba(34, 211, 238, 0.85) 0%,
-                  rgba(56, 189, 248, 0.5) 40%,
-                  transparent 70%
-                )`,
-                filter: "blur(10px)",
-              }}
-            />
-
-            <div
-              className="absolute inset-4 rounded-full animate-orb-blob-purple"
-              style={{
-                background: `radial-gradient(ellipse 70% 70% at 70% 60%,
-                  rgba(168, 85, 247, 0.85) 0%,
-                  rgba(139, 92, 246, 0.5) 40%,
-                  transparent 70%
-                )`,
-                filter: "blur(12px)",
-              }}
-            />
-
-            <div
-              className="absolute inset-6 rounded-full animate-orb-blob-green"
-              style={{
-                background: `radial-gradient(ellipse 60% 60% at 50% 70%,
-                  rgba(110, 231, 183, 0.7) 0%,
-                  rgba(34, 197, 94, 0.4) 40%,
+                background: `radial-gradient(ellipse 90% 90% at 25% 25%,
+                  rgba(34, 211, 238, 0.65) 0%,
+                  rgba(125, 211, 252, 0.45) 40%,
                   transparent 70%
                 )`,
                 filter: "blur(8px)",
               }}
             />
 
+            {/* Purple blob – lower right */}
             <div
-              className="absolute inset-4 rounded-full animate-orb-blob-white"
+              className="absolute inset-2 rounded-full animate-orb-blob-purple"
               style={{
-                background: `radial-gradient(ellipse 70% 70% at 50% 50%,
-                  rgba(255, 255, 255, 1) 0%,
-                  rgba(255, 255, 255, 0.7) 30%,
-                  rgba(255, 255, 255, 0.3) 50%,
+                background: `radial-gradient(ellipse 80% 80% at 72% 65%,
+                  rgba(192, 132, 252, 0.55) 0%,
+                  rgba(168, 85, 247, 0.35) 45%,
                   transparent 70%
                 )`,
-                filter: "blur(5px)",
+                filter: "blur(10px)",
               }}
             />
 
+            {/* Soft green/mint accent */}
+            <div
+              className="absolute inset-6 rounded-full animate-orb-blob-green"
+              style={{
+                background: `radial-gradient(ellipse 70% 70% at 55% 70%,
+                  rgba(167, 243, 208, 0.4) 0%,
+                  rgba(110, 231, 183, 0.2) 50%,
+                  transparent 70%
+                )`,
+                filter: "blur(8px)",
+              }}
+            />
+
+            {/* Bright white center glow */}
+            <div
+              className="absolute inset-4 rounded-full animate-orb-blob-white"
+              style={{
+                background: `radial-gradient(ellipse 80% 80% at 45% 40%,
+                  rgba(255, 255, 255, 1) 0%,
+                  rgba(255, 255, 255, 0.8) 25%,
+                  rgba(255, 255, 255, 0.3) 55%,
+                  transparent 75%
+                )`,
+                filter: "blur(4px)",
+              }}
+            />
+
+            {/* Specular highlight – top-left glint */}
+            <div
+              className="absolute top-[8%] left-[12%] w-[38%] h-[28%] rounded-full"
+              style={{
+                background: `radial-gradient(ellipse at 50% 50%,
+                  rgba(255, 255, 255, 0.95) 0%,
+                  rgba(255, 255, 255, 0.5) 35%,
+                  transparent 65%
+                )`,
+                filter: "blur(3px)",
+                transform: "rotate(-20deg)",
+              }}
+            />
+
+            {/* Edge darkening for depth */}
             <div
               className="absolute inset-0"
               style={{
                 borderRadius: "50%",
                 background: `radial-gradient(ellipse 100% 100% at 50% 50%,
-                  transparent 50%,
-                  rgba(0, 0, 0, 0.08) 80%,
-                  rgba(0, 0, 0, 0.15) 100%
+                  transparent 55%,
+                  rgba(100, 80, 180, 0.08) 78%,
+                  rgba(80, 60, 160, 0.15) 100%
                 )`,
-              }}
-            />
-
-            <div
-              className="absolute top-[10%] left-[15%] w-[40%] h-[30%] rounded-full"
-              style={{
-                background: `radial-gradient(ellipse at 50% 50%,
-                  rgba(255, 255, 255, 0.9) 0%,
-                  rgba(255, 255, 255, 0.5) 30%,
-                  transparent 60%
-                )`,
-                filter: "blur(4px)",
-                transform: "rotate(-25deg)",
               }}
             />
           </div>
         </div>
       </div>
 
+      {/* Ground shadow */}
       <div
         className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[80%] h-[25%] rounded-full animate-orb-shadow"
         style={{
           background: `radial-gradient(ellipse at 50% 50%,
-            rgba(168, 85, 247, 0.3) 0%,
-            rgba(34, 211, 238, 0.2) 40%,
+            rgba(168, 85, 247, 0.25) 0%,
+            rgba(34, 211, 238, 0.15) 40%,
             transparent 70%
           )`,
           filter: "blur(15px)",
