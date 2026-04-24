@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import logoImage from "@assets/Logo_IntelloMind_gradient.png";
+const logoImage = "/logo.webp";
 import {
   MessageSquare,
   Mail,

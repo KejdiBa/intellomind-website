@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import logoImage from "@assets/Logo_IntelloMind_gradient.png";
+const logoImage = "/logo.webp";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [

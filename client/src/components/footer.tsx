@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import logoImage from "@assets/Logo_IntelloMind_gradient.png";
+const logoImage = "/logo.webp";
 import { Link } from "wouter";
 
 const footerLinks = {

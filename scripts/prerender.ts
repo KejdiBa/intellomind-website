@@ -28,20 +28,37 @@ export async function prerender() {
     render: (url: string) => string;
   };
 
+  const { default: Critters } = await import("critters");
+  const critters = new Critters({
+    path: path.join(root, "dist/public"),
+    publicPath: "/",
+    preload: "swap",
+    fonts: false,
+    pruneSource: false,
+    logLevel: "silent",
+  });
+
   for (const route of ROUTES) {
     console.log(`  prerendering ${route}...`);
 
-    let html = "";
+    let appHtml = "";
     try {
-      html = render(route);
+      appHtml = render(route);
     } catch (err) {
-      console.warn(`  ⚠ render failed for ${route}, using empty shell:`, (err as Error).message);
+      console.warn(`  ⚠ render failed for ${route}:`, (err as Error).message);
     }
 
-    const fullHtml = template.replace(
+    const withContent = template.replace(
       '<div id="root"></div>',
-      `<div id="root">${html}</div>`
+      `<div id="root">${appHtml}</div>`
     );
+
+    let fullHtml = withContent;
+    try {
+      fullHtml = await critters.process(withContent);
+    } catch (err) {
+      console.warn(`  ⚠ critters failed for ${route}:`, (err as Error).message);
+    }
 
     let outPath: string;
     if (route === "/") {
