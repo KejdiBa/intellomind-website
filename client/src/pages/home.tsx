@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState, useEffect } from "react";
+import { lazy, Suspense, useState, useEffect, useRef } from "react";
 import { useMetaTags } from "@/hooks/use-meta-tags";
 import { Navigation } from "@/components/navigation";
 import { HeroSection } from "@/components/hero-section";
@@ -38,6 +38,8 @@ const CookieBanner = lazy(() =>
 
 export default function Home() {
   const [showCookieSettings, setShowCookieSettings] = useState(false);
+  const [showContact, setShowContact] = useState(false);
+  const contactSentinelRef = useRef<HTMLDivElement>(null);
 
   useMetaTags(
     "IntelloMind – KI-Lösungen für Unternehmen",
@@ -53,6 +55,22 @@ export default function Home() {
         if (el) el.scrollIntoView({ behavior: "smooth" });
       }, 100);
     }
+  }, []);
+
+  useEffect(() => {
+    const sentinel = contactSentinelRef.current;
+    if (!sentinel) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowContact(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "400px" }
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -71,9 +89,15 @@ export default function Home() {
           <AboutSection />
           <IndustriesSection />
         </Suspense>
-        <Suspense fallback={<div className="min-h-96" />}>
-          <ContactSection />
-        </Suspense>
+        <div ref={contactSentinelRef}>
+          {showContact ? (
+            <Suspense fallback={<div className="min-h-96" />}>
+              <ContactSection />
+            </Suspense>
+          ) : (
+            <div className="min-h-96" />
+          )}
+        </div>
       </main>
       <Suspense fallback={null}>
         <Footer onOpenCookieSettings={() => setShowCookieSettings(true)} />
