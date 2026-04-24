@@ -32,6 +32,7 @@ export async function prerender() {
   const critters = new Critters({
     path: path.join(root, "dist/public"),
     publicPath: "/",
+    preload: false,
     fonts: false,
     pruneSource: false,
     logLevel: "silent",
