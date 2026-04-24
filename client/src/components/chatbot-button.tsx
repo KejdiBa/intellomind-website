@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface Message {
   id: string;
@@ -57,7 +56,6 @@ export function ChatbotButton() {
     setIsLoading(true);
 
     try {
-      // Direkt n8n Webhook aufrufen (für statisches Hosting auf IONOS)
       const webhookUrl = "https://n8n.srv1101287.hstgr.cloud/webhook/956a5c9a-faa7-4851-877c-a6834a54701a";
       
       const response = await fetch(webhookUrl, {
@@ -108,98 +106,90 @@ export function ChatbotButton() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50" data-testid="chatbot-widget">
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="absolute bottom-20 right-0 w-[360px] h-[500px] bg-background border border-border rounded-lg shadow-2xl flex flex-col overflow-hidden"
-          >
-            <div className="flex items-center justify-between p-4 border-b border-border bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-700">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                  <MessageCircle className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-white">IntelloMind Chat</h3>
-                  <p className="text-xs text-white/70">KI-Assistent</p>
-                </div>
+      {isOpen && (
+        <div
+          className="absolute bottom-20 right-0 w-[360px] h-[500px] bg-background border border-border rounded-lg shadow-2xl flex flex-col overflow-hidden animate-chat-in"
+        >
+          <div className="flex items-center justify-between p-4 border-b border-border bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-700">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                <MessageCircle className="w-5 h-5 text-white" />
               </div>
+              <div>
+                <h3 className="font-semibold text-white">IntelloMind Chat</h3>
+                <p className="text-xs text-white/70">KI-Assistent</p>
+              </div>
+            </div>
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={handleToggle}
+              className="text-white hover:bg-white/20"
+              data-testid="button-chat-close"
+            >
+              <X className="w-5 h-5" />
+            </Button>
+          </div>
+
+          <div className="flex-1 overflow-y-auto p-4">
+            <div className="space-y-4">
+              {messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+                >
+                  <div
+                    className={`max-w-[80%] rounded-lg px-4 py-2 ${
+                      message.role === "user"
+                        ? "bg-gradient-to-r from-cyan-500 to-purple-600 text-white"
+                        : "bg-muted text-foreground"
+                    }`}
+                    data-testid={`message-${message.role}-${message.id}`}
+                  >
+                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  </div>
+                </div>
+              ))}
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="bg-muted rounded-lg px-4 py-2">
+                    <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+          </div>
+
+          <div className="p-4 border-t border-border">
+            <div className="flex gap-2">
+              <Input
+                ref={inputRef}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Ihre Nachricht..."
+                disabled={isLoading}
+                className="flex-1"
+                data-testid="input-chat-message"
+              />
               <Button
                 size="icon"
-                variant="ghost"
-                onClick={handleToggle}
-                className="text-white hover:bg-white/20"
-                data-testid="button-chat-close"
+                onClick={sendMessage}
+                disabled={!inputValue.trim() || isLoading}
+                className="btn-primary-gradient"
+                data-testid="button-chat-send"
               >
-                <X className="w-5 h-5" />
+                <Send className="w-4 h-4" />
               </Button>
             </div>
-
-            <div className="flex-1 overflow-y-auto p-4">
-              <div className="space-y-4">
-                {messages.map((message) => (
-                  <div
-                    key={message.id}
-                    className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
-                  >
-                    <div
-                      className={`max-w-[80%] rounded-lg px-4 py-2 ${
-                        message.role === "user"
-                          ? "bg-gradient-to-r from-cyan-500 to-purple-600 text-white"
-                          : "bg-muted text-foreground"
-                      }`}
-                      data-testid={`message-${message.role}-${message.id}`}
-                    >
-                      <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-                    </div>
-                  </div>
-                ))}
-                {isLoading && (
-                  <div className="flex justify-start">
-                    <div className="bg-muted rounded-lg px-4 py-2">
-                      <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
-                    </div>
-                  </div>
-                )}
-                <div ref={messagesEndRef} />
-              </div>
-            </div>
-
-            <div className="p-4 border-t border-border">
-              <div className="flex gap-2">
-                <Input
-                  ref={inputRef}
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  placeholder="Ihre Nachricht..."
-                  disabled={isLoading}
-                  className="flex-1"
-                  data-testid="input-chat-message"
-                />
-                <Button
-                  size="icon"
-                  onClick={sendMessage}
-                  disabled={!inputValue.trim() || isLoading}
-                  className="btn-primary-gradient"
-                  data-testid="button-chat-send"
-                >
-                  <Send className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <motion.button
+          </div>
+        </div>
+      )}
+      <button
         onClick={handleToggle}
         data-testid="button-chatbot-toggle"
-        className="relative w-14 h-14 rounded-full cursor-pointer group"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        className="relative w-14 h-14 rounded-full cursor-pointer group hover:scale-105 active:scale-95 transition-transform duration-200"
       >
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 opacity-80 blur-md group-hover:opacity-100 group-hover:blur-lg transition-all duration-300" />
         
@@ -214,7 +204,7 @@ export function ChatbotButton() {
             <MessageCircle className="w-6 h-6 text-slate-700 dark:text-white drop-shadow-sm" />
           )}
         </div>
-      </motion.button>
+      </button>
     </div>
   );
 }

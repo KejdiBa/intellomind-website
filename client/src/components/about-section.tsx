@@ -1,5 +1,4 @@
 import { Card } from "@/components/ui/card";
-import { motion } from "framer-motion";
 import { Clock, Target, CalendarCheck, Zap } from "lucide-react";
 
 const benefits = [
@@ -35,12 +34,7 @@ export function AboutSection() {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
-          >
+          <div>
             <p className="gradient-text font-semibold mb-3 tracking-wide uppercase text-sm">
               Dein KI-Partner fürs Wachstum
             </p>
@@ -58,23 +52,11 @@ export function AboutSection() {
               Während du dich auf dein Kerngeschäft konzentrierst (oder abschaltest), arbeitet IntelloMind 
               im Hintergrund an neuen Leads, besseren Abschlüssen und höherer Auslastung.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
-            className="grid grid-cols-2 gap-4"
-          >
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={benefit.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.3 + index * 0.1, ease: [0.22, 0.61, 0.36, 1] }}
-              >
+          <div className="grid grid-cols-2 gap-4">
+            {benefits.map((benefit) => (
+              <div key={benefit.title}>
                 <Card
                   className="p-5 glass-card hover-float glow-border h-full"
                   data-testid={`card-benefit-${benefit.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "")}`}
@@ -85,9 +67,9 @@ export function AboutSection() {
                   <h3 className="font-bold text-foreground mb-2 text-sm">{benefit.title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">{benefit.description}</p>
                 </Card>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

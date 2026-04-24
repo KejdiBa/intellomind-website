@@ -1,5 +1,4 @@
 import { Card } from "@/components/ui/card";
-import { motion } from "framer-motion";
 import { Clock, TrendingDown, TrendingUp, Zap } from "lucide-react";
 
 const features = [
@@ -34,13 +33,7 @@ export function FeaturesSection() {
     <section className="py-24 bg-background/50 backdrop-blur-[2px] relative overflow-hidden" data-testid="section-features">
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             <span className="text-foreground">Die Zukunft </span>
             <span className="gradient-text">heute nutzen</span>
@@ -48,17 +41,11 @@ export function FeaturesSection() {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Verwandle dein Business in eine Erfolgsmaschine, die niemals schläft.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.value}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 0.61, 0.36, 1] }}
-            >
+          {features.map((feature) => (
+            <div key={feature.value}>
               <Card
                 className="p-8 text-center glass-card hover-float glow-border h-full"
                 data-testid={`card-feature-${feature.label.toLowerCase().replace(/\s+/g, "-")}`}
@@ -76,7 +63,7 @@ export function FeaturesSection() {
                   {feature.description}
                 </p>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

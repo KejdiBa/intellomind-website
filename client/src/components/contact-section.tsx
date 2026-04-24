@@ -2,7 +2,6 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
@@ -180,28 +179,17 @@ export function ContactSection() {
       </Dialog>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             <span className="gradient-text">Lassen Sie sich heute noch begeistern!</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Kontaktieren Sie uns für eine unverbindliche Beratung und tauchen Sie ein in die Zukunft.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 0.61, 0.36, 1] }}
-          >
+          <div>
             <Card className="p-8 glass-card glow-border h-full" data-testid="card-contact-form">
               <h3 className="text-xl font-bold text-foreground mb-6">Kontaktformular</h3>
               <Form {...form}>
@@ -388,25 +376,15 @@ export function ContactSection() {
                 </form>
               </Form>
             </Card>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
-            className="flex flex-col gap-4 max-w-sm"
-          >
-            {contactInfo.map((info, index) => (
-              <motion.a
+          <div className="flex flex-col gap-4 max-w-sm">
+            {contactInfo.map((info) => (
+              <a
                 key={info.title}
                 href={info.href}
                 target={info.external ? "_blank" : undefined}
                 rel={info.external ? "noopener noreferrer" : undefined}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
                 className="group block p-4 rounded-xl bg-card border border-border/50 shadow-sm hover:shadow-md hover:border-border transition-all duration-200"
                 data-testid={`link-contact-${info.title.toLowerCase()}`}
               >
@@ -420,9 +398,9 @@ export function ContactSection() {
                 <p className="font-semibold text-foreground group-hover:underline transition-all">
                   {info.value}
                 </p>
-              </motion.a>
+              </a>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

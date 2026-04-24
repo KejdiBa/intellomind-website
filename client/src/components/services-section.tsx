@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Phone, MessageSquare, Mail, ArrowRight, Workflow } from "lucide-react";
 
@@ -48,13 +47,7 @@ export function ServicesSection() {
     >
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             <span className="gradient-text">Unsere KI-Produkte</span>
             <br />
@@ -63,17 +56,11 @@ export function ServicesSection() {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Revolutionäre AI-Technologie für moderne Unternehmen
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-12">
-          {products.map((product, index) => (
-            <motion.div
-              key={product.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 0.61, 0.36, 1] }}
-            >
+          {products.map((product) => (
+            <div key={product.title}>
               <Card
                 className="p-6 h-full glass-card hover-float glow-border flex flex-col"
                 data-testid={`card-product-${product.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
@@ -97,7 +84,7 @@ export function ServicesSection() {
                   </Button>
                 </Link>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

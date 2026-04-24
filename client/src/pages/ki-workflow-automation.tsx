@@ -22,7 +22,6 @@ import {
   RefreshCw,
   Settings2,
 } from "lucide-react";
-import { motion } from "framer-motion";
 import { useMetaTags } from "@/hooks/use-meta-tags";
 
 const features = [
@@ -116,17 +115,16 @@ function WorkflowDiagram() {
           const ny = node.y + nodeR;
           const path = `M${nx + nodeR} ${ny} C${(nx + hubX) / 2} ${ny}, ${(nx + hubX) / 2} ${hubY}, ${hubX - hubR} ${hubY}`;
           return (
-            <motion.path
+            <path
               key={node.id}
               d={path}
               fill="none"
               stroke="url(#lineGrad)"
               strokeWidth="2"
               strokeDasharray="8 4"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 1.2, delay: i * 0.2, ease: "easeOut" }}
               filter="url(#glow)"
+              className="svg-path-in"
+              style={{ animationDelay: `${i * 0.2}s` }}
             />
           );
         })}
@@ -136,37 +134,41 @@ function WorkflowDiagram() {
           const ny = node.y + nodeR;
           const path = `M${hubX + hubR} ${hubY} C${(hubX + nx) / 2} ${hubY}, ${(hubX + nx) / 2} ${ny}, ${nx - nodeR} ${ny}`;
           return (
-            <motion.path
+            <path
               key={node.id}
               d={path}
               fill="none"
               stroke="url(#lineGrad)"
               strokeWidth="2"
               strokeDasharray="8 4"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 1.2, delay: 0.6 + i * 0.2, ease: "easeOut" }}
               filter="url(#glow)"
+              className="svg-path-in"
+              style={{ animationDelay: `${0.6 + i * 0.2}s` }}
             />
           );
         })}
 
         {inputNodes.map((node, i) => (
-          <motion.g
+          <g
             key={node.id}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: i * 0.15 }}
+            className="svg-node-left"
+            style={{ animationDelay: `${i * 0.15}s` }}
           >
-            <motion.circle
+            <circle
               cx={node.x + nodeR}
               cy={node.y + nodeR}
               r={nodeR + 8}
               fill="#3b82f6"
               fillOpacity="0.08"
-              animate={{ r: [nodeR + 8, nodeR + 14, nodeR + 8] }}
-              transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.4 }}
-            />
+            >
+              <animate
+                attributeName="r"
+                values={`${nodeR + 8};${nodeR + 14};${nodeR + 8}`}
+                dur="2.5s"
+                repeatCount="indefinite"
+                begin={`${i * 0.4}s`}
+              />
+            </circle>
             <circle
               cx={node.x + nodeR}
               cy={node.y + nodeR}
@@ -200,32 +202,39 @@ function WorkflowDiagram() {
             >
               {node.label}
             </text>
-          </motion.g>
+          </g>
         ))}
 
-        <motion.circle
+        <circle
           cx={hubX}
           cy={hubY}
           r={hubR + 18}
           fill="#3b82f6"
           fillOpacity="0.06"
-          animate={{ r: [hubR + 18, hubR + 28, hubR + 18] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
-        <motion.circle
+        >
+          <animate
+            attributeName="r"
+            values={`${hubR + 18};${hubR + 28};${hubR + 18}`}
+            dur="3s"
+            repeatCount="indefinite"
+          />
+        </circle>
+        <circle
           cx={hubX}
           cy={hubY}
           r={hubR + 8}
           fill="#3b82f6"
           fillOpacity="0.1"
-          animate={{ r: [hubR + 8, hubR + 14, hubR + 8] }}
-          transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-        />
-        <motion.g
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
         >
+          <animate
+            attributeName="r"
+            values={`${hubR + 8};${hubR + 14};${hubR + 8}`}
+            dur="2s"
+            repeatCount="indefinite"
+            begin="0.5s"
+          />
+        </circle>
+        <g className="svg-hub-enter">
           <circle
             cx={hubX}
             cy={hubY}
@@ -244,7 +253,7 @@ function WorkflowDiagram() {
               <Zap className="h-6 w-6 text-white" />
             </div>
           </foreignObject>
-        </motion.g>
+        </g>
         <text
           x={hubX}
           y={hubY + hubR + 16}
@@ -258,21 +267,26 @@ function WorkflowDiagram() {
         </text>
 
         {outputNodes.map((node, i) => (
-          <motion.g
+          <g
             key={node.id}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 + i * 0.15 }}
+            className="svg-node-right"
+            style={{ animationDelay: `${0.4 + i * 0.15}s` }}
           >
-            <motion.circle
+            <circle
               cx={node.x + nodeR}
               cy={node.y + nodeR}
               r={nodeR + 8}
               fill="#9333ea"
               fillOpacity="0.08"
-              animate={{ r: [nodeR + 8, nodeR + 14, nodeR + 8] }}
-              transition={{ duration: 2.5, repeat: Infinity, delay: 1 + i * 0.4 }}
-            />
+            >
+              <animate
+                attributeName="r"
+                values={`${nodeR + 8};${nodeR + 14};${nodeR + 8}`}
+                dur="2.5s"
+                repeatCount="indefinite"
+                begin={`${1 + i * 0.4}s`}
+              />
+            </circle>
             <circle
               cx={node.x + nodeR}
               cy={node.y + nodeR}
@@ -306,14 +320,18 @@ function WorkflowDiagram() {
             >
               {node.label}
             </text>
-          </motion.g>
+          </g>
         ))}
 
-        <motion.g
-          animate={{ rotate: 360 }}
-          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-          style={{ transformOrigin: `${hubX}px ${hubY}px` }}
-        >
+        <g>
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from={`0 ${hubX} ${hubY}`}
+            to={`360 ${hubX} ${hubY}`}
+            dur="12s"
+            repeatCount="indefinite"
+          />
           <circle
             cx={hubX}
             cy={hubY - hubR - 10}
@@ -321,12 +339,16 @@ function WorkflowDiagram() {
             fill="#06b6d4"
             fillOpacity="0.6"
           />
-        </motion.g>
-        <motion.g
-          animate={{ rotate: -360 }}
-          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-          style={{ transformOrigin: `${hubX}px ${hubY}px` }}
-        >
+        </g>
+        <g>
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from={`0 ${hubX} ${hubY}`}
+            to={`-360 ${hubX} ${hubY}`}
+            dur="8s"
+            repeatCount="indefinite"
+          />
           <circle
             cx={hubX + hubR + 10}
             cy={hubY}
@@ -334,7 +356,7 @@ function WorkflowDiagram() {
             fill="#9333ea"
             fillOpacity="0.6"
           />
-        </motion.g>
+        </g>
       </svg>
     </div>
   );
@@ -366,12 +388,7 @@ export default function KiWorkflowAutomation() {
           </Link>
 
           {/* Hero */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
-            className="mb-16 text-center"
-          >
+          <div className="mb-16 text-center">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 text-sm font-medium mb-6">
               <Workflow className="h-4 w-4" />
               KI-Workflow-Automation
@@ -404,13 +421,10 @@ export default function KiWorkflowAutomation() {
                 Preise ansehen
               </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Workflow Diagram */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
+          <div
             className="bg-card/60 backdrop-blur-sm border border-border/40 rounded-3xl p-8 mb-16 shadow-sm"
             data-testid="section-diagram"
           >
@@ -429,24 +443,16 @@ export default function KiWorkflowAutomation() {
                 <span className="w-2 h-2 rounded-full bg-purple-500 inline-block" /> Ausgabe-Systeme
               </span>
             </div>
-          </motion.div>
+          </div>
 
           {/* Features */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <div
             className="grid sm:grid-cols-3 gap-5 mb-16"
             data-testid="section-features"
           >
             {features.map((f, i) => (
-              <motion.div
+              <div
                 key={f.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-6 shadow-sm"
                 data-testid={`card-feature-${i}`}
               >
@@ -455,16 +461,12 @@ export default function KiWorkflowAutomation() {
                 </div>
                 <h3 className="font-semibold text-foreground mb-2">{f.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{f.description}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
           {/* Benefits */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <div
             className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-8 mb-16 shadow-sm"
             data-testid="section-benefits"
           >
@@ -473,28 +475,20 @@ export default function KiWorkflowAutomation() {
             </h2>
             <ul className="space-y-3">
               {benefits.map((b, i) => (
-                <motion.li
+                <li
                   key={i}
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.35, delay: i * 0.07 }}
                   className="flex items-start gap-3"
                   data-testid={`benefit-${i}`}
                 >
                   <CheckCircle2 className="h-5 w-5 text-cyan-500 shrink-0 mt-0.5" />
                   <span className="text-foreground/80 text-sm leading-relaxed">{b}</span>
-                </motion.li>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Anwendungsbeispiele */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <div
             className="mb-16"
             data-testid="section-anwendungsbeispiele"
           >
@@ -518,12 +512,8 @@ export default function KiWorkflowAutomation() {
                   description: "Eingehende E-Mails werden von der KI klassifiziert, priorisiert und direkt an die richtige Abteilung oder ins ERP-System weitergeleitet.",
                 },
               ].map((uc, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.35, delay: i * 0.08 }}
                   className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-6 flex gap-4 shadow-sm"
                   data-testid={`card-usecase-${i}`}
                 >
@@ -532,17 +522,13 @@ export default function KiWorkflowAutomation() {
                     <h3 className="font-semibold text-foreground mb-1">{uc.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{uc.description}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* How it works */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <div
             className="mb-16"
             data-testid="section-how-it-works"
           >
@@ -557,12 +543,8 @@ export default function KiWorkflowAutomation() {
                 { step: "02", icon: Link2, title: "Integration", text: "Wir verbinden Ihre Systeme und bauen die KI-Workflows nach Ihren Regeln." },
                 { step: "03", icon: RefreshCw, title: "Live & optimieren", text: "Die Automation läuft und verbessert sich kontinuierlich mit jedem Vorgang." },
               ].map((item, i) => (
-                <motion.div
+                <div
                   key={item.step}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
                   className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-6 relative overflow-hidden shadow-sm"
                   data-testid={`card-step-${i}`}
                 >
@@ -574,17 +556,13 @@ export default function KiWorkflowAutomation() {
                   </div>
                   <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* FAQ */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <div
             className="mb-16"
             data-testid="section-faq"
           >
@@ -620,14 +598,10 @@ export default function KiWorkflowAutomation() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <div
             className="bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-purple-600/10 border border-cyan-500/20 rounded-2xl p-10 text-center"
             data-testid="section-cta"
           >
@@ -646,7 +620,7 @@ export default function KiWorkflowAutomation() {
               Kostenlose Demo buchen
               <ArrowRight className="h-4 w-4" />
             </a>
-          </motion.div>
+          </div>
 
           {/* Other products */}
           <div className="mt-14 pt-10 border-t border-border/30">

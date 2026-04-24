@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import { 
   Scale, 
   Stethoscope, 
@@ -79,13 +78,7 @@ export function IndustriesSection() {
     <section className="py-24 md:py-32 bg-background/50 backdrop-blur-[2px] relative overflow-hidden" data-testid="section-industries">
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             <span className="text-foreground">Für wen ist </span>
             <span className="gradient-text">IntelloMind</span>
@@ -95,17 +88,11 @@ export function IndustriesSection() {
             Egal ob Dienstleistung, Handel oder Beratung – IntelloMind integriert sich nahtlos
             in die unterschiedlichsten Branchen und Geschäftsmodelle.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-          {industries.map((industry, index) => (
-            <motion.div
-              key={industry.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05, ease: [0.22, 0.61, 0.36, 1] }}
-            >
+          {industries.map((industry) => (
+            <div key={industry.title}>
               <Card
                 className="p-5 h-full glass-card hover-float glow-border"
                 data-testid={`card-industry-${industry.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "")}`}
@@ -125,17 +112,11 @@ export function IndustriesSection() {
                   ))}
                 </ul>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
-          className="text-center mt-12"
-        >
+        <div className="text-center mt-12">
           <p className="text-muted-foreground mb-6">
             <span className="font-semibold text-foreground">+100 weitere Branchen</span> möglich
           </p>
@@ -147,7 +128,7 @@ export function IndustriesSection() {
           >
             Ich will es testen
           </Button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

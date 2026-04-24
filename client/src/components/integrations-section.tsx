@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { SiWhatsapp, SiOpenai, SiInstagram, SiFacebook, SiGoogle, SiSlack, SiZapier, SiNotion, SiHubspot, SiSalesforce } from "react-icons/si";
 
 const integrations = [
@@ -18,20 +17,14 @@ export function IntegrationsSection() {
   return (
     <section className="py-20 bg-background/50 backdrop-blur-[2px] overflow-hidden" data-testid="section-integrations">
       <div className="max-w-6xl mx-auto px-6 mb-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
-          className="text-center"
-        >
+        <div className="text-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             <span className="gradient-text">Überall integrierbar</span>
           </h2>
           <p className="text-muted-foreground">
             Nahtlose Verbindung zu allen wichtigen Plattformen
           </p>
-        </motion.div>
+        </div>
       </div>
 
       <div className="relative">

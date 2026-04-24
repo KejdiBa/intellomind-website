@@ -807,6 +807,127 @@
     pointer-events: auto;
   }
 
+  /* Chat panel slide-in (replaces Framer Motion in chatbot-button) */
+  @keyframes chat-panel-in {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .animate-chat-in {
+    animation: chat-panel-in 0.2s ease-out both;
+  }
+
+  /* Cookie banner slide up (replaces Framer Motion AnimatePresence) */
+  @keyframes banner-slide-up {
+    from { opacity: 0; transform: translateY(100%); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-banner-up {
+    animation: banner-slide-up 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  /* Modal overlay fade-in / content scale-up */
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes scale-up {
+    from { opacity: 0; transform: scale(0.95) translateY(20px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .animate-fade-in  { animation: fade-in 0.2s ease-out both; }
+  .animate-scale-up { animation: scale-up 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+
+  /* Step text transition (replaces Framer Motion AnimatePresence mode="wait") */
+  @keyframes step-text-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-step-text {
+    animation: step-text-in 0.3s ease-out both;
+  }
+
+  /* Phone screen transition */
+  @keyframes screen-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-screen-in {
+    animation: screen-fade-in 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  /* Inbox/Dashboard per-item slide-in */
+  @keyframes item-slide-in {
+    from { opacity: 0; transform: translateX(50px) scale(0.8); }
+    to   { opacity: 1; transform: translateX(0) scale(1); }
+  }
+  .animate-item-in {
+    animation: item-slide-in 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  /* SplashScreen logo scale-in */
+  @keyframes splash-scale-in {
+    from { opacity: 0; transform: scale(0.8); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .animate-splash-in {
+    animation: splash-scale-in 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  /* Badge/count scale-in (spring-like) */
+  @keyframes scale-spring-in {
+    0%   { transform: scale(0); }
+    60%  { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  .animate-scale-in {
+    animation: scale-spring-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  /* Stats section fade up */
+  @keyframes stats-up {
+    from { opacity: 0; transform: translateY(15px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-stats-up {
+    animation: stats-up 0.4s ease-out both;
+  }
+
+  /* SVG workflow diagram animations (replaces Framer Motion) */
+  @keyframes svg-path-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes svg-node-left {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes svg-node-right {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes svg-hub-enter {
+    from { opacity: 0; transform: scale(0.5); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .svg-path-in {
+    animation: svg-path-in 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  .svg-node-left {
+    animation: svg-node-left 0.5s ease-out forwards;
+    opacity: 0;
+  }
+  .svg-node-right {
+    animation: svg-node-right 0.5s ease-out forwards;
+    opacity: 0;
+  }
+  .svg-hub-enter {
+    animation: svg-hub-enter 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s forwards;
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
   /* Reduce animations on mobile for performance */
   @media (max-width: 768px) {
     .orb {

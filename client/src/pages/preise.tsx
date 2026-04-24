@@ -7,7 +7,6 @@ import { AnimatedBackground } from "@/components/animated-background";
 import { CookieBanner } from "@/components/cookie-banner";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Phone, MessageSquare, Mail, Check, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 type Product = "telefon" | "chat" | "mail";
 type Billing = "monthly" | "yearly";
@@ -723,14 +722,7 @@ export default function Preise() {
             </div>
           )}
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`${activeProduct}-${billing}`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
+          <div key={`${activeProduct}-${billing}`}>
               {(activeProduct === "chat" || activeProduct === "mail") && (
                 <div className="flex justify-center mb-8">
                   <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-card/80 backdrop-blur-sm border border-border/40 shadow-sm text-sm text-muted-foreground">
@@ -746,8 +738,7 @@ export default function Preise() {
               {activeProduct === "telefon" && <TelefonCards billing={billing} />}
               {activeProduct === "chat" && <ChatCards billing={billing} />}
               {activeProduct === "mail" && <MailCards />}
-            </motion.div>
-          </AnimatePresence>
+          </div>
 
           <p className="text-center text-xs text-muted-foreground mt-6 mb-2">
             Alle Preise verstehen sich zzgl. 19% MwSt.

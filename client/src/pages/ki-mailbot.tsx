@@ -5,7 +5,6 @@ import { AnimatedBackground } from "@/components/animated-background";
 import { CookieBanner } from "@/components/cookie-banner";
 import { useState } from "react";
 import { ChevronLeft, Mail, Zap, Brain, GitBranch, Sliders, Paperclip, RefreshCw, ArrowRight, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
-import { motion } from "framer-motion";
 import { useMetaTags } from "@/hooks/use-meta-tags";
 
 const features = [
@@ -105,12 +104,7 @@ export default function KiMailbot() {
           </Link>
 
           {/* Hero */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
-            className="mb-16"
-          >
+          <div className="mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-600 text-sm font-medium mb-6">
               <Mail className="h-4 w-4" />
               KI-Mailbot
@@ -144,14 +138,10 @@ export default function KiMailbot() {
                 Preise ansehen
               </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Was ist es */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <div
             className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-8 shadow-sm mb-12"
             data-testid="section-was-ist"
           >
@@ -170,16 +160,10 @@ export default function KiMailbot() {
               ohne menschliches Zutun bearbeitet. Komplexe oder sensible E-Mails werden intelligent
               weitergeleitet – mit Kontext und Handlungsempfehlung für Ihren Mitarbeiter.
             </p>
-          </motion.div>
+          </div>
 
           {/* Features */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16"
-          >
+          <div className="mb-16">
             <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
               <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
                 Was Ihr KI-Mailbot kann
@@ -187,12 +171,8 @@ export default function KiMailbot() {
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {features.map((f, i) => (
-                <motion.div
+                <div
                   key={f.title}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.07 }}
                   className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-6 shadow-sm hover:border-purple-500/30 transition-colors"
                   data-testid={`card-feature-${i}`}
                 >
@@ -201,19 +181,13 @@ export default function KiMailbot() {
                   </div>
                   <h3 className="font-semibold text-foreground mb-2">{f.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{f.description}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Use cases */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16"
-          >
+          <div className="mb-16">
             <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
               <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
                 Für welche Branchen?
@@ -221,12 +195,8 @@ export default function KiMailbot() {
             </h2>
             <div className="space-y-4">
               {useCases.map((uc, i) => (
-                <motion.div
+                <div
                   key={uc.title}
-                  initial={{ opacity: 0, x: -16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.06 }}
                   className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-6 shadow-sm flex gap-4"
                   data-testid={`card-usecase-${i}`}
                 >
@@ -235,16 +205,12 @@ export default function KiMailbot() {
                     <h3 className="font-semibold text-foreground mb-1">{uc.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{uc.description}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
 
             {/* Und viele mehr */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
+            <div
               className="mt-4 bg-gradient-to-r from-cyan-500/5 via-blue-500/5 to-purple-600/5 border border-purple-500/20 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4"
               data-testid="card-und-viele-mehr"
             >
@@ -259,17 +225,11 @@ export default function KiMailbot() {
                   Bildung oder eine ganz andere Branche. Sprechen Sie uns einfach an.
                 </p>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* FAQ */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16"
-          >
+          <div className="mb-16">
             <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
               <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
                 Häufige Fragen
@@ -302,14 +262,10 @@ export default function KiMailbot() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <div
             className="bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-purple-600/10 border border-purple-500/20 rounded-2xl p-10 text-center"
             data-testid="section-cta"
           >
@@ -328,7 +284,7 @@ export default function KiMailbot() {
               Kostenlose Demo buchen
               <ArrowRight className="h-4 w-4" />
             </a>
-          </motion.div>
+          </div>
 
           {/* Other products */}
           <div className="mt-14 pt-10 border-t border-border/30">
