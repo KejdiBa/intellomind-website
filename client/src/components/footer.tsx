@@ -42,6 +42,8 @@ export function Footer({ onOpenCookieSettings }: FooterProps) {
                 src={logoImage}
                 alt="IntelloMind"
                 className="h-10 w-auto rounded-lg"
+                width="40"
+                height="40"
               />
               <span className="font-bold text-xl text-foreground">IntelloMind</span>
             </Link>

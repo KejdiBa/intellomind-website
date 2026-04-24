@@ -61,6 +61,8 @@ function SplashScreen() {
           src={logoImage}
           alt="IntelloMind"
           className="w-20 h-20 rounded-2xl mb-4 shadow-2xl"
+          width="80"
+          height="80"
         />
         <h3 className="text-white font-bold text-xl mb-1">IntelloMind</h3>
         <p className="text-xs text-[#f0edf2]">Intelligenz neu gedacht</p>
@@ -85,6 +87,8 @@ function LoginScreen() {
           src={logoImage}
           alt="IntelloMind"
           className="w-12 h-12 rounded-xl mr-3"
+          width="48"
+          height="48"
         />
         <span className="text-white font-bold text-lg">IntelloMind</span>
       </div>
@@ -166,6 +170,8 @@ function InboxScreen() {
             src={logoImage}
             alt="IntelloMind"
             className="w-8 h-8 rounded-lg"
+            width="32"
+            height="32"
           />
           <span className="text-white font-semibold text-sm">Inbox</span>
         </div>

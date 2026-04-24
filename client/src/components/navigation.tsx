@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 const logoImage = "/logo.webp";
@@ -21,6 +22,7 @@ interface NavigationProps {
 export function Navigation({ isSubPage = false }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [, navigate] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +45,9 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isPage?: boolean) => {
     if (isPage) {
+      e.preventDefault();
       setIsMobileMenuOpen(false);
+      navigate(href);
       return;
     }
     if (!isSubPage) {
@@ -70,9 +74,11 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
         <a
           href={logoHref}
           onClick={(e) => {
+            e.preventDefault();
             if (!isSubPage) {
-              e.preventDefault();
               scrollToSection("#home");
+            } else {
+              navigate("/");
             }
           }}
           className="flex items-center gap-3"
@@ -82,6 +88,8 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
             src={logoImage}
             alt="IntelloMind"
             className="h-10 w-auto rounded-lg"
+            width="40"
+            height="40"
           />
           <span className="font-bold text-xl text-slate-800 tracking-tight">
             IntelloMind
