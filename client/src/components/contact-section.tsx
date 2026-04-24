@@ -138,7 +138,6 @@ export function ContactSection() {
 
   return (
     <section
-      id="contact"
       className="py-24 md:py-32 bg-background/50 backdrop-blur-[2px] relative overflow-hidden"
       data-testid="section-contact"
     >
