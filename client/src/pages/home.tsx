@@ -50,11 +50,20 @@ export default function Home() {
     const hash = window.location.hash;
     if (hash) {
       const id = hash.replace("#", "");
+      if (id === "contact") {
+        setShowContact(true);
+      }
       setTimeout(() => {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: "smooth" });
       }, 100);
     }
+  }, []);
+
+  useEffect(() => {
+    const handleShowContact = () => setShowContact(true);
+    window.addEventListener("show-contact-section", handleShowContact);
+    return () => window.removeEventListener("show-contact-section", handleShowContact);
   }, []);
 
   useEffect(() => {
@@ -89,7 +98,7 @@ export default function Home() {
           <AboutSection />
           <IndustriesSection />
         </Suspense>
-        <div ref={contactSentinelRef}>
+        <div id="contact" ref={contactSentinelRef}>
           {showContact ? (
             <Suspense fallback={<div className="min-h-96" />}>
               <ContactSection />

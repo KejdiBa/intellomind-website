@@ -47,10 +47,13 @@ export function Navigation() {
 
   const scrollToSection = (href: string) => {
     if (href.startsWith("#") && href.length > 1) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      window.dispatchEvent(new CustomEvent(`show-${href.slice(1)}-section`));
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 0);
     }
     setIsMobileMenuOpen(false);
   };
@@ -68,6 +71,9 @@ export function Navigation() {
     } else {
       setIsMobileMenuOpen(false);
       navigate("/");
+      if (href.startsWith("#") && href.length > 1) {
+        window.dispatchEvent(new CustomEvent(`show-${href.slice(1)}-section`));
+      }
       let attempts = 0;
       const tryScroll = () => {
         const target = href.startsWith("#") ? document.querySelector(href) : null;
