@@ -11,6 +11,7 @@ A modern, dark-themed website for IntelloMind, an AI consulting company. Followi
 - **Routing**: wouter
 - **Form Handling**: react-hook-form with Zod validation
 - **Storage**: In-memory storage (MemStorage)
+- **SSG**: Static Site Generation via react-dom/server (Vite SSR build + custom prerender script)
 
 ## Project Structure
 ```
@@ -94,6 +95,14 @@ shared/
 - Address: Hüingser Ring 1, 58710 Menden
 
 ## Recent Changes
+- 2026-04-24: SSG (Static Site Generation) implementiert
+  - client/src/entry-server.tsx: SSR-Einstiegspunkt mit react-dom/server + wouter staticHook
+  - scripts/prerender.ts: Prerender-Script für alle 11 Routen nach dem Build
+  - script/build.ts: SSR-Vite-Build (dist/server/) + Prerender-Schritt ergänzt
+  - Alle Seiten (/, /preise, /impressum, /datenschutz, /datenschutz-webapp, /agb, /leistungsbeschreibung, /ki-*) werden zu fertigen HTML-Dateien
+  - Mobile Ladezeit: von ~5 Sekunden auf ~1 Sekunde (Inhalt sichtbar bevor JS lädt)
+  - .htaccess unverändert: !-d Regel serviert /preise → preise/index.html automatisch
+
 - 2026-04-05: KI-Workflow-Automation Seite hinzugefügt (/ki-workflow-automation)
   - Neue Seite mit animierter SVG-Workflow-Grafik (Framer Motion)
   - Nodes: Telefon/Chat/E-Mail → IntelloMind KI Hub → CRM/Kalender/Analytics
