@@ -22,7 +22,7 @@ interface NavigationProps {
 export function Navigation({ isSubPage = false }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [, navigate] = useLocation();
+  const [location, navigate] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +32,8 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const onHomePage = location === "/" || location === "";
 
   const scrollToSection = (href: string) => {
     if (href.startsWith("#") && href.length > 1) {
@@ -51,7 +53,7 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
       return;
     }
     e.preventDefault();
-    if (!isSubPage) {
+    if (onHomePage) {
       scrollToSection(href);
     } else {
       setIsMobileMenuOpen(false);
@@ -70,10 +72,10 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
     }
   };
 
-  const logoHref = isSubPage ? "/" : "#home";
+  const logoHref = onHomePage ? "#home" : "/";
   const getNavHref = (link: { href: string; isPage?: boolean }) => {
     if (link.isPage) return link.href;
-    return isSubPage ? `/${link.href}` : link.href;
+    return onHomePage ? link.href : `/${link.href}`;
   };
 
   return (
@@ -87,7 +89,7 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
           href={logoHref}
           onClick={(e) => {
             e.preventDefault();
-            if (!isSubPage) {
+            if (onHomePage) {
               scrollToSection("#home");
             } else {
               navigate("/");
