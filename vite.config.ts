@@ -58,7 +58,8 @@ export default defineConfig({
 
           if (
             id.includes("node_modules/@radix-ui/") ||
-            id.includes("/components/ui/")
+            id.includes("/components/ui/") ||
+            id.includes("/components/cookie-banner")
           ) {
             return "ui";
           }
@@ -88,13 +89,6 @@ export default defineConfig({
           }
 
           if (
-            id.includes("/components/cookie-banner") ||
-            id.includes("/components/ui/toaster")
-          ) {
-            return "async-ui";
-          }
-
-          if (
             id.includes("/pages/ki-telefonassistent") ||
             id.includes("/pages/ki-chatbot") ||
             id.includes("/pages/ki-mailbot") ||
@@ -114,10 +108,9 @@ export default defineConfig({
 
           if (
             id.includes("/pages/datenschutz-webapp") ||
-            id.includes("/pages/datenschutz") ||
-            id.includes("/pages/agb")
+            id.includes("/pages/datenschutz")
           ) {
-            return "pages-legal";
+            return "pages-datenschutz";
           }
         },
       },
