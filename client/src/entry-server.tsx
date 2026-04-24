@@ -2,7 +2,6 @@ import { renderToString } from "react-dom/server";
 import { Router } from "wouter";
 import { Switch, Route } from "wouter";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 
 import Home from "@/pages/home";
@@ -28,7 +27,6 @@ export function render(url: string): string {
     <Router hook={staticHook(url)}>
       <ThemeProvider defaultTheme="light" storageKey="intello-theme">
         <QueryClientProvider client={qc}>
-          <TooltipProvider>
             <Switch>
               <Route path="/" component={Home} />
               <Route path="/preise" component={Preise} />
@@ -42,7 +40,6 @@ export function render(url: string): string {
               <Route path="/ki-mailbot" component={KiMailbot} />
               <Route path="/ki-workflow-automation" component={KiWorkflowAutomation} />
             </Switch>
-          </TooltipProvider>
         </QueryClientProvider>
       </ThemeProvider>
     </Router>

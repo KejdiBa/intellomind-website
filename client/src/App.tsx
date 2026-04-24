@@ -3,9 +3,8 @@ import { Switch, Route } from "wouter";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
+import { useToast } from "@/hooks/use-toast";
 
 const Home = lazy(() => import("@/pages/home"));
 const Impressum = lazy(() => import("@/pages/impressum"));
@@ -19,6 +18,20 @@ const KiChatbot = lazy(() => import("@/pages/ki-chatbot"));
 const KiMailbot = lazy(() => import("@/pages/ki-mailbot"));
 const KiWorkflowAutomation = lazy(() => import("@/pages/ki-workflow-automation"));
 const NotFound = lazy(() => import("@/pages/not-found"));
+
+const LazyToaster = lazy(() =>
+  import("@/components/ui/toaster").then((m) => ({ default: m.Toaster }))
+);
+
+function ToasterGate() {
+  const { toasts } = useToast();
+  if (toasts.length === 0) return null;
+  return (
+    <Suspense fallback={null}>
+      <LazyToaster />
+    </Suspense>
+  );
+}
 
 function Router() {
   return (
@@ -46,10 +59,8 @@ function App() {
   return (
     <ThemeProvider defaultTheme="light" storageKey="intello-theme">
       <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
+        <ToasterGate />
+        <Router />
       </QueryClientProvider>
     </ThemeProvider>
   );
