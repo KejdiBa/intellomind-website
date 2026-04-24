@@ -37,19 +37,14 @@ export default defineConfig({
           if (
             id.includes("node_modules/react/") ||
             id.includes("node_modules/react-dom/") ||
-            id.includes("node_modules/scheduler/")
-          ) {
-            return "vendor-react";
-          }
-
-          if (
+            id.includes("node_modules/scheduler/") ||
             id.includes("node_modules/wouter/") ||
             id.includes("node_modules/@tanstack/") ||
             id.includes("node_modules/zod/") ||
             id.includes("node_modules/react-hook-form/") ||
             id.includes("node_modules/@hookform/")
           ) {
-            return "vendor-libs";
+            return "vendor";
           }
 
           if (id.includes("node_modules/lucide-react/")) {
@@ -88,29 +83,8 @@ export default defineConfig({
             return "sections";
           }
 
-          if (
-            id.includes("/pages/ki-telefonassistent") ||
-            id.includes("/pages/ki-chatbot") ||
-            id.includes("/pages/ki-mailbot") ||
-            id.includes("/pages/ki-workflow-automation")
-          ) {
-            return "pages-ki";
-          }
-
-          if (
-            id.includes("/pages/impressum") ||
-            id.includes("/pages/preise") ||
-            id.includes("/pages/leistungsbeschreibung") ||
-            id.includes("/pages/not-found")
-          ) {
-            return "pages-info";
-          }
-
-          if (
-            id.includes("/pages/datenschutz-webapp") ||
-            id.includes("/pages/datenschutz")
-          ) {
-            return "pages-datenschutz";
+          if (id.includes("/pages/")) {
+            return "pages";
           }
         },
       },
