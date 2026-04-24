@@ -44,7 +44,7 @@ jobs:
             set net:timeout 30;
             set net:max-retries 3;
             open sftp://$FTP_USERNAME:$FTP_PASSWORD@$FTP_SERVER;
-            mirror --reverse --delete --verbose ./dist/public/ /intellomind-ai/;
+            mirror --reverse --delete --verbose ./dist/public/ /;
             quit
           "
 
