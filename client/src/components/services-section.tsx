@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Phone, MessageSquare, Mail, ArrowRight, Workflow } from "lucide-react";
+import { useInView } from "@/hooks/use-in-view";
 
 const products = [
   {
@@ -38,16 +39,21 @@ const products = [
   },
 ];
 
+const staggerDelays = ["delay-100", "delay-200", "delay-300", "delay-400"];
+
 export function ServicesSection() {
+  const { ref: sectionRef, isVisible } = useInView();
+
   return (
     <section
       id="services"
+      ref={sectionRef}
       className="py-24 md:py-32 bg-background/50 backdrop-blur-[2px] relative overflow-hidden"
       data-testid="section-services"
     >
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 fade-in-up${isVisible ? " is-visible" : ""}`}>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             <span className="gradient-text">Unsere KI-Produkte</span>
             <br />
@@ -59,8 +65,11 @@ export function ServicesSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-12">
-          {products.map((product) => (
-            <div key={product.title}>
+          {products.map((product, i) => (
+            <div
+              key={product.title}
+              className={`fade-in-up ${staggerDelays[i]}${isVisible ? " is-visible" : ""}`}
+            >
               <Card
                 className="p-6 h-full glass-card hover-float glow-border flex flex-col"
                 data-testid={`card-product-${product.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}

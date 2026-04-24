@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Clock, TrendingDown, TrendingUp, Zap } from "lucide-react";
+import { useInView } from "@/hooks/use-in-view";
 
 const features = [
   {
@@ -28,12 +29,20 @@ const features = [
   },
 ];
 
+const cardDelays = ["delay-100", "delay-200", "delay-300", "delay-400"];
+
 export function FeaturesSection() {
+  const { ref: sectionRef, isVisible } = useInView();
+
   return (
-    <section className="py-24 bg-background/50 backdrop-blur-[2px] relative overflow-hidden" data-testid="section-features">
+    <section
+      ref={sectionRef}
+      className="py-24 bg-background/50 backdrop-blur-[2px] relative overflow-hidden"
+      data-testid="section-features"
+    >
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 fade-in-up${isVisible ? " is-visible" : ""}`}>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             <span className="text-foreground">Die Zukunft </span>
             <span className="gradient-text">heute nutzen</span>
@@ -44,8 +53,11 @@ export function FeaturesSection() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature) => (
-            <div key={feature.value}>
+          {features.map((feature, i) => (
+            <div
+              key={feature.value}
+              className={`fade-in-up ${cardDelays[i]}${isVisible ? " is-visible" : ""}`}
+            >
               <Card
                 className="p-8 text-center glass-card hover-float glow-border h-full"
                 data-testid={`card-feature-${feature.label.toLowerCase().replace(/\s+/g, "-")}`}

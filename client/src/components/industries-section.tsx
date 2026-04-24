@@ -12,6 +12,7 @@ import {
   Dumbbell,
   Building2
 } from "lucide-react";
+import { useInView } from "@/hooks/use-in-view";
 
 const industries = [
   {
@@ -66,7 +67,14 @@ const industries = [
   },
 ];
 
+const cardDelays = [
+  "delay-100", "delay-150", "delay-200", "delay-250", "delay-300",
+  "delay-100", "delay-150", "delay-200", "delay-250", "delay-300",
+];
+
 export function IndustriesSection() {
+  const { ref: sectionRef, isVisible } = useInView();
+
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
     if (element) {
@@ -75,10 +83,14 @@ export function IndustriesSection() {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-background/50 backdrop-blur-[2px] relative overflow-hidden" data-testid="section-industries">
+    <section
+      ref={sectionRef}
+      className="py-24 md:py-32 bg-background/50 backdrop-blur-[2px] relative overflow-hidden"
+      data-testid="section-industries"
+    >
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 fade-in-up${isVisible ? " is-visible" : ""}`}>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             <span className="text-foreground">Für wen ist </span>
             <span className="gradient-text">IntelloMind</span>
@@ -91,8 +103,11 @@ export function IndustriesSection() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-          {industries.map((industry) => (
-            <div key={industry.title}>
+          {industries.map((industry, i) => (
+            <div
+              key={industry.title}
+              className={`fade-in-up ${cardDelays[i]}${isVisible ? " is-visible" : ""}`}
+            >
               <Card
                 className="p-5 h-full glass-card hover-float glow-border"
                 data-testid={`card-industry-${industry.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "")}`}
@@ -104,8 +119,8 @@ export function IndustriesSection() {
                   {industry.title}
                 </h3>
                 <ul className="space-y-1.5">
-                  {industry.features.map((feature, i) => (
-                    <li key={i} className="text-xs text-muted-foreground flex items-start gap-2">
+                  {industry.features.map((feature, fi) => (
+                    <li key={fi} className="text-xs text-muted-foreground flex items-start gap-2">
                       <span className="text-primary mt-0.5">•</span>
                       {feature}
                     </li>
@@ -116,7 +131,7 @@ export function IndustriesSection() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className={`text-center mt-12 fade-in-up delay-400${isVisible ? " is-visible" : ""}`}>
           <p className="text-muted-foreground mb-6">
             <span className="font-semibold text-foreground">+100 weitere Branchen</span> möglich
           </p>

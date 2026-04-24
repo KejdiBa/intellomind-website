@@ -1,5 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Clock, Target, CalendarCheck, Zap } from "lucide-react";
+import { useInView } from "@/hooks/use-in-view";
+
+const cardDelays = ["delay-200", "delay-300", "delay-400", "delay-500"];
 
 const benefits = [
   {
@@ -25,16 +28,19 @@ const benefits = [
 ];
 
 export function AboutSection() {
+  const { ref: sectionRef, isVisible } = useInView();
+
   return (
     <section
       id="about"
+      ref={sectionRef}
       className="py-24 md:py-32 bg-background/50 backdrop-blur-[2px] relative overflow-hidden"
       data-testid="section-about"
     >
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
+          <div className={`fade-in-up${isVisible ? " is-visible" : ""}`}>
             <p className="gradient-text font-semibold mb-3 tracking-wide uppercase text-sm">
               Dein KI-Partner fürs Wachstum
             </p>
@@ -55,8 +61,11 @@ export function AboutSection() {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            {benefits.map((benefit) => (
-              <div key={benefit.title}>
+            {benefits.map((benefit, i) => (
+              <div
+                key={benefit.title}
+                className={`fade-in-up ${cardDelays[i]}${isVisible ? " is-visible" : ""}`}
+              >
                 <Card
                   className="p-5 glass-card hover-float glow-border h-full"
                   data-testid={`card-benefit-${benefit.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "")}`}

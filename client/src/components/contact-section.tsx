@@ -29,6 +29,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Send, Loader2, Mail, Phone, MapPin, CheckCircle, XCircle } from "lucide-react";
+import { useInView } from "@/hooks/use-in-view";
 
 const n8nContactSchema = z.object({
   vorname: z.string().min(2, "Vorname muss mindestens 2 Zeichen haben"),
@@ -74,10 +75,13 @@ const contactInfo = [
   },
 ];
 
+const contactInfoDelays = ["delay-200", "delay-300", "delay-400"];
+
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogType, setDialogType] = useState<"success" | "error">("success");
+  const { ref: sectionRef, isVisible } = useInView();
 
   const form = useForm<N8nContactForm>({
     resolver: zodResolver(n8nContactSchema),
@@ -137,6 +141,7 @@ export function ContactSection() {
 
   return (
     <section
+      ref={sectionRef}
       className="py-24 md:py-32 bg-background/50 backdrop-blur-[2px] relative overflow-hidden"
       data-testid="section-contact"
     >
@@ -179,7 +184,7 @@ export function ContactSection() {
       </Dialog>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-12">
+        <div className={`text-center mb-12 fade-in-up${isVisible ? " is-visible" : ""}`}>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             <span className="gradient-text">Lassen Sie sich heute noch begeistern!</span>
           </h2>
@@ -189,7 +194,7 @@ export function ContactSection() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          <div>
+          <div className={`fade-in-up delay-100${isVisible ? " is-visible" : ""}`}>
             <Card className="p-8 glass-card glow-border h-full" data-testid="card-contact-form">
               <h3 className="text-xl font-bold text-foreground mb-6">Kontaktformular</h3>
               <Form {...form}>
@@ -379,13 +384,13 @@ export function ContactSection() {
           </div>
 
           <div className="flex flex-col gap-4 max-w-sm">
-            {contactInfo.map((info) => (
+            {contactInfo.map((info, i) => (
               <a
                 key={info.title}
                 href={info.href}
                 target={info.external ? "_blank" : undefined}
                 rel={info.external ? "noopener noreferrer" : undefined}
-                className="group block p-4 rounded-xl bg-card border border-border/50 shadow-sm hover:shadow-md hover:border-border transition-all duration-200"
+                className={`group block p-4 rounded-xl bg-card border border-border/50 shadow-sm hover:shadow-md hover:border-border transition-all duration-200 fade-in-up ${contactInfoDelays[i]}${isVisible ? " is-visible" : ""}`}
                 data-testid={`link-contact-${info.title.toLowerCase()}`}
               >
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform duration-200">
