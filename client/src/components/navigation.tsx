@@ -14,11 +14,7 @@ const navLinks = [
   { label: "Kontakt", href: "#contact" },
 ];
 
-interface NavigationProps {
-  isSubPage?: boolean;
-}
-
-export function Navigation({ isSubPage = false }: NavigationProps) {
+export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [menuMounted, setMenuMounted] = useState(false);

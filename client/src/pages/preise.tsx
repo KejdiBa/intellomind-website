@@ -648,7 +648,7 @@ export default function Preise() {
   return (
     <div className="min-h-screen bg-background relative">
       <AnimatedBackground />
-      <Navigation isSubPage />
+      <Navigation />
       <main className="relative z-10 pt-32 pb-24 px-6">
         <div className="max-w-5xl mx-auto">
 

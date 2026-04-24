@@ -45,7 +45,7 @@ export default function DatenschutzWebapp() {
   return (
     <div className="min-h-screen bg-background relative">
       <AnimatedBackground />
-      <Navigation isSubPage />
+      <Navigation />
       <main className="relative z-10 pt-32 pb-24 px-6 text-[10px]">
         <div className="max-w-3xl mx-auto">
           <Link
