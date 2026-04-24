@@ -1,6 +1,7 @@
 import { build as esbuild } from "esbuild";
 import { build as viteBuild } from "vite";
 import { rm, readFile } from "fs/promises";
+import path from "path";
 
 // server deps to bundle to reduce openat(2) syscalls
 // which helps cold start times
@@ -37,6 +38,26 @@ async function buildAll() {
 
   console.log("building client...");
   await viteBuild();
+
+  console.log("building SSR bundle...");
+  await viteBuild({
+    build: {
+      ssr: "src/entry-server.tsx",
+      outDir: path.resolve("dist/server"),
+      emptyOutDir: true,
+      rollupOptions: {
+        output: { format: "esm" },
+      },
+    },
+    ssr: {
+      noExternal: ["wouter", "@tanstack/react-query", "framer-motion"],
+    },
+  });
+
+  console.log("prerendering pages...");
+  const { prerender } = await import("../scripts/prerender.ts");
+  await prerender();
+  console.log("prerendering done.");
 
   console.log("building server...");
   const pkg = JSON.parse(await readFile("package.json", "utf-8"));
