@@ -3,7 +3,6 @@ import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 const logoImage = "/logo.webp";
-import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "Start", href: "#home" },
@@ -22,6 +21,8 @@ interface NavigationProps {
 export function Navigation({ isSubPage = false }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [menuMounted, setMenuMounted] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
   const [location, navigate] = useLocation();
 
   useEffect(() => {
@@ -32,6 +33,19 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      setMenuMounted(true);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => setMenuVisible(true));
+      });
+    } else {
+      setMenuVisible(false);
+      const timer = setTimeout(() => setMenuMounted(false), 200);
+      return () => clearTimeout(timer);
+    }
+  }, [isMobileMenuOpen]);
 
   const onHomePage = location === "/" || location === "";
 
@@ -155,44 +169,38 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
         </Button>
         </nav>
       </div>
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
-            className="md:hidden mt-2 mx-auto max-w-5xl"
-          >
-            <div className="bg-white/80 backdrop-blur-xl rounded-2xl px-6 py-4 space-y-3 border border-white/40 shadow-lg shadow-black/5">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={getNavHref(link)}
-                  onClick={(e) => handleNavClick(e, link.href, link.isPage)}
-                  className="block text-base font-medium text-slate-600 hover:text-slate-900 py-2 transition-colors"
-                  data-testid={`link-mobile-nav-${link.label.toLowerCase()}`}
-                >
-                  {link.label}
-                </a>
-              ))}
+      {menuMounted && (
+        <div
+          className={`md:hidden mt-2 mx-auto max-w-5xl mobile-menu-transition ${menuVisible ? "mobile-menu-visible" : "mobile-menu-hidden"}`}
+        >
+          <div className="bg-white/80 backdrop-blur-xl rounded-2xl px-6 py-4 space-y-3 border border-white/40 shadow-lg shadow-black/5">
+            {navLinks.map((link) => (
               <a
-                href="https://app.intellomind.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block mt-3"
+                key={link.label}
+                href={getNavHref(link)}
+                onClick={(e) => handleNavClick(e, link.href, link.isPage)}
+                className="block text-base font-medium text-slate-600 hover:text-slate-900 py-2 transition-colors"
+                data-testid={`link-mobile-nav-${link.label.toLowerCase()}`}
               >
-                <Button
-                  className="w-full rounded-full btn-primary-gradient hover-glow"
-                  data-testid="button-mobile-login"
-                >
-                  Login
-                </Button>
+                {link.label}
               </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            ))}
+            <a
+              href="https://app.intellomind.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mt-3"
+            >
+              <Button
+                className="w-full rounded-full btn-primary-gradient hover-glow"
+                data-testid="button-mobile-login"
+              >
+                Login
+              </Button>
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

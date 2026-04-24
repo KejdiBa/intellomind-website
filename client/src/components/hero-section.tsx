@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
-import { motion } from "framer-motion";
 import { GradientOrb } from "./gradient-orb";
 import { TrustBadges } from "./trust-badges";
 
@@ -22,11 +21,7 @@ export function HeroSection() {
     >
       <div className="absolute inset-0 bg-background/70" />
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 py-32 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
-        >
+        <div className="animate-hero-fade-up">
           <h1
             className="font-bold mb-6 tracking-tight text-[62px]"
             data-testid="text-hero-title"
@@ -56,19 +51,14 @@ export function HeroSection() {
             </Button>
           </div>
 
-          <motion.div
-            className="flex justify-center mt-12"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
-          >
+          <div className="flex justify-center mt-12 animate-hero-scale-in">
             <GradientOrb />
-          </motion.div>
+          </div>
 
           <div className="mt-10">
             <TrustBadges />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

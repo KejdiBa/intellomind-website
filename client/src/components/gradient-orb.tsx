@@ -1,32 +1,8 @@
-import { motion } from "framer-motion";
-
 export function GradientOrb() {
   return (
     <div className="relative w-32 h-32 md:w-40 md:h-40">
-      <motion.div
-        className="absolute inset-0"
-        animate={{
-          y: [0, -20, 5, -15, 0],
-          x: [0, 8, -5, 10, 0],
-          rotate: [0, 8, -5, 6, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <motion.div
-          className="relative w-full h-full"
-          animate={{
-            scale: [1, 1.06, 0.98, 1.04, 1],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
+      <div className="absolute inset-0 animate-orb-float">
+        <div className="relative w-full h-full animate-orb-scale">
           <div
             className="absolute inset-0 rounded-full overflow-hidden"
             style={{
@@ -45,16 +21,8 @@ export function GradientOrb() {
               filter: "blur(1px)",
             }}
           >
-            <motion.div
-              className="absolute inset-0"
-              animate={{
-                rotate: [0, 360],
-              }}
-              transition={{
-                duration: 15,
-                repeat: Infinity,
-                ease: "linear",
-              }}
+            <div
+              className="absolute inset-0 animate-orb-rotate-cw"
               style={{
                 background: `
                   conic-gradient(
@@ -74,16 +42,8 @@ export function GradientOrb() {
               }}
             />
 
-            <motion.div
-              className="absolute inset-0"
-              animate={{
-                rotate: [360, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-              }}
+            <div
+              className="absolute inset-0 animate-orb-rotate-ccw"
               style={{
                 background: `
                   conic-gradient(
@@ -101,18 +61,8 @@ export function GradientOrb() {
               }}
             />
 
-            <motion.div
-              className="absolute inset-4 rounded-full"
-              animate={{
-                x: [0, 15, -10, 12, 0],
-                y: [0, -12, 8, -8, 0],
-                scale: [1, 1.15, 0.9, 1.1, 1],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+            <div
+              className="absolute inset-4 rounded-full animate-orb-blob-cyan"
               style={{
                 background: `
                   radial-gradient(ellipse 80% 80% at 30% 30%,
@@ -125,19 +75,8 @@ export function GradientOrb() {
               }}
             />
 
-            <motion.div
-              className="absolute inset-4 rounded-full"
-              animate={{
-                x: [0, -12, 15, -8, 0],
-                y: [0, 10, -15, 12, 0],
-                scale: [1, 0.9, 1.2, 0.95, 1],
-              }}
-              transition={{
-                duration: 7,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.5,
-              }}
+            <div
+              className="absolute inset-4 rounded-full animate-orb-blob-purple"
               style={{
                 background: `
                   radial-gradient(ellipse 70% 70% at 70% 60%,
@@ -150,19 +89,8 @@ export function GradientOrb() {
               }}
             />
 
-            <motion.div
-              className="absolute inset-6 rounded-full"
-              animate={{
-                x: [0, 10, -8, 5, 0],
-                y: [0, -8, 12, -10, 0],
-                scale: [1, 1.1, 0.95, 1.05, 1],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1,
-              }}
+            <div
+              className="absolute inset-6 rounded-full animate-orb-blob-green"
               style={{
                 background: `
                   radial-gradient(ellipse 60% 60% at 50% 70%,
@@ -175,18 +103,8 @@ export function GradientOrb() {
               }}
             />
 
-            <motion.div
-              className="absolute inset-4 rounded-full"
-              animate={{
-                x: [0, -8, 10, -12, 0],
-                y: [0, 12, -6, 8, 0],
-                opacity: [0.7, 1, 0.6, 0.9, 0.7],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+            <div
+              className="absolute inset-4 rounded-full animate-orb-blob-white"
               style={{
                 background: `
                   radial-gradient(ellipse 70% 70% at 50% 50%,
@@ -228,20 +146,11 @@ export function GradientOrb() {
               }}
             />
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
-      <motion.div
-        className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[80%] h-[25%] rounded-full"
-        animate={{
-          scale: [1, 1.1, 0.95, 1.05, 1],
-          opacity: [0.4, 0.5, 0.35, 0.45, 0.4],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+        className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[80%] h-[25%] rounded-full animate-orb-shadow"
         style={{
           background: `
             radial-gradient(ellipse at 50% 50%,
