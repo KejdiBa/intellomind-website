@@ -1,6 +1,5 @@
 import { lazy, Suspense } from "react";
 import { Switch, Route } from "wouter";
-import { LazyMotion, domAnimation } from "framer-motion";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -45,16 +44,14 @@ function Router() {
 
 function App() {
   return (
-    <LazyMotion features={domAnimation}>
-      <ThemeProvider defaultTheme="light" storageKey="intello-theme">
-        <QueryClientProvider client={queryClient}>
-          <TooltipProvider>
-            <Toaster />
-            <Router />
-          </TooltipProvider>
-        </QueryClientProvider>
-      </ThemeProvider>
-    </LazyMotion>
+    <ThemeProvider defaultTheme="light" storageKey="intello-theme">
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }
 

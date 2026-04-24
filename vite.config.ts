@@ -30,21 +30,25 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
-        manualChunks: {
-          "vendor-react": ["react", "react-dom"],
-          "vendor-motion": ["framer-motion"],
-          "vendor-radix": [
-            "@radix-ui/react-accordion",
-            "@radix-ui/react-dialog",
-            "@radix-ui/react-dropdown-menu",
-            "@radix-ui/react-tabs",
-            "@radix-ui/react-toast",
-            "@radix-ui/react-tooltip",
-            "@radix-ui/react-switch",
-            "@radix-ui/react-select",
-          ],
+        manualChunks(id) {
+          if (id.includes("node_modules/react") || id.includes("node_modules/react-dom")) {
+            return "vendor-react";
+          }
+          if (id.includes("node_modules/framer-motion")) {
+            return "vendor-motion";
+          }
+          if (id.includes("node_modules/@radix-ui")) {
+            return "vendor-radix";
+          }
+          if (id.includes("node_modules/lucide-react")) {
+            return "vendor-icons";
+          }
+          if (id.includes("node_modules/react-icons")) {
+            return "vendor-react-icons";
+          }
         },
       },
     },
