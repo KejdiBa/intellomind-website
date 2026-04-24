@@ -50,11 +50,23 @@ export function Navigation({ isSubPage = false }: NavigationProps) {
       navigate(href);
       return;
     }
+    e.preventDefault();
     if (!isSubPage) {
-      e.preventDefault();
       scrollToSection(href);
     } else {
       setIsMobileMenuOpen(false);
+      navigate("/");
+      let attempts = 0;
+      const tryScroll = () => {
+        const target = href.startsWith("#") ? document.querySelector(href) : null;
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        } else if (attempts < 20) {
+          attempts++;
+          setTimeout(tryScroll, 50);
+        }
+      };
+      setTimeout(tryScroll, 50);
     }
   };
 
