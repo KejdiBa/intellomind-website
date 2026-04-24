@@ -60,6 +60,13 @@ export async function prerender() {
       console.warn(`  ⚠ critters failed for ${route}:`, (err as Error).message);
     }
 
+    fullHtml = fullHtml.replace(
+      /<link rel="stylesheet"[^>]*href="(\/assets\/[^"]+)"[^>]*>/g,
+      (_, href) =>
+        `<link rel="preload" as="style" href="${href}" onload="this.onload=null;this.rel='stylesheet'">` +
+        `<noscript><link rel="stylesheet" href="${href}"></noscript>`
+    );
+
     let outPath: string;
     if (route === "/") {
       outPath = path.join(root, "dist/public/index.html");
