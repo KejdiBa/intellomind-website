@@ -70,6 +70,8 @@ export default function Home() {
           <ServicesSection />
           <AboutSection />
           <IndustriesSection />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-96" />}>
           <ContactSection />
         </Suspense>
       </main>
