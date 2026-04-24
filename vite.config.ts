@@ -89,10 +89,35 @@ export default defineConfig({
 
           if (
             id.includes("/components/cookie-banner") ||
-            id.includes("/components/ui/toaster") ||
-            id.includes("/hooks/use-toast")
+            id.includes("/components/ui/toaster")
           ) {
             return "async-ui";
+          }
+
+          if (
+            id.includes("/pages/ki-telefonassistent") ||
+            id.includes("/pages/ki-chatbot") ||
+            id.includes("/pages/ki-mailbot") ||
+            id.includes("/pages/ki-workflow-automation")
+          ) {
+            return "pages-ki";
+          }
+
+          if (
+            id.includes("/pages/impressum") ||
+            id.includes("/pages/preise") ||
+            id.includes("/pages/leistungsbeschreibung") ||
+            id.includes("/pages/not-found")
+          ) {
+            return "pages-info";
+          }
+
+          if (
+            id.includes("/pages/datenschutz-webapp") ||
+            id.includes("/pages/datenschutz") ||
+            id.includes("/pages/agb")
+          ) {
+            return "pages-legal";
           }
         },
       },
