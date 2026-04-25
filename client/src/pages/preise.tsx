@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { useMetaTags } from "@/hooks/use-meta-tags";
+import { useInView } from "@/hooks/use-in-view";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { AnimatedBackground } from "@/components/animated-background";
@@ -360,285 +361,17 @@ function MailCards() {
   );
 }
 
-function SliderInput({
-  label,
-  value,
-  min,
-  max,
-  step,
-  unit,
-  onChange,
-  testId,
-}: {
-  label: string;
-  value: number;
-  min: number;
-  max: number;
-  step: number;
-  unit: string;
-  onChange: (v: number) => void;
-  testId: string;
-}) {
-  const pct = ((value - min) / (max - min)) * 100;
-  return (
-    <div className="space-y-1.5">
-      <div className="flex items-center justify-between">
-        <span className="text-xs text-muted-foreground">{label}</span>
-        <span className="text-xs font-semibold text-foreground">
-          {value} {unit}
-        </span>
-      </div>
-      <div className="relative">
-        <input
-          type="range"
-          min={min}
-          max={max}
-          step={step}
-          value={value}
-          onChange={(e) => onChange(Number(e.target.value))}
-          data-testid={testId}
-          className="w-full h-1.5 appearance-none rounded-full outline-none cursor-pointer"
-          style={{
-            background: `linear-gradient(to right, #06b6d4 0%, #8b5cf6 ${pct}%, #e2e8f0 ${pct}%, #e2e8f0 100%)`,
-          }}
-        />
-      </div>
-    </div>
-  );
-}
-
-function fmt(n: number) {
-  return n.toLocaleString("de-DE", { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " €";
-}
-
-function SavingsCalculator() {
-  const [tab, setTab] = useState<Product>("telefon");
-
-  const [telParams, setTelParams] = useState({ calls: 10, duration: 5, followup: 10, wage: 30 });
-  const [chatParams, setChatParams] = useState({ chats: 50, duration: 5, wage: 30 });
-  const [mailParams, setMailParams] = useState({ mails: 30, duration: 10, wage: 30 });
-
-  const DAYS = 30;
-  const KI_MIN_PREIS = 0.15;
-  const KI_CHAT_PREIS = 0.05;
-  const KI_MAIL_PREIS = 0.10;
-
-  let personalCost = 0;
-  let kiCost = 0;
-  let rateNote = "";
-
-  if (tab === "telefon") {
-    personalCost = telParams.calls * DAYS * ((telParams.duration + telParams.followup) / 60) * telParams.wage;
-    kiCost = telParams.calls * DAYS * telParams.duration * KI_MIN_PREIS;
-    rateNote = `KI-Minutenpreis: ${KI_MIN_PREIS.toFixed(2).replace(".", ",")} €/Min. · Berechnung basiert auf ${DAYS} Tagen/Monat`;
-  } else if (tab === "chat") {
-    personalCost = chatParams.chats * DAYS * (chatParams.duration / 60) * chatParams.wage;
-    kiCost = chatParams.chats * DAYS * KI_CHAT_PREIS;
-    rateNote = `KI-Chatpreis: ${KI_CHAT_PREIS.toFixed(2).replace(".", ",")} €/Chat · Berechnung basiert auf ${DAYS} Tagen/Monat`;
-  } else {
-    personalCost = mailParams.mails * DAYS * (mailParams.duration / 60) * mailParams.wage;
-    kiCost = mailParams.mails * DAYS * KI_MAIL_PREIS;
-    rateNote = `KI-Mailpreis: ${KI_MAIL_PREIS.toFixed(2).replace(".", ",")} €/E-Mail · Berechnung basiert auf ${DAYS} Tagen/Monat`;
-  }
-
-  const savings = Math.max(0, personalCost - kiCost);
-  const savingsYear = savings * 12;
-
-  const TABS = [
-    { id: "telefon" as Product, label: "KI-Telefonassistent", icon: Phone },
-    { id: "chat" as Product, label: "KI-Chatassistent", icon: MessageSquare },
-    { id: "mail" as Product, label: "KI-Mailassistent", icon: Mail },
-  ];
-
-  return (
-    <div className="mt-20">
-      <div className="text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">Wie viel sparen Sie?</h2>
-        <p className="text-muted-foreground text-sm max-w-sm mx-auto leading-relaxed">
-          Berechnen Sie Ihr Einsparpotenzial mit einem KI-Assistenten – individuell angepasst an Ihr Unternehmen.
-        </p>
-      </div>
-
-      <div className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl shadow-sm overflow-hidden">
-        <div className="flex border-b border-border/40">
-          {TABS.map((t) => {
-            const Icon = t.icon;
-            return (
-              <button
-                key={t.id}
-                onClick={() => setTab(t.id)}
-                className={`flex-1 inline-flex items-center justify-center gap-2 py-3.5 px-2 text-sm font-medium transition-all duration-200 border-b-2 ${
-                  tab === t.id
-                    ? "border-blue-500 text-foreground"
-                    : "border-transparent text-muted-foreground hover:text-foreground"
-                }`}
-                data-testid={`calc-tab-${t.id}`}
-              >
-                <Icon className="w-4 h-4 hidden sm:block" />
-                <span className="truncate">{t.label}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 divide-y md:divide-y-0 md:divide-x divide-border/40">
-          <div className="p-6 md:p-8 space-y-6">
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Ihre Parameter</p>
-
-            {tab === "telefon" && (
-              <>
-                <SliderInput
-                  label="Anrufe pro Tag"
-                  value={telParams.calls}
-                  min={1} max={200} step={1}
-                  unit="Anrufe/Tag"
-                  onChange={(v) => setTelParams((p) => ({ ...p, calls: v }))}
-                  testId="slider-tel-calls"
-                />
-                <SliderInput
-                  label="Gesprächsdauer"
-                  value={telParams.duration}
-                  min={1} max={30} step={1}
-                  unit="Min."
-                  onChange={(v) => setTelParams((p) => ({ ...p, duration: v }))}
-                  testId="slider-tel-duration"
-                />
-                <SliderInput
-                  label="Nachbearbeitungszeit"
-                  value={telParams.followup}
-                  min={0} max={30} step={1}
-                  unit="Min."
-                  onChange={(v) => setTelParams((p) => ({ ...p, followup: v }))}
-                  testId="slider-tel-followup"
-                />
-                <SliderInput
-                  label="Mitarbeiterkosten"
-                  value={telParams.wage}
-                  min={15} max={100} step={1}
-                  unit="€/h"
-                  onChange={(v) => setTelParams((p) => ({ ...p, wage: v }))}
-                  testId="slider-tel-wage"
-                />
-              </>
-            )}
-
-            {tab === "chat" && (
-              <>
-                <SliderInput
-                  label="Chats pro Tag"
-                  value={chatParams.chats}
-                  min={1} max={500} step={5}
-                  unit="Chats/Tag"
-                  onChange={(v) => setChatParams((p) => ({ ...p, chats: v }))}
-                  testId="slider-chat-chats"
-                />
-                <SliderInput
-                  label="Bearbeitungszeit pro Chat"
-                  value={chatParams.duration}
-                  min={1} max={30} step={1}
-                  unit="Min."
-                  onChange={(v) => setChatParams((p) => ({ ...p, duration: v }))}
-                  testId="slider-chat-duration"
-                />
-                <SliderInput
-                  label="Mitarbeiterkosten"
-                  value={chatParams.wage}
-                  min={15} max={100} step={1}
-                  unit="€/h"
-                  onChange={(v) => setChatParams((p) => ({ ...p, wage: v }))}
-                  testId="slider-chat-wage"
-                />
-              </>
-            )}
-
-            {tab === "mail" && (
-              <>
-                <SliderInput
-                  label="E-Mails pro Tag"
-                  value={mailParams.mails}
-                  min={1} max={500} step={5}
-                  unit="E-Mails/Tag"
-                  onChange={(v) => setMailParams((p) => ({ ...p, mails: v }))}
-                  testId="slider-mail-mails"
-                />
-                <SliderInput
-                  label="Bearbeitungszeit pro E-Mail"
-                  value={mailParams.duration}
-                  min={1} max={30} step={1}
-                  unit="Min."
-                  onChange={(v) => setMailParams((p) => ({ ...p, duration: v }))}
-                  testId="slider-mail-duration"
-                />
-                <SliderInput
-                  label="Mitarbeiterkosten"
-                  value={mailParams.wage}
-                  min={15} max={100} step={1}
-                  unit="€/h"
-                  onChange={(v) => setMailParams((p) => ({ ...p, wage: v }))}
-                  testId="slider-mail-wage"
-                />
-              </>
-            )}
-
-            <p className="text-xs text-muted-foreground pt-2">{rateNote}</p>
-          </div>
-
-          <div className="p-6 md:p-8 flex flex-col justify-between gap-6">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">Ihre Ersparnis</p>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Gesamte Personalkosten</span>
-                  <span className="text-sm font-semibold text-foreground" data-testid="calc-personal-cost">
-                    {fmt(Math.round(personalCost))}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">KI-Assistent Kosten</span>
-                  <span className="text-sm font-semibold text-foreground" data-testid="calc-ki-cost">
-                    {fmt(Math.round(kiCost))}
-                  </span>
-                </div>
-                <div className="h-px bg-border/50" />
-                <div className="flex items-center justify-between py-1">
-                  <span className="text-sm font-semibold text-foreground">Monatliche Ersparnis</span>
-                  <span
-                    className="text-2xl font-bold bg-gradient-to-r from-cyan-500 to-green-500 bg-clip-text text-transparent"
-                    data-testid="calc-monthly-savings"
-                  >
-                    {fmt(Math.round(savings))}
-                  </span>
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Das entspricht{" "}
-                  <span className="font-semibold text-foreground">
-                    {Math.round(savingsYear).toLocaleString("de-DE")} €
-                  </span>{" "}
-                  pro Jahr
-                </p>
-              </div>
-            </div>
-            <div className="space-y-3">
-              <a href="/#contact" className="block">
-                <Button className="w-full rounded-xl btn-primary-gradient" data-testid="button-calc-demo">
-                  Demo buchen
-                </Button>
-              </a>
-              <p className="text-xs text-center text-muted-foreground">
-                Die Zahlen sind Schätzwerte – passen Sie sie an Ihr Unternehmen an.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function Preise() {
   const [activeProduct, setActiveProduct] = useState<Product>("telefon");
   const [billing, setBilling] = useState<Billing>("monthly");
   const [showCookieSettings, setShowCookieSettings] = useState(false);
+
+  const { ref: heroRef, isVisible: heroVisible } = useInView();
+  const { ref: tabsRef, isVisible: tabsVisible } = useInView();
+  const { ref: cardsRef, isVisible: cardsVisible } = useInView();
+  const { ref: fullServiceRef, isVisible: fullServiceVisible } = useInView();
+  const { ref: faqRef, isVisible: faqVisible } = useInView();
+
   useMetaTags(
     "Preise – KI-Assistenten für Unternehmen | IntelloMind",
     "Transparente Preise für KI-Telefonassistent, KI-Chatbot und KI-Mailbot. Monatlich oder jährlich buchen. Kein Verstecktes – ab 99 €/Monat."
@@ -660,7 +393,10 @@ export default function Preise() {
             Zurück zur Startseite
           </Link>
 
-          <div className="text-center mb-12">
+          <div
+            ref={heroRef}
+            className={`text-center mb-12 fade-in-up${heroVisible ? " is-visible" : ""}`}
+          >
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">Transparente Preise. Einfach und Fair.</span>
             </h1>
@@ -669,7 +405,10 @@ export default function Preise() {
             </p>
           </div>
 
-          <div className="flex justify-center mb-8">
+          <div
+            ref={tabsRef}
+            className={`flex justify-center mb-8 fade-in-up delay-100${tabsVisible ? " is-visible" : ""}`}
+          >
             <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-1.5 shadow-sm flex-wrap justify-center">
               {PRODUCTS.map((p) => {
                 const Icon = p.icon;
@@ -722,7 +461,11 @@ export default function Preise() {
             </div>
           )}
 
-          <div key={`${activeProduct}-${billing}`}>
+          <div
+            ref={cardsRef}
+            key={`${activeProduct}-${billing}`}
+            className={`fade-in-up delay-200${cardsVisible ? " is-visible" : ""}`}
+          >
               {(activeProduct === "chat" || activeProduct === "mail") && (
                 <div className="flex justify-center mb-8">
                   <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-card/80 backdrop-blur-sm border border-border/40 shadow-sm text-sm text-muted-foreground">
@@ -744,7 +487,10 @@ export default function Preise() {
             Alle Preise verstehen sich zzgl. 19% MwSt.
           </p>
 
-          <div className="mt-16 rounded-2xl overflow-hidden bg-slate-900 p-8 md:p-10 shadow-xl shadow-purple-500/5">
+          <div
+            ref={fullServiceRef}
+            className={`mt-16 rounded-2xl overflow-hidden bg-slate-900 p-8 md:p-10 shadow-xl shadow-purple-500/5 fade-in-up${fullServiceVisible ? " is-visible" : ""}`}
+          >
             <div className="flex flex-col md:flex-row md:items-start gap-8">
               <div className="flex-1">
                 <h2 className="text-2xl font-bold text-white mb-2">Full-Service Pakete verfügbar</h2>
@@ -782,7 +528,10 @@ export default function Preise() {
             </div>
           </div>
 
-          <div className="mt-16">
+          <div
+            ref={faqRef}
+            className={`mt-16 fade-in-up${faqVisible ? " is-visible" : ""}`}
+          >
             <div className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-8 shadow-sm">
               <h2 className="text-xl font-semibold mb-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
                 Häufige Fragen
