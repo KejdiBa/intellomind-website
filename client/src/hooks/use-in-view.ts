@@ -1,12 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 
-export function useInView<T extends HTMLElement = HTMLElement>(
+export function useInView<T extends HTMLElement = HTMLDivElement>(
   options?: IntersectionObserverInit
 ) {
   const ref = useRef<T>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const [isVisible, setIsVisible] = useState(prefersReducedMotion);
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
     const el = ref.current;
     if (!el) return;
 
