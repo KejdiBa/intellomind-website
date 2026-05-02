@@ -44,6 +44,7 @@ jobs:
             set net:timeout 30;
             set net:max-retries 3;
             open sftp://$FTP_USERNAME:$FTP_PASSWORD@$FTP_SERVER;
+            rm -f fonts/inter-latin-800-normal.woff2;
             mirror --reverse --delete --verbose ./dist/public/ /;
             quit
           "
