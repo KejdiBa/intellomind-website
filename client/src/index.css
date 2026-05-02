@@ -31,14 +31,6 @@
   src: url('/fonts/inter-latin-700-normal.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url('/fonts/inter-latin-800-normal.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
 @tailwind base;
 @tailwind components;
@@ -962,5 +954,97 @@
     .orb-indigo { width: 380px; height: 380px; }
     .orb-purple { width: 320px; height: 320px; }
     .orb-mint { display: none; }
+  }
+
+  /* Respect users' reduced-motion preference — placed last so cascade order is correct */
+  @media (prefers-reduced-motion: reduce) {
+    /* Scroll-triggered entrance animations */
+    .fade-in-up {
+      opacity: 1;
+      transform: none;
+      transition-duration: 0ms;
+    }
+
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .delay-100, .delay-150, .delay-200, .delay-250,
+    .delay-300, .delay-350, .delay-400, .delay-450, .delay-500 {
+      transition-delay: 0ms;
+    }
+
+    /* Stop decorative background orb drift animations */
+    .orb-cyan,
+    .orb-blue,
+    .orb-indigo,
+    .orb-purple,
+    .orb-mint {
+      animation: none;
+    }
+
+    /* Stop orb utility animations */
+    .animate-orb-float,
+    .animate-orb-scale,
+    .animate-orb-rotate-cw,
+    .animate-orb-rotate-ccw,
+    .animate-orb-blob-cyan,
+    .animate-orb-blob-purple,
+    .animate-orb-blob-green,
+    .animate-orb-blob-white,
+    .animate-orb-shadow {
+      animation: none;
+    }
+
+    /* Stop animated rotating border */
+    .animated-border-wrapper::before {
+      animation: none;
+    }
+
+    /* Stop scrolling logo strip */
+    .animate-scroll-left {
+      animation: none;
+    }
+
+    /* Stop holographic blob animations */
+    .holo-blob,
+    .holo-blob-inner {
+      animation: none;
+    }
+
+    /* Stop blob float and shine animations */
+    .animate-blob-float,
+    .animate-holo-shine {
+      animation: none;
+    }
+
+    /* Stop pulse-glow animation */
+    .animate-pulse-glow {
+      animation: none;
+    }
+
+    /* Remove hover motion transitions — add any new transition-bearing classes here */
+    .hover-float,
+    .hover-glow,
+    .hover-scale,
+    .hover-tint,
+    .btn-primary-gradient,
+    .glow-border::before,
+    .mobile-menu-transition {
+      transition-duration: 0ms;
+    }
+
+    .hover-float:hover {
+      transform: none;
+    }
+
+    .hover-scale:hover {
+      transform: none;
+    }
+
+    .btn-primary-gradient:hover:not(:disabled) {
+      transform: none;
+    }
   }
 }
