@@ -10,11 +10,9 @@
     <meta property="og:description" content="Transformieren Sie Ihr Unternehmen mit modernsten KI-Lösungen. Experten für Beratung, Implementierung und Schulung." />
     <meta property="og:type" content="website" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <!-- Preload most-used font weights for instant text rendering -->
-    <link rel="preload" as="font" href="/fonts/inter-latin-400-normal.woff2" crossorigin>
-    <link rel="preload" as="font" href="/fonts/inter-latin-500-normal.woff2" crossorigin>
-    <link rel="preload" as="font" href="/fonts/inter-latin-600-normal.woff2" crossorigin>
-    <link rel="preload" as="font" href="/fonts/inter-latin-700-normal.woff2" crossorigin>
+    <!-- Preload only above-the-fold font weights (400 body, 700 hero/logo); 500/600 lazy via @font-face -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin-400-normal.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin-700-normal.woff2" crossorigin>
     <!-- Inline critical styles so page is visible before CSS loads -->
     <style>
       body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; }
